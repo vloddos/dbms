@@ -1,0 +1,13 @@
+Create Table Book(
+    book_id INT,
+    book_title VARCHAR(25),
+    edition INT,
+    pages_number INT
+);
+
+CREATE TABLE Author (author_id INT, first_name VARCHAR(15), last_name VARCHAR(15), age INT);
+
+create table Publisher (
+    publisher_id int, address varchar(65),
+    company varchar(25)
+);

@@ -16,7 +16,7 @@ public class Main {
     public static void main(String[] args) throws Exception {
         //DataBases.createDataBase("huy");
         //DataBases.createDataBase("pizda");
-        DataBases.useDataBase("huy");
+        //DataBases.useDataBase("huy");
         /*Map<String, Type> map = new LinkedHashMap<>();
         map.put("field1", new Type("int"));
         map.put("field2", new Type("char"));
@@ -29,8 +29,8 @@ public class Main {
                         )
                 )
         );*/
-        System.out.println(DataBases.currentDataBase.showCreate("table1"));
-        DataBases.exit();
+        //System.out.println(DataBases.currentDataBase.showCreate("table1"));
+        //DataBases.exit();
     }
 }
 

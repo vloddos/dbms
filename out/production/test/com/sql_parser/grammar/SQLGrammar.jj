@@ -1,0 +1,275 @@
+options
+{
+    IGNORE_CASE = true;
+    STATIC = false;
+    LOOKAHEAD = 2;
+}
+
+PARSER_BEGIN (SqlParser)
+    package com.sql_parser.grammar;
+
+    import java.util.ArrayList;
+    import java.util.LinkedHashMap;
+    import java.util.Map;
+
+    import dbms.*;
+
+    public class SqlParser {
+         void run() throws Exception {
+             while (true) {
+                parse();
+             }
+         }
+    }
+PARSER_END (SqlParser)
+
+SKIP:
+{
+    "\n"
+    | "\r"
+    | "\r\n"
+    | "\\"
+    | "\t"
+    | " "
+}
+
+SPECIAL_TOKEN:
+{
+    <LINE_COMMENT: "--"(~["\r","\n"])*>
+    | <MULTI_LINE_COMMENT: "/*" (~["*"])* "*" ("*" | (~["*","/"] (~["*"])* "*"))* "/">
+}
+
+//KEYWORDS
+TOKEN:
+{
+    <CREATE: "CREATE ">
+    | <DATABASE: "DATABASE ">
+    | <DROP: "DROP ">
+    | <EXIT: "EXIT">
+    | <FROM: "FROM ">
+    | <INSERT_INTO: "INSERT INTO ">
+    | <LIMIT: "LIMIT ">
+    | <OFFSET: "OFFSET ">
+    | <SELECT: "SELECT ">
+    | <SHOW: "SHOW ">
+    | <TABLE: "TABLE ">
+    | <USE: "USE ">
+    | <VALUES: "VALUES ">
+    | <WHERE: "WHERE ">
+}
+
+//DATA TYPES
+TOKEN:
+{
+    <DATA_TYPE:
+    "CHAR"
+    | "INT"
+    | "LONG"
+    | "VARCHAR"
+    >
+}
+
+//LITERALS
+TOKEN:
+{
+    <INTEGER_LITERAL:(["0"-"9"])+>
+    | <FLOATING_POINT_LITERAL:(["0"-"9"])+"."(["0"-"9"])+(<EXPONENT>)?
+    | "."(["0"-"9"])+(<EXPONENT>)?
+    | (["0"-"9"])+<EXPONENT>
+    | (["0"-"9"])+(<EXPONENT>)?>
+    | <#EXPONENT:["e", "E"](["+", "-"])?(["0"-"9"])+>
+    | <STRING_LITERAL: (["a" - "z", "_", "0"-"9", "-", "@", "."])+>
+}
+
+//SEPARATORS AND OPERATORS
+TOKEN:
+{
+    <SEMICOLON: ";">
+    | <OPEN_BRACKET: "(">
+    | <CLOSE_BRACKET: ")">
+    | <COMMA: ",">
+}
+
+void parse() throws Exception:
+{}
+{
+    parseShowCreateTable()
+    |
+    parseCreateTable()
+    |
+    parseExit()
+    /*|
+    parseDropDatabase()
+    |
+    parseDropTable()*/
+    |
+    parseCreateDatabase()
+    |
+    parseUseDatabase()
+    |
+    <EOF>
+}
+
+void parseUseDatabase() throws Exception:
+{
+    Token name, command;
+}
+{
+    command = <USE><DATABASE>
+    name = <STRING_LITERAL>
+    <SEMICOLON>
+    {System.out.println("THIS IS COMMAND: " + command.image);}
+    {
+        DataBases.useDataBase(name.image);
+    }
+    [parse()]
+}
+
+void parseCreateDatabase() throws Exception:
+{
+    Token name, command;
+}
+{
+    command = <CREATE><DATABASE>
+    name = <STRING_LITERAL>
+    <SEMICOLON>
+    {System.out.println("THIS IS COMMAND: " + command.image);}
+    {
+        DataBases.createDataBase(name.image);
+    }
+    [parse()]
+}
+/*
+void parseDropDatabase():
+{
+    Token name, command;
+}
+{
+    command = <DROP><DATABASE>
+    name = <STRING_LITERAL>
+    {System.out.println("THIS IS COMMAND " + command.image);}
+    <SEMICOLON>
+    [parse()]
+}
+
+void parseDropTable():
+{
+    Token name, command;
+}
+{
+    command = <DROP><TABLE>
+    name = <STRING_LITERAL>
+    {System.out.println("THIS IS COMMAND " + command.image);}
+    <SEMICOLON>
+    [parse()]
+}
+*/
+void parseShowCreateTable() throws Exception:
+{
+    Token name, command;
+}
+{
+    command = <SHOW><CREATE><TABLE>
+    name = <STRING_LITERAL>
+    {
+        System.out.println("THIS IS COMMAND " + command.image);
+    }
+    {
+        System.out.println(
+            DataBases.getCurrentDataBase().showCreate(name.image)
+        );
+    }
+    <SEMICOLON>
+    [parse()]
+}
+
+void parseCreateTable() throws Exception:
+{
+    Token name, command;
+}
+{
+    command = <CREATE><TABLE>
+    name = <STRING_LITERAL>
+    {System.out.println("THIS IS COMMAND: " + command.image);}
+    /*{
+        //header = new TableHeader();
+        header.name = name.image;
+    }*/
+
+    <OPEN_BRACKET>
+    //tableStruct.Variables = getVariablesMap()
+    {
+        DataBases.getCurrentDataBase().createTable(
+            new Table(
+                new TableHeader(
+                    name.image,
+                    getFields()
+                )
+            )
+        );
+    }
+    <CLOSE_BRACKET><SEMICOLON>
+    [parse()]
+}
+
+void parseExit():
+{
+    Token commandName;
+}
+{
+    commandName = <EXIT>
+    {System.out.println("THIS IS COMMAND: " + commandName.image);}
+    <SEMICOLON>
+    {
+        DataBases.exit();
+    }
+    //[init()]
+}
+
+Map<String, TypeDescription> getFields():
+{
+    Token name;
+    Map<String, TypeDescription> fields = new LinkedHashMap<String, TypeDescription>();
+}
+{
+    name = <STRING_LITERAL>
+    {
+        fields.put(name.image, getTypeDescription());
+        /*System.out.println("new struct populated < " + TypeName.image + ">");*/
+    }
+    [<COMMA> getFields()]//???????????????
+    //(
+        /*<COMMA> TypeName = <STRING_LITERAL>
+        typeDescription = typeDefinition()
+
+        {
+          fields.put(TypeName.image, typeDescription);
+          System.out.println("[Recursion] new struct populated < " + TypeName.image + ">");
+        }*/
+    //)*
+    {
+        return fields;
+    }
+}
+
+TypeDescription getTypeDescription():
+{
+    Token tokenDefinitionType;
+    TypeDescription typeDescription;
+    Token length = null;
+}
+{
+    tokenDefinitionType = <DATA_TYPE>
+    [<OPEN_BRACKET>length = <INTEGER_LITERAL><CLOSE_BRACKET>]
+    {
+        typeDescription = new TypeDescription(tokenDefinitionType.image);
+        //typeDescription.setTypeName(tokenDefinitionType.image);
+
+        if (length != null) {
+           typeDescription.setLength(length.image);
+           /*System.out.println("Lenght detected < " + length.image + ">");*/
+        }
+
+        return typeDescription;
+    }
+}

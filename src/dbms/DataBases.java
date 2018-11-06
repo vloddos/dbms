@@ -1,6 +1,7 @@
 package dbms;
 
 import java.io.*;
+import java.lang.reflect.Constructor;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.util.HashMap;
@@ -8,7 +9,7 @@ import java.util.Map;
 
 public class DataBases {
 
-    public static DataBase currentDataBase;//auto choose???
+    private static DataBase currentDataBase;//auto choose???
     private static Map<String, DataBase> dataBases = new HashMap<>();
 
     //full loading
@@ -94,6 +95,13 @@ public class DataBases {
                     }
             );*/
         currentDataBase = dataBases.get(name);
+    }
+
+    public static DataBase getCurrentDataBase() throws Exception {
+        if (currentDataBase == null)
+            throw new Exception("No database selected");
+
+        return currentDataBase;
     }
 
     public static void exit() {
