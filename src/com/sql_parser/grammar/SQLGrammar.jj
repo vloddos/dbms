@@ -47,7 +47,8 @@ TOKEN:
     | <DROP: "DROP ">
     | <EXIT: "EXIT">
     | <FROM: "FROM ">
-    | <INSERT_INTO: "INSERT INTO ">
+    | <INSERT: "INSERT ">
+    | <INTO: "INTO ">
     | <LIMIT: "LIMIT ">
     | <OFFSET: "OFFSET ">
     | <SELECT: "SELECT ">
@@ -107,6 +108,10 @@ void parse() throws Exception:
     |
     parseUseDatabase()
     |
+    parseSelectFromTable()
+    |
+    parseInsertIntoTable()
+    |
     <EOF>
 }
 
@@ -147,8 +152,8 @@ void parseDropDatabase():
 {
     command = <DROP><DATABASE>
     name = <STRING_LITERAL>
-    {System.out.println("THIS IS COMMAND " + command.image);}
     <SEMICOLON>
+    {System.out.println("THIS IS COMMAND " + command.image);}
     [parse()]
 }
 
@@ -159,11 +164,12 @@ void parseDropTable():
 {
     command = <DROP><TABLE>
     name = <STRING_LITERAL>
-    {System.out.println("THIS IS COMMAND " + command.image);}
     <SEMICOLON>
+    {System.out.println("THIS IS COMMAND " + command.image);}
     [parse()]
 }
 */
+
 void parseShowCreateTable() throws Exception:
 {
     Token name, command;
@@ -171,15 +177,13 @@ void parseShowCreateTable() throws Exception:
 {
     command = <SHOW><CREATE><TABLE>
     name = <STRING_LITERAL>
-    {
-        System.out.println("THIS IS COMMAND " + command.image);
-    }
+    <SEMICOLON>
+    {System.out.println("THIS IS COMMAND " + command.image);}
     {
         System.out.println(
             DataBases.getCurrentDataBase().showCreate(name.image)
         );
     }
-    <SEMICOLON>
     [parse()]
 }
 
@@ -190,14 +194,12 @@ void parseCreateTable() throws Exception:
 {
     command = <CREATE><TABLE>
     name = <STRING_LITERAL>
-    {System.out.println("THIS IS COMMAND: " + command.image);}
     /*{
         //header = new TableHeader();
         header.name = name.image;
     }*/
 
     <OPEN_BRACKET>
-    //tableStruct.Variables = getVariablesMap()
     {
         DataBases.getCurrentDataBase().createTable(
             new Table(
@@ -208,7 +210,9 @@ void parseCreateTable() throws Exception:
             )
         );
     }
-    <CLOSE_BRACKET><SEMICOLON>
+    <CLOSE_BRACKET>
+    <SEMICOLON>
+    {System.out.println("THIS IS COMMAND: " + command.image);}
     [parse()]
 }
 
@@ -218,12 +222,50 @@ void parseExit():
 }
 {
     commandName = <EXIT>
-    {System.out.println("THIS IS COMMAND: " + commandName.image);}
     <SEMICOLON>
+    {System.out.println("THIS IS COMMAND: " + commandName.image);}
     {
         DataBases.exit();
     }
-    //[init()]
+}
+
+void parseSelectFromTable():
+{
+    int limit, offset;
+    Token name, command;
+}
+{
+    command = <SELECT>
+    //TODO: check can this method parse select params
+    getFields()
+    <FROM>
+    name = <STRING_LITERAL>
+    [<LIMIT> limit = <INTEGER_LITERAL>]
+    [<OFFSET> offset = <INTEGER_LITERAL>]
+    <SEMICOLON>
+    {System.out.println("THIS IS COMMAND: " + command.image);}
+    [init()]
+}
+
+void parseInsertIntoTable():
+{
+    Token name, command;
+}
+{
+    command = <INSERT>[<INTO>]
+    name = <STRING_LITERAL>
+    <OPEN_BRACKET>
+    //TODO: check can this method parse insert params
+    getFields()
+    <CLOSE_BRACKET>
+    <VALUES>
+    <OPEN_BRACKET>
+    //TODO: check can this method parse insert params
+    getFields()
+    <CLOSE_BRACKET>
+    <SEMICOLON>
+    {System.out.println("THIS IS COMMAND: " + command.image);}
+    [init()]
 }
 
 Map<String, TypeDescription> getFields():
@@ -235,7 +277,6 @@ Map<String, TypeDescription> getFields():
     name = <STRING_LITERAL>
     {
         fields.put(name.image, getTypeDescription());
-        /*System.out.println("new struct populated < " + TypeName.image + ">");*/
     }
     [<COMMA> getFields()]//???????????????
     //(
@@ -265,10 +306,8 @@ TypeDescription getTypeDescription():
         typeDescription = new TypeDescription(tokenDefinitionType.image);
         //typeDescription.setTypeName(tokenDefinitionType.image);
 
-        if (length != null) {
+        if (length != null)
            typeDescription.setLength(length.image);
-           /*System.out.println("Lenght detected < " + length.image + ">");*/
-        }
 
         return typeDescription;
     }
