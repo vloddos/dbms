@@ -7,8 +7,9 @@ import java.io.FileReader;
 public final class DBRunner {
 
     public static void main(String[] args) throws Exception {
-        SqlParser parser = new SqlParser(new FileReader("src/test/java/resources/TestSandbox.txt"));
-        parser.parse();
+        
+        /*SqlParser parser = new SqlParser(new FileReader("src/test/java/resources/TestSandbox.txt"));
+        parser.parse();*/
 
         /*for (TableStruct table : tableList) {
             System.out.println("Table Name: " + table.TableName);

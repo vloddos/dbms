@@ -1,1 +1,0 @@
-INSERT INTO City (id, name, peoples) VALUES(35, San-Francisco, 870887000);

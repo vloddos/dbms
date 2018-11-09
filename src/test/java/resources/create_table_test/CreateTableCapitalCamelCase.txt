@@ -1,6 +1,0 @@
-CREATE TABLE Student
-(
-    student_id LONG, class VARCHAR(10),
-    age INT,
-    first_name VARCHAR(25)
-);
