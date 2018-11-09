@@ -19,8 +19,8 @@ PARSER_BEGIN (SqlParser)
             while (true) {
                 try {
                     parse();
-                } catch(Exceptinon e) {
-                    System.out.println("ERROR: " + e.stackTrace());
+                } catch(Exception e) {
+                    System.out.println("ERROR: " + e.getMessage());
                 }
             }
         }
@@ -61,15 +61,17 @@ TOKEN:
     | <TABLE: "TABLE ">
     | <UPDATE: "UPDATE ">
     | <USE: "USE ">
-    | <VALUES: "VALUES ">
+    | <VALUES: "VALUES">
     | <WHERE: "WHERE ">
 }
 
 //DATA TYPES
 TOKEN:
 {
-    <DATA_TYPE:
-    "CHAR"
+    <
+    DATA_TYPE:
+    "BOOL"
+    | "CHAR"
     | "INT"
     | "LONG"
     | "VARCHAR"
@@ -92,7 +94,7 @@ TOKEN:
 TOKEN:
 {
     <SEMICOLON: ";">
-    | <MARK: "'">
+    | <SINGLE_MARK: "'">
     | <OPEN_BRACKET: "(">
     | <CLOSE_BRACKET: ")">
     | <COMMA: ",">
@@ -114,11 +116,9 @@ void parse() throws Exception:
     parseCreateDatabase()
     |
     parseUseDatabase()
-    /*|
-    parseSelectFromTable()
     |
-    parseInsertIntoTable()*/
-    |
+    /*parseInsertIntoTable()
+    |*/
     <EOF>
 }
 
@@ -130,7 +130,6 @@ void parseUseDatabase() throws Exception:
     command = <USE><DATABASE>
     name = <STRING_LITERAL>
     <SEMICOLON>
-    {System.out.println("THIS IS COMMAND: " + command.image);}
     {
         DataBases.useDataBase(name.image);
     }
@@ -145,7 +144,6 @@ void parseCreateDatabase() throws Exception:
     command = <CREATE><DATABASE>
     name = <STRING_LITERAL>
     <SEMICOLON>
-    {System.out.println("THIS IS COMMAND: " + command.image);}
     {
         DataBases.createDataBase(name.image);
     }
@@ -160,7 +158,6 @@ void parseDropDatabase():
     command = <DROP><DATABASE>
     name = <STRING_LITERAL>
     <SEMICOLON>
-    {System.out.println("THIS IS COMMAND " + command.image);}
     [parse()]
 }
 
@@ -172,7 +169,6 @@ void parseDropTable():
     command = <DROP><TABLE>
     name = <STRING_LITERAL>
     <SEMICOLON>
-    {System.out.println("THIS IS COMMAND " + command.image);}
     [parse()]
 }
 */
@@ -185,7 +181,6 @@ void parseShowCreateTable() throws Exception:
     command = <SHOW><CREATE><TABLE>
     name = <STRING_LITERAL>
     <SEMICOLON>
-    {System.out.println("THIS IS COMMAND " + command.image);}
     {
         System.out.println(
             DataBases.getCurrentDataBase().showCreate(name.image)
@@ -219,28 +214,25 @@ void parseCreateTable() throws Exception:
     }
     <CLOSE_BRACKET>
     <SEMICOLON>
-    {System.out.println("THIS IS COMMAND: " + command.image);}
     [parse()]
 }
 
 Token parseExit():
 {
-    Token commandName;
+    Token command;
 }
 {
-    commandName = <EXIT>
+    command = <EXIT>
     <SEMICOLON>
-    {System.out.println("THIS IS COMMAND: " + commandName.image);}
     {
         DataBases.exit();
-        return commandName;
+        return command;
     }
 }
 
-void parseSelectFromTable():
+void parseSelectFromTable() throws Exception:
 {
-    int limit, offset;
-    Token name, command;
+    Token name, command, limit, offset;
 }
 {
     command = <SELECT>
@@ -251,12 +243,13 @@ void parseSelectFromTable():
     [<OFFSET> offset = <INTEGER_LITERAL>]
     <SEMICOLON>
     {System.out.println("THIS IS COMMAND: " + command.image);}
-    [init()]
+    [parse()]
 }
 
-void parseInsertIntoTable():
+void parseInsertIntoTable() throws Exception:
 {
     Token name, command;
+
     ArrayList<String> columns = new ArrayList<String>();
     ArrayList<String> values = new ArrayList<String>();
 }
@@ -272,12 +265,13 @@ void parseInsertIntoTable():
     <CLOSE_BRACKET>
     <SEMICOLON>
     {System.out.println("THIS IS COMMAND: " + command.image);}
-    [init()]
+    [parse()]
 }
 
 ArrayList<String> getColumns():
 {
     Token columnName;
+
     ArrayList<String> columns = new ArrayList<String>();
 }
 {
@@ -297,14 +291,15 @@ ArrayList<String> getColumns():
 ArrayList<String> getInsertableValues():
 {
     Token value;
+
     ArrayList<String> values = new ArrayList<String>();
 }
 {
-    <MARK> value = <STRING_LITERAL> <MARK>
+    <SINGLE_MARK> value = <STRING_LITERAL> <SINGLE_MARK>
     {values.add(value.image);}
 
     (
-        <COMMA> value = <MARK> <STRING_LITERAL> <MARK>
+        <COMMA> value = <SINGLE_MARK> <STRING_LITERAL> <SINGLE_MARK>
         {
             values.add(value.image);
         }
@@ -316,6 +311,7 @@ ArrayList<String> getInsertableValues():
 Map<String, TypeDescription> getFields():
 {
     Token name;
+
     Map<String, TypeDescription> fields = new LinkedHashMap<String, TypeDescription>();
 }
 {
@@ -333,26 +329,23 @@ Map<String, TypeDescription> getFields():
           System.out.println("[Recursion] new struct populated < " + TypeName.image + ">");
         }*/
     //)*
-    {
-        return fields;
-    }
+    {return fields;}
 }
 
 TypeDescription getTypeDescription():
 {
-    Token tokenDefinitionType;
+    Token type, length = null;
+
     TypeDescription typeDescription;
-    Token length = null;
 }
 {
-    tokenDefinitionType = <DATA_TYPE>
+    type = <DATA_TYPE>
     [<OPEN_BRACKET>length = <INTEGER_LITERAL><CLOSE_BRACKET>]
     {
-        typeDescription = new TypeDescription(tokenDefinitionType.image);
-        //typeDescription.setTypeName(tokenDefinitionType.image);
+        typeDescription = new TypeDescription(type.image);
 
         if (length != null)
-           typeDescription.setLength(length.image);
+            typeDescription.setLength(length.image);
 
         return typeDescription;
     }

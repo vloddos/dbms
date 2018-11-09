@@ -19,49 +19,55 @@ public interface SqlParserConstants {
   /** RegularExpression Id. */
   int DATABASE = 10;
   /** RegularExpression Id. */
-  int DROP = 11;
+  int DELETE = 11;
   /** RegularExpression Id. */
-  int EXIT = 12;
+  int DROP = 12;
   /** RegularExpression Id. */
-  int FROM = 13;
+  int EXIT = 13;
   /** RegularExpression Id. */
-  int INSERT = 14;
+  int FROM = 14;
   /** RegularExpression Id. */
-  int INTO = 15;
+  int INSERT = 15;
   /** RegularExpression Id. */
-  int LIMIT = 16;
+  int INTO = 16;
   /** RegularExpression Id. */
-  int OFFSET = 17;
+  int LIMIT = 17;
   /** RegularExpression Id. */
-  int SELECT = 18;
+  int OFFSET = 18;
   /** RegularExpression Id. */
-  int SHOW = 19;
+  int SELECT = 19;
   /** RegularExpression Id. */
-  int TABLE = 20;
+  int SHOW = 20;
   /** RegularExpression Id. */
-  int USE = 21;
+  int TABLE = 21;
   /** RegularExpression Id. */
-  int VALUES = 22;
+  int UPDATE = 22;
   /** RegularExpression Id. */
-  int WHERE = 23;
+  int USE = 23;
   /** RegularExpression Id. */
-  int DATA_TYPE = 24;
+  int VALUES = 24;
   /** RegularExpression Id. */
-  int INTEGER_LITERAL = 25;
+  int WHERE = 25;
   /** RegularExpression Id. */
-  int FLOATING_POINT_LITERAL = 26;
+  int DATA_TYPE = 26;
   /** RegularExpression Id. */
-  int EXPONENT = 27;
+  int INTEGER_LITERAL = 27;
   /** RegularExpression Id. */
-  int STRING_LITERAL = 28;
+  int FLOATING_POINT_LITERAL = 28;
   /** RegularExpression Id. */
-  int SEMICOLON = 29;
+  int EXPONENT = 29;
   /** RegularExpression Id. */
-  int OPEN_BRACKET = 30;
+  int STRING_LITERAL = 30;
   /** RegularExpression Id. */
-  int CLOSE_BRACKET = 31;
+  int SEMICOLON = 31;
   /** RegularExpression Id. */
-  int COMMA = 32;
+  int SINGLE_MARK = 32;
+  /** RegularExpression Id. */
+  int OPEN_BRACKET = 33;
+  /** RegularExpression Id. */
+  int CLOSE_BRACKET = 34;
+  /** RegularExpression Id. */
+  int COMMA = 35;
 
   /** Lexical state. */
   int DEFAULT = 0;
@@ -79,6 +85,7 @@ public interface SqlParserConstants {
     "<MULTI_LINE_COMMENT>",
     "\"CREATE \"",
     "\"DATABASE \"",
+    "\"DELETE \"",
     "\"DROP \"",
     "\"EXIT\"",
     "\"FROM \"",
@@ -89,8 +96,9 @@ public interface SqlParserConstants {
     "\"SELECT \"",
     "\"SHOW \"",
     "\"TABLE \"",
+    "\"UPDATE \"",
     "\"USE \"",
-    "\"VALUES \"",
+    "\"VALUES\"",
     "\"WHERE \"",
     "<DATA_TYPE>",
     "<INTEGER_LITERAL>",
@@ -98,6 +106,7 @@ public interface SqlParserConstants {
     "<EXPONENT>",
     "<STRING_LITERAL>",
     "\";\"",
+    "\"\\\'\"",
     "\"(\"",
     "\")\"",
     "\",\"",

@@ -1,0 +1,64 @@
+package com.dbms.grammar;
+
+import java.util.ArrayList;
+
+/**
+ * Special class for using in tests class only
+ * So, for example, method parseInsertIntoTable() must return next params:
+ *     -String name.image
+ *     -String command.image
+ *     -ArrayList<String> columns
+ *     -ArrayList<String> insertableValues
+ * One "return" returns (sorry :)) one param, but for testing need all
+ */
+public final class ArgsGuard {
+
+    private final ArrayList<String> columns = new ArrayList<String>();
+    private final ArrayList<String> insertableValues = new ArrayList<String>();
+
+    private String command;
+    private String name;
+
+    private int limit;
+    private int offset;
+
+    public ArrayList<String> getColumns() {
+        return columns;
+    }
+
+    public ArrayList<String> getInsertableValues() {
+        return insertableValues;
+    }
+
+    public String getCommand() {
+        return command;
+    }
+
+    public void setCommand(String command) {
+        this.command = command;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getLimit() {
+        return limit;
+    }
+
+    public void setLimit(int limit) {
+        this.limit = limit;
+    }
+
+    public int getOffset() {
+        return offset;
+    }
+
+    public void setOffset(int offset) {
+        this.offset = offset;
+    }
+}
