@@ -4,10 +4,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.sql-parser</groupId>
-    <artifactId>sql-parser</artifactId>
+    <groupId>com.dbms</groupId>
+    <artifactId>dbms</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <description>SQL parser on JavaCC</description>
+    <description>Database with using Java and JavaCC</description>
 
     <dependencies>
         <dependency>
@@ -18,15 +18,15 @@
         </dependency>
     </dependencies>
 
-    <properties>
-        <java.version>1.10</java.version>
-    </properties>
-
     <build>
         <plugins>
             <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>10</source>
+                    <target>10</target>
+                </configuration>
             </plugin>
         </plugins>
     </build>
