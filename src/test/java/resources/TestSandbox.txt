@@ -1,23 +1,8 @@
-use database huy;
-show create table table1;
+use database def3qfesdv;
+use database d1324wrgebgd;
+create database d324grvefd;
+use database wetqe132wr;
+use database d13wrefdb;
+create database asfddsg34t3553;
+create database wefwew32;
 exit;
-Show create table gh;
-CREATE TABLE Student
-(
-    student_id LONG, class varchar(10),
-    age int,
-    first_name varchar(25)
-);
-Create DATABASE lol;
-exit;
-use database c;
-DROP database test;
-drop table abc123;
-Show create table gh;
-
-Create Table Books(
-    book_id int,
-    book_name varchar(25),
-    edition int,
-    pages_number int
-);

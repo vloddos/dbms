@@ -13,8 +13,8 @@ import java.util.ArrayList;
  */
 public final class ArgsGuard {
 
-    private final ArrayList<String> columns = new ArrayList<String>();
-    private final ArrayList<String> insertableValues = new ArrayList<String>();
+    private ArrayList<String> columns = new ArrayList<String>();
+    private ArrayList<String> insertableValues = new ArrayList<String>();
 
     private String command;
     private String name;
@@ -26,8 +26,16 @@ public final class ArgsGuard {
         return columns;
     }
 
+    public void setColumns(ArrayList<String> columns) {
+        this.columns = columns;
+    }
+
     public ArrayList<String> getInsertableValues() {
         return insertableValues;
+    }
+
+    public void setInsertableValues(ArrayList<String> insertableValues) {
+        this.insertableValues = insertableValues;
     }
 
     public String getCommand() {

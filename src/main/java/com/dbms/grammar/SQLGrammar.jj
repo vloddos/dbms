@@ -19,8 +19,8 @@ PARSER_BEGIN (SqlParser)
             while (true) {
                 try {
                     parse();
-                } catch(Exception e) {
-                    System.out.println("ERROR: " + e.getMessage());
+                } catch(Throwable e) {
+                    e.printStackTrace();
                 }
             }
         }
@@ -46,48 +46,29 @@ SPECIAL_TOKEN:
 //KEYWORDS
 TOKEN:
 {
-    <CREATE: "CREATE ">
-    | <DATABASE: "DATABASE ">
-    | <DELETE: "DELETE ">
-    | <DROP: "DROP ">
+    <CREATE: "CREATE">
+    | <DATABASE: "DATABASE">
+    | <DELETE: "DELETE">
+    | <DROP: "DROP">
     | <EXIT: "EXIT">
-    | <FROM: "FROM ">
-    | <INSERT: "INSERT ">
-    | <INTO: "INTO ">
-    | <LIMIT: "LIMIT ">
-    | <OFFSET: "OFFSET ">
-    | <SELECT: "SELECT ">
-    | <SHOW: "SHOW ">
-    | <TABLE: "TABLE ">
-    | <UPDATE: "UPDATE ">
-    | <USE: "USE ">
+    | <FROM: "FROM">
+    | <INSERT: "INSERT">
+    | <INTO: "INTO">
+    | <LIMIT: "LIMIT">
+    | <OFFSET: "OFFSET">
+    | <SELECT: "SELECT">
+    | <SHOW: "SHOW">
+    | <TABLE: "TABLE">
+    | <UPDATE: "UPDATE">
+    | <USE: "USE">
     | <VALUES: "VALUES">
-    | <WHERE: "WHERE ">
-}
-
-//DATA TYPES
-TOKEN:
-{
-    <
-    DATA_TYPE:
-    "BOOL"
-    | "CHAR"
-    | "INT"
-    | "LONG"
-    | "VARCHAR"
-    >
+    | <WHERE: "WHERE">
 }
 
 //LITERALS
 TOKEN:
 {
-    <INTEGER_LITERAL:(["0"-"9"])+>
-    | <FLOATING_POINT_LITERAL:(["0"-"9"])+"."(["0"-"9"])+(<EXPONENT>)?
-    | "."(["0"-"9"])+(<EXPONENT>)?
-    | (["0"-"9"])+<EXPONENT>
-    | (["0"-"9"])+(<EXPONENT>)?>
-    | <#EXPONENT:["e", "E"](["+", "-"])?(["0"-"9"])+>
-    | <STRING_LITERAL: (["a" - "z", "_", "0"-"9", "-", "@", "."])+>
+    <STRING_LITERAL: (["a" - "z", "_", "0"-"9", "-", "@", "."])+>
 }
 
 //SEPARATORS AND OPERATORS
@@ -232,26 +213,28 @@ Token parseExit():
 
 void parseSelectFromTable() throws Exception:
 {
-    Token name, command, limit, offset;
+    Token name, command, limit = null, offset = null;
 }
 {
     command = <SELECT>
     getColumns()
     <FROM>
     name = <STRING_LITERAL>
-    [<LIMIT> limit = <INTEGER_LITERAL>]
-    [<OFFSET> offset = <INTEGER_LITERAL>]
+    [<LIMIT> limit = <STRING_LITERAL>]
+    [<OFFSET> offset = <STRING_LITERAL>]
     <SEMICOLON>
     {System.out.println("THIS IS COMMAND: " + command.image);}
     [parse()]
 }
 
-void parseInsertIntoTable() throws Exception:
+ArgsGuard parseInsertIntoTable() throws Exception:
 {
     Token name, command;
 
     ArrayList<String> columns = new ArrayList<String>();
-    ArrayList<String> values = new ArrayList<String>();
+    ArrayList<String> insertableValues = new ArrayList<String>();
+
+    ArgsGuard args = new ArgsGuard();
 }
 {
     command = <INSERT>[<INTO>]
@@ -261,11 +244,18 @@ void parseInsertIntoTable() throws Exception:
     <CLOSE_BRACKET>
     <VALUES>
     <OPEN_BRACKET>
-    values = getInsertableValues()
+    insertableValues = getInsertableValues()
     <CLOSE_BRACKET>
     <SEMICOLON>
-    {System.out.println("THIS IS COMMAND: " + command.image);}
-    [parse()]
+    {
+        args.setName(name.image);
+        args.setColumns(columns);
+        args.setInsertableValues(insertableValues);
+
+        return args;
+    }
+    //FIXME: this command need run
+    //[parse()]
 }
 
 ArrayList<String> getColumns():
@@ -299,7 +289,7 @@ ArrayList<String> getInsertableValues():
     {values.add(value.image);}
 
     (
-        <COMMA> value = <SINGLE_MARK> <STRING_LITERAL> <SINGLE_MARK>
+        <COMMA> <SINGLE_MARK> value = <STRING_LITERAL> <SINGLE_MARK>
         {
             values.add(value.image);
         }
@@ -339,8 +329,8 @@ TypeDescription getTypeDescription():
     TypeDescription typeDescription;
 }
 {
-    type = <DATA_TYPE>
-    [<OPEN_BRACKET>length = <INTEGER_LITERAL><CLOSE_BRACKET>]
+    type = <STRING_LITERAL>
+    [<OPEN_BRACKET>length = <STRING_LITERAL><CLOSE_BRACKET>]
     {
         typeDescription = new TypeDescription(type.image);
 
