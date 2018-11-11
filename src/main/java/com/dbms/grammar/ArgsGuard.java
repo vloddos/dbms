@@ -25,6 +25,14 @@ public final class ArgsGuard {
     public ArrayList<String> getColumns() {
         return columns;
     }
+    
+    public String getColumn(int i) {
+        return columns[i];
+    }
+    
+    public int getColumnsLength() {
+        return columns.size();
+    }
 
     public void setColumns(ArrayList<String> columns) {
         this.columns = columns;
