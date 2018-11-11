@@ -21,15 +21,15 @@ public class InsertIntoTableTest {
 
         actual.write(args.getName() + "\n");
 
-        //FIXME: test won't works cause each string contains extra chars, but all fields are corrects, see Expected.txt & Actual.txt
-        for(String column: args.getColumns())
-            actual.write(column + ", ");
+        for (int i = 0; i < args.getColumnsLength() - 1; i++)
+            actual.write(args.getColumn(i) + ", ");
+        actual.write(args.getColumn(args.getColumnsSize() - 1));
 
         actual.write("\n");
 
-        for (String value: args.getInsertableValues()) {
-            actual.write(value + ", ");
-        }
+        for (int i = 0; i < args.getInsertableValuesLength() - 1; i++) 
+            actual.write(args.getInsertableValue(i) + ", ");
+        actual.write(args.getInsertableValue(args.getInsertableValuesLength()));
 
         actual.close();
 
