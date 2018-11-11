@@ -23,7 +23,7 @@ public class InsertIntoTableTest {
 
         for (int i = 0; i < args.getColumnsLength() - 1; i++)
             actual.write(args.getColumn(i) + ", ");
-        actual.write(args.getColumn(args.getColumnsSize() - 1));
+        actual.write(args.getColumn(args.getColumnsLength() - 1));
 
         actual.write("\n");
 
