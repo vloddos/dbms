@@ -41,6 +41,14 @@ public final class ArgsGuard {
     public ArrayList<String> getInsertableValues() {
         return insertableValues;
     }
+    
+    public String getInsertableValue(int i) {
+        return insertableValues[i];
+    }
+    
+    public int getInsertableValuesLength() {
+        return insertableValues.size();
+    }
 
     public void setInsertableValues(ArrayList<String> insertableValues) {
         this.insertableValues = insertableValues;
