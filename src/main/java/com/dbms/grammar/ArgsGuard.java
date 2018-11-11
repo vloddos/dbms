@@ -27,7 +27,7 @@ public final class ArgsGuard {
     }
     
     public String getColumn(int i) {
-        return columns[i];
+        return columns.get(i);
     }
     
     public int getColumnsLength() {
@@ -43,7 +43,7 @@ public final class ArgsGuard {
     }
     
     public String getInsertableValue(int i) {
-        return insertableValues[i];
+        return insertableValues.get(i);
     }
     
     public int getInsertableValuesLength() {
