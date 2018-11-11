@@ -29,7 +29,7 @@ public class InsertIntoTableTest {
 
         for (int i = 0; i < args.getInsertableValuesLength() - 1; i++) 
             actual.write(args.getInsertableValue(i) + ", ");
-        actual.write(args.getInsertableValue(args.getInsertableValuesLength()));
+        actual.write(args.getInsertableValue(args.getInsertableValuesLength() - 1));
 
         actual.close();
 
