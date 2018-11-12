@@ -19,14 +19,12 @@ public class DeleteFromTableTest {
 
         actual.write(args.getName() + "\n");
 
-        //FIXME: replace const(i < 2) on list length
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < args.getCompareValues().size(); i++) {
             actual.write(args.getCompareColumns().get(i) + "\n");
             actual.write(args.getCompareSigns().get(i) + "\n");
             actual.write(args.getCompareValues().get(i) + "\n");
 
-            //FIXME: replace const(i < 1) on list length
-            if (i < 1)
+            if (i < args.getCompareValues().size() - 1)
                 actual.write(args.getComparePredicats().get(i) + "\n");
         }
 

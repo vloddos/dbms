@@ -21,7 +21,6 @@ public final class ArgsGuard {
     private ArrayList<String> compareValues = new ArrayList<String>();
     private ArrayList<String> comparePredicats = new ArrayList<String>();
 
-    private String command;
     private String name;
 
     private int limit = -1;
@@ -29,14 +28,6 @@ public final class ArgsGuard {
 
     public ArrayList<String> getColumns() {
         return columns;
-    }
-    
-    public String getColumn(int i) {
-        return columns.get(i);
-    }
-    
-    public int getColumnsLength() {
-        return columns.size();
     }
 
     public void setColumns(ArrayList<String> columns) {
@@ -50,21 +41,9 @@ public final class ArgsGuard {
     public String getInsertableValue(int i) {
         return insertableValues.get(i);
     }
-    
-    public int getInsertableValuesLength() {
-        return insertableValues.size();
-    }
 
     public void setInsertableValues(ArrayList<String> insertableValues) {
         this.insertableValues = insertableValues;
-    }
-
-    public String getCommand() {
-        return command;
-    }
-
-    public void setCommand(String command) {
-        this.command = command;
     }
 
     public String getName() {

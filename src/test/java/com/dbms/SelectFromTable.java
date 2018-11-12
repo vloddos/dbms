@@ -19,17 +19,11 @@ public class SelectFromTable {
 
         actual.write(args.getName() + "\n");
 
+        for (int i = 0; i < args.getColumns().size() - 1; i++)
+            actual.write(args.getColumns().get(i) + ", ");
 
-
-        for (int i = 0; i < args.getColumnsLength() - 1; i++)
-            actual.write(args.getColumn(i) + ", ");
-
-        actual.write(args.getColumn(args.getColumnsLength() - 1));
-
-        actual.write("\n");
-
-        actual.write(String.valueOf(args.getLimit()));
-        actual.write("\n");
+        actual.write(args.getColumns().get(args.getColumns().size() - 1) + "\n");
+        actual.write(String.valueOf(args.getLimit()) + "\n");
         actual.write(String.valueOf(args.getOffset()));
 
         actual.close();

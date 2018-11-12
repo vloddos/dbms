@@ -21,17 +21,16 @@ public class InsertIntoTableTest {
 
         actual.write(args.getName() + "\n");
 
-        for (int i = 0; i < args.getColumnsLength() - 1; i++)
-            actual.write(args.getColumn(i) + ", ");
+        for (int i = 0; i < args.getColumns().size() - 1; i++)
+            actual.write(args.getColumns().get(i) + ", ");
 
-        actual.write(args.getColumn(args.getColumnsLength() - 1));
+        actual.write(args.getColumns().get(args.getColumns().size() - 1) + "\n");
 
-        actual.write("\n");
 
-        for (int i = 0; i < args.getInsertableValuesLength() - 1; i++) 
+        for (int i = 0; i < args.getInsertableValues().size() - 1; i++)
             actual.write(args.getInsertableValue(i) + ", ");
 
-        actual.write(args.getInsertableValue(args.getInsertableValuesLength() - 1));
+        actual.write(args.getInsertableValue(args.getInsertableValues().size() - 1));
 
         actual.close();
 
