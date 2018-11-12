@@ -65,6 +65,14 @@ TOKEN:
     | <WHERE: "WHERE">
 }
 
+//PREDICATS AND CONDITIONS
+TOKEN:
+{
+    <PREDICAT: "AND" | "OR">
+    | <INVERSE: "NOT">
+    | <COMPARE: "<" | ">" | "=" | "<>" | "<=" | ">=">
+}
+
 //LITERALS
 TOKEN:
 {
@@ -99,7 +107,9 @@ void parse() throws Exception:
     parseUseDatabase()
     |
     /*parseInsertIntoTable()
-    |*/
+    |
+    parseSelectFromTable()
+    */
     <EOF>
 }
 
@@ -270,6 +280,82 @@ ArgsGuard parseInsertIntoTable() throws Exception:
 
         return args;
     }
+    //FIXME: this command need run
+    //[parse()]
+}
+
+/*ArgsGuard parseUpdate() throws Exception:
+{
+    Token name;
+
+    ArgsGuard args = new ArgsGuard();
+}
+{
+    <UPDATE>
+    <SEMICOLON>
+    {
+        args.setName(name.image);
+
+        return args;
+    }
+    //FIXME: this command need run
+    //[parse()]
+}*/
+
+ArgsGuard parseDelete() throws Exception:
+{
+    Token name, compareColumn = null, compareSign = null, compareValue = null, comparePredicat = null;
+
+    ArrayList<String> compareColumns = new ArrayList<String>();
+    ArrayList<String> compareSigns = new ArrayList<String>();
+    ArrayList<String> compareValues = new ArrayList<String>();
+    ArrayList<String> comparePredicats = new ArrayList<String>();
+
+    ArgsGuard args = new ArgsGuard();
+}
+{
+    <DELETE><FROM>
+    name = <STRING_LITERAL>
+
+    [
+        <WHERE>
+
+        compareColumn = <STRING_LITERAL>
+        compareSign = <COMPARE>
+        compareValue = <STRING_LITERAL>
+
+        {
+            compareColumns.add(compareColumn.image);
+            compareSigns.add(compareSign.image);
+            compareValues.add(compareValue.image);
+        }
+
+        (
+            comparePredicat = <PREDICAT>
+            compareColumn = <STRING_LITERAL>
+            compareSign = <COMPARE>
+            compareValue = <STRING_LITERAL>
+
+            {
+                compareColumns.add(compareColumn.image);
+                compareSigns.add(compareSign.image);
+                compareValues.add(compareValue.image);
+                comparePredicats.add(comparePredicat.image);
+            }
+        )*
+    ]
+    <SEMICOLON>
+
+    {
+        args.setName(name.image);
+        args.setCompareColumns(compareColumns);
+        args.setCompareSigns(compareSigns);
+        args.setCompareValues(compareValues);
+        args.setComparePredicats(comparePredicats);
+
+        return args;
+    }
+
     //FIXME: this command need run
     //[parse()]
 }

@@ -16,6 +16,11 @@ public final class ArgsGuard {
     private ArrayList<String> columns = new ArrayList<String>();
     private ArrayList<String> insertableValues = new ArrayList<String>();
 
+    private ArrayList<String> compareColumns = new ArrayList<String>();
+    private ArrayList<String> compareSigns = new ArrayList<String>();
+    private ArrayList<String> compareValues = new ArrayList<String>();
+    private ArrayList<String> comparePredicats = new ArrayList<String>();
+
     private String command;
     private String name;
 
@@ -84,5 +89,37 @@ public final class ArgsGuard {
 
     public void setOffset(int offset) {
         this.offset = offset;
+    }
+
+    public ArrayList<String> getCompareColumns() {
+        return compareColumns;
+    }
+
+    public void setCompareColumns(ArrayList<String> compareColumns) {
+        this.compareColumns = compareColumns;
+    }
+
+    public ArrayList<String> getCompareSigns() {
+        return compareSigns;
+    }
+
+    public void setCompareSigns(ArrayList<String> compareSigns) {
+        this.compareSigns = compareSigns;
+    }
+
+    public ArrayList<String> getCompareValues() {
+        return compareValues;
+    }
+
+    public void setCompareValues(ArrayList<String> compareValues) {
+        this.compareValues = compareValues;
+    }
+
+    public ArrayList<String> getComparePredicats() {
+        return comparePredicats;
+    }
+
+    public void setComparePredicats(ArrayList<String> comparePredicats) {
+        this.comparePredicats = comparePredicats;
     }
 }

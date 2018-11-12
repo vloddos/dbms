@@ -1,0 +1,8 @@
+Film
+budget
+<
+250000
+AND
+year
+=
+2003

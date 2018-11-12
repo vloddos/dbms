@@ -1,0 +1,1 @@
+DELETE FROM Film WHERE budget < 250000 AND year = 2003;
