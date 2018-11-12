@@ -27,6 +27,8 @@ PARSER_BEGIN (SqlParser)
     }
 PARSER_END (SqlParser)
 
+//____________________________________________Here all tokens descriptions____________________________________________
+
 SKIP:
 {
     "\n"
@@ -91,42 +93,30 @@ TOKEN:
     | <COMMA: ",">
 }
 
+//____________________________________________Here main methods____________________________________________
+
 void parse() throws Exception:
 {}
 {
-    parseShowCreateTable()
-    |
-    parseCreateTable()
-    |
-    parseExit()
-    /*|
-    parseDropDatabase()
-    |
-    parseDropTable()*/
-    |
     parseCreateDatabase()
     |
     parseUseDatabase()
     |
-    /*parseInsertIntoTable()
+    parseCreateTable()
+    |
+    parseShowCreateTable()
+    |
+    parseInsertIntoTable()
     |
     parseSelectFromTable()
-    */
+    |
+    parseUpdate()
+    |
+    parseDelete()
+    |
+    parseExit()
+    |
     <EOF>
-}
-
-void parseUseDatabase() throws Exception:
-{
-    Token name;
-}
-{
-    <USE><DATABASE>
-    name = <STRING_LITERAL>
-    <SEMICOLON>
-    {
-        DataBases.useDataBase(name.image);
-    }
-    [parse()]
 }
 
 void parseCreateDatabase() throws Exception:
@@ -143,18 +133,16 @@ void parseCreateDatabase() throws Exception:
     [parse()]
 }
 
-void parseShowCreateTable() throws Exception:
+void parseUseDatabase() throws Exception:
 {
     Token name;
 }
 {
-    <SHOW><CREATE><TABLE>
+    <USE><DATABASE>
     name = <STRING_LITERAL>
     <SEMICOLON>
     {
-        System.out.println(
-            DataBases.getCurrentDataBase().showCreate(name.image)
-        );
+        DataBases.useDataBase(name.image);
     }
     [parse()]
 }
@@ -183,17 +171,51 @@ void parseCreateTable() throws Exception:
     [parse()]
 }
 
-Token parseExit():
+void parseShowCreateTable() throws Exception:
 {
-    Token command;
+    Token name;
 }
 {
-    command = <EXIT>
+    <SHOW><CREATE><TABLE>
+    name = <STRING_LITERAL>
     <SEMICOLON>
     {
-        DataBases.exit();
-        return command;
+        System.out.println(
+            DataBases.getCurrentDataBase().showCreate(name.image)
+        );
     }
+    [parse()]
+}
+
+ArgsGuard parseInsertIntoTable() throws Exception:
+{
+    Token name;
+
+    ArrayList<String> columns = new ArrayList<String>();
+    ArrayList<String> insertableValues = new ArrayList<String>();
+
+    ArgsGuard args = new ArgsGuard();
+}
+{
+    <INSERT>[<INTO>]
+    name = <STRING_LITERAL>
+    <OPEN_BRACKET>
+    columns = getColumns()
+    <CLOSE_BRACKET>
+    <VALUES>
+    <OPEN_BRACKET>
+    insertableValues = getInsertableValues()
+    <CLOSE_BRACKET>
+    <SEMICOLON>
+    {
+        args.setName(name.image);
+        args.setColumns(columns);
+        args.setInsertableValues(insertableValues);
+
+        return args;
+    }
+    //FIXME: this command need run
+    //[parse()]
 }
 
 ArgsGuard parseSelectFromTable() throws Exception:
@@ -222,37 +244,6 @@ ArgsGuard parseSelectFromTable() throws Exception:
 
         if (offset != null)
             args.setOffset(Integer.parseInt(offset.image));
-
-        return args;
-    }
-    //FIXME: this command need run
-    //[parse()]
-}
-
-ArgsGuard parseInsertIntoTable() throws Exception:
-{
-    Token name;
-
-    ArrayList<String> columns = new ArrayList<String>();
-    ArrayList<String> insertableValues = new ArrayList<String>();
-
-    ArgsGuard args = new ArgsGuard();
-}
-{
-    <INSERT>[<INTO>]
-    name = <STRING_LITERAL>
-    <OPEN_BRACKET>
-    columns = getColumns()
-    <CLOSE_BRACKET>
-    <VALUES>
-    <OPEN_BRACKET>
-    insertableValues = getInsertableValues()
-    <CLOSE_BRACKET>
-    <SEMICOLON>
-    {
-        args.setName(name.image);
-        args.setColumns(columns);
-        args.setInsertableValues(insertableValues);
 
         return args;
     }
@@ -405,6 +396,21 @@ ArgsGuard parseDelete() throws Exception:
     //FIXME: this command need run
     //[parse()]
 }
+
+Token parseExit():
+{
+    Token command;
+}
+{
+    command = <EXIT>
+    <SEMICOLON>
+    {
+        DataBases.exit();
+        return command;
+    }
+}
+
+//____________________________________________Here helper methods____________________________________________
 
 ArrayList<String> getColumns():
 {

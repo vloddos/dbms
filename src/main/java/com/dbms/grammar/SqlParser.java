@@ -18,36 +18,31 @@
             }
         }
 
+//____________________________________________Here main methods____________________________________________
   final public void parse() throws ParseException, Exception {
     if (jj_2_1(2)) {
-      parseShowCreateTable();
-    } else if (jj_2_2(2)) {
-      parseCreateTable();
-    } else if (jj_2_3(2)) {
-      parseExit();
-    } else if (jj_2_4(2)) {
       parseCreateDatabase();
-    } else if (jj_2_5(2)) {
+    } else if (jj_2_2(2)) {
       parseUseDatabase();
+    } else if (jj_2_3(2)) {
+      parseCreateTable();
+    } else if (jj_2_4(2)) {
+      parseShowCreateTable();
+    } else if (jj_2_5(2)) {
+      parseInsertIntoTable();
     } else if (jj_2_6(2)) {
+      parseSelectFromTable();
+    } else if (jj_2_7(2)) {
+      parseUpdate();
+    } else if (jj_2_8(2)) {
+      parseDelete();
+    } else if (jj_2_9(2)) {
+      parseExit();
+    } else if (jj_2_10(2)) {
       jj_consume_token(0);
     } else {
       jj_consume_token(-1);
       throw new ParseException();
-    }
-  }
-
-  final public void parseUseDatabase() throws ParseException, Exception {
-    Token name;
-    jj_consume_token(USE);
-    jj_consume_token(DATABASE);
-    name = jj_consume_token(STRING_LITERAL);
-    jj_consume_token(SEMICOLON);
-        DataBases.useDataBase(name.image);
-    if (jj_2_7(2)) {
-      parse();
-    } else {
-      ;
     }
   }
 
@@ -58,24 +53,21 @@
     name = jj_consume_token(STRING_LITERAL);
     jj_consume_token(SEMICOLON);
         DataBases.createDataBase(name.image);
-    if (jj_2_8(2)) {
+    if (jj_2_11(2)) {
       parse();
     } else {
       ;
     }
   }
 
-  final public void parseShowCreateTable() throws ParseException, Exception {
+  final public void parseUseDatabase() throws ParseException, Exception {
     Token name;
-    jj_consume_token(SHOW);
-    jj_consume_token(CREATE);
-    jj_consume_token(TABLE);
+    jj_consume_token(USE);
+    jj_consume_token(DATABASE);
     name = jj_consume_token(STRING_LITERAL);
     jj_consume_token(SEMICOLON);
-        System.out.println(
-            DataBases.getCurrentDataBase().showCreate(name.image)
-        );
-    if (jj_2_9(2)) {
+        DataBases.useDataBase(name.image);
+    if (jj_2_12(2)) {
       parse();
     } else {
       ;
@@ -98,61 +90,28 @@
         );
     jj_consume_token(CLOSE_BRACKET);
     jj_consume_token(SEMICOLON);
-    if (jj_2_10(2)) {
+    if (jj_2_13(2)) {
       parse();
     } else {
       ;
     }
   }
 
-  final public Token parseExit() throws ParseException {
-    Token command;
-    command = jj_consume_token(EXIT);
-    jj_consume_token(SEMICOLON);
-        DataBases.exit();
-        {if (true) return command;}
-    throw new Error("Missing return statement in function");
-  }
-
-  final public ArgsGuard parseSelectFromTable() throws ParseException, Exception {
-    Token name, limit = null, offset = null, star = null;
-
-    ArrayList<String> columns = new ArrayList<String>();
-
-    ArgsGuard args = new ArgsGuard();
-    jj_consume_token(SELECT);
-    columns = getColumns();
-    if (jj_2_11(2)) {
-      star = jj_consume_token(STAR);
-    } else {
-      ;
-    }
-    jj_consume_token(FROM);
+  final public void parseShowCreateTable() throws ParseException, Exception {
+    Token name;
+    jj_consume_token(SHOW);
+    jj_consume_token(CREATE);
+    jj_consume_token(TABLE);
     name = jj_consume_token(STRING_LITERAL);
-    if (jj_2_12(2)) {
-      jj_consume_token(LIMIT);
-      limit = jj_consume_token(STRING_LITERAL);
-    } else {
-      ;
-    }
-    if (jj_2_13(2)) {
-      jj_consume_token(OFFSET);
-      offset = jj_consume_token(STRING_LITERAL);
-    } else {
-      ;
-    }
     jj_consume_token(SEMICOLON);
-        args.setName(name.image);
-        args.setColumns(columns);
-
-        if (limit != null)
-            args.setLimit(Integer.parseInt(limit.image));
-
-        if (offset != null)
-            args.setOffset(Integer.parseInt(offset.image));
-
-        {if (true) return args;}
-    throw new Error("Missing return statement in function");
+        System.out.println(
+            DataBases.getCurrentDataBase().showCreate(name.image)
+        );
+    if (jj_2_14(2)) {
+      parse();
+    } else {
+      ;
+    }
   }
 
   final public ArgsGuard parseInsertIntoTable() throws ParseException, Exception {
@@ -163,7 +122,7 @@
 
     ArgsGuard args = new ArgsGuard();
     jj_consume_token(INSERT);
-    if (jj_2_14(2)) {
+    if (jj_2_15(2)) {
       jj_consume_token(INTO);
     } else {
       ;
@@ -180,6 +139,47 @@
         args.setName(name.image);
         args.setColumns(columns);
         args.setInsertableValues(insertableValues);
+
+        {if (true) return args;}
+    throw new Error("Missing return statement in function");
+  }
+
+  final public ArgsGuard parseSelectFromTable() throws ParseException, Exception {
+    Token name, limit = null, offset = null, star = null;
+
+    ArrayList<String> columns = new ArrayList<String>();
+
+    ArgsGuard args = new ArgsGuard();
+    jj_consume_token(SELECT);
+    columns = getColumns();
+    if (jj_2_16(2)) {
+      star = jj_consume_token(STAR);
+    } else {
+      ;
+    }
+    jj_consume_token(FROM);
+    name = jj_consume_token(STRING_LITERAL);
+    if (jj_2_17(2)) {
+      jj_consume_token(LIMIT);
+      limit = jj_consume_token(STRING_LITERAL);
+    } else {
+      ;
+    }
+    if (jj_2_18(2)) {
+      jj_consume_token(OFFSET);
+      offset = jj_consume_token(STRING_LITERAL);
+    } else {
+      ;
+    }
+    jj_consume_token(SEMICOLON);
+        args.setName(name.image);
+        args.setColumns(columns);
+
+        if (limit != null)
+            args.setLimit(Integer.parseInt(limit.image));
+
+        if (offset != null)
+            args.setOffset(Integer.parseInt(offset.image));
 
         {if (true) return args;}
     throw new Error("Missing return statement in function");
@@ -207,7 +207,7 @@
         updatableValues.add(updatableValue.image);
     label_1:
     while (true) {
-      if (jj_2_15(2)) {
+      if (jj_2_19(2)) {
         ;
       } else {
         break label_1;
@@ -219,7 +219,7 @@
             updatableColumns.add(updatableColumn.image);
             updatableValues.add(updatableValue.image);
     }
-    if (jj_2_17(2)) {
+    if (jj_2_21(2)) {
       jj_consume_token(WHERE);
       compareColumn = jj_consume_token(STRING_LITERAL);
       compareSign = jj_consume_token(COMPARE);
@@ -229,7 +229,7 @@
             compareValues.add(compareValue.image);
       label_2:
       while (true) {
-        if (jj_2_16(2)) {
+        if (jj_2_20(2)) {
           ;
         } else {
           break label_2;
@@ -270,14 +270,14 @@
 
     ArgsGuard args = new ArgsGuard();
     jj_consume_token(DELETE);
-    if (jj_2_18(2)) {
+    if (jj_2_22(2)) {
       star = jj_consume_token(STAR);
     } else {
       ;
     }
     jj_consume_token(FROM);
     name = jj_consume_token(STRING_LITERAL);
-    if (jj_2_20(2)) {
+    if (jj_2_24(2)) {
       jj_consume_token(WHERE);
       compareColumn = jj_consume_token(STRING_LITERAL);
       compareSign = jj_consume_token(COMPARE);
@@ -287,7 +287,7 @@
             compareValues.add(compareValue.image);
       label_3:
       while (true) {
-        if (jj_2_19(2)) {
+        if (jj_2_23(2)) {
           ;
         } else {
           break label_3;
@@ -315,6 +315,16 @@
     throw new Error("Missing return statement in function");
   }
 
+  final public Token parseExit() throws ParseException {
+    Token command;
+    command = jj_consume_token(EXIT);
+    jj_consume_token(SEMICOLON);
+        DataBases.exit();
+        {if (true) return command;}
+    throw new Error("Missing return statement in function");
+  }
+
+//____________________________________________Here helper methods____________________________________________
   final public ArrayList<String> getColumns() throws ParseException {
     Token columnName;
 
@@ -323,7 +333,7 @@
      columns.add(columnName.image);
     label_4:
     while (true) {
-      if (jj_2_21(2)) {
+      if (jj_2_25(2)) {
         ;
       } else {
         break label_4;
@@ -346,7 +356,7 @@
      values.add(value.image);
     label_5:
     while (true) {
-      if (jj_2_22(2)) {
+      if (jj_2_26(2)) {
         ;
       } else {
         break label_5;
@@ -367,7 +377,7 @@
     Map<String, TypeDescription> fields = new LinkedHashMap<String, TypeDescription>();
     name = jj_consume_token(STRING_LITERAL);
         fields.put(name.image, getTypeDescription());
-    if (jj_2_23(2)) {
+    if (jj_2_27(2)) {
       jj_consume_token(COMMA);
       getFields();
     } else {
@@ -382,7 +392,7 @@
 
     TypeDescription typeDescription;
     type = jj_consume_token(STRING_LITERAL);
-    if (jj_2_24(2)) {
+    if (jj_2_28(2)) {
       jj_consume_token(OPEN_BRACKET);
       length = jj_consume_token(STRING_LITERAL);
       jj_consume_token(CLOSE_BRACKET);
@@ -566,80 +576,194 @@
     finally { jj_save(23, xla); }
   }
 
-  private boolean jj_3_23() {
+  private boolean jj_2_25(int xla) {
+    jj_la = xla; jj_lastpos = jj_scanpos = token;
+    try { return !jj_3_25(); }
+    catch(LookaheadSuccess ls) { return true; }
+    finally { jj_save(24, xla); }
+  }
+
+  private boolean jj_2_26(int xla) {
+    jj_la = xla; jj_lastpos = jj_scanpos = token;
+    try { return !jj_3_26(); }
+    catch(LookaheadSuccess ls) { return true; }
+    finally { jj_save(25, xla); }
+  }
+
+  private boolean jj_2_27(int xla) {
+    jj_la = xla; jj_lastpos = jj_scanpos = token;
+    try { return !jj_3_27(); }
+    catch(LookaheadSuccess ls) { return true; }
+    finally { jj_save(26, xla); }
+  }
+
+  private boolean jj_2_28(int xla) {
+    jj_la = xla; jj_lastpos = jj_scanpos = token;
+    try { return !jj_3_28(); }
+    catch(LookaheadSuccess ls) { return true; }
+    finally { jj_save(27, xla); }
+  }
+
+  private boolean jj_3_27() {
     if (jj_scan_token(COMMA)) return true;
-    if (jj_3R_12()) return true;
+    if (jj_3R_16()) return true;
     return false;
   }
 
-  private boolean jj_3_7() {
-    if (jj_3R_11()) return true;
+  private boolean jj_3R_9() {
+    if (jj_scan_token(SHOW)) return true;
+    if (jj_scan_token(CREATE)) return true;
     return false;
   }
 
-  private boolean jj_3R_12() {
+  private boolean jj_3R_16() {
     if (jj_scan_token(STRING_LITERAL)) return true;
     return false;
   }
 
-  private boolean jj_3R_10() {
-    if (jj_scan_token(USE)) return true;
-    if (jj_scan_token(DATABASE)) return true;
+  private boolean jj_3R_12() {
+    if (jj_scan_token(UPDATE)) return true;
+    if (jj_scan_token(STRING_LITERAL)) return true;
     return false;
   }
 
-  private boolean jj_3_17() {
+  private boolean jj_3_22() {
+    if (jj_scan_token(STAR)) return true;
+    return false;
+  }
+
+  private boolean jj_3_13() {
+    if (jj_3R_15()) return true;
+    return false;
+  }
+
+  private boolean jj_3_24() {
     if (jj_scan_token(WHERE)) return true;
     if (jj_scan_token(STRING_LITERAL)) return true;
     return false;
   }
 
-  private boolean jj_3_13() {
-    if (jj_scan_token(OFFSET)) return true;
-    if (jj_scan_token(STRING_LITERAL)) return true;
+  private boolean jj_3_26() {
+    if (jj_scan_token(COMMA)) return true;
+    if (jj_scan_token(SINGLE_MARK)) return true;
     return false;
   }
 
-  private boolean jj_3R_7() {
+  private boolean jj_3R_13() {
+    if (jj_scan_token(DELETE)) return true;
+    Token xsp;
+    xsp = jj_scanpos;
+    if (jj_3_22()) jj_scanpos = xsp;
+    if (jj_scan_token(FROM)) return true;
+    return false;
+  }
+
+  private boolean jj_3R_8() {
     if (jj_scan_token(CREATE)) return true;
     if (jj_scan_token(TABLE)) return true;
     return false;
   }
 
   private boolean jj_3_12() {
+    if (jj_3R_15()) return true;
+    return false;
+  }
+
+  private boolean jj_3_25() {
+    if (jj_scan_token(COMMA)) return true;
+    if (jj_scan_token(STRING_LITERAL)) return true;
+    return false;
+  }
+
+  private boolean jj_3_18() {
+    if (jj_scan_token(OFFSET)) return true;
+    if (jj_scan_token(STRING_LITERAL)) return true;
+    return false;
+  }
+
+  private boolean jj_3R_7() {
+    if (jj_scan_token(USE)) return true;
+    if (jj_scan_token(DATABASE)) return true;
+    return false;
+  }
+
+  private boolean jj_3_17() {
     if (jj_scan_token(LIMIT)) return true;
     if (jj_scan_token(STRING_LITERAL)) return true;
     return false;
   }
 
-  private boolean jj_3_11() {
+  private boolean jj_3_16() {
     if (jj_scan_token(STAR)) return true;
     return false;
   }
 
-  private boolean jj_3_22() {
-    if (jj_scan_token(COMMA)) return true;
-    if (jj_scan_token(SINGLE_MARK)) return true;
+  private boolean jj_3R_17() {
+    if (jj_scan_token(STRING_LITERAL)) return true;
     return false;
   }
 
-  private boolean jj_3_6() {
+  private boolean jj_3R_11() {
+    if (jj_scan_token(SELECT)) return true;
+    if (jj_3R_17()) return true;
+    return false;
+  }
+
+  private boolean jj_3_11() {
+    if (jj_3R_15()) return true;
+    return false;
+  }
+
+  private boolean jj_3_20() {
+    if (jj_scan_token(PREDICAT)) return true;
+    if (jj_scan_token(STRING_LITERAL)) return true;
+    return false;
+  }
+
+  private boolean jj_3R_6() {
+    if (jj_scan_token(CREATE)) return true;
+    if (jj_scan_token(DATABASE)) return true;
+    return false;
+  }
+
+  private boolean jj_3R_14() {
+    if (jj_scan_token(EXIT)) return true;
+    if (jj_scan_token(SEMICOLON)) return true;
+    return false;
+  }
+
+  private boolean jj_3_10() {
     if (jj_scan_token(0)) return true;
     return false;
   }
 
   private boolean jj_3_9() {
-    if (jj_3R_11()) return true;
+    if (jj_3R_14()) return true;
     return false;
   }
 
-  private boolean jj_3_14() {
-    if (jj_scan_token(INTO)) return true;
+  private boolean jj_3_8() {
+    if (jj_3R_13()) return true;
     return false;
   }
 
   private boolean jj_3_15() {
-    if (jj_scan_token(COMMA)) return true;
+    if (jj_scan_token(INTO)) return true;
+    return false;
+  }
+
+  private boolean jj_3_7() {
+    if (jj_3R_12()) return true;
+    return false;
+  }
+
+  private boolean jj_3_6() {
+    if (jj_3R_11()) return true;
+    return false;
+  }
+
+  private boolean jj_3_21() {
+    if (jj_scan_token(WHERE)) return true;
     if (jj_scan_token(STRING_LITERAL)) return true;
     return false;
   }
@@ -649,26 +773,14 @@
     return false;
   }
 
-  private boolean jj_3_4() {
-    if (jj_3R_9()) return true;
-    return false;
-  }
-
-  private boolean jj_3_24() {
+  private boolean jj_3_28() {
     if (jj_scan_token(OPEN_BRACKET)) return true;
     if (jj_scan_token(STRING_LITERAL)) return true;
     return false;
   }
 
-  private boolean jj_3_19() {
-    if (jj_scan_token(PREDICAT)) return true;
-    if (jj_scan_token(STRING_LITERAL)) return true;
-    return false;
-  }
-
-  private boolean jj_3R_6() {
-    if (jj_scan_token(SHOW)) return true;
-    if (jj_scan_token(CREATE)) return true;
+  private boolean jj_3_4() {
+    if (jj_3R_9()) return true;
     return false;
   }
 
@@ -677,12 +789,21 @@
     return false;
   }
 
+  private boolean jj_3R_10() {
+    if (jj_scan_token(INSERT)) return true;
+    Token xsp;
+    xsp = jj_scanpos;
+    if (jj_3_15()) jj_scanpos = xsp;
+    if (jj_scan_token(STRING_LITERAL)) return true;
+    return false;
+  }
+
   private boolean jj_3_2() {
     if (jj_3R_7()) return true;
     return false;
   }
 
-  private boolean jj_3R_11() {
+  private boolean jj_3R_15() {
     Token xsp;
     xsp = jj_scanpos;
     if (jj_3_1()) {
@@ -695,18 +816,24 @@
     jj_scanpos = xsp;
     if (jj_3_5()) {
     jj_scanpos = xsp;
-    if (jj_3_6()) return true;
+    if (jj_3_6()) {
+    jj_scanpos = xsp;
+    if (jj_3_7()) {
+    jj_scanpos = xsp;
+    if (jj_3_8()) {
+    jj_scanpos = xsp;
+    if (jj_3_9()) {
+    jj_scanpos = xsp;
+    if (jj_3_10()) return true;
     }
     }
     }
     }
     }
-    return false;
-  }
-
-  private boolean jj_3R_8() {
-    if (jj_scan_token(EXIT)) return true;
-    if (jj_scan_token(SEMICOLON)) return true;
+    }
+    }
+    }
+    }
     return false;
   }
 
@@ -715,42 +842,20 @@
     return false;
   }
 
-  private boolean jj_3_8() {
-    if (jj_3R_11()) return true;
-    return false;
-  }
-
-  private boolean jj_3_21() {
+  private boolean jj_3_19() {
     if (jj_scan_token(COMMA)) return true;
     if (jj_scan_token(STRING_LITERAL)) return true;
     return false;
   }
 
-  private boolean jj_3_16() {
+  private boolean jj_3_23() {
     if (jj_scan_token(PREDICAT)) return true;
     if (jj_scan_token(STRING_LITERAL)) return true;
     return false;
   }
 
-  private boolean jj_3_18() {
-    if (jj_scan_token(STAR)) return true;
-    return false;
-  }
-
-  private boolean jj_3R_9() {
-    if (jj_scan_token(CREATE)) return true;
-    if (jj_scan_token(DATABASE)) return true;
-    return false;
-  }
-
-  private boolean jj_3_10() {
-    if (jj_3R_11()) return true;
-    return false;
-  }
-
-  private boolean jj_3_20() {
-    if (jj_scan_token(WHERE)) return true;
-    if (jj_scan_token(STRING_LITERAL)) return true;
+  private boolean jj_3_14() {
+    if (jj_3R_15()) return true;
     return false;
   }
 
@@ -778,7 +883,7 @@
    private static void jj_la1_init_1() {
       jj_la1_1 = new int[] {};
    }
-  final private JJCalls[] jj_2_rtns = new JJCalls[24];
+  final private JJCalls[] jj_2_rtns = new JJCalls[28];
   private boolean jj_rescan = false;
   private int jj_gc = 0;
 
@@ -1006,7 +1111,7 @@
 
   private void jj_rescan_token() {
     jj_rescan = true;
-    for (int i = 0; i < 24; i++) {
+    for (int i = 0; i < 28; i++) {
     try {
       JJCalls p = jj_2_rtns[i];
       do {
@@ -1037,6 +1142,10 @@
             case 21: jj_3_22(); break;
             case 22: jj_3_23(); break;
             case 23: jj_3_24(); break;
+            case 24: jj_3_25(); break;
+            case 25: jj_3_26(); break;
+            case 26: jj_3_27(); break;
+            case 27: jj_3_28(); break;
           }
         }
         p = p.next;
