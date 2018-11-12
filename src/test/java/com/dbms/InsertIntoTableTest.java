@@ -12,7 +12,7 @@ import java.io.FileWriter;
 public class InsertIntoTableTest {
 
     @Test
-    public void testShouldReturnTableNameAndFieldsAndInsertableValues() throws Exception {
+    public void testShouldReturnTableNameAndColumnsAndInsertableValues() throws Exception {
         SqlParser parser = new SqlParser(new FileReader("src/test/java/resources/insert_into_table_test/InsertIntoTable.txt"));
         FileWriter actual = new FileWriter(new File("src/test/java/resources/insert_into_table_test/Actual.txt"));
         ArgsGuard args = new ArgsGuard();
@@ -23,12 +23,14 @@ public class InsertIntoTableTest {
 
         for (int i = 0; i < args.getColumnsLength() - 1; i++)
             actual.write(args.getColumn(i) + ", ");
+
         actual.write(args.getColumn(args.getColumnsLength() - 1));
 
         actual.write("\n");
 
         for (int i = 0; i < args.getInsertableValuesLength() - 1; i++) 
             actual.write(args.getInsertableValue(i) + ", ");
+
         actual.write(args.getInsertableValue(args.getInsertableValuesLength() - 1));
 
         actual.close();

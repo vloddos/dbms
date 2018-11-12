@@ -1,0 +1,1 @@
+SELECT id, name, peoples FROM City LIMIT 5 OFFSET 2;

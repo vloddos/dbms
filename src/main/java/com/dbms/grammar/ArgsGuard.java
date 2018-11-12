@@ -19,8 +19,8 @@ public final class ArgsGuard {
     private String command;
     private String name;
 
-    private int limit;
-    private int offset;
+    private int limit = -1;
+    private int offset = -1;
 
     public ArrayList<String> getColumns() {
         return columns;

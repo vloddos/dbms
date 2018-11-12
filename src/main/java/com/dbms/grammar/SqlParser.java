@@ -137,10 +137,14 @@ void parseDropTable():
     throw new Error("Missing return statement in function");
   }
 
-  final public void parseSelectFromTable() throws ParseException, Exception {
+  final public ArgsGuard parseSelectFromTable() throws ParseException, Exception {
     Token name, command, limit = null, offset = null;
+
+    ArrayList<String> columns = new ArrayList<String>();
+
+    ArgsGuard args = new ArgsGuard();
     command = jj_consume_token(SELECT);
-    getColumns();
+    columns = getColumns();
     jj_consume_token(FROM);
     name = jj_consume_token(STRING_LITERAL);
     if (jj_2_11(2)) {
@@ -156,12 +160,17 @@ void parseDropTable():
       ;
     }
     jj_consume_token(SEMICOLON);
-     System.out.println("THIS IS COMMAND: " + command.image);
-    if (jj_2_13(2)) {
-      parse();
-    } else {
-      ;
-    }
+        args.setName(name.image);
+        args.setColumns(columns);
+
+        if (limit != null)
+            args.setLimit(Integer.parseInt(limit.image));
+
+        if (offset != null)
+            args.setOffset(Integer.parseInt(offset.image));
+
+        {if (true) return args;}
+    throw new Error("Missing return statement in function");
   }
 
   final public ArgsGuard parseInsertIntoTable() throws ParseException, Exception {
@@ -172,7 +181,7 @@ void parseDropTable():
 
     ArgsGuard args = new ArgsGuard();
     command = jj_consume_token(INSERT);
-    if (jj_2_14(2)) {
+    if (jj_2_13(2)) {
       jj_consume_token(INTO);
     } else {
       ;
@@ -202,7 +211,7 @@ void parseDropTable():
      columns.add(columnName.image);
     label_1:
     while (true) {
-      if (jj_2_15(2)) {
+      if (jj_2_14(2)) {
         ;
       } else {
         break label_1;
@@ -225,7 +234,7 @@ void parseDropTable():
      values.add(value.image);
     label_2:
     while (true) {
-      if (jj_2_16(2)) {
+      if (jj_2_15(2)) {
         ;
       } else {
         break label_2;
@@ -246,7 +255,7 @@ void parseDropTable():
     Map<String, TypeDescription> fields = new LinkedHashMap<String, TypeDescription>();
     name = jj_consume_token(STRING_LITERAL);
         fields.put(name.image, getTypeDescription());
-    if (jj_2_17(2)) {
+    if (jj_2_16(2)) {
       jj_consume_token(COMMA);
       getFields();
     } else {
@@ -261,7 +270,7 @@ void parseDropTable():
 
     TypeDescription typeDescription;
     type = jj_consume_token(STRING_LITERAL);
-    if (jj_2_18(2)) {
+    if (jj_2_17(2)) {
       jj_consume_token(OPEN_BRACKET);
       length = jj_consume_token(STRING_LITERAL);
       jj_consume_token(CLOSE_BRACKET);
@@ -396,15 +405,8 @@ void parseDropTable():
     finally { jj_save(16, xla); }
   }
 
-  private boolean jj_2_18(int xla) {
-    jj_la = xla; jj_lastpos = jj_scanpos = token;
-    try { return !jj_3_18(); }
-    catch(LookaheadSuccess ls) { return true; }
-    finally { jj_save(17, xla); }
-  }
-
-  private boolean jj_3_15() {
-    if (jj_scan_token(COMMA)) return true;
+  private boolean jj_3_12() {
+    if (jj_scan_token(OFFSET)) return true;
     if (jj_scan_token(STRING_LITERAL)) return true;
     return false;
   }
@@ -436,8 +438,14 @@ void parseDropTable():
     return false;
   }
 
+  private boolean jj_3_11() {
+    if (jj_scan_token(LIMIT)) return true;
+    if (jj_scan_token(STRING_LITERAL)) return true;
+    return false;
+  }
+
   private boolean jj_3_13() {
-    if (jj_3R_8()) return true;
+    if (jj_scan_token(INTO)) return true;
     return false;
   }
 
@@ -452,27 +460,9 @@ void parseDropTable():
     return false;
   }
 
-  private boolean jj_3_12() {
-    if (jj_scan_token(OFFSET)) return true;
-    if (jj_scan_token(STRING_LITERAL)) return true;
-    return false;
-  }
-
-  private boolean jj_3_11() {
-    if (jj_scan_token(LIMIT)) return true;
-    if (jj_scan_token(STRING_LITERAL)) return true;
-    return false;
-  }
-
   private boolean jj_3R_6() {
     if (jj_scan_token(CREATE)) return true;
     if (jj_scan_token(DATABASE)) return true;
-    return false;
-  }
-
-  private boolean jj_3_17() {
-    if (jj_scan_token(COMMA)) return true;
-    if (jj_3R_9()) return true;
     return false;
   }
 
@@ -481,8 +471,9 @@ void parseDropTable():
     return false;
   }
 
-  private boolean jj_3R_9() {
-    if (jj_scan_token(STRING_LITERAL)) return true;
+  private boolean jj_3_15() {
+    if (jj_scan_token(COMMA)) return true;
+    if (jj_scan_token(SINGLE_MARK)) return true;
     return false;
   }
 
@@ -491,14 +482,15 @@ void parseDropTable():
     return false;
   }
 
-  private boolean jj_3_14() {
-    if (jj_scan_token(INTO)) return true;
-    return false;
-  }
-
   private boolean jj_3R_3() {
     if (jj_scan_token(SHOW)) return true;
     if (jj_scan_token(CREATE)) return true;
+    return false;
+  }
+
+  private boolean jj_3_17() {
+    if (jj_scan_token(OPEN_BRACKET)) return true;
+    if (jj_scan_token(STRING_LITERAL)) return true;
     return false;
   }
 
@@ -514,25 +506,19 @@ void parseDropTable():
     return false;
   }
 
-  private boolean jj_3_16() {
-    if (jj_scan_token(COMMA)) return true;
-    if (jj_scan_token(SINGLE_MARK)) return true;
-    return false;
-  }
-
   private boolean jj_3_10() {
     if (jj_3R_8()) return true;
     return false;
   }
 
-  private boolean jj_3_6() {
-    if (jj_scan_token(0)) return true;
+  private boolean jj_3_14() {
+    if (jj_scan_token(COMMA)) return true;
+    if (jj_scan_token(STRING_LITERAL)) return true;
     return false;
   }
 
-  private boolean jj_3_18() {
-    if (jj_scan_token(OPEN_BRACKET)) return true;
-    if (jj_scan_token(STRING_LITERAL)) return true;
+  private boolean jj_3_6() {
+    if (jj_scan_token(0)) return true;
     return false;
   }
 
@@ -546,8 +532,19 @@ void parseDropTable():
     return false;
   }
 
+  private boolean jj_3_16() {
+    if (jj_scan_token(COMMA)) return true;
+    if (jj_3R_9()) return true;
+    return false;
+  }
+
   private boolean jj_3_3() {
     if (jj_3R_5()) return true;
+    return false;
+  }
+
+  private boolean jj_3R_9() {
+    if (jj_scan_token(STRING_LITERAL)) return true;
     return false;
   }
 
@@ -575,7 +572,7 @@ void parseDropTable():
    private static void jj_la1_init_0() {
       jj_la1_0 = new int[] {};
    }
-  final private JJCalls[] jj_2_rtns = new JJCalls[18];
+  final private JJCalls[] jj_2_rtns = new JJCalls[17];
   private boolean jj_rescan = false;
   private int jj_gc = 0;
 
@@ -800,7 +797,7 @@ void parseDropTable():
 
   private void jj_rescan_token() {
     jj_rescan = true;
-    for (int i = 0; i < 18; i++) {
+    for (int i = 0; i < 17; i++) {
     try {
       JJCalls p = jj_2_rtns[i];
       do {
@@ -824,7 +821,6 @@ void parseDropTable():
             case 14: jj_3_15(); break;
             case 15: jj_3_16(); break;
             case 16: jj_3_17(); break;
-            case 17: jj_3_18(); break;
           }
         }
         p = p.next;

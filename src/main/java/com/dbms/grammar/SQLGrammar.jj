@@ -211,20 +211,36 @@ Token parseExit():
     }
 }
 
-void parseSelectFromTable() throws Exception:
+ArgsGuard parseSelectFromTable() throws Exception:
 {
     Token name, command, limit = null, offset = null;
+
+    ArrayList<String> columns = new ArrayList<String>();
+
+    ArgsGuard args = new ArgsGuard();
 }
 {
     command = <SELECT>
-    getColumns()
+    columns = getColumns()
     <FROM>
     name = <STRING_LITERAL>
     [<LIMIT> limit = <STRING_LITERAL>]
     [<OFFSET> offset = <STRING_LITERAL>]
     <SEMICOLON>
-    {System.out.println("THIS IS COMMAND: " + command.image);}
-    [parse()]
+    {
+        args.setName(name.image);
+        args.setColumns(columns);
+
+        if (limit != null)
+            args.setLimit(Integer.parseInt(limit.image));
+
+        if (offset != null)
+            args.setOffset(Integer.parseInt(offset.image));
+
+        return args;
+    }
+    //FIXME: this command need run
+    //[parse()]
 }
 
 ArgsGuard parseInsertIntoTable() throws Exception:
