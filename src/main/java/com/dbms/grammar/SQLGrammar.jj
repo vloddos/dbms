@@ -77,6 +77,7 @@ TOKEN:
 TOKEN:
 {
     <STRING_LITERAL: (["a" - "z", "_", "0"-"9", "-", "@", "."])+>
+    | <STAR: "*">
 }
 
 //SEPARATORS AND OPERATORS
@@ -115,10 +116,10 @@ void parse() throws Exception:
 
 void parseUseDatabase() throws Exception:
 {
-    Token name, command;
+    Token name;
 }
 {
-    command = <USE><DATABASE>
+    <USE><DATABASE>
     name = <STRING_LITERAL>
     <SEMICOLON>
     {
@@ -129,10 +130,10 @@ void parseUseDatabase() throws Exception:
 
 void parseCreateDatabase() throws Exception:
 {
-    Token name, command;
+    Token name;
 }
 {
-    command = <CREATE><DATABASE>
+    <CREATE><DATABASE>
     name = <STRING_LITERAL>
     <SEMICOLON>
     {
@@ -143,10 +144,10 @@ void parseCreateDatabase() throws Exception:
 /*
 void parseDropDatabase():
 {
-    Token name, command;
+    Token name;
 }
 {
-    command = <DROP><DATABASE>
+    <DROP><DATABASE>
     name = <STRING_LITERAL>
     <SEMICOLON>
     [parse()]
@@ -154,10 +155,10 @@ void parseDropDatabase():
 
 void parseDropTable():
 {
-    Token name, command;
+    Token name;
 }
 {
-    command = <DROP><TABLE>
+    <DROP><TABLE>
     name = <STRING_LITERAL>
     <SEMICOLON>
     [parse()]
@@ -166,10 +167,10 @@ void parseDropTable():
 
 void parseShowCreateTable() throws Exception:
 {
-    Token name, command;
+    Token name;
 }
 {
-    command = <SHOW><CREATE><TABLE>
+    <SHOW><CREATE><TABLE>
     name = <STRING_LITERAL>
     <SEMICOLON>
     {
@@ -182,10 +183,10 @@ void parseShowCreateTable() throws Exception:
 
 void parseCreateTable() throws Exception:
 {
-    Token name, command;
+    Token name;
 }
 {
-    command = <CREATE><TABLE>
+    <CREATE><TABLE>
     name = <STRING_LITERAL>
     /*{
         //header = new TableHeader();
@@ -223,15 +224,16 @@ Token parseExit():
 
 ArgsGuard parseSelectFromTable() throws Exception:
 {
-    Token name, command, limit = null, offset = null;
+    Token name, limit = null, offset = null, star = null;
 
     ArrayList<String> columns = new ArrayList<String>();
 
     ArgsGuard args = new ArgsGuard();
 }
 {
-    command = <SELECT>
+    <SELECT>
     columns = getColumns()
+    [star = <STAR>]
     <FROM>
     name = <STRING_LITERAL>
     [<LIMIT> limit = <STRING_LITERAL>]
@@ -255,7 +257,7 @@ ArgsGuard parseSelectFromTable() throws Exception:
 
 ArgsGuard parseInsertIntoTable() throws Exception:
 {
-    Token name, command;
+    Token name;
 
     ArrayList<String> columns = new ArrayList<String>();
     ArrayList<String> insertableValues = new ArrayList<String>();
@@ -263,7 +265,7 @@ ArgsGuard parseInsertIntoTable() throws Exception:
     ArgsGuard args = new ArgsGuard();
 }
 {
-    command = <INSERT>[<INTO>]
+    <INSERT>[<INTO>]
     name = <STRING_LITERAL>
     <OPEN_BRACKET>
     columns = getColumns()
@@ -304,7 +306,7 @@ ArgsGuard parseInsertIntoTable() throws Exception:
 
 ArgsGuard parseDelete() throws Exception:
 {
-    Token name, compareColumn = null, compareSign = null, compareValue = null, comparePredicat = null;
+    Token name, compareColumn = null, compareSign = null, compareValue = null, comparePredicat = null, star = null;
 
     ArrayList<String> compareColumns = new ArrayList<String>();
     ArrayList<String> compareSigns = new ArrayList<String>();
@@ -314,7 +316,7 @@ ArgsGuard parseDelete() throws Exception:
     ArgsGuard args = new ArgsGuard();
 }
 {
-    <DELETE><FROM>
+    <DELETE> [star = <STAR>] <FROM>
     name = <STRING_LITERAL>
 
     [

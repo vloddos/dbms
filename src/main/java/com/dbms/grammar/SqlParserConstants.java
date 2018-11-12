@@ -57,15 +57,17 @@ public interface SqlParserConstants {
   /** RegularExpression Id. */
   int STRING_LITERAL = 29;
   /** RegularExpression Id. */
-  int SEMICOLON = 30;
+  int STAR = 30;
   /** RegularExpression Id. */
-  int SINGLE_MARK = 31;
+  int SEMICOLON = 31;
   /** RegularExpression Id. */
-  int OPEN_BRACKET = 32;
+  int SINGLE_MARK = 32;
   /** RegularExpression Id. */
-  int CLOSE_BRACKET = 33;
+  int OPEN_BRACKET = 33;
   /** RegularExpression Id. */
-  int COMMA = 34;
+  int CLOSE_BRACKET = 34;
+  /** RegularExpression Id. */
+  int COMMA = 35;
 
   /** Lexical state. */
   int DEFAULT = 0;
@@ -102,6 +104,7 @@ public interface SqlParserConstants {
     "\"NOT\"",
     "<COMPARE>",
     "<STRING_LITERAL>",
+    "\"*\"",
     "\";\"",
     "\"\\\'\"",
     "\"(\"",
