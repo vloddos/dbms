@@ -57,6 +57,7 @@ TOKEN:
     | <LIMIT: "LIMIT">
     | <OFFSET: "OFFSET">
     | <SELECT: "SELECT">
+    | <SET: "SET">
     | <SHOW: "SHOW">
     | <TABLE: "TABLE">
     | <UPDATE: "UPDATE">
@@ -141,29 +142,6 @@ void parseCreateDatabase() throws Exception:
     }
     [parse()]
 }
-/*
-void parseDropDatabase():
-{
-    Token name;
-}
-{
-    <DROP><DATABASE>
-    name = <STRING_LITERAL>
-    <SEMICOLON>
-    [parse()]
-}
-
-void parseDropTable():
-{
-    Token name;
-}
-{
-    <DROP><TABLE>
-    name = <STRING_LITERAL>
-    <SEMICOLON>
-    [parse()]
-}
-*/
 
 void parseShowCreateTable() throws Exception:
 {
@@ -188,10 +166,6 @@ void parseCreateTable() throws Exception:
 {
     <CREATE><TABLE>
     name = <STRING_LITERAL>
-    /*{
-        //header = new TableHeader();
-        header.name = name.image;
-    }*/
 
     <OPEN_BRACKET>
     {
@@ -286,23 +260,93 @@ ArgsGuard parseInsertIntoTable() throws Exception:
     //[parse()]
 }
 
-/*ArgsGuard parseUpdate() throws Exception:
+ArgsGuard parseUpdate() throws Exception:
 {
-    Token name;
+    Token name, updatableColumn, updatableValue, compareColumn = null, compareSign = null, compareValue = null, comparePredicat = null;
+
+    ArrayList<String> updatableColumns = new ArrayList<String>();
+    ArrayList<String> updatableValues = new ArrayList<String>();
+
+    ArrayList<String> compareColumns = new ArrayList<String>();
+    ArrayList<String> compareSigns = new ArrayList<String>();
+    ArrayList<String> compareValues = new ArrayList<String>();
+    ArrayList<String> comparePredicats = new ArrayList<String>();
 
     ArgsGuard args = new ArgsGuard();
 }
 {
     <UPDATE>
+    name = <STRING_LITERAL>
+    <SET>
+
+    updatableColumn = <STRING_LITERAL>
+    //FIXME: here need only "="
+    <COMPARE>
+    updatableValue = <STRING_LITERAL>
+
+    {
+        updatableColumns.add(updatableColumn.image);
+        updatableValues.add(updatableValue.image);
+    }
+
+    (
+        <COMMA>
+        updatableColumn = <STRING_LITERAL>
+        //FIXME: here need only "="
+        <COMPARE>
+        updatableValue = <STRING_LITERAL>
+
+        {
+            updatableColumns.add(updatableColumn.image);
+            updatableValues.add(updatableValue.image);
+        }
+    )*
+
+    [
+        <WHERE>
+
+        compareColumn = <STRING_LITERAL>
+        compareSign = <COMPARE>
+        compareValue = <STRING_LITERAL>
+
+        {
+            compareColumns.add(compareColumn.image);
+            compareSigns.add(compareSign.image);
+            compareValues.add(compareValue.image);
+        }
+
+        (
+            comparePredicat = <PREDICAT>
+            compareColumn = <STRING_LITERAL>
+            compareSign = <COMPARE>
+            compareValue = <STRING_LITERAL>
+
+            {
+                compareColumns.add(compareColumn.image);
+                compareSigns.add(compareSign.image);
+                compareValues.add(compareValue.image);
+                comparePredicats.add(comparePredicat.image);
+            }
+        )*
+    ]
     <SEMICOLON>
+
     {
         args.setName(name.image);
+        args.setUpdatableColumns(updatableColumns);
+        args.setUpdatableValues(updatableValues);
+
+        args.setCompareColumns(compareColumns);
+        args.setCompareSigns(compareSigns);
+        args.setCompareValues(compareValues);
+        args.setComparePredicats(comparePredicats);
 
         return args;
     }
+
     //FIXME: this command need run
     //[parse()]
-}*/
+}
 
 ArgsGuard parseDelete() throws Exception:
 {

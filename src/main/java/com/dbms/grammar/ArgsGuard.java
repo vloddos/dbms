@@ -21,6 +21,9 @@ public final class ArgsGuard {
     private ArrayList<String> compareValues = new ArrayList<String>();
     private ArrayList<String> comparePredicats = new ArrayList<String>();
 
+    private ArrayList<String> updatableColumns = new ArrayList<String>();
+    private ArrayList<String> updatableValues = new ArrayList<String>();
+
     private String name;
 
     private int limit = -1;
@@ -100,5 +103,21 @@ public final class ArgsGuard {
 
     public void setComparePredicats(ArrayList<String> comparePredicats) {
         this.comparePredicats = comparePredicats;
+    }
+
+    public ArrayList<String> getUpdatableColumns() {
+        return updatableColumns;
+    }
+
+    public void setUpdatableColumns(ArrayList<String> updatableColumns) {
+        this.updatableColumns = updatableColumns;
+    }
+
+    public ArrayList<String> getUpdatableValues() {
+        return updatableValues;
+    }
+
+    public void setUpdatableValues(ArrayList<String> updatableValues) {
+        this.updatableValues = updatableValues;
     }
 }

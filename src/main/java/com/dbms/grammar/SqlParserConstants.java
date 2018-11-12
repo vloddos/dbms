@@ -37,37 +37,39 @@ public interface SqlParserConstants {
   /** RegularExpression Id. */
   int SELECT = 19;
   /** RegularExpression Id. */
-  int SHOW = 20;
+  int SET = 20;
   /** RegularExpression Id. */
-  int TABLE = 21;
+  int SHOW = 21;
   /** RegularExpression Id. */
-  int UPDATE = 22;
+  int TABLE = 22;
   /** RegularExpression Id. */
-  int USE = 23;
+  int UPDATE = 23;
   /** RegularExpression Id. */
-  int VALUES = 24;
+  int USE = 24;
   /** RegularExpression Id. */
-  int WHERE = 25;
+  int VALUES = 25;
   /** RegularExpression Id. */
-  int PREDICAT = 26;
+  int WHERE = 26;
   /** RegularExpression Id. */
-  int INVERSE = 27;
+  int PREDICAT = 27;
   /** RegularExpression Id. */
-  int COMPARE = 28;
+  int INVERSE = 28;
   /** RegularExpression Id. */
-  int STRING_LITERAL = 29;
+  int COMPARE = 29;
   /** RegularExpression Id. */
-  int STAR = 30;
+  int STRING_LITERAL = 30;
   /** RegularExpression Id. */
-  int SEMICOLON = 31;
+  int STAR = 31;
   /** RegularExpression Id. */
-  int SINGLE_MARK = 32;
+  int SEMICOLON = 32;
   /** RegularExpression Id. */
-  int OPEN_BRACKET = 33;
+  int SINGLE_MARK = 33;
   /** RegularExpression Id. */
-  int CLOSE_BRACKET = 34;
+  int OPEN_BRACKET = 34;
   /** RegularExpression Id. */
-  int COMMA = 35;
+  int CLOSE_BRACKET = 35;
+  /** RegularExpression Id. */
+  int COMMA = 36;
 
   /** Lexical state. */
   int DEFAULT = 0;
@@ -94,6 +96,7 @@ public interface SqlParserConstants {
     "\"LIMIT\"",
     "\"OFFSET\"",
     "\"SELECT\"",
+    "\"SET\"",
     "\"SHOW\"",
     "\"TABLE\"",
     "\"UPDATE\"",

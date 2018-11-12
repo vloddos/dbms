@@ -1,0 +1,1 @@
+UPDATE Customers SET ContactName = abc, City = 123 WHERE CustomerID = 1;
