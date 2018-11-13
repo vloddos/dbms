@@ -1,8 +1,6 @@
 Customers
 ContactName
-abc
+ContactName+1*2
 City
 123
-CustomerID
-=
-1
+CustomerID=1

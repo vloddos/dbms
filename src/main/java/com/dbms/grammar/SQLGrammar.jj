@@ -80,6 +80,7 @@ TOKEN:
 TOKEN:
 {
     <STRING_LITERAL: (["a" - "z", "_", "0"-"9", "-", "@", "."])+>
+    | <MATH_OPERATION_LITEARAL: "*" | "/" | "+" | "-" >
     | <STAR: "*">
 }
 
@@ -253,7 +254,7 @@ ArgsGuard parseSelectFromTable() throws Exception:
 
 ArgsGuard parseUpdate() throws Exception:
 {
-    Token name, updatableColumn, updatableValue, compareColumn = null, compareSign = null, compareValue = null, comparePredicat = null;
+    Token name, math, sign, updatableColumn, updatableValue, compareColumn = null, compareSign = null, compareValue = null, comparePredicat = null;
 
     ArrayList<String> updatableColumns = new ArrayList<String>();
     ArrayList<String> updatableValues = new ArrayList<String>();
@@ -274,11 +275,27 @@ ArgsGuard parseUpdate() throws Exception:
     //FIXME: here need only "="
     <COMPARE>
     updatableValue = <STRING_LITERAL>
+    [sign = <MATH_OPERATION_LITEARAL>
+    { updatableValue.image += sign.image; }]
 
     {
+        System.out.println(updatableValue.image);
         updatableColumns.add(updatableColumn.image);
-        updatableValues.add(updatableValue.image);
+        math = updatableValue;
+        math.image = updatableValue.image;
+        //updatableValues.add(updatableValue.image);
     }
+
+    (
+            updatableValue = <STRING_LITERAL>
+            [sign = <MATH_OPERATION_LITEARAL>
+            { updatableValue.image += sign.image; }]
+
+            {
+                math.image += updatableValue.image;
+                //updatableValues.add(updatableValue.image);
+            }
+    )*
 
     (
         <COMMA>
@@ -286,17 +303,54 @@ ArgsGuard parseUpdate() throws Exception:
         //FIXME: here need only "="
         <COMPARE>
         updatableValue = <STRING_LITERAL>
+        [sign = <MATH_OPERATION_LITEARAL>
+        {updatableValue.image += sign.image; }]
+
 
         {
+            updatableValues.add(math.image);
+            math.image = updatableValue.image;
             updatableColumns.add(updatableColumn.image);
-            updatableValues.add(updatableValue.image);
+            //updatableValues.add(updatableValue.image);
         }
-    )*
+        (
+                    updatableValue = <STRING_LITERAL>
+                    [sign = <MATH_OPERATION_LITEARAL>
+                    { updatableValue.image += sign.image; }]
 
+                    {
+                        math.image += updatableValue.image;
+                        //updatableValues.add(updatableValue.image);
+                    }
+         )*
+    )*
+    {updatableValues.add(math.image);}
     [
         <WHERE>
+        updatableValue = <STRING_LITERAL>
+        [sign = <COMPARE>
+        {updatableValue.image += sign.image; }]
+        [sign = <MATH_OPERATION_LITEARAL>
+        {updatableValue.image += sign.image; }]
 
-        compareColumn = <STRING_LITERAL>
+        {math.image = updatableValue.image;}
+
+        (
+                            updatableValue = <STRING_LITERAL>
+                            [sign = <COMPARE>
+                            {updatableValue.image += sign.image; }]
+                            [sign = <MATH_OPERATION_LITEARAL>
+                            { updatableValue.image += sign.image; }]
+
+                            {
+                                math.image += updatableValue.image;
+                                //updatableValues.add(updatableValue.image);
+                            }
+        )*
+
+        {compareValues.add(math.image);}
+
+        /*compareColumn = <STRING_LITERAL>
         compareSign = <COMPARE>
         compareValue = <STRING_LITERAL>
 
@@ -318,7 +372,7 @@ ArgsGuard parseUpdate() throws Exception:
                 compareValues.add(compareValue.image);
                 comparePredicats.add(comparePredicat.image);
             }
-        )*
+        )**/
     ]
     <SEMICOLON>
 
