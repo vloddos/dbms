@@ -16,7 +16,11 @@ public class Table implements Serializable {
         this.header.fields.forEach((k, v) -> data.fields.put(k, new ArrayList()));
     }
 
-    public void insert(Map<String, String> fields) {
+    public void insert(Map<String, String> fields) throws RuntimeException {
+        for (var f : fields.keySet())
+            if (!data.fields.containsKey(f))
+                throw new RuntimeException(String.format("No such field '%s' in table '%s'", f, header.name));
+
         data.fields.forEach(
                 (k, v) ->
                         v.add(
@@ -27,6 +31,13 @@ public class Table implements Serializable {
                         )
         );
     }
+
+    //public void update
+    //public void update where
+    public void delete(String tableName) {
+        data.fields.values().forEach(al -> al.clear());
+    }
+    //public void delete where
 
     public void test() {
         header.fields.forEach((k, v) -> System.out.println(k + ":" + v));

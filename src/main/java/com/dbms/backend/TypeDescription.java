@@ -35,6 +35,6 @@ public class TypeDescription implements Serializable {
 
     @Override
     public String toString() {
-        return name + " " + length;
+        return name + (length == null ? "" : "(" + length + ")");
     }
 }

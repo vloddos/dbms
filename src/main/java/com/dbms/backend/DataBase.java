@@ -21,7 +21,7 @@ public class DataBase implements Serializable {//immutable methods???
         this.name = name;
     }
 
-    public synchronized Table createTable(Table table) throws Exception {
+    public Table createTable(Table table) throws Exception {
         if (tables.containsKey(table.header.name))
             throw new Exception(String.format("The '%s' table already exists", table.header.name));
 
@@ -33,10 +33,10 @@ public class DataBase implements Serializable {//immutable methods???
         if (!tables.containsKey(name))
             throw new Exception(String.format("The '%s' table does not exist", name));
 
-        var f = tables.get(name).header.fields;
-        return f.keySet().stream()
-                .map(k -> k + " " + f.get(k))
-                .collect(Collectors.joining(",\n\t", "create table " + name + "(\n\t", "\n)"));
+        return
+                tables.get(name).header.fields.entrySet().stream()
+                        .map(e -> e.getKey() + " " + e.getValue())
+                        .collect(Collectors.joining(",\n\t", "create table " + name + "(\n\t", "\n)"));
     }
 
     public Table getTable(String name) throws Exception {

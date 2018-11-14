@@ -5,10 +5,13 @@ import com.dbms.data_types.Varchar;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.BiFunction;
 
 public class Types {
 
     private static Map<String, VAFunction<Object, ?>> types = new HashMap<>();
+    //private static Map<String, BiFunction<String,Integer,?>> types = new HashMap<>();???
+    //private static attributes???
 
     static {
         types.put("bool", args -> Boolean.parseBoolean((String) args[0]));
@@ -24,15 +27,14 @@ public class Types {
         types.put("varchar", args -> Varchar.parseVarchar((String) args[0], (int) args[1]));
     }
 
+    public static boolean haveType(String name) {
+        return types.containsKey(name);
+    }
+
     public static Object cast(String value, TypeDescription typeDescription) {
         return
-                value.equals("null") ?
+                value == null ?
                         null :
                         types.get(typeDescription.getName()).apply(value, typeDescription.getLength());
     }
-}
-
-interface VAFunction<T, R> {
-
-    R apply(T... t);
 }

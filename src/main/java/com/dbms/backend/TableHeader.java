@@ -10,7 +10,22 @@ public class TableHeader implements Serializable {
     public String name;
     public Map<String, TypeDescription> fields;//field type descriptions
 
-    public TableHeader(String name, Map<String, TypeDescription> fields) {
+    public TableHeader(String name, Map<String, TypeDescription> fields) throws RuntimeException {
+        fields.forEach(
+                (k, v) -> {
+                    var typeName = v.getName();
+                    if (!Types.haveType(typeName))
+                        throw new RuntimeException(
+                                String.format(
+                                        "Attempting to create a table '%s' was specified the wrong data type '%s' of the field '%s'",
+                                        name,
+                                        typeName,
+                                        k
+                                )
+                        );
+                }
+        );
+
         this.name = name;
         this.fields = fields;
     }

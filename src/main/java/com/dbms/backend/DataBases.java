@@ -1,12 +1,13 @@
 package com.dbms.backend;
 
-import com.dbms.backend.DataBase;
+import javafx.util.Pair;
 
 import java.io.*;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class DataBases {
 
@@ -43,7 +44,7 @@ public class DataBases {
     }
 
     private static String db_path(String name) {
-        return "db\\" + name;//File.separator???
+        return String.join(File.separator, "db", name);
     }
 
     private static DataBase readDataBase(File file) {
@@ -78,31 +79,24 @@ public class DataBases {
     }
 
     public static void useDataBase(String name) throws Exception {
-        /*if (name.equals(currentDataBase.name))
-            return;*/
-
         if (!dataBases.containsKey(name))
             throw new Exception(String.format("The '%s' database does not exist", name));
 
-        /*var last = currentDataBase;
-        if (last != null && last.isModified())
-            ExecutorManager.dataBaseWriter.submit(
-                    (Callable<Void>) () -> {
-                        synchronized (last) {//фиксация по currentDataBase???
-                            writeDataBase(last);
-                            //last.modified=false//proxy???
-                        }
-                        return null;
-                    }
-            );*/
         currentDataBase = dataBases.get(name);
     }
 
-    public static DataBase getCurrentDataBase() throws Exception {
+    public static DataBase getCurrentDataBase() throws RuntimeException {
         if (currentDataBase == null)
-            throw new Exception("No database selected");
+            throw new RuntimeException("No database selected");
 
         return currentDataBase;
+    }
+
+    public static DataBase getDataBase(String name) throws RuntimeException {
+        if (!dataBases.containsKey(name))
+            throw new RuntimeException(String.format("The '%s' database does not exist", name));
+
+        return dataBases.get(name);
     }
 
     public static void exit() {
@@ -110,7 +104,6 @@ public class DataBases {
         //не перезаписывать часто на диск
         dataBases.forEach(//если не удалось записать 1 бд то должна быть попытка записать остальные
                 (k, v) -> {
-                    //if (v.isModified())
                     try {
                         writeDataBase(v);
                     } catch (Exception e) {
@@ -118,6 +111,33 @@ public class DataBases {
                     }
                 }
         );
+    }
+
+    /*
+    на вход нужно подать предобработанный лимит,офсет,
+    то есть, если не было указано лимита, то он должен быть равен Integer.MAX_VALUE,
+    если не было указано офсета, то он должен быть равен 0
+    */
+    public static Map<String, ArrayList> select(ArrayList<String> fieldNames, String tableName, int limit, int offset) throws Exception {
+        var table = currentDataBase.getTable(tableName);
+        var selection = new LinkedHashMap<String, ArrayList>();//запилить отдельную структуру???
+        //по идее дальше функионалить не стоит ибо пиздец дохуя кода становится
+        //и вообще функциональность не везде походу стоит юзать
+        for (var fn : fieldNames) {
+            var tmp = table.data.fields.get(fn);
+            if (tmp == null)
+                throw new RuntimeException(String.format("No such field '%s' in table '%s'", fn, table.header.name));
+
+            selection.put(
+                    fn,
+                    (ArrayList) tmp.stream()
+                            .skip(offset)
+                            .limit(limit)
+                            .collect(Collectors.toCollection(ArrayList::new))
+            );
+        }
+
+        return selection;
     }
     //show databases???
     //alter new thread???
