@@ -1,8 +1,4 @@
-use database def3qfesdv;
-use database d1324wrgebgd;
-create database d324grvefd;
-use database wetqe132wr;
-use database d13wrefdb;
-create database asfddsg34t3553;
-create database wefwew32;
+SELECT age from ABC;
+UPDATE ABC SET ContactName = ContactName + 1 * 2, City = 123 WHERE CustomerID = 1;
+SELECT age from ABC where r = 1 OR test<> 8;
 exit;

@@ -11,67 +11,63 @@ public interface SqlParserConstants {
   /** End of File. */
   int EOF = 0;
   /** RegularExpression Id. */
-  int LINE_COMMENT = 7;
+  int CREATE = 7;
   /** RegularExpression Id. */
-  int MULTI_LINE_COMMENT = 8;
+  int DATABASE = 8;
   /** RegularExpression Id. */
-  int CREATE = 9;
+  int DELETE = 9;
   /** RegularExpression Id. */
-  int DATABASE = 10;
+  int DROP = 10;
   /** RegularExpression Id. */
-  int DELETE = 11;
+  int EXIT = 11;
   /** RegularExpression Id. */
-  int DROP = 12;
+  int FROM = 12;
   /** RegularExpression Id. */
-  int EXIT = 13;
+  int INSERT = 13;
   /** RegularExpression Id. */
-  int FROM = 14;
+  int INTO = 14;
   /** RegularExpression Id. */
-  int INSERT = 15;
+  int LIMIT = 15;
   /** RegularExpression Id. */
-  int INTO = 16;
+  int OFFSET = 16;
   /** RegularExpression Id. */
-  int LIMIT = 17;
+  int SELECT = 17;
   /** RegularExpression Id. */
-  int OFFSET = 18;
+  int SET = 18;
   /** RegularExpression Id. */
-  int SELECT = 19;
+  int SHOW = 19;
   /** RegularExpression Id. */
-  int SET = 20;
+  int TABLE = 20;
   /** RegularExpression Id. */
-  int SHOW = 21;
+  int UPDATE = 21;
   /** RegularExpression Id. */
-  int TABLE = 22;
+  int USE = 22;
   /** RegularExpression Id. */
-  int UPDATE = 23;
+  int VALUES = 23;
   /** RegularExpression Id. */
-  int USE = 24;
+  int WHERE = 24;
   /** RegularExpression Id. */
-  int VALUES = 25;
+  int PREDICAT = 25;
   /** RegularExpression Id. */
-  int WHERE = 26;
+  int INVERSE = 26;
   /** RegularExpression Id. */
-  int PREDICAT = 27;
+  int COMPARE = 27;
   /** RegularExpression Id. */
-  int INVERSE = 28;
+  int STRING_LITERAL = 28;
   /** RegularExpression Id. */
-  int COMPARE = 29;
+  int MATH_OPERATION_LITEARAL = 29;
   /** RegularExpression Id. */
-  int STRING_LITERAL = 30;
+  int STAR = 30;
   /** RegularExpression Id. */
-  int MATH_OPERATION_LITEARAL = 31;
+  int SEMICOLON = 31;
   /** RegularExpression Id. */
-  int STAR = 32;
+  int SINGLE_MARK = 32;
   /** RegularExpression Id. */
-  int SEMICOLON = 33;
+  int OPEN_BRACKET = 33;
   /** RegularExpression Id. */
-  int SINGLE_MARK = 34;
+  int CLOSE_BRACKET = 34;
   /** RegularExpression Id. */
-  int OPEN_BRACKET = 35;
-  /** RegularExpression Id. */
-  int CLOSE_BRACKET = 36;
-  /** RegularExpression Id. */
-  int COMMA = 37;
+  int COMMA = 35;
 
   /** Lexical state. */
   int DEFAULT = 0;
@@ -85,8 +81,6 @@ public interface SqlParserConstants {
     "\"\\\\\"",
     "\"\\t\"",
     "\" \"",
-    "<LINE_COMMENT>",
-    "<MULTI_LINE_COMMENT>",
     "\"CREATE\"",
     "\"DATABASE\"",
     "\"DELETE\"",

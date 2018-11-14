@@ -39,12 +39,6 @@ SKIP:
     | " "
 }
 
-SPECIAL_TOKEN:
-{
-    <LINE_COMMENT: "--"(~["\r","\n"])*>
-    | <MULTI_LINE_COMMENT: "/*" (~["*"])* "*" ("*" | (~["*","/"] (~["*"])* "*"))* "/">
-}
-
 //KEYWORDS
 TOKEN:
 {
@@ -148,9 +142,11 @@ void parseUseDatabase() throws Exception:
     [parse()]
 }
 
-void parseCreateTable() throws Exception:
+ArgsGuard parseCreateTable() throws Exception:
 {
     Token name;
+
+    ArgsGuard args = new ArgsGuard();
 }
 {
     <CREATE><TABLE>
@@ -162,14 +158,22 @@ void parseCreateTable() throws Exception:
             new Table(
                 new TableHeader(
                     name.image,
-                    getFields()
+                    getFields(args)
                 )
             )
         );
     }
     <CLOSE_BRACKET>
     <SEMICOLON>
-    [parse()]
+
+    {
+        args.setName(name.image);
+
+        return args;
+    }
+
+    //FIXME: this command need run
+    //[parse()]
 }
 
 void parseShowCreateTable() throws Exception:
@@ -192,7 +196,7 @@ ArgsGuard parseInsertIntoTable() throws Exception:
 {
     Token name;
 
-    ArrayList<String> columns = new ArrayList<String>();
+    ArrayList<String> insertableColumns = new ArrayList<String>();
     ArrayList<String> insertableValues = new ArrayList<String>();
 
     ArgsGuard args = new ArgsGuard();
@@ -201,7 +205,7 @@ ArgsGuard parseInsertIntoTable() throws Exception:
     <INSERT>[<INTO>]
     name = <STRING_LITERAL>
     <OPEN_BRACKET>
-    columns = getColumns()
+    insertableColumns = getColumns()
     <CLOSE_BRACKET>
     <VALUES>
     <OPEN_BRACKET>
@@ -210,7 +214,7 @@ ArgsGuard parseInsertIntoTable() throws Exception:
     <SEMICOLON>
     {
         args.setName(name.image);
-        args.setColumns(columns);
+        args.setInsertableColumns(insertableColumns);
         args.setInsertableValues(insertableValues);
 
         return args;
@@ -223,13 +227,13 @@ ArgsGuard parseSelectFromTable() throws Exception:
 {
     Token name, limit = null, offset = null, star = null;
 
-    ArrayList<String> columns = new ArrayList<String>();
+    ArrayList<String> insertableColumns = new ArrayList<String>();
 
     ArgsGuard args = new ArgsGuard();
 }
 {
     <SELECT>
-    columns = getColumns()
+    insertableColumns = getColumns()
     [star = <STAR>]
     <FROM>
     name = <STRING_LITERAL>
@@ -238,7 +242,7 @@ ArgsGuard parseSelectFromTable() throws Exception:
     <SEMICOLON>
     {
         args.setName(name.image);
-        args.setColumns(columns);
+        args.setInsertableColumns(insertableColumns);
 
         if (limit != null)
             args.setLimit(Integer.parseInt(limit.image));
@@ -254,7 +258,8 @@ ArgsGuard parseSelectFromTable() throws Exception:
 
 ArgsGuard parseUpdate() throws Exception:
 {
-    Token name, math, sign, updatableColumn, updatableValue, compareColumn = null, compareSign = null, compareValue = null, comparePredicat = null;
+    Token name, math, sign, updatableColumn, updatableValue,
+     compareColumn = null, compareSign = null, compareValue = null, comparePredicat = null;
 
     ArrayList<String> updatableColumns = new ArrayList<String>();
     ArrayList<String> updatableValues = new ArrayList<String>();
@@ -336,16 +341,16 @@ ArgsGuard parseUpdate() throws Exception:
         {math.image = updatableValue.image;}
 
         (
-                            updatableValue = <STRING_LITERAL>
-                            [sign = <COMPARE>
-                            {updatableValue.image += sign.image; }]
-                            [sign = <MATH_OPERATION_LITEARAL>
-                            { updatableValue.image += sign.image; }]
+            updatableValue = <STRING_LITERAL>
+            [sign = <COMPARE>
+            {updatableValue.image += sign.image; }]
+            [sign = <MATH_OPERATION_LITEARAL>
+            { updatableValue.image += sign.image; }]
 
-                            {
-                                math.image += updatableValue.image;
-                                //updatableValues.add(updatableValue.image);
-                            }
+            {
+                math.image += updatableValue.image;
+                //updatableValues.add(updatableValue.image);
+            }
         )*
 
         {compareValues.add(math.image);}
@@ -470,20 +475,20 @@ ArrayList<String> getColumns():
 {
     Token columnName;
 
-    ArrayList<String> columns = new ArrayList<String>();
+    ArrayList<String> insertableColumns = new ArrayList<String>();
 }
 {
     columnName = <STRING_LITERAL>
-    {columns.add(columnName.image);}
+    {insertableColumns.add(columnName.image);}
 
     (
         <COMMA> columnName = <STRING_LITERAL>
         {
-            columns.add(columnName.image);
+            insertableColumns.add(columnName.image);
         }
     )*
 
-    {return columns;}
+    {return insertableColumns;}
 }
 
 ArrayList<String> getInsertableValues():
@@ -506,7 +511,7 @@ ArrayList<String> getInsertableValues():
     {return values;}
 }
 
-Map<String, TypeDescription> getFields():
+Map<String, TypeDescription> getFields(ArgsGuard args):
 {
     Token name;
 
@@ -517,7 +522,7 @@ Map<String, TypeDescription> getFields():
     {
         fields.put(name.image, getTypeDescription());
     }
-    [<COMMA> getFields()]//???????????????
+    [<COMMA> getFields(args)]//???????????????
     //(
         /*<COMMA> TypeName = <STRING_LITERAL>
         typeDescription = typeDefinition()

@@ -1,3 +1,4 @@
+/*
 package com.dbms;
 
 import com.dbms.grammar.ArgsGuard;
@@ -9,15 +10,15 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 
-public class InsertIntoTableTest {
+public class CreateTableTest {
 
     @Test
-    public void testShouldReturnTableNameAndColumnsAndInsertableValues() throws Exception {
-        SqlParser parser = new SqlParser(new FileReader("src/test/java/resources/insert_into_table_test/InsertIntoTable.txt"));
-        FileWriter actual = new FileWriter(new File("src/test/java/resources/insert_into_table_test/Actual.txt"));
+    public void testShouldReturnTableNameAndFields() throws Exception {
+        SqlParser parser = new SqlParser(new FileReader("src/test/java/resources/create_table_test/CreateTable.txt"));
+        FileWriter actual = new FileWriter(new File("src/test/java/resources/create_table_test/Actual.txt"));
         ArgsGuard args = new ArgsGuard();
 
-        args =  parser.parseInsertIntoTable();
+        args =  parser.parseCreateTable();
 
         actual.write(args.getName() + "\n");
 
@@ -35,8 +36,9 @@ public class InsertIntoTableTest {
         actual.close();
 
         FileAssert.assertEquals(
-                new File("src/test/java/resources/insert_into_table_test/Expected.txt"),
-                new File("src/test/java/resources/insert_into_table_test/Actual.txt")
+                new File("src/test/java/resources/create_table_test/Expected.txt"),
+                new File("src/test/java/resources/create_table_test/Actual.txt")
         );
     }
 }
+*/

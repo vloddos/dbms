@@ -7,34 +7,38 @@ import java.util.ArrayList;
  * So, for example, method parseInsertIntoTable() must return next params:
  *     -String name.image
  *     -String command.image
- *     -ArrayList<String> columns
+ *     -ArrayList<String> insertableColumns
  *     -ArrayList<String> insertableValues
  * One "return" returns (sorry :)) one param, but for testing need all
  */
 public final class ArgsGuard {
-
-    private ArrayList<String> columns = new ArrayList<String>();
+    //For "INSERT" conditions
+    private ArrayList<String> insertableColumns = new ArrayList<String>();
     private ArrayList<String> insertableValues = new ArrayList<String>();
 
+    //For "WHERE" conditions
     private ArrayList<String> compareColumns = new ArrayList<String>();
     private ArrayList<String> compareSigns = new ArrayList<String>();
     private ArrayList<String> compareValues = new ArrayList<String>();
     private ArrayList<String> comparePredicats = new ArrayList<String>();
 
+    //For "UPDATE" conditions
     private ArrayList<String> updatableColumns = new ArrayList<String>();
     private ArrayList<String> updatableValues = new ArrayList<String>();
 
+    //Table name
     private String name;
 
+    //For "SELECT"
     private int limit = -1;
     private int offset = -1;
 
-    public ArrayList<String> getColumns() {
-        return columns;
+    public ArrayList<String> getInsertableColumns() {
+        return insertableColumns;
     }
 
-    public void setColumns(ArrayList<String> columns) {
-        this.columns = columns;
+    public void setInsertableColumns(ArrayList<String> insertableColumns) {
+        this.insertableColumns = insertableColumns;
     }
 
     public ArrayList<String> getInsertableValues() {
