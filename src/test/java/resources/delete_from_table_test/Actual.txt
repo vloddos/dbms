@@ -1,8 +1,2 @@
 Film
-budget
-<
-250000
-AND
-year
-=
-2003
+budget<250000ANDyear=2003

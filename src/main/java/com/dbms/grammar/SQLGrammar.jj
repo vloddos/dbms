@@ -65,9 +65,9 @@ TOKEN:
 //PREDICATS AND CONDITIONS
 TOKEN:
 {
-    <PREDICAT: "AND" | "OR">
-    | <INVERSE: "NOT">
-    | <COMPARE: "<" | ">" | "=" | "<>" | "<=" | ">=">
+    //<PREDICAT: "AND" | "OR">
+     //<INVERSE: "NOT">
+     <COMPARE: "<" | ">" | "=" | "<>" | "<=" | ">=">
 }
 
 //LITERALS
@@ -284,10 +284,8 @@ ArgsGuard parseUpdate() throws Exception:
     { updatableValue.image += sign.image; }]
 
     {
-        System.out.println(updatableValue.image);
         updatableColumns.add(updatableColumn.image);
         math = updatableValue;
-        math.image = updatableValue.image;
         //updatableValues.add(updatableValue.image);
     }
 
@@ -338,7 +336,7 @@ ArgsGuard parseUpdate() throws Exception:
         [sign = <MATH_OPERATION_LITEARAL>
         {updatableValue.image += sign.image; }]
 
-        {math.image = updatableValue.image;}
+        {math = updatableValue;}
 
         (
             updatableValue = <STRING_LITERAL>
@@ -400,7 +398,7 @@ ArgsGuard parseUpdate() throws Exception:
 
 ArgsGuard parseDelete() throws Exception:
 {
-    Token name, compareColumn = null, compareSign = null, compareValue = null, comparePredicat = null, star = null;
+    Token name, math, sign,  updatableValue, compareColumn = null, compareSign = null, compareValue = null, comparePredicat = null, star = null;
 
     ArrayList<String> compareColumns = new ArrayList<String>();
     ArrayList<String> compareSigns = new ArrayList<String>();
@@ -413,7 +411,7 @@ ArgsGuard parseDelete() throws Exception:
     <DELETE> [star = <STAR>] <FROM>
     name = <STRING_LITERAL>
 
-    [
+    /*[
         <WHERE>
 
         compareColumn = <STRING_LITERAL>
@@ -439,6 +437,32 @@ ArgsGuard parseDelete() throws Exception:
                 comparePredicats.add(comparePredicat.image);
             }
         )*
+    ]*/
+    [
+            <WHERE>
+            updatableValue = <STRING_LITERAL>
+            {math = updatableValue;}
+            [sign = <COMPARE>
+            {updatableValue.image += sign.image; }]
+            [sign = <MATH_OPERATION_LITEARAL>
+            {updatableValue.image += sign.image; }]
+
+            {math.image = updatableValue.image;}
+
+            (
+                                updatableValue = <STRING_LITERAL>
+                                [sign = <COMPARE>
+                                {updatableValue.image += sign.image; }]
+                                [sign = <MATH_OPERATION_LITEARAL>
+                                { updatableValue.image += sign.image; }]
+
+                                {
+                                    math.image += updatableValue.image;
+                                    //updatableValues.add(updatableValue.image);
+                                }
+            )*
+
+            {compareValues.add(math.image);}
     ]
     <SEMICOLON>
 

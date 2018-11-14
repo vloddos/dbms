@@ -27,8 +27,6 @@ public class UpdateTableTest {
         }
 
         for (int i = 0; i < args.getCompareValues().size(); i++) {
-            //actual.write(args.getCompareColumns().get(i) + "\n");
-            //actual.write(args.getCompareSigns().get(i) + "\n");
             actual.write(args.getCompareValues().get(i) + "\n");
 
             //if (i < args.getCompareValues().size() - 1)

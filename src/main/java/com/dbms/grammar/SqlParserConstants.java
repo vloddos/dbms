@@ -47,27 +47,23 @@ public interface SqlParserConstants {
   /** RegularExpression Id. */
   int WHERE = 24;
   /** RegularExpression Id. */
-  int PREDICAT = 25;
+  int COMPARE = 25;
   /** RegularExpression Id. */
-  int INVERSE = 26;
+  int STRING_LITERAL = 26;
   /** RegularExpression Id. */
-  int COMPARE = 27;
+  int MATH_OPERATION_LITEARAL = 27;
   /** RegularExpression Id. */
-  int STRING_LITERAL = 28;
+  int STAR = 28;
   /** RegularExpression Id. */
-  int MATH_OPERATION_LITEARAL = 29;
+  int SEMICOLON = 29;
   /** RegularExpression Id. */
-  int STAR = 30;
+  int SINGLE_MARK = 30;
   /** RegularExpression Id. */
-  int SEMICOLON = 31;
+  int OPEN_BRACKET = 31;
   /** RegularExpression Id. */
-  int SINGLE_MARK = 32;
+  int CLOSE_BRACKET = 32;
   /** RegularExpression Id. */
-  int OPEN_BRACKET = 33;
-  /** RegularExpression Id. */
-  int CLOSE_BRACKET = 34;
-  /** RegularExpression Id. */
-  int COMMA = 35;
+  int COMMA = 33;
 
   /** Lexical state. */
   int DEFAULT = 0;
@@ -99,8 +95,6 @@ public interface SqlParserConstants {
     "\"USE\"",
     "\"VALUES\"",
     "\"WHERE\"",
-    "<PREDICAT>",
-    "\"NOT\"",
     "<COMPARE>",
     "<STRING_LITERAL>",
     "<MATH_OPERATION_LITEARAL>",
