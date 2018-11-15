@@ -14,6 +14,6 @@ public class ExitTest {
     public void testShouldReturnCommand() throws FileNotFoundException, ParseException {
         SqlParser parser = new SqlParser(new FileReader("src/test/java/resources/exit_test/ExitFromConsole.txt"));
 
-        Assert.assertEquals("Exit", parser.parseExit().image);
+        Assert.assertEquals("Exit", parser.parseExit().command.image);
     }
 }

@@ -1,6 +1,10 @@
 package com.dbms.grammar;
 
+import com.dbms.backend.TypeDescription;
+
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 /**
  * Special class for using in tests class only
@@ -12,6 +16,8 @@ import java.util.ArrayList;
  * One "return" returns (sorry :)) one param, but for testing need all
  */
 public final class ArgsGuard {
+    public Token command;
+    Map<String, TypeDescription> fields = new LinkedHashMap<String, TypeDescription>();
     //For "INSERT" conditions
     private ArrayList<String> insertableColumns = new ArrayList<String>();
     private ArrayList<String> insertableValues = new ArrayList<String>();
@@ -32,6 +38,22 @@ public final class ArgsGuard {
     //For "SELECT"
     private int limit = -1;
     private int offset = -1;
+
+    public Map<String, String> convertToMap(ArrayList<String> key, ArrayList<String> value)
+    {
+        Map<String, String> map = new LinkedHashMap<String, String>();
+        for (int i = 0; i < key.size(); i++)
+            map.put(key.get(i), value.get(i));
+        return map;
+    }
+
+    public Map<String, TypeDescription> getFields() {
+        return fields;
+    }
+
+    public void setFields(Map<String, TypeDescription> f) {
+        fields = f;
+    }
 
     public ArrayList<String> getInsertableColumns() {
         return insertableColumns;

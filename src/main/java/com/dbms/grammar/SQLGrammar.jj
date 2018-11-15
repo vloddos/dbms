@@ -90,78 +90,117 @@ TOKEN:
 
 //____________________________________________Here main methods____________________________________________
 
-void parse() throws Exception:
-{}
+ArgsGuard parse() throws Exception:
+{ArgsGuard args = null;}
 {
-    parseCreateDatabase()
+    {
+        args = parseCreateDatabase();
+        if (args != null)
+            return args;
+    }
     |
-    parseUseDatabase()
+    {
+        args = parseUseDatabase();
+        if (args != null)
+                return args;
+    }
     |
-    parseCreateTable()
+    {
+        args = parseCreateTable();
+        if (args != null)
+                return args;
+    }
     |
-    parseShowCreateTable()
+    {
+        args = parseShowCreateTable();
+        if (args != null)
+                return args;
+    }
     |
-    parseInsertIntoTable()
+    {
+        args = parseInsertIntoTable();
+        if (args != null)
+                return args;
+    }
     |
-    parseSelectFromTable()
+    {
+        args = parseSelectFromTable();
+        if (args != null)
+                return args;
+    }
     |
-    parseUpdate()
+    {
+        args = parseUpdate();
+        if (args != null)
+                return args;
+    }
     |
-    parseDelete()
+    {
+        parseDelete();
+        if (args != null)
+                return args;
+    }
     |
-    parseExit()
+    {
+        parseExit();
+        if (args != null)
+                return args;
+    }
     |
     <EOF>
 }
 
-void parseCreateDatabase() throws Exception:
+ArgsGuard parseCreateDatabase() throws Exception:
 {
     Token name;
+    ArgsGuard args = new ArgsGuard();
 }
 {
-    <CREATE><DATABASE>
+    <CREATE> args.command = <DATABASE>
     name = <STRING_LITERAL>
     <SEMICOLON>
     {
-        DataBases.createDataBase(name.image);
+        args.setName(name.image);
+        return args;
     }
-    [parse()]
 }
 
-void parseUseDatabase() throws Exception:
+ArgsGuard parseUseDatabase() throws Exception:
 {
     Token name;
+    ArgsGuard args = new ArgsGuard();
 }
 {
-    <USE><DATABASE>
+    args.command = <USE><DATABASE>
     name = <STRING_LITERAL>
     <SEMICOLON>
     {
-        DataBases.useDataBase(name.image);
+        args.setName(name.image);
+        return args;
+        //DataBases.useDataBase(name.image);
     }
-    [parse()]
 }
 
 ArgsGuard parseCreateTable() throws Exception:
 {
     Token name;
-
     ArgsGuard args = new ArgsGuard();
 }
 {
-    <CREATE><TABLE>
+    <CREATE> args.command = <TABLE>
     name = <STRING_LITERAL>
 
     <OPEN_BRACKET>
     {
-        DataBases.getCurrentDataBase().createTable(
+        args.setFields(getFields(args));
+        /*DataBases.getCurrentDataBase().createTable(
             new Table(
                 new TableHeader(
                     name.image,
                     getFields(args)
                 )
             )
-        );
+        );*/
     }
     <CLOSE_BRACKET>
     <SEMICOLON>
@@ -170,24 +209,24 @@ ArgsGuard parseCreateTable() throws Exception:
 
         return args;
     }
-    //FIXME: this command need run
-    [parse()]
 }
 
-void parseShowCreateTable() throws Exception:
+ArgsGuard parseShowCreateTable() throws Exception:
 {
     Token name;
+    ArgsGuard args = new ArgsGuard();
 }
 {
-    <SHOW><CREATE><TABLE>
+    args.command = <SHOW><CREATE><TABLE>
     name = <STRING_LITERAL>
     <SEMICOLON>
     {
-        System.out.println(
-            DataBases.getCurrentDataBase().showCreate(name.image)
-        );
+        args.setName(name.image);
+        return args;
+        //System.out.println(
+            //DataBases.getCurrentDataBase().showCreate(name.image)
+       // );
     }
-    [parse()]
 }
 
 ArgsGuard parseInsertIntoTable() throws Exception:
@@ -200,7 +239,7 @@ ArgsGuard parseInsertIntoTable() throws Exception:
     ArgsGuard args = new ArgsGuard();
 }
 {
-    <INSERT>[<INTO>]
+    args.command = <INSERT>[<INTO>]
     name = <STRING_LITERAL>
     <OPEN_BRACKET>
     insertableColumns = getColumns()
@@ -217,8 +256,6 @@ ArgsGuard parseInsertIntoTable() throws Exception:
 
         return args;
     }
-    //FIXME: this command need run
-    [parse()]
 }
 
 ArgsGuard parseSelectFromTable() throws Exception:
@@ -230,7 +267,7 @@ ArgsGuard parseSelectFromTable() throws Exception:
     ArgsGuard args = new ArgsGuard();
 }
 {
-    <SELECT>
+    args.command = <SELECT>
     insertableColumns = getColumns()
     [star = <STAR>]
     <FROM>
@@ -250,8 +287,6 @@ ArgsGuard parseSelectFromTable() throws Exception:
 
         return args;
     }
-    //FIXME: this command need run
-    [parse()]
 }
 
 ArgsGuard parseUpdate() throws Exception:
@@ -270,7 +305,7 @@ ArgsGuard parseUpdate() throws Exception:
     ArgsGuard args = new ArgsGuard();
 }
 {
-    <UPDATE>
+    args.command = <UPDATE>
     name = <STRING_LITERAL>
     <SET>
 
@@ -390,8 +425,6 @@ ArgsGuard parseUpdate() throws Exception:
         return args;
     }
 
-    //FIXME: this command need run
-    [parse()]
 }
 
 ArgsGuard parseDelete() throws Exception:
@@ -406,7 +439,7 @@ ArgsGuard parseDelete() throws Exception:
     ArgsGuard args = new ArgsGuard();
 }
 {
-    <DELETE> [star = <STAR>] <FROM>
+    args.command = <DELETE> [star = <STAR>] <FROM>
     name = <STRING_LITERAL>
 
     /*[
@@ -474,20 +507,19 @@ ArgsGuard parseDelete() throws Exception:
         return args;
     }
 
-    //FIXME: this command need run
-    //[parse()]
 }
 
-Token parseExit():
+ArgsGuard parseExit():
 {
-    Token command;
+    ArgsGuard args = new ArgsGuard();
 }
 {
-    command = <EXIT>
+    args.command = <EXIT>
     <SEMICOLON>
     {
-        DataBases.exit();
-        return command;
+        return args;
+        //DataBases.exit();
+        //return command;
     }
 }
 
