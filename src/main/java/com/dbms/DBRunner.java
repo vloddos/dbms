@@ -2,6 +2,8 @@ package com.dbms;
 
 import com.dbms.grammar.SqlParser;
 
+import javax.script.ScriptEngine;
+import javax.script.ScriptEngineManager;
 import java.io.FileReader;
 
 public final class DBRunner {
@@ -10,6 +12,12 @@ public final class DBRunner {
         
         SqlParser parser = new SqlParser(new FileReader("src/test/java/resources/TestSandbox.txt"));
         parser.parse();
+
+        ScriptEngineManager manager = new ScriptEngineManager();
+        ScriptEngine engine = manager.getEngineByName("js");
+        String salary = "80000";
+        Object result = engine.eval("4*5+" + salary);
+        System.out.println(result);
 
         /*for (TableStruct table : tableList) {
             System.out.println("Table Name: " + table.TableName);

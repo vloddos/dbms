@@ -2,35 +2,28 @@ package com.dbms;
 
 import com.dbms.grammar.ArgsGuard;
 import com.dbms.grammar.SqlParser;
-import junitx.framework.FileAssert;
 import org.junit.Test;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 
-public class SelectFromTable {
+public class SelectFromTable extends AbstractTest {
 
     @Test
     public void testShouldReturnTableNameAndFieldsAndInsertableValues() throws Exception {
         SqlParser parser = new SqlParser(new FileReader("src/test/java/resources/select_from_table_test/SelectFromTable.txt"));
+
         FileWriter actual = new FileWriter(new File("src/test/java/resources/select_from_table_test/Actual.txt"));
-        ArgsGuard args = new ArgsGuard();
 
-        args =  parser.parseSelectFromTable();
+        ArgsGuard args =  parser.parseSelectFromTable();
 
-        actual.write(args.getName() + "\n");
-
-        for (int i = 0; i < args.getInsertableColumns().size() - 1; i++)
-            actual.write(args.getInsertableColumns().get(i) + ", ");
-
-        actual.write(args.getInsertableColumns().get(args.getInsertableColumns().size() - 1) + "\n");
-        actual.write(String.valueOf(args.getLimit()) + "\n");
-        actual.write(String.valueOf(args.getOffset()));
+        writeEntityName(actual, args);
+        writeInsertableColumns(actual, args);
+        writeLimitAndOffset(actual, args);
 
         actual.close();
 
-        FileAssert.assertEquals(
-                new File("src/test/java/resources/select_from_table_test/Expected.txt"),
-                new File("src/test/java/resources/select_from_table_test/Actual.txt")
-        );
+        assertFiles("select_from_table_test");
     }
 }

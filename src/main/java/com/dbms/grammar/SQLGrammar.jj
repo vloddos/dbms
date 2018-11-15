@@ -165,15 +165,13 @@ ArgsGuard parseCreateTable() throws Exception:
     }
     <CLOSE_BRACKET>
     <SEMICOLON>
-
     {
         args.setName(name.image);
 
         return args;
     }
-
     //FIXME: this command need run
-    //[parse()]
+    [parse()]
 }
 
 void parseShowCreateTable() throws Exception:
@@ -220,7 +218,7 @@ ArgsGuard parseInsertIntoTable() throws Exception:
         return args;
     }
     //FIXME: this command need run
-    //[parse()]
+    [parse()]
 }
 
 ArgsGuard parseSelectFromTable() throws Exception:
@@ -253,7 +251,7 @@ ArgsGuard parseSelectFromTable() throws Exception:
         return args;
     }
     //FIXME: this command need run
-    //[parse()]
+    [parse()]
 }
 
 ArgsGuard parseUpdate() throws Exception:
@@ -317,14 +315,14 @@ ArgsGuard parseUpdate() throws Exception:
             //updatableValues.add(updatableValue.image);
         }
         (
-                    updatableValue = <STRING_LITERAL>
-                    [sign = <MATH_OPERATION_LITEARAL>
-                    { updatableValue.image += sign.image; }]
+            updatableValue = <STRING_LITERAL>
+            [sign = <MATH_OPERATION_LITEARAL>
+            { updatableValue.image += sign.image; }]
 
-                    {
-                        math.image += updatableValue.image;
-                        //updatableValues.add(updatableValue.image);
-                    }
+            {
+                math.image += updatableValue.image;
+                //updatableValues.add(updatableValue.image);
+            }
          )*
     )*
     {updatableValues.add(math.image);}
@@ -393,7 +391,7 @@ ArgsGuard parseUpdate() throws Exception:
     }
 
     //FIXME: this command need run
-    //[parse()]
+    [parse()]
 }
 
 ArgsGuard parseDelete() throws Exception:
@@ -439,30 +437,30 @@ ArgsGuard parseDelete() throws Exception:
         )*
     ]*/
     [
-            <WHERE>
+        <WHERE>
+        updatableValue = <STRING_LITERAL>
+        {math = updatableValue;}
+        [sign = <COMPARE>
+        {updatableValue.image += sign.image; }]
+        [sign = <MATH_OPERATION_LITEARAL>
+        {updatableValue.image += sign.image; }]
+
+        {math.image = updatableValue.image;}
+
+        (
             updatableValue = <STRING_LITERAL>
-            {math = updatableValue;}
             [sign = <COMPARE>
             {updatableValue.image += sign.image; }]
             [sign = <MATH_OPERATION_LITEARAL>
-            {updatableValue.image += sign.image; }]
+            { updatableValue.image += sign.image; }]
 
-            {math.image = updatableValue.image;}
+            {
+                math.image += updatableValue.image;
+                //updatableValues.add(updatableValue.image);
+            }
+        )*
 
-            (
-                                updatableValue = <STRING_LITERAL>
-                                [sign = <COMPARE>
-                                {updatableValue.image += sign.image; }]
-                                [sign = <MATH_OPERATION_LITEARAL>
-                                { updatableValue.image += sign.image; }]
-
-                                {
-                                    math.image += updatableValue.image;
-                                    //updatableValues.add(updatableValue.image);
-                                }
-            )*
-
-            {compareValues.add(math.image);}
+        {compareValues.add(math.image);}
     ]
     <SEMICOLON>
 
