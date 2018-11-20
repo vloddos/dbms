@@ -20,7 +20,6 @@ public class Table implements Serializable {
         for (var f : fields.keySet())
             if (!data.fields.containsKey(f))
                 throw new RuntimeException(String.format("No such field '%s' in table '%s'", f, header.name));
-
         data.fields.forEach(
                 (k, v) ->
                         v.add(

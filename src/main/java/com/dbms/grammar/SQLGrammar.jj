@@ -93,61 +93,52 @@ TOKEN:
 ArgsGuard parse() throws Exception:
 {ArgsGuard args = null;}
 {
-    {
-        args = parseCreateDatabase();
-        if (args != null)
-            return args;
-    }
+    (
+        args = parseCreateDatabase()
+        {return args;}
+    )
     |
-    {
-        args = parseUseDatabase();
-        if (args != null)
-                return args;
-    }
+    (
+        args = parseUseDatabase()
+        {return args;}
+    )
     |
-    {
-        args = parseCreateTable();
-        if (args != null)
-                return args;
-    }
+    (
+        args = parseCreateTable()
+        {return args;}
+    )
     |
-    {
-        args = parseShowCreateTable();
-        if (args != null)
-                return args;
-    }
+    (
+        args = parseShowCreateTable()
+        {return args;}
+    )
     |
-    {
-        args = parseInsertIntoTable();
-        if (args != null)
-                return args;
-    }
+    (
+        args = parseInsertIntoTable()
+        {return args;}
+    )
     |
-    {
-        args = parseSelectFromTable();
-        if (args != null)
-                return args;
-    }
+    (
+        args = parseSelectFromTable()
+        {return args;}
+    )
     |
-    {
-        args = parseUpdate();
-        if (args != null)
-                return args;
-    }
+    (
+        args = parseUpdate()
+        {return args;}
+    )
     |
-    {
-        parseDelete();
-        if (args != null)
-                return args;
-    }
+    (
+        args = parseDelete()
+        {return args;}
+    )
     |
-    {
-        parseExit();
-        if (args != null)
-                return args;
-    }
-    |
-    <EOF>
+    (
+        args = parseExit()
+    {return args;}
+    )
+
+    {return args;}
 }
 
 ArgsGuard parseCreateDatabase() throws Exception:
@@ -161,8 +152,11 @@ ArgsGuard parseCreateDatabase() throws Exception:
     <SEMICOLON>
     {
         args.setName(name.image);
-        return args;
-    }
+        if (args != null)
+                return args;
+        }
+    [args = parse()]
+    {return args;}
 }
 
 ArgsGuard parseUseDatabase() throws Exception:
@@ -176,9 +170,12 @@ ArgsGuard parseUseDatabase() throws Exception:
     <SEMICOLON>
     {
         args.setName(name.image);
-        return args;
         //DataBases.useDataBase(name.image);
+        if (args != null)
+            return args;
     }
+    [args = parse()]
+    {return args;}
 }
 
 ArgsGuard parseCreateTable() throws Exception:
@@ -192,7 +189,7 @@ ArgsGuard parseCreateTable() throws Exception:
 
     <OPEN_BRACKET>
     {
-        args.setFields(getFields(args));
+        args.setFields(getFields());
         /*DataBases.getCurrentDataBase().createTable(
             new Table(
                 new TableHeader(
@@ -206,9 +203,11 @@ ArgsGuard parseCreateTable() throws Exception:
     <SEMICOLON>
     {
         args.setName(name.image);
-
-        return args;
+        if (args != null)
+                return args;
     }
+    [args = parse()]
+    {return args;}
 }
 
 ArgsGuard parseShowCreateTable() throws Exception:
@@ -222,11 +221,14 @@ ArgsGuard parseShowCreateTable() throws Exception:
     <SEMICOLON>
     {
         args.setName(name.image);
-        return args;
         //System.out.println(
             //DataBases.getCurrentDataBase().showCreate(name.image)
        // );
+        if (args != null)
+                return args;
     }
+    [args = parse()]
+    {return args;}
 }
 
 ArgsGuard parseInsertIntoTable() throws Exception:
@@ -254,8 +256,11 @@ ArgsGuard parseInsertIntoTable() throws Exception:
         args.setInsertableColumns(insertableColumns);
         args.setInsertableValues(insertableValues);
 
-        return args;
+        if (args != null)
+                return args;
     }
+    [args = parse()]
+    {return args;}
 }
 
 ArgsGuard parseSelectFromTable() throws Exception:
@@ -284,9 +289,11 @@ ArgsGuard parseSelectFromTable() throws Exception:
 
         if (offset != null)
             args.setOffset(Integer.parseInt(offset.image));
-
-        return args;
+        if (args != null)
+                return args;
     }
+    [args = parse()]
+    {return args;}
 }
 
 ArgsGuard parseUpdate() throws Exception:
@@ -421,10 +428,11 @@ ArgsGuard parseUpdate() throws Exception:
         args.setCompareSigns(compareSigns);
         args.setCompareValues(compareValues);
         args.setComparePredicats(comparePredicats);
-
-        return args;
+        if (args != null)
+                return args;
     }
-
+    [args = parse()]
+    {return args;}
 }
 
 ArgsGuard parseDelete() throws Exception:
@@ -504,9 +512,11 @@ ArgsGuard parseDelete() throws Exception:
         args.setCompareValues(compareValues);
         args.setComparePredicats(comparePredicats);
 
-        return args;
+        if (args != null)
+                return args;
     }
-
+    [args = parse()]
+    {return args;}
 }
 
 ArgsGuard parseExit():
@@ -517,10 +527,10 @@ ArgsGuard parseExit():
     args.command = <EXIT>
     <SEMICOLON>
     {
-        return args;
         //DataBases.exit();
         //return command;
     }
+    {return args;}
 }
 
 //____________________________________________Here helper methods____________________________________________
@@ -565,9 +575,10 @@ ArrayList<String> getInsertableValues():
     {return values;}
 }
 
-Map<String, TypeDescription> getFields(ArgsGuard args):
+Map<String, TypeDescription> getFields():
 {
-    Token name;
+    Token name, TypeName;
+    TypeDescription typeDescription;
 
     Map<String, TypeDescription> fields = new LinkedHashMap<String, TypeDescription>();
 }
@@ -576,16 +587,16 @@ Map<String, TypeDescription> getFields(ArgsGuard args):
     {
         fields.put(name.image, getTypeDescription());
     }
-    [<COMMA> getFields(args)]//???????????????
-    //(
-        /*<COMMA> TypeName = <STRING_LITERAL>
-        typeDescription = typeDefinition()
+    //[<COMMA> getFields()]//???????????????
+    (
+        <COMMA> TypeName = <STRING_LITERAL>
+        typeDescription = getTypeDescription()
 
         {
           fields.put(TypeName.image, typeDescription);
-          System.out.println("[Recursion] new struct populated < " + TypeName.image + ">");
-        }*/
-    //)*
+          //System.out.println("[Recursion] new struct populated < " + TypeName.image + ">");
+        }
+    )*
     {return fields;}
 }
 

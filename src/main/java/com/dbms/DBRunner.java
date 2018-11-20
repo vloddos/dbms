@@ -1,16 +1,12 @@
 package com.dbms;
 
-import com.dbms.grammar.SqlParser;
-
-import javax.script.ScriptEngine;
-import javax.script.ScriptEngineManager;
-import java.io.FileReader;
+import com.dbms.logic.ExpressionExecutor;
 
 public final class DBRunner {
 
     public static void main(String[] args) throws Exception {
         
-        SqlParser parser = new SqlParser(new FileReader("src/test/java/resources/TestSandbox.txt"));
+        /*SqlParser parser = new SqlParser(new FileReader("src/test/java/resources/TestSandbox.txt"));
         parser.parse();
 
         ScriptEngineManager manager = new ScriptEngineManager();
@@ -18,20 +14,8 @@ public final class DBRunner {
         String salary = "80000";
         Object result = engine.eval("4*5+" + salary);
         System.out.println(result);
-
-        /*for (TableStruct table : tableList) {
-            System.out.println("Table Name: " + table.TableName);
-
-            for (Map.Entry<String, TypeDescription> entry : table.Variables.entrySet()) {
-                System.out.print("Field name: " + entry.getKey() + " Data Type: " + entry.getValue().getTypeName());
-
-                if (entry.getValue().getTypeLength() != null)
-                    System.out.println(" Length: " + entry.getValue().getTypeLength());
-                else
-                    System.out.println(" Length: <not specified>");
-            }
-
-            System.out.println("--------------------------");
-        }*/
+        */
+        ExpressionExecutor expressionExecutor = new ExpressionExecutor();
+        expressionExecutor.execute();
     }
 }

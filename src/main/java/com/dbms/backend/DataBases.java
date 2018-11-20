@@ -1,12 +1,13 @@
 package com.dbms.backend;
 
-
 import java.io.*;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class DataBases {
 
@@ -110,6 +111,7 @@ public class DataBases {
                     }
                 }
         );
+        System.exit(0);
     }
 
     /*
@@ -120,13 +122,15 @@ public class DataBases {
     public static Map<String, ArrayList> select(ArrayList<String> fieldNames, String tableName, int limit, int offset) throws Exception {
         var table = currentDataBase.getTable(tableName);
         var selection = new LinkedHashMap<String, ArrayList>();//запилить отдельную структуру???
-        //по идее дальше функионалить не стоит ибо пиздец дохуя кода становится
-        //и вообще функциональность не везде походу стоит юзать
+
         for (var fn : fieldNames) {
             var tmp = table.data.fields.get(fn);
             if (tmp == null)
                 throw new RuntimeException(String.format("No such field '%s' in table '%s'", fn, table.header.name));
-
+            if (limit == -1)
+                limit = Integer.MAX_VALUE;
+            if (offset == -1)
+                offset = 0;
             selection.put(
                     fn,
                     (ArrayList) tmp.stream()
@@ -136,6 +140,15 @@ public class DataBases {
             );
         }
 
+        var size = selection.get(fieldNames.get(0)).size();
+        var s = selection.keySet().stream().collect(Collectors.joining(" ", "", "\n"));
+        for (int i = 0; i < size; ++i) {
+            StringBuilder sb = new StringBuilder();
+            final int j = i;
+            selection.values().forEach(fv -> sb.append(fv.get(j) + " "));
+            s += sb.toString() + "\n";
+        }
+        System.out.println(s);
         return selection;
     }
     //show databases???

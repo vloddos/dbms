@@ -9,10 +9,10 @@ import java.util.Map;
 /**
  * Special class for using in tests class only
  * So, for example, method parseInsertIntoTable() must return next params:
- *     -String name.image
- *     -String command.image
- *     -ArrayList<String> insertableColumns
- *     -ArrayList<String> insertableValues
+ * -String name.image
+ * -String command.image
+ * -ArrayList<String> insertableColumns
+ * -ArrayList<String> insertableValues
  * One "return" returns (sorry :)) one param, but for testing need all
  */
 public final class ArgsGuard {
@@ -39,8 +39,7 @@ public final class ArgsGuard {
     private int limit = -1;
     private int offset = -1;
 
-    public Map<String, String> convertToMap(ArrayList<String> key, ArrayList<String> value)
-    {
+    public Map<String, String> convertToMap(ArrayList<String> key, ArrayList<String> value) {
         Map<String, String> map = new LinkedHashMap<String, String>();
         for (int i = 0; i < key.size(); i++)
             map.put(key.get(i), value.get(i));
@@ -66,7 +65,7 @@ public final class ArgsGuard {
     public ArrayList<String> getInsertableValues() {
         return insertableValues;
     }
-    
+
     public String getInsertableValue(int i) {
         return insertableValues.get(i);
     }

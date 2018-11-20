@@ -5,7 +5,6 @@ import com.dbms.data_types.Varchar;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.function.BiFunction;
 
 public class Types {
 
