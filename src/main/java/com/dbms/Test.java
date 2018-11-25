@@ -1,7 +1,7 @@
 package com.dbms;
 
-import com.dbms.backend.DataBases;
-import com.dbms.backend.StorageEngine;
+import com.dbms.structs.DataBases;
+import com.dbms.storage.StorageEngine;
 
 import java.util.Arrays;
 import java.util.Vector;

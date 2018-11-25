@@ -1,4 +1,4 @@
-package com.dbms.backend;
+package com.dbms.structs;
 
 public class TypeDescription {
 

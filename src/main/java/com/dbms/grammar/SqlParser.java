@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import com.dbms.backend.*;
+import com.dbms.structs.*;
 
 public class SqlParser implements SqlParserConstants {
     void run() {

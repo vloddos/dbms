@@ -1,8 +1,6 @@
 package com.dbms.logic;
 
-import com.dbms.backend.DataBases;
-import com.dbms.backend.Table;
-import com.dbms.backend.TableHeader;
+import com.dbms.structs.DataBases;
 import com.dbms.grammar.ArgsGuard;
 import com.dbms.grammar.SqlParser;
 
@@ -32,15 +30,10 @@ public class ExpressionExecutor {
                     DataBases.useDataBase(args.getName());
                     break;
                 case "TABLE":
-                    DataBases.getCurrentDataBase().createTable(new Table(
-                            new TableHeader(
-                                    args.getName(),
-                                    args.getFields()
-                            )
-                    ));
+                    DataBases.getCurrentDataBase().createTable(args.getName(), args.getFields());
                     break;
                 case "SHOW":
-                    System.out.println(DataBases.getCurrentDataBase().showCreate(args.getName()));
+                    System.out.println(DataBases.getCurrentDataBase().getTable(args.getName()));
                     break;
                 case "exit":
                     DataBases.exit();
@@ -49,7 +42,7 @@ public class ExpressionExecutor {
                     DataBases.getCurrentDataBase().getTable(args.getName()).insert(args.convertToMap(args.getInsertableColumns(), args.getInsertableValues()));
                     break;
                 case "SELECT":
-                    DataBases.select(args.getInsertableColumns(), args.getName(), args.getLimit(), args.getOffset());
+                    //DataBases.select(args.getInsertableColumns(), args.getName(), args.getLimit(), args.getOffset());
                     break;
             }
             if (args.command.equals("exit"))
