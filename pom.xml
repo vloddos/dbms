@@ -23,6 +23,19 @@
             <version>1.4</version>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>com.esotericsoftware</groupId>
+            <artifactId>kryo</artifactId>
+            <version>5.0.0-RC1</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.massisframework/j-text-utils -->
+        <dependency>
+            <groupId>com.massisframework</groupId>
+            <artifactId>j-text-utils</artifactId>
+            <version>0.3.4</version>
+        </dependency>
     </dependencies>
 
     <build>
