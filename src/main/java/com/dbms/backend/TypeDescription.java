@@ -1,20 +1,34 @@
 package com.dbms.backend;
 
-import java.io.Serializable;
-
-public class TypeDescription implements Serializable {
-
-    private static final long serialVersionUID = 2722592316258236135L;
+public class TypeDescription {
 
     private String name;
-    private Integer length;
+    private int length = -1;
 
-    public void setLength(Integer length) {
+    //for kryo
+    private TypeDescription() {
+    }
+
+    public TypeDescription(String name) {
+        this.name = name;
+    }
+
+    public TypeDescription(String name, int length) {
+        this(name);
+        setLength(length);
+    }
+
+    public TypeDescription(String name, String length) {
+        this(name);
+        setLength(length);
+    }
+
+    public void setLength(int length) {
         this.length = length;
     }
 
     public void setLength(String length) {
-        this.length = Integer.valueOf(length);
+        this.length = Integer.parseInt(length);
     }
 
     public void setName(String name) {
@@ -25,16 +39,12 @@ public class TypeDescription implements Serializable {
         return name;
     }
 
-    public Integer getLength() {
+    public int getLength() {
         return length;
-    }
-
-    public TypeDescription(String name) {
-        this.name = name;
     }
 
     @Override
     public String toString() {
-        return name + (length == null ? "" : "(" + length + ")");
+        return name + (length == -1 ? "" : "(" + length + ")");
     }
 }

@@ -1,57 +1,40 @@
 package com.dbms.backend;
 
-import java.io.Serializable;
-import java.util.LinkedHashMap;
+import java.util.HashMap;
 import java.util.Map;
-import java.util.stream.Collectors;
 
-public class DataBase implements Serializable {//immutable methods???
+public class DataBase {//immutable methods???
 
-    private static final long serialVersionUID = -3880267854538026269L;
-
-    public String name;
-    private Map<String, Table> tables = new LinkedHashMap<>();
-
-    //hash database???
-    //changed rows/cells???
-    //views???
-    //functions???
+    private String name;
+    private Map<String, Table> tables = new HashMap<>();//all meta_data must be load
 
     public DataBase(String name) {
         this.name = name;
     }
 
-    public Table createTable(Table table) throws Exception {
-        if (tables.containsKey(table.header.name))
-            throw new Exception(String.format("The '%s' table already exists", table.header.name));
-
-        tables.put(table.header.name, table);
-        return table;//???
+    public DataBase(String name, Map<String, Table> tables) {
+        this.name = name;
+        this.tables = tables;
     }
 
-    public String showCreate(String name) throws Exception {
-        if (!tables.containsKey(name))
-            throw new Exception(String.format("The '%s' table does not exist", name));
+    public String getName() {
+        return name;
+    }
 
-        return
-                tables.get(name).header.fields.entrySet().stream()
-                        .map(e -> e.getKey() + " " + e.getValue())
-                        .collect(Collectors.joining(",\n\t", "create table " + name + "(\n\t", "\n)"));
+    public void createTable(String tableName, Map<String, TypeDescription> fields) throws Exception {
+        if (tables.containsKey(tableName))
+            throw new Exception(String.format("Table '%s' already exists", tableName));
+
+        var table = new Table(name, tableName, fields);
+        tables.put(tableName, table);
+        StorageEngine.writeTableHeader(name, table);
+        StorageEngine.initTableData(name, tableName);
     }
 
     public Table getTable(String name) throws Exception {
         if (!tables.containsKey(name))
-            throw new Exception(String.format("The '%s' table does not exist", name));
+            throw new Exception(String.format("Table '%s' does not exist", name));
 
         return tables.get(name);
-    }
-
-    public void test() {
-        System.out.println(tables.size());
-        /*tables.forEach(
-                (k, v) -> {
-                    System.out.println(k);
-                }
-        );*/
     }
 }

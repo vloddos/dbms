@@ -1,12 +1,12 @@
 package com.dbms.data_types;
 
-import java.io.Serializable;
-
-public class Varchar implements Serializable {
-
-    private static final long serialVersionUID = -807614549893159685L;
+public class Varchar {
 
     private char[] value;
+
+    //for kryo
+    private Varchar() {
+    }
 
     public static Varchar parseVarchar(String value, int length) {
         return new Varchar(value, length);

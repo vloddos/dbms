@@ -1,108 +1,62 @@
 package com.dbms.backend;
 
-import java.io.*;
-import java.nio.file.FileSystems;
+import dnl.utils.text.table.TextTable;
+
+import javax.swing.table.DefaultTableModel;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Vector;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class DataBases {
 
-    private static DataBase currentDataBase;//auto choose???
+    private static DataBase currentDataBase;
     private static Map<String, DataBase> dataBases = new HashMap<>();
 
-    //full loading
-    //lazy loading
-    static {
-        var db_directory = new File(db_path(""));
-        if (!db_directory.isDirectory()) {
-            db_directory.delete();
-            db_directory.mkdir();
-        }
-
-        try (
-                var s = Files.walk(FileSystems.getDefault().getPath(db_directory.getPath()))
-        ) {
-            s.forEach(
-                    p -> {
-                        var f = p.toFile();
-                        if (f.isFile()) {
-                            var db = readDataBase(f);
-                            if (db != null) {
-                                dataBases.put(db.name, db);
-                                System.out.println(db.name);//debug
-                            }
-                        }
-                    }
-            );
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    private DataBases() {
     }
 
-    private static String db_path(String name) {
-        return String.join(File.separator, "db", name);
-    }
+    public static void fullLoad() throws Exception {
+        dataBases = StorageEngine.readAllDataBases();
 
-    private static DataBase readDataBase(File file) {
-        try (
-                var oin = new ObjectInputStream(new FileInputStream(file))
-        ) {
-            return ((DataBase) oin.readObject());
-        } catch (StreamCorruptedException e1) {
-            System.out.println(String.format("The '%s' database is corrupted", file.getName()));
-        } catch (FileNotFoundException e2) {//???????????????
-            System.out.println(String.format("The '%s' database does not exist", file.getName()));
-        } catch (Exception e3) {
-            e3.printStackTrace();
-        }
-        return null;
-    }
-
-    private static void writeDataBase(DataBase dataBase) throws Exception {
-        var oout = new ObjectOutputStream(new FileOutputStream(db_path(dataBase.name)));
-        oout.writeObject(dataBase);
-        oout.close();
+        var o = dataBases.keySet().stream().findFirst();
+        if (o.isPresent())
+            useDataBase(o.get());
+        //start checker...
     }
 
     public static void createDataBase(String name) throws Exception {
-        if (dataBases.containsKey(name))
-            throw new Exception(String.format("The '%s' database already exists", name));
-
-        var db = new DataBase(name);
-        writeDataBase(db);
-        dataBases.put(name, db);
+        StorageEngine.initDataBase(name);
+        dataBases.put(name, new DataBase(name));
         useDataBase(name);
     }
 
-    public static void useDataBase(String name) throws Exception {
-        if (!dataBases.containsKey(name))
-            throw new Exception(String.format("The '%s' database does not exist", name));
-
-        currentDataBase = dataBases.get(name);
+    public static DataBase useDataBase(String name) throws Exception {
+        return currentDataBase = getDataBase(name);
     }
 
-    public static DataBase getCurrentDataBase() throws RuntimeException {
-        if (currentDataBase == null)
-            throw new RuntimeException("No database selected");
-
-        return currentDataBase;
-    }
-
-    public static DataBase getDataBase(String name) throws RuntimeException {
+    public static DataBase getDataBase(String name) throws Exception {
         if (!dataBases.containsKey(name))
-            throw new RuntimeException(String.format("The '%s' database does not exist", name));
+            dataBases.put(name, StorageEngine.readDataBase(name));
 
         return dataBases.get(name);
     }
 
+    public static DataBase getCurrentDataBase() throws Exception {
+        if (currentDataBase == null)
+            throw new Exception("No database selected");
+
+        return currentDataBase;
+    }
+
     public static void exit() {
+        System.exit(0);
         //shutdown executors...
         //не перезаписывать часто на диск
-        dataBases.forEach(//если не удалось записать 1 бд то должна быть попытка записать остальные
+        /*dataBases.forEach(//если не удалось записать 1 бд то должна быть попытка записать остальные
                 (k, v) -> {
                     try {
                         writeDataBase(v);
@@ -110,47 +64,37 @@ public class DataBases {
                         e.printStackTrace();
                     }
                 }
-        );
-        System.exit(0);
+        );*/
     }
 
     /*
-    на вход нужно подать предобработанный лимит,офсет,
+    на вход нужно подать предобработанный лимит,офсет,where
     то есть, если не было указано лимита, то он должен быть равен Integer.MAX_VALUE,
-    если не было указано офсета, то он должен быть равен 0
+    если не было указано офсета, то он должен быть равен 0,
+    если не было указано where, то он должен быть равен null
     */
-    public static Map<String, ArrayList> select(ArrayList<String> fieldNames, String tableName, int limit, int offset) throws Exception {
+    public static TextTable select(Vector<String> fieldNames, int limit, int offset, String tableName, String where) throws Exception {
         var table = currentDataBase.getTable(tableName);
-        var selection = new LinkedHashMap<String, ArrayList>();//запилить отдельную структуру???
+        var fieldIndexes = fieldNames.stream().map(table::getFieldIndex).collect(Collectors.toList());
+        var whereExpression = table.where(where, "r");
 
-        for (var fn : fieldNames) {
-            var tmp = table.data.fields.get(fn);
-            if (tmp == null)
-                throw new RuntimeException(String.format("No such field '%s' in table '%s'", fn, table.header.name));
-            if (limit == -1)
-                limit = Integer.MAX_VALUE;
-            if (offset == -1)
-                offset = 0;
-            selection.put(
-                    fn,
-                    (ArrayList) tmp.stream()
-                            .skip(offset)
-                            .limit(limit)
-                            .collect(Collectors.toCollection(ArrayList::new))
-            );
-        }
+        var js = ScriptManager.scriptEngineManager.getEngineByName("js");
 
-        var size = selection.get(fieldNames.get(0)).size();
-        var s = selection.keySet().stream().collect(Collectors.joining(" ", "", "\n"));
-        for (int i = 0; i < size; ++i) {
-            StringBuilder sb = new StringBuilder();
-            final int j = i;
-            selection.values().forEach(fv -> sb.append(fv.get(j) + " "));
-            s += sb.toString() + "\n";
+        var rowIterator = StorageEngine.getRowIterator(currentDataBase.getName(), tableName);
+        IntStream.range(0, offset).forEach(i -> rowIterator.next());
+        var rows = new Vector<Vector>();
+        for (int i = 0; i < limit && rowIterator.hasNext(); ++i) {
+            var r = rowIterator.next();
+            js.put("r", r);
+            if (where == null || ((boolean) js.eval(whereExpression.getValueForEval()))) {
+                var row = new Vector<>();
+                fieldIndexes.forEach(j -> row.add(r.get(j)));
+                rows.add(row);
+            }
         }
-        System.out.println(s);
-        return selection;
+        return new TextTable(new DefaultTableModel(rows, fieldNames));
     }
+
     //show databases???
     //alter new thread???
 }

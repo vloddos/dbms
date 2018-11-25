@@ -1,13 +1,14 @@
 package com.dbms.data_types;
 
-import java.io.Serializable;
 import java.util.Arrays;
 
-public class Char implements Serializable {
-
-    private static final long serialVersionUID = 1218065345404311779L;
+public class Char {
 
     private char[] value;
+
+    //for kryo
+    private Char() {
+    }
 
     public static Char parseChar(String value, int length) {
         return new Char(value, length);

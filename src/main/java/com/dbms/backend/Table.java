@@ -1,45 +1,148 @@
 package com.dbms.backend;
 
-import java.io.Serializable;
+import javafx.util.Pair;
+
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.Callable;
+import java.util.function.BiFunction;
+import java.util.function.Consumer;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
-public class Table implements Serializable {
+public class Table {
 
-    private static final long serialVersionUID = 7321072388697834267L;
+    private String dataBaseName;
+    private String tableName;
 
-    public TableHeader header;
-    public TableData data = new TableData();
+    public Map<String, TypeDescription> fieldDescriptions;//must be LinkedHashMap
+    private Map<String, Integer> fieldIndexes = new HashMap<>();
 
-    public Table(TableHeader header) {
-        this.header = header;
-        this.header.fields.forEach((k, v) -> data.fields.put(k, new ArrayList()));
+    //for kryo
+    private Table() {
     }
 
-    public void insert(Map<String, String> fields) throws RuntimeException {
-        for (var f : fields.keySet())
-            if (!data.fields.containsKey(f))
-                throw new RuntimeException(String.format("No such field '%s' in table '%s'", f, header.name));
-        data.fields.forEach(
-                (k, v) ->
-                        v.add(
-                                Types.cast(
-                                        fields.get(k),
-                                        header.fields.get(k)
+    public Table(String dataBaseName, String tableName, Map<String, TypeDescription> fieldDescriptions) throws RuntimeException {
+        fieldDescriptions.forEach(
+                (k, v) -> {
+                    var typeName = v.getName();
+                    if (!Types.haveType(typeName))
+                        throw new RuntimeException(
+                                String.format(
+                                        "Attempting to create a table '%s' was specified the wrong data type '%s' of the field '%s'",
+                                        tableName,
+                                        typeName,
+                                        k
                                 )
-                        )
+                        );
+                }
         );
+
+        this.dataBaseName = dataBaseName;
+        this.tableName = tableName;
+        this.fieldDescriptions = fieldDescriptions;
+
+        int[] i = {0};
+        this.fieldDescriptions.keySet().forEach(k -> fieldIndexes.put(k, i[0]++));//linkedkeyset in linkedhashmap??? post inc???
     }
 
-    //public void update
-    //public void update where
-    public void delete(String tableName) {
-        data.fields.values().forEach(al -> al.clear());
+    public String getTableName() {
+        return tableName;
     }
-    //public void delete where
 
-    public void test() {
-        header.fields.forEach((k, v) -> System.out.println(k + ":" + v));
+    public void throwIfNoField(String fieldName) throws RuntimeException {
+        if (!fieldDescriptions.containsKey(fieldName))
+            throw new RuntimeException(String.format("No such field '%s' in table '%s'", fieldName, tableName));
     }
-    //select
+
+    public int getFieldIndex(String fieldName) {
+        throwIfNoField(fieldName);
+        return fieldIndexes.get(fieldName);
+    }
+
+    public void insert(Map<String, String> fields) throws Exception {
+        fields.keySet().forEach(this::throwIfNoField);
+
+        var row = new ArrayList();
+        IntStream.range(0, fieldDescriptions.size()).forEach(i -> row.add(null));
+
+        this.fieldDescriptions.keySet().forEach(
+                k -> row.set(
+                        fieldIndexes.get(k),
+                        Types.cast(
+                                fields.get(k),
+                                this.fieldDescriptions.get(k)
+                        )
+                )
+        );
+        StorageEngine.appendRow(dataBaseName, tableName, row);
+    }
+
+    public Expression where(String where, String rowName) {
+        var fields = new HashMap<String, Pair<String, Integer>>();
+        fieldIndexes.forEach((fn, i) -> fields.put(fn, new Pair<>(rowName, i)));
+        return new Expression(where, fields);
+    }
+
+    public void delete(String where) throws Exception {
+        if (where == null) {
+            StorageEngine.initTableData(dataBaseName, tableName);
+            return;
+        }
+
+        var tmp = StorageEngine.createTempTableData(dataBaseName, tableName);
+
+        var whereExpression = where(where, "row");
+
+        var js = ScriptManager.scriptEngineManager.getEngineByName("js");
+
+        var rowIterator = StorageEngine.getRowIterator(dataBaseName, tableName);
+        while (rowIterator.hasNext()) {
+            var row = rowIterator.next();
+            js.put("row", row);
+            if (!((boolean) js.eval(whereExpression.getValueForEval())))
+                StorageEngine.appendRow(dataBaseName, tmp, row);
+        }
+
+        StorageEngine.replaceTableDataToTemp(dataBaseName, tableName);
+    }
+
+    public void update(Map<String, String> set, String where) throws Exception {
+        set.keySet().forEach(this::throwIfNoField);
+
+        var tmp = StorageEngine.createTempTableData(dataBaseName, tableName);
+
+        var whereExpression = where(where, "row");
+        set.replaceAll((fn, e) -> new Expression(e, whereExpression.getFields()).getValueForEval());
+
+        var js = ScriptManager.scriptEngineManager.getEngineByName("js");
+
+        var rowIterator = StorageEngine.getRowIterator(dataBaseName, tableName);
+        while (rowIterator.hasNext()) {
+            var row = rowIterator.next();
+            var tmprow = ((ArrayList) row.clone());
+            js.put("row", row);
+            for (var entry : set.entrySet())
+                if (where == null || ((boolean) js.eval(whereExpression.getValueForEval())))
+                    tmprow.set(
+                            fieldIndexes.get(entry.getKey()),
+                            js.eval(entry.getValue())
+                    );
+
+            StorageEngine.appendRow(dataBaseName, tmp, tmprow);
+        }
+
+        StorageEngine.replaceTableDataToTemp(dataBaseName, tableName);
+    }
+
+    @Override
+    public String toString() {
+        return
+                fieldDescriptions.entrySet().stream()
+                        .map(e -> e.getKey() + " " + e.getValue())
+                        .collect(Collectors.joining(",\n\t", "create table " + tableName + "(\n\t", "\n)"));
+    }
 }
