@@ -1,8 +1,6 @@
 options
 {
     IGNORE_CASE = true;
-    STATIC = false;
-    LOOKAHEAD = 2;
 }
 
 PARSER_BEGIN (SqlParser)
@@ -70,7 +68,6 @@ TOKEN:
      <COMPARE: "<" | ">" | "=" | "<>" | "<=" | ">=">
 }
 
-//LITERALS
 TOKEN:
 {
     <STRING_LITERAL: (["a" - "z", "_", "0"-"9", "-", "@", "."])+>
@@ -135,7 +132,7 @@ ArgsGuard parse() throws Exception:
     |
     (
         args = parseExit()
-    {return args;}
+        {return args;}
     )
 
     {return args;}

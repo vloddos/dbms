@@ -1,10 +1,10 @@
 package com.dbms.storage;
 
+import com.dbms.data_types.Char;
+import com.dbms.data_types.Varchar;
 import com.dbms.structs.DataBase;
 import com.dbms.structs.Table;
 import com.dbms.structs.TypeDescription;
-import com.dbms.data_types.Char;
-import com.dbms.data_types.Varchar;
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;

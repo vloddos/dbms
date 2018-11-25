@@ -30,7 +30,6 @@
             <version>5.0.0-RC1</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/com.massisframework/j-text-utils -->
         <dependency>
             <groupId>com.massisframework</groupId>
             <artifactId>j-text-utils</artifactId>

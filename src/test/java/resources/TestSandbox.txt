@@ -1,4 +1,4 @@
 SELECT age from ABC;
 UPDATE ABC SET ContactName = ContactName + 1 * 2, City = 123 WHERE CustomerID = 1;
-SELECT age from ABC where r = 1 OR test<> 8;
+SELECT age from ABC where r = 1 OR test <> 8;
 exit;

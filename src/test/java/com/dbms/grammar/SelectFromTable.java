@@ -1,7 +1,5 @@
-package com.dbms;
+package com.dbms.grammar;
 
-import com.dbms.grammar.ArgsGuard;
-import com.dbms.grammar.SqlParser;
 import org.junit.Test;
 
 import java.io.File;

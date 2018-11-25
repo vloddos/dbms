@@ -1,4 +1,4 @@
-package com.dbms;
+package com.dbms.grammar;
 
 import com.dbms.grammar.ArgsGuard;
 import junitx.framework.FileAssert;
