@@ -121,16 +121,16 @@ public class Table {
         var rowIterator = StorageEngine.getRowIterator(dataBaseName, tableName);
         while (rowIterator.hasNext()) {
             var row = rowIterator.next();
-            var tmprow = ((ArrayList) row.clone());
+            var tmpRow = ((ArrayList) row.clone());
             js.put("row", row);
             for (var entry : set.entrySet())
                 if (where == null || ((boolean) js.eval(whereExpression.getValueForEval())))
-                    tmprow.set(
+                    tmpRow.set(
                             fieldIndexes.get(entry.getKey()),
                             js.eval(entry.getValue())
                     );
 
-            StorageEngine.appendRow(dataBaseName, tmp, tmprow);
+            StorageEngine.appendRow(dataBaseName, tmp, tmpRow);
         }
 
         StorageEngine.replaceTableDataToTemp(dataBaseName, tableName);

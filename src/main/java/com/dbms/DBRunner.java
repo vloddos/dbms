@@ -9,8 +9,6 @@ import java.util.Vector;
 public final class DBRunner {
 
     public static void main(String[] args) throws Exception {
-        //new ExpressionExecutor().execute();
-
         /*var map = new HashMap<String, Pair<String, Integer>>();
         map.put("f1", new Pair<>("row", 0));
         map.put("f2", new Pair<>("row", 1));

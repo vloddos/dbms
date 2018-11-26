@@ -8,25 +8,24 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="540.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="540.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dbms.gui.MainController">
    <children>
-      <Button layoutX="325.0" layoutY="482.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: #28dce2; -fx-background-radius: 25;" text="Execute" textFill="WHITE">
+      <Button fx:id="executeButton" layoutX="325.0" layoutY="482.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: #28dce2; -fx-background-radius: 25;" text="Execute" textFill="WHITE" AnchorPane.bottomAnchor="10.0">
          <font>
-            <Font size="20.0" />
+            <Font size="22.0" />
          </font>
       </Button>
-      <TextArea layoutY="25.0" prefHeight="200.0" prefWidth="800.0">
+      <TextArea fx:id="inputArea" layoutY="25.0" prefHeight="200.0" prefWidth="800.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <font>
             <Font size="18.0" />
          </font>
       </TextArea>
-      <TextArea disable="true" layoutY="250.0" prefHeight="215.0" prefWidth="800.0">
+      <TextArea fx:id="outputArea" disable="true" layoutY="250.0" prefHeight="215.0" prefWidth="800.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <font>
             <Font size="18.0" />
          </font>
       </TextArea>
-      <MenuBar prefHeight="25.0" prefWidth="800.0" style="-fx-background-color: #00bcd4;">
+      <MenuBar prefHeight="25.0" prefWidth="800.0" style="-fx-background-color: #00bcd4;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <menus>
           <Menu mnemonicParsing="false" text="Database">
             <items>

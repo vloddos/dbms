@@ -3,43 +3,16 @@
   <component name="ChangeListManager">
     <list default="true" id="11211ecf-683e-4af0-9764-3dbaeae9a3f7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbms/grammar/ParseException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbms/grammar/SQLGrammar.jj" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbms/grammar/SQLGrammar.jj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbms/grammar/SimpleCharStream.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbms/grammar/SqlParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbms/grammar/SqlParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbms/grammar/SqlParserConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbms/grammar/SqlParserConstants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbms/grammar/SqlParserTokenManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbms/grammar/SqlParserTokenManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbms/grammar/Token.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbms/grammar/TokenMgrError.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbms/logic/ExpressionExecutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbms/logic/ExpressionExecutor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/dbms/grammar/ExitTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/dbms/grammar/ExitTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/dbms/DBRunner.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dbms/DBRunner.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/dbms/backend/DataBase.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/dbms/backend/DataBases.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/dbms/backend/ExecutorManager.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/dbms/backend/Expression.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/dbms/backend/RowIterator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/dbms/backend/ScriptManager.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/dbms/backend/StorageEngine.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/dbms/backend/Table.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/dbms/backend/TableData.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/dbms/backend/TableHeader.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/dbms/backend/TypeDescription.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/dbms/backend/Types.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/dbms/backend/VAFunction.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbms/DBRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbms/DBRunner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbms/gui/main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbms/gui/main.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbms/structs/Table.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbms/structs/Table.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/select_from_table_test/Actual.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/select_from_table_test/Actual.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/dbms/grammar/ArgsGuard.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dbms/grammar/ArgsGuard.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/dbms/grammar/ParseException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dbms/grammar/ParseException.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/dbms/grammar/SimpleCharStream.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dbms/grammar/SimpleCharStream.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/dbms/grammar/SqlParser$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/dbms/grammar/SqlParser$JJCalls.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/dbms/grammar/SqlParser$LookaheadSuccess.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/dbms/grammar/SqlParser.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dbms/grammar/SqlParser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/dbms/grammar/SqlParserConstants.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dbms/grammar/SqlParserConstants.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/dbms/grammar/SqlParserTokenManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dbms/grammar/SqlParserTokenManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/dbms/grammar/Token.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dbms/grammar/Token.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/dbms/grammar/TokenMgrError.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dbms/grammar/TokenMgrError.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/dbms/logic/ExpressionExecutor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dbms/logic/ExpressionExecutor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/dbms/grammar/ExitTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/dbms/grammar/ExitTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dbms/structs/Table.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dbms/structs/Table.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/dbms/grammar/AbstractTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/dbms/grammar/AbstractTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/dbms/grammar/SelectFromTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/dbms/grammar/SelectFromTable.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -58,31 +31,39 @@
     <option name="myElementSize" value="126" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+    <leaf>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/gui/main.fxml">
-          <provider editor-type-id="JavaFX-Scene-Builder" />
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/structs/Table.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" selection-start-line="10" selection-end-line="10" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/com/dbms/grammar/InsertIntoTableTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+            <state relative-caret-position="1795">
+              <caret line="137" lean-forward="true" selection-start-line="137" selection-end-line="137" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/test/java/resources/select_from_table_test/SelectFromTable.txt">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/gui/MainController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="17" selection-start-column="17" selection-end-column="17" />
+            <state relative-caret-position="340">
+              <caret line="20" column="68" lean-forward="true" selection-start-line="20" selection-start-column="68" selection-end-line="20" selection-end-column="68" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/DBRunner.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="10" column="61" selection-start-line="10" selection-start-column="61" selection-end-line="10" selection-end-column="61" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -92,8 +73,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -143,13 +124,15 @@
         <option value="$PROJECT_DIR$/src/main/java/com/dbms/backend/Table.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/dbms/backend/DataBases.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/dbms/storage/RowIterator.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/dbms/DBRunner.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/dbms/storage/StorageEngine.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/dbms/grammar/SqlParserTokenManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/dbms/logic/ExpressionExecutor.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/dbms/grammar/SQLGrammar.jj" />
         <option value="$PROJECT_DIR$/src/main/java/com/dbms/grammar/SqlParser.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/dbms/gui/main.fxml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/dbms/structs/Table.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/dbms/DBRunner.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/dbms/gui/MainController.java" />
       </list>
     </option>
   </component>
@@ -182,6 +165,7 @@
     </navigator>
     <panes>
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -222,7 +206,25 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="dbms" type="462c0819:PsiDirectoryNode" />
+              <item name="grammar" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dbms" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dbms" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="dbms" type="462c0819:PsiDirectoryNode" />
               <item name="gui" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dbms" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dbms" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="dbms" type="462c0819:PsiDirectoryNode" />
+              <item name="logic" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="dbms" type="b2602c69:ProjectViewProjectNode" />
@@ -266,14 +268,13 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SearchEverywhereHistoryKey" value="getCol&#9;PSI&#9;JAVA://com.dbms.grammar.ArgsGuard#getColumn&#10;a.&#9;FILE&#9;file://C:/Users/User/IdeaProjects/dbms/a.txt" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543160248420" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543208370170" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -421,16 +422,12 @@
       <workItem from="1542252765884" duration="1839000" />
       <workItem from="1543151751882" duration="788000" />
       <workItem from="1543196860081" duration="197000" />
+      <workItem from="1543199223833" duration="1272000" />
+      <workItem from="1543205152902" duration="2670000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="com_dbms_in_dbms - 2018.11.15 at 11h 24m 58s.xml">
-      <configuration name="com.dbms in dbms" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="com_dbms_in_dbms - 2018.11.15 at 13h 10m 50s.xml">
-      <configuration name="com.dbms in dbms" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="com_dbms_in_dbms - 2018.11.15 at 13h 26m 34s.xml">
       <configuration name="com.dbms in dbms" configurationId="JUnit" />
     </history-entry>
@@ -455,9 +452,15 @@
     <history-entry file="com_dbms_grammar_in_dbms - 2018.11.26 at 00h 50m 28s.xml">
       <configuration name="com.dbms.grammar in dbms" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="com_dbms_grammar_in_dbms - 2018.11.26 at 12h 37m 44s.xml">
+      <configuration name="com.dbms.grammar in dbms" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="com_dbms_grammar_in_dbms - 2018.11.26 at 14h 38m 56s.xml">
+      <configuration name="com.dbms.grammar in dbms" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="98166000" />
+    <option name="totallyTimeSpent" value="102108000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -472,17 +475,16 @@
     <frame x="-6" y="-6" width="1549" height="837" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1602951" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16431925" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
       <window_info id="UI Designer" order="4" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
-      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.47241867" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.34857142" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3479491" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39745402" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -492,7 +494,7 @@
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.32285714" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.3281471" />
-      <window_info anchor="right" id="Maven" />
+      <window_info anchor="bottom" id="Docker" order="12" show_stripe_button="false" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -503,19 +505,13 @@
       <window_info anchor="right" id="Maven Projects" order="7" weight="0.32997987" />
       <window_info anchor="right" id="Palette&#9;" order="8" />
       <window_info anchor="right" id="Coverage" order="9" side_tool="true" weight="0.25486252" />
+      <window_info anchor="right" id="Maven" order="10" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.12/junit-4.12.jar!/org/junit/runners/BlockJUnit4ClassRunner.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="49" selection-start-line="49" selection-end-line="49" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.12/junit-4.12.jar!/org/junit/runners/ParentRunner.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="115">
@@ -651,13 +647,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/structs/Table.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/structs/Types.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -748,16 +737,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/logic/ExpressionExecutor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="29" column="22" selection-start-line="29" selection-start-column="22" selection-end-line="29" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/structs/DataBase.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -797,23 +776,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/grammar/SQLGrammar.jj">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="1" lean-forward="true" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/DBRunner.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="15" column="43" selection-start-line="15" selection-start-column="43" selection-end-line="15" selection-end-column="43" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/resources/insert_into_table_test/InsertIntoTable.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -821,25 +783,72 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/gui/main.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
+    <entry file="file://$PROJECT_DIR$/src/test/java/resources/select_from_table_test/SelectFromTable.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
+        <state>
+          <caret column="17" selection-start-column="17" selection-end-column="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/dbms/grammar/InsertIntoTableTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        <state relative-caret-position="85">
+          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/resources/select_from_table_test/SelectFromTable.txt">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/gui/main.fxml">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="17" selection-start-column="17" selection-end-column="17" />
+        <state relative-caret-position="170">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/structs/Table.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1795">
+          <caret line="137" lean-forward="true" selection-start-line="137" selection-end-line="137" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/DBRunner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="61" selection-start-line="10" selection-start-column="61" selection-end-line="10" selection-end-column="61" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/grammar/SQLGrammar.jj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="26" lean-forward="true" selection-start-line="17" selection-start-column="26" selection-end-line="17" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/logic/ExpressionExecutor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="36" selection-start-line="19" selection-start-column="36" selection-end-line="19" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/gui/MainController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="68" lean-forward="true" selection-start-line="20" selection-start-column="68" selection-end-line="20" selection-end-column="68" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
