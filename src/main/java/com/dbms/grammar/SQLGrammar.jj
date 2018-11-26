@@ -1,25 +1,22 @@
 options
 {
     IGNORE_CASE = true;
+    STATIC = false;
 }
 
 PARSER_BEGIN (SqlParser)
     package com.dbms.grammar;
 
+    import com.dbms.structs.TypeDescription;
+
     import java.util.ArrayList;
     import java.util.LinkedHashMap;
     import java.util.Map;
 
-    import com.dbms.backend.*;
-
     public class SqlParser {
         void run() throws Exception {
             while (true) {
-                try {
-                    parse();
-                } catch(Throwable e) {
-                    e.printStackTrace();
-                }
+                parse();
             }
         }
     }
@@ -149,8 +146,9 @@ ArgsGuard parseCreateDatabase() throws Exception:
     <SEMICOLON>
     {
         args.setName(name.image);
+
         if (args != null)
-                return args;
+            return args;
         }
     [args = parse()]
     {return args;}
@@ -167,7 +165,6 @@ ArgsGuard parseUseDatabase() throws Exception:
     <SEMICOLON>
     {
         args.setName(name.image);
-        //DataBases.useDataBase(name.image);
         if (args != null)
             return args;
     }
@@ -183,25 +180,17 @@ ArgsGuard parseCreateTable() throws Exception:
 {
     <CREATE> args.command = <TABLE>
     name = <STRING_LITERAL>
-
     <OPEN_BRACKET>
     {
         args.setFields(getFields());
-        /*DataBases.getCurrentDataBase().createTable(
-            new Table(
-                new TableHeader(
-                    name.image,
-                    getFields(args)
-                )
-            )
-        );*/
     }
     <CLOSE_BRACKET>
     <SEMICOLON>
     {
         args.setName(name.image);
+
         if (args != null)
-                return args;
+            return args;
     }
     [args = parse()]
     {return args;}
@@ -218,11 +207,9 @@ ArgsGuard parseShowCreateTable() throws Exception:
     <SEMICOLON>
     {
         args.setName(name.image);
-        //System.out.println(
-            //DataBases.getCurrentDataBase().showCreate(name.image)
-       // );
+
         if (args != null)
-                return args;
+            return args;
     }
     [args = parse()]
     {return args;}
@@ -254,7 +241,7 @@ ArgsGuard parseInsertIntoTable() throws Exception:
         args.setInsertableValues(insertableValues);
 
         if (args != null)
-                return args;
+            return args;
     }
     [args = parse()]
     {return args;}
@@ -286,8 +273,9 @@ ArgsGuard parseSelectFromTable() throws Exception:
 
         if (offset != null)
             args.setOffset(Integer.parseInt(offset.image));
+
         if (args != null)
-                return args;
+            return args;
     }
     [args = parse()]
     {return args;}
@@ -296,7 +284,7 @@ ArgsGuard parseSelectFromTable() throws Exception:
 ArgsGuard parseUpdate() throws Exception:
 {
     Token name, math, sign, updatableColumn, updatableValue,
-     compareColumn = null, compareSign = null, compareValue = null, comparePredicat = null;
+        compareColumn = null, compareSign = null, compareValue = null, comparePredicat = null;
 
     ArrayList<String> updatableColumns = new ArrayList<String>();
     ArrayList<String> updatableValues = new ArrayList<String>();
@@ -312,41 +300,46 @@ ArgsGuard parseUpdate() throws Exception:
     args.command = <UPDATE>
     name = <STRING_LITERAL>
     <SET>
-
     updatableColumn = <STRING_LITERAL>
     //FIXME: here need only "="
     <COMPARE>
     updatableValue = <STRING_LITERAL>
-    [sign = <MATH_OPERATION_LITEARAL>
-    { updatableValue.image += sign.image; }]
-
+    [
+        sign = <MATH_OPERATION_LITEARAL>
+        {
+            updatableValue.image += sign.image;
+        }
+    ]
     {
         updatableColumns.add(updatableColumn.image);
         math = updatableValue;
         //updatableValues.add(updatableValue.image);
     }
-
     (
             updatableValue = <STRING_LITERAL>
-            [sign = <MATH_OPERATION_LITEARAL>
-            { updatableValue.image += sign.image; }]
-
+            [
+                sign = <MATH_OPERATION_LITEARAL>
+                {
+                    updatableValue.image += sign.image;
+                }
+            ]
             {
                 math.image += updatableValue.image;
                 //updatableValues.add(updatableValue.image);
             }
     )*
-
     (
         <COMMA>
         updatableColumn = <STRING_LITERAL>
         //FIXME: here need only "="
         <COMPARE>
         updatableValue = <STRING_LITERAL>
-        [sign = <MATH_OPERATION_LITEARAL>
-        {updatableValue.image += sign.image; }]
-
-
+        [
+            sign = <MATH_OPERATION_LITEARAL>
+            {
+                updatableValue.image += sign.image;
+            }
+        ]
         {
             updatableValues.add(math.image);
             math.image = updatableValue.image;
@@ -355,16 +348,21 @@ ArgsGuard parseUpdate() throws Exception:
         }
         (
             updatableValue = <STRING_LITERAL>
-            [sign = <MATH_OPERATION_LITEARAL>
-            { updatableValue.image += sign.image; }]
-
+            [
+                sign = <MATH_OPERATION_LITEARAL>
+                {
+                    updatableValue.image += sign.image;
+                }
+            ]
             {
                 math.image += updatableValue.image;
                 //updatableValues.add(updatableValue.image);
             }
          )*
     )*
-    {updatableValues.add(math.image);}
+    {
+        updatableValues.add(math.image);
+    }
     [
         <WHERE>
         updatableValue = <STRING_LITERAL>
@@ -389,33 +387,8 @@ ArgsGuard parseUpdate() throws Exception:
         )*
 
         {compareValues.add(math.image);}
-
-        /*compareColumn = <STRING_LITERAL>
-        compareSign = <COMPARE>
-        compareValue = <STRING_LITERAL>
-
-        {
-            compareColumns.add(compareColumn.image);
-            compareSigns.add(compareSign.image);
-            compareValues.add(compareValue.image);
-        }
-
-        (
-            comparePredicat = <PREDICAT>
-            compareColumn = <STRING_LITERAL>
-            compareSign = <COMPARE>
-            compareValue = <STRING_LITERAL>
-
-            {
-                compareColumns.add(compareColumn.image);
-                compareSigns.add(compareSign.image);
-                compareValues.add(compareValue.image);
-                comparePredicats.add(comparePredicat.image);
-            }
-        )**/
     ]
     <SEMICOLON>
-
     {
         args.setName(name.image);
         args.setUpdatableColumns(updatableColumns);
@@ -426,7 +399,7 @@ ArgsGuard parseUpdate() throws Exception:
         args.setCompareValues(compareValues);
         args.setComparePredicats(comparePredicats);
         if (args != null)
-                return args;
+            return args;
     }
     [args = parse()]
     {return args;}
@@ -446,34 +419,6 @@ ArgsGuard parseDelete() throws Exception:
 {
     args.command = <DELETE> [star = <STAR>] <FROM>
     name = <STRING_LITERAL>
-
-    /*[
-        <WHERE>
-
-        compareColumn = <STRING_LITERAL>
-        compareSign = <COMPARE>
-        compareValue = <STRING_LITERAL>
-
-        {
-            compareColumns.add(compareColumn.image);
-            compareSigns.add(compareSign.image);
-            compareValues.add(compareValue.image);
-        }
-
-        (
-            comparePredicat = <PREDICAT>
-            compareColumn = <STRING_LITERAL>
-            compareSign = <COMPARE>
-            compareValue = <STRING_LITERAL>
-
-            {
-                compareColumns.add(compareColumn.image);
-                compareSigns.add(compareSign.image);
-                compareValues.add(compareValue.image);
-                comparePredicats.add(comparePredicat.image);
-            }
-        )*
-    ]*/
     [
         <WHERE>
         updatableValue = <STRING_LITERAL>
@@ -482,7 +427,6 @@ ArgsGuard parseDelete() throws Exception:
         {updatableValue.image += sign.image; }]
         [sign = <MATH_OPERATION_LITEARAL>
         {updatableValue.image += sign.image; }]
-
         {math.image = updatableValue.image;}
 
         (
@@ -501,7 +445,6 @@ ArgsGuard parseDelete() throws Exception:
         {compareValues.add(math.image);}
     ]
     <SEMICOLON>
-
     {
         args.setName(name.image);
         args.setCompareColumns(compareColumns);
@@ -510,7 +453,7 @@ ArgsGuard parseDelete() throws Exception:
         args.setComparePredicats(comparePredicats);
 
         if (args != null)
-                return args;
+            return args;
     }
     [args = parse()]
     {return args;}
@@ -523,10 +466,6 @@ ArgsGuard parseExit():
 {
     args.command = <EXIT>
     <SEMICOLON>
-    {
-        //DataBases.exit();
-        //return command;
-    }
     {return args;}
 }
 
@@ -590,8 +529,7 @@ Map<String, TypeDescription> getFields():
         typeDescription = getTypeDescription()
 
         {
-          fields.put(TypeName.image, typeDescription);
-          //System.out.println("[Recursion] new struct populated < " + TypeName.image + ">");
+            fields.put(TypeName.image, typeDescription);
         }
     )*
     {return fields;}
@@ -605,7 +543,7 @@ TypeDescription getTypeDescription():
 }
 {
     type = <STRING_LITERAL>
-    [<OPEN_BRACKET>length = <STRING_LITERAL><CLOSE_BRACKET>]
+    [<OPEN_BRACKET> length = <STRING_LITERAL><CLOSE_BRACKET>]
     {
         typeDescription = new TypeDescription(type.image);
 

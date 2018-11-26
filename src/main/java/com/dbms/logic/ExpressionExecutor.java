@@ -27,7 +27,7 @@ public class ExpressionExecutor {
                     DataBases.createDataBase(args.getName());
                     break;
                 case "USE":
-                    DataBases.useDataBase(args.getName());
+                    //DataBases.useDataBase(args.getName());
                     break;
                 case "TABLE":
                     DataBases.getCurrentDataBase().createTable(args.getName(), args.getFields());

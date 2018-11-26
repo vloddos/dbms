@@ -1,7 +1,5 @@
 package com.dbms.grammar;
 
-import com.dbms.grammar.ParseException;
-import com.dbms.grammar.SqlParser;
 import org.junit.Assert;
 import org.junit.Test;
 
