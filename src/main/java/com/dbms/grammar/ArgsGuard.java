@@ -27,6 +27,7 @@ public final class ArgsGuard {
     private ArrayList<String> compareSigns = new ArrayList<String>();
     private ArrayList<String> compareValues = new ArrayList<String>();
     private ArrayList<String> comparePredicats = new ArrayList<String>();
+    private String where = null;
 
     //For "UPDATE" conditions
     private ArrayList<String> updatableColumns = new ArrayList<String>();
@@ -101,6 +102,10 @@ public final class ArgsGuard {
     public ArrayList<String> getCompareColumns() {
         return compareColumns;
     }
+
+    public void setWhere(String w) { this.where = w; }
+
+    public String getWhere() { return this.where; }
 
     public void setCompareColumns(ArrayList<String> compareColumns) {
         this.compareColumns = compareColumns;

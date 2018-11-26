@@ -1,1 +1,1 @@
-SELECT id, name, peoples FROM City LIMIT 5 OFFSET 2;
+SELECT id, name, peoples FROM City WHERE age = 5 LIMIT 5 OFFSET 2;

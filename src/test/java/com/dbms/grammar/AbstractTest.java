@@ -24,6 +24,10 @@ public abstract class AbstractTest {
         actual.write(args.getInsertableColumns().get(args.getInsertableColumns().size() - 1) + "\n");
     }
 
+    protected void writeWhere(FileWriter actual, ArgsGuard args) throws IOException {
+        actual.write(args.getWhere() + "\n");
+    }
+
     protected void writeInsertableValues(FileWriter actual, ArgsGuard args) throws IOException {
         for (int i = 0; i < args.getInsertableValues().size() - 1; i++)
             actual.write(args.getInsertableValue(i) + ", ");

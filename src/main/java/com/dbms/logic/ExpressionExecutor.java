@@ -6,7 +6,9 @@ import com.dbms.grammar.SqlParser;
 
 import java.io.File;
 import java.io.FileReader;
+import java.util.Arrays;
 import java.util.Scanner;
+import java.util.Vector;
 
 public class ExpressionExecutor {
 
@@ -27,7 +29,7 @@ public class ExpressionExecutor {
                     DataBases.createDataBase(args.getName());
                     break;
                 case "USE":
-                    //DataBases.useDataBase(args.getName());
+                    DataBases.useDataBase(args.getName());
                     break;
                 case "TABLE":
                     DataBases.getCurrentDataBase().createTable(args.getName(), args.getFields());
@@ -42,8 +44,12 @@ public class ExpressionExecutor {
                     DataBases.getCurrentDataBase().getTable(args.getName()).insert(args.convertToMap(args.getInsertableColumns(), args.getInsertableValues()));
                     break;
                 case "SELECT":
-                    //DataBases.select(args.getInsertableColumns(), args.getName(), args.getLimit(), args.getOffset());
+                    DataBases.select(new Vector(Arrays.asList(args.getInsertableColumns())), args.getLimit(), args.getOffset(),  args.getName(), args.getWhere());
                     break;
+                case "DELETE":
+                    DataBases.getCurrentDataBase().getTable(args.getName()).delete(args.getWhere());
+                case "UPDATE":
+                    DataBases.getCurrentDataBase().getTable(args.getName()).update(args.convertToMap(args.getInsertableColumns(), args.getInsertableValues()), args.getWhere());
             }
             if (args.command.equals("exit"))
                 break;

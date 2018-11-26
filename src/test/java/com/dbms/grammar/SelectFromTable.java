@@ -17,7 +17,11 @@ public class SelectFromTable extends AbstractTest {
         ArgsGuard args =  parser.parseSelectFromTable();
 
         writeEntityName(actual, args);
+
         writeInsertableColumns(actual, args);
+
+        writeWhere(actual, args);
+
         writeLimitAndOffset(actual, args);
 
         actual.close();
