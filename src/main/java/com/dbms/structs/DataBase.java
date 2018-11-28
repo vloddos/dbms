@@ -29,8 +29,8 @@ public class DataBase {//immutable methods???
 
         var table = new Table(name, tableName, fields);
         tables.put(tableName, table);
-        StorageEngine.writeTableHeader(name, table);
-        StorageEngine.initTableData(name, tableName);
+        StorageEngine.getInstance().writeTableHeader(name, table);
+        StorageEngine.getInstance().initTableData(name, tableName);
     }
 
     public Table getTable(String name) throws Exception {

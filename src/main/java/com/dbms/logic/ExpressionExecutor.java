@@ -1,12 +1,11 @@
 package com.dbms.logic;
 
-import com.dbms.structs.DataBases;
 import com.dbms.grammar.ArgsGuard;
 import com.dbms.grammar.SqlParser;
+import com.dbms.structs.DataBases;
 
 import java.io.File;
 import java.io.FileReader;
-import java.util.Arrays;
 import java.util.Scanner;
 import java.util.Vector;
 
@@ -26,33 +25,32 @@ public class ExpressionExecutor {
 
             switch (args.command.image) {
                 case "DATABASE":
-                    DataBases.createDataBase(args.getName());
+                    DataBases.getInstance().createDataBase(args.getName());
                     break;
                 case "USE":
-                    DataBases.useDataBase(args.getName());
+                    DataBases.getInstance().useDataBase(args.getName());
                     break;
                 case "TABLE":
-                    DataBases.getCurrentDataBase().createTable(args.getName(), args.getFields());
+                    DataBases.getInstance().getCurrentDataBase().createTable(args.getName(), args.getFields());
                     break;
                 case "SHOW":
-                    System.out.println(DataBases.getCurrentDataBase().getTable(args.getName()));
-                    break;
-                case "exit":
-                    DataBases.exit();
+                    System.out.println(DataBases.getInstance().getCurrentDataBase().getTable(args.getName()));
                     break;
                 case "INSERT":
-                    DataBases.getCurrentDataBase().getTable(args.getName()).insert(args.convertToMap(args.getInsertableColumns(), args.getInsertableValues()));
+                    DataBases.getInstance().getCurrentDataBase().getTable(args.getName()).insert(args.convertToMap(args.getInsertableColumns(), args.getInsertableValues()));
                     break;
                 case "SELECT":
-                    DataBases.select(new Vector(Arrays.asList(args.getInsertableColumns())), args.getLimit(), args.getOffset(),  args.getName(), args.getWhere());
+                    DataBases.getInstance().select(new Vector<>(args.getInsertableColumns()), args.getLimit(), args.getOffset(), args.getName(), args.getWhere());
                     break;
                 case "DELETE":
-                    DataBases.getCurrentDataBase().getTable(args.getName()).delete(args.getWhere());
+                    DataBases.getInstance().getCurrentDataBase().getTable(args.getName()).delete(args.getWhere());
+                    break;
                 case "UPDATE":
-                    DataBases.getCurrentDataBase().getTable(args.getName()).update(args.convertToMap(args.getInsertableColumns(), args.getInsertableValues()), args.getWhere());
+                    DataBases.getInstance().getCurrentDataBase().getTable(args.getName()).update(args.convertToMap(args.getInsertableColumns(), args.getInsertableValues()), args.getWhere());
+                    break;
+                default://exit
+                    DataBases.getInstance().exit();//return/break/loop break is redundant
             }
-            if (args.command.equals("exit"))
-                break;
         }
     }
 }

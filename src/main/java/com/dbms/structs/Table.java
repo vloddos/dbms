@@ -16,7 +16,7 @@ public class Table {
     private String dataBaseName;
     private String tableName;
 
-    public Map<String, TypeDescription> fieldDescriptions;//must be LinkedHashMap
+    private Map<String, TypeDescription> fieldDescriptions;//must be LinkedHashMap
     private Map<String, Integer> fieldIndexes = new HashMap<>();
 
     //for kryo
@@ -67,16 +67,16 @@ public class Table {
         var row = new ArrayList();
         IntStream.range(0, fieldDescriptions.size()).forEach(i -> row.add(null));
 
-        this.fieldDescriptions.keySet().forEach(
+        fieldDescriptions.keySet().forEach(
                 k -> row.set(
                         fieldIndexes.get(k),
                         Types.cast(
                                 fields.get(k),
-                                this.fieldDescriptions.get(k)
+                                fieldDescriptions.get(k)
                         )
                 )
         );
-        StorageEngine.appendRow(dataBaseName, tableName, row);
+        StorageEngine.getInstance().appendRow(dataBaseName, tableName, row);
     }
 
     public Expression where(String where, String rowName) {
@@ -87,38 +87,38 @@ public class Table {
 
     public void delete(String where) throws Exception {
         if (where == null) {
-            StorageEngine.initTableData(dataBaseName, tableName);
+            StorageEngine.getInstance().initTableData(dataBaseName, tableName);
             return;
         }
 
-        var tmp = StorageEngine.createTempTableData(dataBaseName, tableName);
+        var tmp = StorageEngine.getInstance().createTempTableData(dataBaseName, tableName);
 
         var whereExpression = where(where, "row");
 
         var js = ScriptManager.scriptEngineManager.getEngineByName("js");
 
-        var rowIterator = StorageEngine.getRowIterator(dataBaseName, tableName);
+        var rowIterator = StorageEngine.getInstance().getRowIterator(dataBaseName, tableName);
         while (rowIterator.hasNext()) {
             var row = rowIterator.next();
             js.put("row", row);
             if (!((boolean) js.eval(whereExpression.getValueForEval())))
-                StorageEngine.appendRow(dataBaseName, tmp, row);
+                StorageEngine.getInstance().appendRow(dataBaseName, tmp, row);
         }
 
-        StorageEngine.replaceTableDataToTemp(dataBaseName, tableName);
+        StorageEngine.getInstance().replaceTableDataToTemp(dataBaseName, tableName);
     }
 
     public void update(Map<String, String> set, String where) throws Exception {
         set.keySet().forEach(this::throwIfNoField);
 
-        var tmp = StorageEngine.createTempTableData(dataBaseName, tableName);
+        var tmp = StorageEngine.getInstance().createTempTableData(dataBaseName, tableName);
 
         var whereExpression = where(where, "row");
         set.replaceAll((fn, e) -> new Expression(e, whereExpression.getFields()).getValueForEval());
 
         var js = ScriptManager.scriptEngineManager.getEngineByName("js");
 
-        var rowIterator = StorageEngine.getRowIterator(dataBaseName, tableName);
+        var rowIterator = StorageEngine.getInstance().getRowIterator(dataBaseName, tableName);
         while (rowIterator.hasNext()) {
             var row = rowIterator.next();
             var tmpRow = ((ArrayList) row.clone());
@@ -130,10 +130,10 @@ public class Table {
                             js.eval(entry.getValue())
                     );
 
-            StorageEngine.appendRow(dataBaseName, tmp, tmpRow);
+            StorageEngine.getInstance().appendRow(dataBaseName, tmp, tmpRow);
         }
 
-        StorageEngine.replaceTableDataToTemp(dataBaseName, tableName);
+        StorageEngine.getInstance().replaceTableDataToTemp(dataBaseName, tableName);
     }
 
     @Override
