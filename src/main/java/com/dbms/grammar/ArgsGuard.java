@@ -18,6 +18,7 @@ import java.util.Map;
 public final class ArgsGuard {
     public Token command;
     Map<String, TypeDescription> fields = new LinkedHashMap<String, TypeDescription>();
+
     //For "INSERT" conditions
     private ArrayList<String> insertableColumns = new ArrayList<String>();
     private ArrayList<String> insertableValues = new ArrayList<String>();
@@ -37,13 +38,15 @@ public final class ArgsGuard {
     private String name;
 
     //For "SELECT"
-    private int limit = -1;
-    private int offset = -1;
+    private int limit = Integer.MAX_VALUE;
+    private int offset = 0;
 
     public Map<String, String> convertToMap(ArrayList<String> key, ArrayList<String> value) {
         Map<String, String> map = new LinkedHashMap<String, String>();
+
         for (int i = 0; i < key.size(); i++)
             map.put(key.get(i), value.get(i));
+
         return map;
     }
 
@@ -103,9 +106,13 @@ public final class ArgsGuard {
         return compareColumns;
     }
 
-    public void setWhere(String w) { this.where = w; }
+    public void setWhere(String where) {
+        this.where = where;
+    }
 
-    public String getWhere() { return this.where; }
+    public String getWhere() {
+        return this.where;
+    }
 
     public void setCompareColumns(ArrayList<String> compareColumns) {
         this.compareColumns = compareColumns;
