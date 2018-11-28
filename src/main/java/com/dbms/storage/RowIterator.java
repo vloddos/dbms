@@ -1,5 +1,7 @@
 package com.dbms.storage;
 
+import com.dbms.global.Global;
+import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.io.Input;
 
 import java.io.InputStream;
@@ -8,6 +10,7 @@ import java.util.Iterator;
 
 public class RowIterator implements Iterator<ArrayList> {
 
+    private Kryo kryo = Global.getKryo();
     private Input input;
 
     public RowIterator(InputStream inputStream) {
@@ -27,6 +30,6 @@ public class RowIterator implements Iterator<ArrayList> {
 
     @Override
     public ArrayList next() {
-        return hasNext() ? StorageEngine.kryo.readObject(input, ArrayList.class) : null;
+        return hasNext() ? kryo.readObject(input, ArrayList.class) : null;
     }
 }

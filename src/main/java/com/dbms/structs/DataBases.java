@@ -13,14 +13,23 @@ import java.util.stream.IntStream;
 
 public class DataBases {
 
-    private static DataBase currentDataBase;
-    private static Map<String, DataBase> dataBases = new HashMap<>();
-
     private DataBases() {
     }
 
-    public static void fullLoad() throws Exception {
-        dataBases = StorageEngine.readAllDataBases();
+    private static DataBases instance;
+
+    public static DataBases getInstance() {
+        if (instance == null)
+            instance = new DataBases();
+
+        return instance;
+    }
+
+    private DataBase currentDataBase;
+    private Map<String, DataBase> dataBases = new HashMap<>();
+
+    public void fullLoad() throws Exception {
+        dataBases = StorageEngine.getInstance().readAllDataBases();
 
         var o = dataBases.keySet().stream().findFirst();
         if (o.isPresent())
@@ -28,31 +37,31 @@ public class DataBases {
         //start checker...
     }
 
-    public static void createDataBase(String name) throws Exception {
-        StorageEngine.initDataBase(name);
+    public void createDataBase(String name) throws Exception {
+        StorageEngine.getInstance().initDataBase(name);
         dataBases.put(name, new DataBase(name));
         useDataBase(name);
     }
 
-    public static DataBase useDataBase(String name) throws Exception {
+    public DataBase useDataBase(String name) throws Exception {
         return currentDataBase = getDataBase(name);
     }
 
-    public static DataBase getDataBase(String name) throws Exception {
+    public DataBase getDataBase(String name) throws Exception {
         if (!dataBases.containsKey(name))
-            dataBases.put(name, StorageEngine.readDataBase(name));
+            dataBases.put(name, StorageEngine.getInstance().readDataBase(name));
 
         return dataBases.get(name);
     }
 
-    public static DataBase getCurrentDataBase() throws Exception {
+    public DataBase getCurrentDataBase() throws Exception {
         if (currentDataBase == null)
             throw new Exception("No database selected");
 
         return currentDataBase;
     }
 
-    public static void exit() {
+    public void exit() {
         System.exit(0);
         //shutdown executors...
         //не перезаписывать часто на диск
@@ -73,14 +82,14 @@ public class DataBases {
     если не было указано офсета, то он должен быть равен 0,
     если не было указано where, то он должен быть равен null
     */
-    public static TextTable select(Vector<String> fieldNames, int limit, int offset, String tableName, String where) throws Exception {
+    public TextTable select(Vector<String> fieldNames, int limit, int offset, String tableName, String where) throws Exception {
         var table = currentDataBase.getTable(tableName);
         var fieldIndexes = fieldNames.stream().map(table::getFieldIndex).collect(Collectors.toList());
         var whereExpression = table.where(where, "r");
 
         var js = ScriptManager.scriptEngineManager.getEngineByName("js");
 
-        var rowIterator = StorageEngine.getRowIterator(currentDataBase.getName(), tableName);
+        var rowIterator = StorageEngine.getInstance().getRowIterator(currentDataBase.getName(), tableName);
         IntStream.range(0, offset).forEach(i -> rowIterator.next());
         var rows = new Vector<Vector>();
         for (int i = 0; i < limit && rowIterator.hasNext(); ++i) {
