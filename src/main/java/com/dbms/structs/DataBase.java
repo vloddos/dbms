@@ -28,7 +28,9 @@ public class DataBase {//immutable methods???
             throw new Exception(String.format("Table '%s' already exists", tableName));
 
         var table = new Table(name, tableName, fields);
+
         tables.put(tableName, table);
+
         StorageEngine.getInstance().writeTableHeader(name, table);
         StorageEngine.getInstance().initTableData(name, tableName);
     }

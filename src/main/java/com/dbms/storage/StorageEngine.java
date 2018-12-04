@@ -61,6 +61,7 @@ public class StorageEngine {
 
     public DataBase readDataBase(File dataBaseDirectory) throws Exception {
         var dataBaseName = dataBaseDirectory.getName();
+
         if (!dataBaseDirectory.isDirectory())
             throw new Exception(String.format("The '%s' database does not exist", dataBaseName));
 

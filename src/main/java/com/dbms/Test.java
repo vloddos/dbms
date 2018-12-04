@@ -3,12 +3,22 @@ package com.dbms;
 import com.dbms.storage.StorageEngine;
 import com.dbms.structs.DataBases;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Vector;
 
 public final class Test {
 
+    // THREADS_NUMBER = 2^n
+    private final static int THREADS_NUMBER = 8;
+
     public static void main(String[] args) throws Exception {
+
+        ArrayList<Thread> threads = new ArrayList<Thread>(THREADS_NUMBER);
+
+        /*for (int i = 0; i < THREADS_NUMBER; i++)
+            threads[i] = new SubThread().run();*/
+
         /*var map = new HashMap<String, Pair<String, Integer>>();
         map.put("f1", new Pair<>("row", 0));
         map.put("f2", new Pair<>("row", 1));
