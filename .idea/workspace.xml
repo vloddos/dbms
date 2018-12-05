@@ -3,17 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="11211ecf-683e-4af0-9764-3dbaeae9a3f7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbms/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbms/Test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbms/storage/StorageEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbms/storage/StorageEngine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbms/structs/DataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbms/structs/DataBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/dbms/DBRunner.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/dbms/MainController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/dbms/grammar/ArgsGuard.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dbms/grammar/ArgsGuard.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/dbms/logic/ExpressionExecutor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dbms/logic/ExpressionExecutor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/dbms/storage/StorageEngine.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dbms/storage/StorageEngine.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/dbms/structs/DataBase.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dbms/structs/DataBase.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/dbms/structs/DataBases.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dbms/structs/DataBases.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/dbms/structs/Table.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dbms/structs/Table.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/dbms/structs/DataBaseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/dbms/structs/DataBasesTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/dbms/structs/DataBaseTest.class" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -24,7 +15,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/dbms$com_dbms_in_dbms.ic" NAME="com.dbms in dbms Coverage Results" MODIFIED="1542202038350" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/dbms$com_dbms_in_dbms.ic" NAME="com.dbms in dbms Coverage Results" MODIFIED="1543918387714" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.dbms.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/dbms$TypesTest.ic" NAME="TypesTest Coverage Results" MODIFIED="1543918050197" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
@@ -33,10 +24,10 @@
     <SUITE FILE_PATH="coverage/dbms$TypeDescriptionTest.ic" NAME="TypeDescriptionTest Coverage Results" MODIFIED="1543912310064" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.dbms.structs.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/dbms$com_dbms_structs_in_dbms.ic" NAME="com.dbms.structs in dbms Coverage Results" MODIFIED="1543918078444" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/dbms$com_dbms_structs_in_dbms.ic" NAME="com.dbms.structs in dbms Coverage Results" MODIFIED="1544002055592" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.dbms.structs.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/dbms$DataBaseTest.ic" NAME="DataBaseTest Coverage Results" MODIFIED="1543412981740" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/dbms$DataBaseTest.ic" NAME="DataBaseTest Coverage Results" MODIFIED="1543999197415" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.dbms.structs.*</FILTER>
     </SUITE>
   </component>
@@ -44,36 +35,69 @@
     <option name="myAddOrReplace" value="0" />
   </component>
   <component name="CoverageViewManager">
-    <option name="myElementSize" value="128" />
+    <option name="myElementSize" value="151" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/test/java/com/dbms/structs/TypesTest.java">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com/dbms/structs/DataBasesTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="19" column="39" selection-start-line="19" selection-start-column="39" selection-end-line="19" selection-end-column="39" />
+            <state relative-caret-position="204">
+              <caret line="12" column="37" lean-forward="true" selection-start-line="12" selection-start-column="37" selection-end-line="12" selection-end-column="37" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#674#675#0" expanded="true" />
-                <element signature="e#737#738#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/structs/TypeDescription.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/Test.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="125">
-              <caret line="18" selection-start-line="18" selection-end-line="18" />
+            <state relative-caret-position="493">
+              <caret line="53" lean-forward="true" selection-start-line="53" selection-end-line="53" />
               <folding>
-                <element signature="e#208#209#0" expanded="true" />
-                <element signature="e#240#241#0" expanded="true" />
-                <element signature="e#500#501#0" expanded="true" />
-                <element signature="e#536#537#0" expanded="true" />
-                <element signature="e#869#870#0" expanded="true" />
-                <element signature="e#939#940#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/structs/DataBases.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="58" column="26" selection-start-line="58" selection-start-column="26" selection-end-line="58" selection-end-column="26" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com/dbms/structs/DataBaseTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="286">
+              <caret line="32" column="55" lean-forward="true" selection-start-line="32" selection-start-column="55" selection-end-line="32" selection-end-column="55" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#166#167#0" expanded="true" />
+                <element signature="e#205#206#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/structs/Table.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="969">
+              <caret line="57" lean-forward="true" selection-start-line="57" selection-end-line="57" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1680#1681#0" expanded="true" />
+                <element signature="e#1712#1713#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -103,7 +127,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/dbms/backend/DataBase.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/dbms/backend/TableHeader.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/dbms/data_types/Char.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/dbms/data_types/Varchar.java" />
@@ -151,9 +174,10 @@
         <option value="$PROJECT_DIR$/src/test/java/com/dbms/storage/StorageEngineTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/dbms/threading/ThreadRunner.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/dbms/Test.java" />
-        <option value="$PROJECT_DIR$/src/test/java/com/dbms/structs/DataBaseTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/dbms/structs/TypeDescriptionTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/dbms/structs/TypesTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/dbms/structs/DataBasesTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/dbms/structs/DataBaseTest.java" />
       </list>
     </option>
   </component>
@@ -185,6 +209,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -215,7 +241,23 @@
               <item name="dbms" type="462c0819:PsiDirectoryNode" />
               <item name="db" type="462c0819:PsiDirectoryNode" />
               <item name="School" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
+              <item name="table_data" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dbms" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dbms" type="462c0819:PsiDirectoryNode" />
+              <item name="db" type="462c0819:PsiDirectoryNode" />
+              <item name="School" type="462c0819:PsiDirectoryNode" />
               <item name="meta_data" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dbms" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dbms" type="462c0819:PsiDirectoryNode" />
+              <item name="db" type="462c0819:PsiDirectoryNode" />
+              <item name="School" type="462c0819:PsiDirectoryNode" />
+              <item name="meta_data" type="462c0819:PsiDirectoryNode" />
+              <item name="table_headers" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="dbms" type="b2602c69:ProjectViewProjectNode" />
@@ -289,33 +331,23 @@
               <item name="test" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="dbms" type="462c0819:PsiDirectoryNode" />
-              <item name="grammar" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="dbms" type="b2602c69:ProjectViewProjectNode" />
-              <item name="dbms" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="dbms" type="462c0819:PsiDirectoryNode" />
               <item name="structs" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SearchEverywhereHistoryKey" value="getCol&#9;PSI&#9;JAVA://com.dbms.grammar.ArgsGuard#getColumn&#10;a.&#9;FILE&#9;file://C:/Users/User/IdeaProjects/dbms/a.txt" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543918159870" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544002402043" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -343,8 +375,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.com.dbms.structs in dbms">
-    <configuration name="TypesTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.DataBaseTest.testShouldReturnTableName">
+    <configuration name="DataBaseTest.testShouldReturnDatabaseName" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="dbms" />
       <extension name="coverage">
         <pattern>
@@ -353,28 +385,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.dbms.structs" />
-      <option name="MAIN_CLASS_NAME" value="com.dbms.structs.TypesTest" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TypesTest.testShouldReturnIDK" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="dbms" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.dbms.structs.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.dbms.structs" />
-      <option name="MAIN_CLASS_NAME" value="com.dbms.structs.TypesTest" />
-      <option name="METHOD_NAME" value="testShouldReturnIDK" />
+      <option name="MAIN_CLASS_NAME" value="com.dbms.structs.DataBaseTest" />
+      <option name="METHOD_NAME" value="testShouldReturnDatabaseName" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TypesTest.testShouldReturnNull" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="DataBaseTest.testShouldReturnTableName" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="dbms" />
       <extension name="coverage">
         <pattern>
@@ -383,14 +401,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.dbms.structs" />
-      <option name="MAIN_CLASS_NAME" value="com.dbms.structs.TypesTest" />
-      <option name="METHOD_NAME" value="testShouldReturnNull" />
+      <option name="MAIN_CLASS_NAME" value="com.dbms.structs.DataBaseTest" />
+      <option name="METHOD_NAME" value="testShouldReturnTableName" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TypesTest.testShouldReturnTypeName" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="DataBaseTest.testShouldThrowExceptionCauseTableAlreadyExists" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="dbms" />
       <extension name="coverage">
         <pattern>
@@ -399,8 +417,24 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.dbms.structs" />
-      <option name="MAIN_CLASS_NAME" value="com.dbms.structs.TypesTest" />
-      <option name="METHOD_NAME" value="testShouldReturnTypeName" />
+      <option name="MAIN_CLASS_NAME" value="com.dbms.structs.DataBaseTest" />
+      <option name="METHOD_NAME" value="testShouldThrowExceptionCauseTableAlreadyExists" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DataBaseTest.testShouldThrowExceptionCauseTableDoesntExist" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="dbms" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.dbms.structs.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.dbms.structs" />
+      <option name="MAIN_CLASS_NAME" value="com.dbms.structs.DataBaseTest" />
+      <option name="METHOD_NAME" value="testShouldThrowExceptionCauseTableDoesntExist" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -421,19 +455,19 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="JUnit.DataBaseTest.testShouldReturnTableName" />
+      <item itemvalue="JUnit.DataBaseTest.testShouldThrowExceptionCauseTableAlreadyExists" />
+      <item itemvalue="JUnit.DataBaseTest.testShouldReturnDatabaseName" />
+      <item itemvalue="JUnit.DataBaseTest.testShouldThrowExceptionCauseTableDoesntExist" />
       <item itemvalue="JUnit.com.dbms.structs in dbms" />
-      <item itemvalue="JUnit.TypesTest.testShouldReturnNull" />
-      <item itemvalue="JUnit.TypesTest" />
-      <item itemvalue="JUnit.TypesTest.testShouldReturnTypeName" />
-      <item itemvalue="JUnit.TypesTest.testShouldReturnIDK" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.DataBaseTest.testShouldReturnTableName" />
         <item itemvalue="JUnit.com.dbms.structs in dbms" />
-        <item itemvalue="JUnit.TypesTest" />
-        <item itemvalue="JUnit.TypesTest.testShouldReturnIDK" />
-        <item itemvalue="JUnit.TypesTest.testShouldReturnTypeName" />
-        <item itemvalue="JUnit.TypesTest.testShouldReturnNull" />
+        <item itemvalue="JUnit.DataBaseTest.testShouldThrowExceptionCauseTableAlreadyExists" />
+        <item itemvalue="JUnit.DataBaseTest.testShouldThrowExceptionCauseTableDoesntExist" />
+        <item itemvalue="JUnit.DataBaseTest.testShouldReturnDatabaseName" />
       </list>
     </recent_temporary>
   </component>
@@ -472,44 +506,45 @@
       <workItem from="1543392294544" duration="4113000" />
       <workItem from="1543396510604" duration="5740000" />
       <workItem from="1543450488897" duration="783000" />
-      <workItem from="1543898386061" duration="15561000" />
+      <workItem from="1543898386061" duration="18467000" />
+      <workItem from="1543990702648" duration="8123000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="TypesTest_testShouldReturnTypeName - 2018.12.04 at 19h 33m 27s.xml">
-      <configuration name="TypesTest.testShouldReturnTypeName" configurationId="JUnit" />
+    <history-entry file="DataBaseTest - 2018.12.05 at 18h 39m 59s.xml">
+      <configuration name="DataBaseTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TypesTest_testShouldReturnTypeName - 2018.12.04 at 19h 33m 42s.xml">
-      <configuration name="TypesTest.testShouldReturnTypeName" configurationId="JUnit" />
+    <history-entry file="DataBaseTest_testShouldReturnTableName - 2018.12.05 at 18h 40m 44s.xml">
+      <configuration name="DataBaseTest.testShouldReturnTableName" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TypesTest - 2018.12.04 at 19h 33m 54s.xml">
-      <configuration name="TypesTest" configurationId="JUnit" />
+    <history-entry file="DataBaseTest_testShouldReturnDatabaseName - 2018.12.05 at 18h 57m 00s.xml">
+      <configuration name="DataBaseTest.testShouldReturnDatabaseName" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TypesTest_testShouldReturnIDK - 2018.12.04 at 19h 38m 51s.xml">
-      <configuration name="TypesTest.testShouldReturnIDK" configurationId="JUnit" />
+    <history-entry file="DataBaseTest_testShouldThrowExceptionCauseTableDoesntExist - 2018.12.05 at 18h 57m 04s.xml">
+      <configuration name="DataBaseTest.testShouldThrowExceptionCauseTableDoesntExist" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TypesTest_testShouldReturnIDK - 2018.12.04 at 19h 41m 49s.xml">
-      <configuration name="TypesTest.testShouldReturnIDK" configurationId="JUnit" />
+    <history-entry file="DataBaseTest_testShouldThrowExceptionCauseTableDoesntExist - 2018.12.05 at 19h 25m 41s.xml">
+      <configuration name="DataBaseTest.testShouldThrowExceptionCauseTableDoesntExist" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TypesTest_testShouldReturnIDK - 2018.12.04 at 19h 42m 09s.xml">
-      <configuration name="TypesTest.testShouldReturnIDK" configurationId="JUnit" />
+    <history-entry file="DataBaseTest_testShouldThrowExceptionCauseTableAlreadyExists - 2018.12.05 at 19h 26m 28s.xml">
+      <configuration name="DataBaseTest.testShouldThrowExceptionCauseTableAlreadyExists" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TypesTest_testShouldReturnIDK - 2018.12.04 at 19h 44m 28s.xml">
-      <configuration name="TypesTest.testShouldReturnIDK" configurationId="JUnit" />
+    <history-entry file="DataBaseTest_testShouldReturnTableName - 2018.12.05 at 19h 26m 36s.xml">
+      <configuration name="DataBaseTest.testShouldReturnTableName" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TypesTest_testShouldReturnIDK - 2018.12.04 at 20h 06m 48s.xml">
-      <configuration name="TypesTest.testShouldReturnIDK" configurationId="JUnit" />
+    <history-entry file="DataBaseTest_testShouldReturnTableName - 2018.12.05 at 19h 26m 50s.xml">
+      <configuration name="DataBaseTest.testShouldReturnTableName" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TypesTest_testShouldReturnIDK - 2018.12.04 at 20h 07m 23s.xml">
-      <configuration name="TypesTest.testShouldReturnIDK" configurationId="JUnit" />
+    <history-entry file="com_dbms_structs_in_dbms - 2018.12.05 at 19h 27m 37s.xml">
+      <configuration name="com.dbms.structs in dbms" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TypesTest - 2018.12.04 at 20h 07m 31s.xml">
-      <configuration name="TypesTest" configurationId="JUnit" />
+    <history-entry file="DataBaseTest_testShouldReturnTableName - 2018.12.05 at 19h 29m 32s.xml">
+      <configuration name="DataBaseTest.testShouldReturnTableName" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="133133000" />
+    <option name="totallyTimeSpent" value="144162000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -524,7 +559,7 @@
     <frame x="-6" y="-6" width="1549" height="837" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16297787" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17639168" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -533,7 +568,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.47241867" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.33097595" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.33097595" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39745402" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -553,7 +588,7 @@
       <window_info anchor="right" id="Theme Preview" order="6" />
       <window_info anchor="right" id="Maven Projects" order="7" weight="0.32997987" />
       <window_info anchor="right" id="Palette&#9;" order="8" />
-      <window_info anchor="right" id="Coverage" order="9" side_tool="true" weight="0.27498323" />
+      <window_info anchor="right" id="Coverage" order="9" side_tool="true" visible="true" weight="0.27498323" />
       <window_info anchor="right" id="Maven" order="10" />
     </layout>
   </component>
@@ -561,21 +596,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/test/java/resources/select_from_table_test/Expected.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="1" lean-forward="true" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/resources/update_table_test/UpdateTable.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="63" lean-forward="true" selection-start-column="63" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/dbms/UpdateTableTest.java" />
     <entry file="file://$PROJECT_DIR$/src/test/java/com/dbms/AbstractTest.java" />
     <entry file="file://$PROJECT_DIR$/src/test/java/com/dbms/InsertIntoTableTest.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/backend/TableData.java" />
@@ -679,24 +699,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/structs/Table.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="19" column="64" lean-forward="true" selection-start-line="19" selection-start-column="64" selection-end-line="19" selection-end-column="64" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/gui/MainController.java" />
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="38" column="37" lean-forward="true" selection-start-line="38" selection-start-column="37" selection-end-line="38" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/grammar/ArgsGuard.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -711,16 +714,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="9" column="18" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/scripting/Expression.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="23" column="16" lean-forward="true" selection-start-line="23" selection-start-column="16" selection-end-line="23" selection-end-column="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -796,13 +789,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/dbms/storage/StorageEngineTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/dbms/storage/StorageEngineTest.java" />
     <entry file="file://$PROJECT_DIR$/src/test/java/com/dbms/grammar/InsertIntoTableTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -817,44 +804,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/Test.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="49" column="43" lean-forward="true" selection-start-line="49" selection-start-column="43" selection-end-line="49" selection-end-column="43" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/structs/DataBase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="27" column="30" lean-forward="true" selection-start-line="27" selection-start-column="30" selection-end-line="27" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#307#308#0" expanded="true" />
-            <element signature="e#339#340#0" expanded="true" />
-            <element signature="e#495#496#0" expanded="true" />
-            <element signature="e#522#523#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/structs/VAFunction.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/structs/DataBases.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="935">
-          <caret line="103" column="25" lean-forward="true" selection-start-line="103" selection-start-column="25" selection-end-line="103" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -872,19 +825,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/dbms/structs/DataBaseTest.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/dbms/structs/TypesTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="43" lean-forward="true" selection-start-line="14" selection-start-column="43" selection-end-line="14" selection-end-column="43" />
+        <state relative-caret-position="323">
+          <caret line="19" column="39" selection-start-line="19" selection-start-column="39" selection-end-line="19" selection-end-column="39" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#674#675#0" expanded="true" />
+            <element signature="e#737#738#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/structs/Types.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
+        <state relative-caret-position="646">
           <caret line="38" column="89" lean-forward="true" selection-start-line="38" selection-start-column="89" selection-end-line="38" selection-end-column="89" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -896,8 +851,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/structs/TypeDescription.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="18" selection-start-line="18" selection-end-line="18" />
+        <state relative-caret-position="136">
+          <caret line="8" column="19" lean-forward="true" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
           <folding>
             <element signature="e#208#209#0" expanded="true" />
             <element signature="e#240#241#0" expanded="true" />
@@ -909,14 +864,104 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/dbms/structs/TypesTest.java">
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="17">
+            <caret line="1" column="11" lean-forward="true" selection-start-line="1" selection-start-column="11" selection-end-line="1" selection-end-column="11" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/scripting/Expression.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="19" column="39" selection-start-line="19" selection-start-column="39" selection-end-line="19" selection-end-column="39" />
+        <state relative-caret-position="357">
+          <caret line="23" column="23" lean-forward="true" selection-start-line="23" selection-start-column="23" selection-end-line="23" selection-end-column="23" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#674#675#0" expanded="true" />
-            <element signature="e#737#738#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/structs/Table.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="969">
+          <caret line="57" lean-forward="true" selection-start-line="57" selection-end-line="57" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1680#1681#0" expanded="true" />
+            <element signature="e#1712#1713#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/java.base/java/util/Map.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="148">
+          <caret line="242" column="6" selection-start-line="242" selection-start-column="6" selection-end-line="242" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/Test.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="53" lean-forward="true" selection-start-line="53" selection-end-line="53" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/dbms/structs/DataBasesTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="37" lean-forward="true" selection-start-line="12" selection-start-column="37" selection-end-line="12" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/structs/DataBases.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="58" column="26" selection-start-line="58" selection-start-column="26" selection-end-line="58" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="646">
+          <caret line="38" column="37" lean-forward="true" selection-start-line="38" selection-start-column="37" selection-end-line="38" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/structs/DataBase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="25" lean-forward="true" selection-start-line="13" selection-start-column="25" selection-end-line="13" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#307#308#0" expanded="true" />
+            <element signature="e#339#340#0" expanded="true" />
+            <element signature="e#495#496#0" expanded="true" />
+            <element signature="e#522#523#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/dbms/structs/DataBaseTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="32" column="55" lean-forward="true" selection-start-line="32" selection-start-column="55" selection-end-line="32" selection-end-column="55" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#166#167#0" expanded="true" />
+            <element signature="e#205#206#0" expanded="true" />
           </folding>
         </state>
       </provider>
