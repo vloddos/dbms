@@ -5,9 +5,9 @@ import org.junit.Test;
 
 public class TypeDescriptionTest {
 
-    TypeDescription INT = new TypeDescription("int");
-    TypeDescription VARCHAR = new TypeDescription("varchar", 50);
-    TypeDescription DOUBLE = new TypeDescription("double", "20");
+    private TypeDescription INT = new TypeDescription("int");
+    private TypeDescription VARCHAR = new TypeDescription("varchar", 50);
+    private TypeDescription DOUBLE = new TypeDescription("double", "20");
 
     @Test
     public void testShouldSetLengthAndGetLength() {

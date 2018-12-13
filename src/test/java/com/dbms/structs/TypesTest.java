@@ -16,6 +16,7 @@ public class TypesTest {
         Assert.assertNull(Types.cast(null, new TypeDescription("bool")));
     }
 
+    //FIXME(RoyalStorm): rename test
     @Test
     public void testShouldReturnIDK() {
         Assert.assertEquals("bool", Types.cast("bool", new TypeDescription("varchar", 50)).toString());
