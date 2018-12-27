@@ -169,7 +169,7 @@ ArgsGuard parseUseDatabase() throws Exception:
     <SEMICOLON>
     {
         args.setName(name.image);
-        //DataBases.useDataBase(name.image);
+        //Databases.useDatabase(name.image);
         if (args != null)
             return args;
     }
@@ -189,7 +189,7 @@ ArgsGuard parseCreateTable() throws Exception:
     <OPEN_BRACKET>
     {
         args.setFields(getFields());
-        /*DataBases.getCurrentDataBase().createTable(
+        /*Databases.getCurrentDatabase().createTable(
             new Table(
                 new TableHeader(
                     name.image,
@@ -221,7 +221,7 @@ ArgsGuard parseShowCreateTable() throws Exception:
     {
         args.setName(name.image);
         //System.out.println(
-            //DataBases.getCurrentDataBase().showCreate(name.image)
+            //Databases.getCurrentDatabase().showCreate(name.image)
        // );
         if (args != null)
                 return args;
@@ -549,7 +549,7 @@ ArgsGuard parseExit():
     args.command = <EXIT>
     <SEMICOLON>
     {
-        //DataBases.exit();
+        //Databases.exit();
         //return command;
     }
     {return args;}

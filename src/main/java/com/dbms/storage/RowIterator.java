@@ -8,7 +8,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class RowIterator implements Iterator<ArrayList> {
+public class RowIterator implements Iterator<ArrayList<?>> {// TODO: 03.12.2018 move to data???
 
     private Kryo kryo = Global.getKryo();
     private Input input;
@@ -29,7 +29,7 @@ public class RowIterator implements Iterator<ArrayList> {
     }
 
     @Override
-    public ArrayList next() {
+    public ArrayList<?> next() {
         return hasNext() ? kryo.readObject(input, ArrayList.class) : null;
     }
 }

@@ -2,7 +2,7 @@ package com.dbms.logic;
 
 import com.dbms.grammar.ArgsGuard;
 import com.dbms.grammar.SqlParser;
-import com.dbms.structs.DataBases;
+import com.dbms.structs.Databases;
 
 import java.io.File;
 import java.io.FileReader;
@@ -25,31 +25,31 @@ public class ExpressionExecutor {
 
             switch (args.command.image) {
                 case "DATABASE":
-                    DataBases.getInstance().createDataBase(args.getName());
+                    Databases.getInstance().createDatabase(args.getName());
                     break;
                 case "USE":
-                    DataBases.getInstance().useDataBase(args.getName());
+                    Databases.getInstance().useDatabase(args.getName());
                     break;
                 case "TABLE":
-                    DataBases.getInstance().getCurrentDataBase().createTable(args.getName(), args.getFields());
+                    Databases.getInstance().getCurrentDatabase().createTable(args.getName(), args.getFields());
                     break;
                 case "SHOW":
-                    System.out.println(DataBases.getInstance().getCurrentDataBase().getTable(args.getName()));
+                    System.out.println(Databases.getInstance().getCurrentDatabase().getTable(args.getName()));
                     break;
                 case "INSERT":
-                    DataBases.getInstance().getCurrentDataBase().getTable(args.getName()).insert(args.convertToMap(args.getInsertableColumns(), args.getInsertableValues()));
+                    Databases.getInstance().getCurrentDatabase().getTable(args.getName()).insert(args.convertToMap(args.getInsertableColumns(), args.getInsertableValues()));
                     break;
                 case "SELECT":
-                    DataBases.getInstance().select(new Vector<>(args.getInsertableColumns()), args.getLimit(), args.getOffset(), args.getName(), args.getWhere());
+                    //Databases.getInstance().select(new Vector<>(args.getInsertableColumns()), args.getLimit(), args.getOffset(), args.getName(), args.getWhere());
                     break;
                 case "DELETE":
-                    DataBases.getInstance().getCurrentDataBase().getTable(args.getName()).delete(args.getWhere());
+                    //Databases.getInstance().getCurrentDatabase().getTable(args.getName()).delete(args.getWhere());
                     break;
                 case "UPDATE":
-                    DataBases.getInstance().getCurrentDataBase().getTable(args.getName()).update(args.convertToMap(args.getInsertableColumns(), args.getInsertableValues()), args.getWhere());
+                    //Databases.getInstance().getCurrentDatabase().getTable(args.getName()).update(args.convertToMap(args.getInsertableColumns(), args.getInsertableValues()), args.getWhere());
                     break;
                 default://exit
-                    DataBases.getInstance().exit();//return/break/loop break is redundant
+                    Databases.getInstance().exit();//return/break/loop break is redundant
             }
         }
     }

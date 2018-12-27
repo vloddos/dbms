@@ -82,7 +82,7 @@
     name = jj_consume_token(STRING_LITERAL);
     jj_consume_token(SEMICOLON);
         args.setName(name.image);
-        //DataBases.useDataBase(name.image);
+        //Databases.useDatabase(name.image);
         if (args != null)
             {if (true) return args;}
     if (jj_2_11(2)) {
@@ -102,7 +102,7 @@
     name = jj_consume_token(STRING_LITERAL);
     jj_consume_token(OPEN_BRACKET);
         args.setFields(getFields());
-        /*DataBases.getCurrentDataBase().createTable(
+        /*Databases.getCurrentDatabase().createTable(
             new Table(
                 new TableHeader(
                     name.image,
@@ -135,7 +135,7 @@
     jj_consume_token(SEMICOLON);
         args.setName(name.image);
         //System.out.println(
-            //DataBases.getCurrentDataBase().showCreate(name.image)
+            //Databases.getCurrentDatabase().showCreate(name.image)
        // );
         if (args != null)
                 {if (true) return args;}
