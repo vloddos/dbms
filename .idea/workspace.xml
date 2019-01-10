@@ -4,78 +4,22 @@
     <list default="true" id="11211ecf-683e-4af0-9764-3dbaeae9a3f7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.travis.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.travis.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/School/data/table_data/Class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/School/data/table_data/student" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/School/meta_data/table_headers/Class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/School/meta_data/table_headers/student" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/School/data/table data/student.d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/School/meta data/blocks pointers/student.bp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/School/meta data/tables/student.t" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/dbms/DBMSTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbms/DBMSTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbms/KryoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbms/KryoTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbms/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbms/Test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbms/data_types/Char.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbms/data_types/Char.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbms/data_types/Varchar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbms/data_types/Varchar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbms/gui/MainController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbms/gui/main.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbms/logic/ExpressionExecutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbms/logic/ExpressionExecutor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbms/scripting/Expression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbms/scripting/Expression.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbms/storage/RowIterator.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/dbms/storage/Serialization.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbms/storage/Serialization.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbms/storage/blocks/Block.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbms/storage/blocks/Block.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbms/storage/blocks/BlockElementIterator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbms/storage/blocks/BlockElementIterator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbms/storage/blocks/BlockIterator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbms/storage/blocks/BlockIterator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbms/storage/blocks/BlockManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbms/storage/blocks/BlockManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbms/storage/blocks/BlocksPointer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbms/storage/blocks/BlocksPointer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbms/storage/blocks/ElementIterator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbms/storage/blocks/ElementIterator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbms/storage/data/DataManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbms/storage/data/DataManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/dbms/storage/data/MetaDataManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbms/storage/data/MetaDataManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbms/storage/data/Row.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbms/storage/data/Row.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbms/storage/file_structs/BlockExtendedFileStruct.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbms/storage/file_structs/BlockExtendedFileStruct.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/dbms/storage/file_structs/FileStruct.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbms/storage/file_structs/FileStruct.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbms/structs/DataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbms/structs/DataBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbms/structs/DataBases.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbms/structs/DataBases.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbms/structs/Selection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbms/structs/Selection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbms/structs/Table.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbms/structs/Table.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbms/structs/Types.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbms/structs/Types.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/dbms/grammar/AbstractTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/dbms/grammar/AbstractTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/dbms/grammar/DeleteFromTableTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/dbms/grammar/DeleteFromTableTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/dbms/grammar/ExitTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/dbms/grammar/ExitTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/dbms/grammar/InsertIntoTableTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/dbms/grammar/InsertIntoTableTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/dbms/grammar/SelectFromTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/dbms/grammar/SelectFromTable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/dbms/grammar/ThrowExceptionTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/dbms/grammar/UpdateTableTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/dbms/grammar/UpdateTableTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/dbms/structs/TableTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/dbms/structs/TableTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/dbms/structs/TypeDescriptionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/dbms/structs/TypeDescriptionTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/dbms/structs/TypesTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/dbms/structs/TypesTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/create_table_test/Expected.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/create_table_test/Expected.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/delete_from_table_test/Actual.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/delete_from_table_test/Actual.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/delete_from_table_test/Expected.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/delete_from_table_test/Expected.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/insert_into_table_test/Actual.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/insert_into_table_test/Actual.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/insert_into_table_test/Expected.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/insert_into_table_test/Expected.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/select_from_table_test/Actual.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/select_from_table_test/Actual.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/select_from_table_test/Expected.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/select_from_table_test/Expected.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/update_table_test/Actual.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/update_table_test/Actual.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/update_table_test/Expected.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/update_table_test/Expected.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/dbms.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/dbms/Test.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dbms/Test.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/dbms/data_types/Char.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dbms/data_types/Char.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/dbms/data_types/Varchar.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dbms/data_types/Varchar.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/dbms/global/Global.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/dbms/gui/MainController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/dbms/logic/ExpressionExecutor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dbms/logic/ExpressionExecutor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/dbms/scripting/Expression.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dbms/scripting/Expression.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/dbms/storage/RowIterator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/dbms/storage/StorageEngine.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbms/structs/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbms/structs/Database.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbms/structs/Databases.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbms/structs/Databases.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dbms/DBMSTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dbms/DBMSTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dbms/storage/Serialization.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dbms/storage/Serialization.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dbms/storage/data/MetaDataManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dbms/storage/data/MetaDataManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dbms/storage/file_structs/FileStruct.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dbms/storage/file_structs/FileStruct.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/dbms/structs/DataBase.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dbms/structs/DataBase.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/dbms/structs/DataBases.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dbms/structs/DataBases.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/dbms/structs/Table.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dbms/structs/Table.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/dbms/structs/Types.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dbms/structs/Types.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/dbms/threading/SubThread.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/dbms/grammar/ThrowExceptionTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/dbms/grammar/ThrowExceptionTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/dbms/structs/DataBaseTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/dbms/structs/DataBaseTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/dbms/structs/DataBasesTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/dbms/structs/DataBasesTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/dbms/structs/TableTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/dbms/structs/TableTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/META-INF/dbms.kotlin_module" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -86,17 +30,17 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/dbms$com_dbms_in_dbms.ic" NAME="com.dbms in dbms Coverage Results" MODIFIED="1543918387714" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>com.dbms.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/dbms$TypesTest.ic" NAME="TypesTest Coverage Results" MODIFIED="1543918050197" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/dbms$com_dbms_structs_in_dbms.ic" NAME="com.dbms.structs in dbms Coverage Results" MODIFIED="1544002055592" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.dbms.structs.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/dbms$TypeDescriptionTest.ic" NAME="TypeDescriptionTest Coverage Results" MODIFIED="1543912310064" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.dbms.structs.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/dbms$com_dbms_structs_in_dbms.ic" NAME="com.dbms.structs in dbms Coverage Results" MODIFIED="1544002055592" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/dbms$TypesTest.ic" NAME="TypesTest Coverage Results" MODIFIED="1543918050197" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.dbms.structs.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/dbms$com_dbms_in_dbms.ic" NAME="com.dbms in dbms Coverage Results" MODIFIED="1543918387714" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.dbms.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/dbms$DataBaseTest.ic" NAME="DataBaseTest Coverage Results" MODIFIED="1543999197415" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.dbms.structs.*</FILTER>
@@ -122,13 +66,45 @@
     <expand />
     <select />
   </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="1105101832">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.open.time.1" value="1" />
+          <entry key="project.opened" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="java" value="2" />
+          <entry key="t" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="JAVA" value="2" />
+          <entry key="PLAIN_TEXT" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="java" value="821" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="JAVA" value="821" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/structs/Databases.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="159">
-              <caret line="48" selection-start-line="48" selection-end-line="48" />
+            <state relative-caret-position="1156">
+              <caret line="83" column="16" selection-start-line="83" selection-start-column="16" selection-end-line="83" selection-end-column="16" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -139,12 +115,14 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/structs/Database.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="25" selection-start-line="25" selection-end-line="25" />
+            <state relative-caret-position="336">
+              <caret line="33" column="31" selection-start-line="33" selection-start-column="31" selection-end-line="33" selection-end-column="31" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#559#560#0" expanded="true" />
                 <element signature="e#591#592#0" expanded="true" />
+                <element signature="e#787#788#0" expanded="true" />
+                <element signature="e#825#826#0" expanded="true" />
                 <element signature="e#843#844#0" expanded="true" />
                 <element signature="e#870#871#0" expanded="true" />
               </folding>
@@ -155,8 +133,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/DBMSTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="25" column="62" selection-start-line="25" selection-start-column="62" selection-end-line="25" selection-end-column="62" />
+            <state relative-caret-position="102">
+              <caret line="63" column="8" selection-start-line="63" selection-start-column="8" selection-end-line="63" selection-end-column="8" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -167,8 +145,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/storage/Serialization.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="31" column="44" selection-start-line="31" selection-start-column="44" selection-end-line="31" selection-end-column="44" />
+            <state relative-caret-position="114">
+              <caret line="33" column="46" selection-start-line="33" selection-start-column="46" selection-end-line="33" selection-end-column="46" />
             </state>
           </provider>
         </entry>
@@ -176,35 +154,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/storage/data/MetaDataManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="244">
-              <caret line="115" column="54" selection-start-line="115" selection-start-column="54" selection-end-line="115" selection-end-column="54" />
+            <state relative-caret-position="165">
+              <caret line="114" selection-start-line="114" selection-end-line="114" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/com/esotericsoftware/kryo/5.0.0-RC1/kryo-5.0.0-RC1-sources.jar!/com/esotericsoftware/kryo/io/Input.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
-              <caret line="58" column="14" selection-start-line="58" selection-start-column="14" selection-end-line="58" selection-end-column="14" />
-              <folding>
-                <element signature="e#3083#3084#0" expanded="true" />
-                <element signature="e#3125#3126#0" expanded="true" />
-                <element signature="e#6339#6340#0" expanded="true" />
-                <element signature="e#6364#6365#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/com/esotericsoftware/kryo/5.0.0-RC1/kryo-5.0.0-RC1-sources.jar!/com/esotericsoftware/kryo/Kryo.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-34">
-              <caret line="680" column="17" selection-start-line="680" selection-start-column="17" selection-end-line="680" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -270,12 +224,10 @@
         <option value="$PROJECT_DIR$/src/main/java/com/dbms/storage/blocks_old/Block.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/dbms/data_types/Char.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/dbms/storage/blocks/BlockPointers.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/dbms/storage/file_structs/FileStruct.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/dbms/structs/TypeDescription.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/dbms/storage/data/Row.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/dbms/structs/Types.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/dbms/structs/Selection.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/dbms/structs/Database.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/dbms/scripting/Expression.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/dbms/storage/file_structs/BlockExtendedFileStruct.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/dbms/storage/blocks/BlocksPointer.java" />
@@ -291,16 +243,24 @@
         <option value="$PROJECT_DIR$/.travis.yml" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/test/java/com/dbms/structs/TestBootstrap.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/dbms/structs/Databases.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/dbms/structs/TableTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/dbms/grammar/ThrowExceptionTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/dbms/structs/DataBasesTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/dbms/structs/DataBaseTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/dbms/DBMSTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/dbms/storage/file_structs/FileStruct.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/dbms/storage/Serialization.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/dbms/storage/data/MetaDataManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/dbms/structs/Database.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/dbms/structs/Databases.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/dbms/DBMSTest.java" />
       </list>
     </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="MavenImportPreferences">
     <option name="importingSettings">
@@ -331,6 +291,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -439,77 +400,41 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="dbms" type="462c0819:PsiDirectoryNode" />
-              <item name="structs" type="462c0819:PsiDirectoryNode" />
+              <item name="storage" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="dbms" type="b2602c69:ProjectViewProjectNode" />
               <item name="dbms" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="dbms" type="b2602c69:ProjectViewProjectNode" />
-              <item name="dbms" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="dbms" type="b2602c69:ProjectViewProjectNode" />
-              <item name="dbms" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="dbms" type="462c0819:PsiDirectoryNode" />
+              <item name="storage" type="462c0819:PsiDirectoryNode" />
+              <item name="file_structs" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="dbms" type="b2602c69:ProjectViewProjectNode" />
               <item name="dbms" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="dbms" type="462c0819:PsiDirectoryNode" />
-              <item name="grammar" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="dbms" type="b2602c69:ProjectViewProjectNode" />
-              <item name="dbms" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="dbms" type="462c0819:PsiDirectoryNode" />
               <item name="structs" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="dbms" type="b2602c69:ProjectViewProjectNode" />
-              <item name="dbms" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="dbms" type="b2602c69:ProjectViewProjectNode" />
-              <item name="dbms" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="throw_exception_test" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="AndroidView" />
       <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SearchEverywhereHistoryKey" value="getCol&#9;PSI&#9;JAVA://com.dbms.grammar.ArgsGuard#getColumn&#10;a.&#9;FILE&#9;file://C:/Users/User/IdeaProjects/dbms/a.txt" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547117527030" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547128707758" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -705,6 +630,7 @@
       <workItem from="1547111800555" duration="49000" />
       <workItem from="1547111919485" duration="3467000" />
       <workItem from="1547115393224" duration="2160000" />
+      <workItem from="1547125136090" duration="3371000" />
     </task>
     <servers />
   </component>
@@ -741,7 +667,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="378308000" />
+    <option name="totallyTimeSpent" value="381679000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -753,9 +679,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-6" y="-6" width="1549" height="837" extended-state="6" />
+    <frame x="-7" y="-7" width="1550" height="840" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21663313" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21614583" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -764,7 +691,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.47100425" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.42291373" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3958904" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.20792079" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -823,6 +750,9 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -932,9 +862,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="17" column="95" selection-start-line="17" selection-start-column="95" selection-end-line="17" selection-end-column="95" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1003,16 +930,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="116">
           <caret line="174" selection-start-line="174" selection-end-line="174" />
-          <folding>
-            <element signature="e#2111#2112#0" expanded="true" />
-            <element signature="e#2155#2156#0" expanded="true" />
-            <element signature="e#6484#6648#0" expanded="true" />
-            <element signature="e#6647#6648#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/db/School/meta data/tables/student.t" />
     <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.12/junit-4.12.jar!/org/junit/internal/runners/model/ReflectiveCallable.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
@@ -1038,10 +958,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="319">
           <caret line="23" column="5" lean-forward="true" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
-          <folding>
-            <element signature="e#690#691#0" expanded="true" />
-            <element signature="e#760#761#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1049,9 +965,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="8" column="29" selection-start-line="8" selection-start-column="29" selection-end-line="8" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1069,13 +982,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.12/junit-4.12-sources.jar!/org/junit/Test.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="65" column="18" selection-start-line="65" selection-start-column="18" selection-end-line="65" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.12/junit-4.12-sources.jar!/org/junit/Test.java" />
     <entry file="file://$PROJECT_DIR$/src/test/java/com/dbms/structs/TableTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="117">
@@ -1087,9 +994,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="12" column="2" lean-forward="true" selection-start-line="12" selection-start-column="2" selection-end-line="12" selection-end-column="2" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1114,39 +1018,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/storage/blocks/BlockManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="109">
-          <caret line="25" column="60" selection-start-line="25" selection-start-column="60" selection-end-line="25" selection-end-column="60" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/storage/blocks/Block.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="336">
           <caret line="27" column="14" lean-forward="true" selection-start-line="27" selection-start-column="14" selection-end-line="27" selection-end-column="14" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/storage/file_structs/FileStruct.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="155">
-          <caret line="31" column="23" selection-start-line="31" selection-start-column="23" selection-end-line="31" selection-end-column="23" />
-          <folding>
-            <element signature="e#309#310#0" expanded="true" />
-            <element signature="e#365#366#0" expanded="true" />
-            <element signature="e#1292#1293#0" expanded="true" />
-            <element signature="e#1336#1337#0" expanded="true" />
-            <element signature="e#1516#1517#0" expanded="true" />
-            <element signature="e#1585#1586#0" expanded="true" />
-            <element signature="e#1717#1718#0" expanded="true" />
-            <element signature="e#1785#1786#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1193,30 +1070,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/structs/Databases.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="159">
-          <caret line="48" selection-start-line="48" selection-end-line="48" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/structs/Database.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="25" selection-start-line="25" selection-end-line="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#559#560#0" expanded="true" />
-            <element signature="e#591#592#0" expanded="true" />
-            <element signature="e#843#844#0" expanded="true" />
-            <element signature="e#870#871#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/com/esotericsoftware/kryo/5.0.0-RC1/kryo-5.0.0-RC1.jar!/com/esotericsoftware/kryo/Kryo.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="116">
@@ -1224,34 +1077,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/storage/Serialization.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="31" column="44" selection-start-line="31" selection-start-column="44" selection-end-line="31" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/com/esotericsoftware/kryo/5.0.0-RC1/kryo-5.0.0-RC1.jar!/com/esotericsoftware/kryo/io/Input.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="128">
           <caret line="123" column="16" selection-start-line="123" selection-start-column="16" selection-end-line="123" selection-end-column="16" />
-          <folding>
-            <element signature="e#3194#3195#0" expanded="true" />
-            <element signature="e#3228#3229#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/esotericsoftware/kryo/5.0.0-RC1/kryo-5.0.0-RC1-sources.jar!/com/esotericsoftware/kryo/Kryo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-34">
-          <caret line="680" column="17" selection-start-line="680" selection-start-column="17" selection-end-line="680" selection-end-column="17" />
         </state>
       </provider>
     </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/com/esotericsoftware/kryo/5.0.0-RC1/kryo-5.0.0-RC1-sources.jar!/com/esotericsoftware/kryo/io/Input.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
+        <state relative-caret-position="578">
           <caret line="58" column="14" selection-start-line="58" selection-start-column="14" selection-end-line="58" selection-end-column="14" />
           <folding>
             <element signature="e#3083#3084#0" expanded="true" />
@@ -1262,10 +1097,81 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/esotericsoftware/kryo/5.0.0-RC1/kryo-5.0.0-RC1-sources.jar!/com/esotericsoftware/kryo/Kryo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="9435">
+          <caret line="680" column="17" selection-start-line="680" selection-start-column="17" selection-end-line="680" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/storage/file_structs/FileStruct.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="57" lean-forward="true" selection-start-line="16" selection-start-column="57" selection-end-line="16" selection-end-column="57" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#309#310#0" expanded="true" />
+            <element signature="e#365#366#0" expanded="true" />
+            <element signature="e#1292#1293#0" expanded="true" />
+            <element signature="e#1336#1337#0" expanded="true" />
+            <element signature="e#1516#1517#0" expanded="true" />
+            <element signature="e#1585#1586#0" expanded="true" />
+            <element signature="e#1717#1718#0" expanded="true" />
+            <element signature="e#1785#1786#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/storage/blocks/BlockManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-89">
+          <caret line="22" column="93" selection-start-line="22" selection-start-column="93" selection-end-line="22" selection-end-column="93" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/storage/Serialization.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="33" column="46" selection-start-line="33" selection-start-column="46" selection-end-line="33" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/School/meta data/tables/student.t">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/structs/Database.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="33" column="31" selection-start-line="33" selection-start-column="31" selection-end-line="33" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#559#560#0" expanded="true" />
+            <element signature="e#591#592#0" expanded="true" />
+            <element signature="e#787#788#0" expanded="true" />
+            <element signature="e#825#826#0" expanded="true" />
+            <element signature="e#843#844#0" expanded="true" />
+            <element signature="e#870#871#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/storage/data/MetaDataManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="244">
-          <caret line="115" column="54" selection-start-line="115" selection-start-column="54" selection-end-line="115" selection-end-column="54" />
+        <state relative-caret-position="165">
+          <caret line="114" selection-start-line="114" selection-end-line="114" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/structs/Databases.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1156">
+          <caret line="83" column="16" selection-start-line="83" selection-start-column="16" selection-end-line="83" selection-end-column="16" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1274,8 +1180,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/DBMSTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="25" column="62" selection-start-line="25" selection-start-column="62" selection-end-line="25" selection-end-column="62" />
+        <state relative-caret-position="102">
+          <caret line="63" column="8" selection-start-line="63" selection-start-column="8" selection-end-line="63" selection-end-column="8" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

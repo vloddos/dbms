@@ -13,7 +13,7 @@ import java.util.Map;
  * //register all classes that need to be serialized using {@link com.dbms.storage.Serialization}...
  * BlockManager.init();
  * BlockExtendedFileStruct.init();
- * Databases.getInstance().fullDatabasesFullTablesLoad();
+ * Databases.getInstance().fullDatabasesFullTablesLoad();//or another load
  * }</pre>
  */
 public class Databases {
@@ -28,6 +28,7 @@ public class Databases {
     private Database currentDatabase;
     private Map<String, Database> databases = new HashMap<>();
 
+    private Load databasesLoad = Load.LAZY;
     private Load tablesLoad = Load.LAZY;
 
     public static Databases getInstance() {
@@ -40,19 +41,53 @@ public class Databases {
     private Databases() {
     }
 
-    /**
-     * Downloads all available databases.
-     */
-    public void fullDatabasesFullTablesLoad() throws Exception {
+    //load type setters если нужно переключить режим и не хочется повторно перезагружать бд и таблицы
+    public void setLazyDatabasesLazyTablesLoad() throws Exception {
+        databasesLoad = Load.LAZY;
+        tablesLoad = Load.LAZY;
+    }
+
+    public void setLazyDatabasesFullTablesLoad() throws Exception {
+        databasesLoad = Load.LAZY;
+        tablesLoad = Load.FULL;
+    }
+
+    public void setFullDatabasesLazyTablesLoad() throws Exception {
+        databasesLoad = Load.FULL;
+        tablesLoad = Load.LAZY;
+    }
+
+    public void setFullDatabasesFullTablesLoad() throws Exception {
+        databasesLoad = Load.FULL;
+        tablesLoad = Load.FULL;
+    }
+
+    //loads
+    public void lazyDatabasesLazyTablesLoad() throws Exception {
+        setLazyDatabasesLazyTablesLoad();
+    }
+
+    public void lazyDatabasesFullTablesLoad() throws Exception {
+        setLazyDatabasesFullTablesLoad();
+    }
+
+    public void fullDatabasesLazyTablesLoad() throws Exception {
         databases = MetaDataManager.getInstance().readAllDatabases(Database.class);
-        for (var d : databases.values())
-            d.fullTablesLoad();
 
         var o = databases.keySet().stream().findFirst();
         if (o.isPresent())
             useDatabase(o.get());
-        //start checker...???
-        tablesLoad = Load.FULL;
+
+        setFullDatabasesLazyTablesLoad();
+    }
+
+    public void fullDatabasesFullTablesLoad() throws Exception {
+        fullDatabasesLazyTablesLoad();
+
+        for (var d : databases.values())
+            d.fullTablesLoad();
+
+        setFullDatabasesFullTablesLoad();
     }
 
     /**
@@ -91,13 +126,14 @@ public class Databases {
         if (!MetaDataManager.getInstance().databaseExists(name))
             throw new Exception(String.format("The database '%s' does not exist", name));
 
-        if (!databases.containsKey(name)) {
+        if (!databases.containsKey(name))
             databases.put(name, MetaDataManager.getInstance().readDatabase(name, Database.class));
-            if (tablesLoad == Load.FULL)
-                databases.get(name).fullTablesLoad();
-        }
 
-        return databases.get(name);
+        var db = databases.get(name);
+        if (tablesLoad == Load.FULL && !db.isAllTablesLoaded())
+            db.fullTablesLoad();
+
+        return db;
     }
 
     /**

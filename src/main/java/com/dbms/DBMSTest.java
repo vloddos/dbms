@@ -61,7 +61,8 @@ public class DBMSTest {
         map.put("field", new TypeDescription("bool"));
         Databases.getInstance().useDatabase("School").createTable("student", map);*/
 
-        System.out.println(Databases.getInstance().getCurrentDatabase().getTable("student"));
+        //System.out.println(Databases.getInstance().getCurrentDatabase().getTable("student"));
+        //System.out.println(Databases.getInstance().getDatabase("School").getTable("student"));
 
 
         //Databases.getInstance().getCurrentDatabase().dropTable("student");

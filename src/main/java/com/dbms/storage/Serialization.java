@@ -4,6 +4,7 @@ import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.KryoSerializable;
 import com.esotericsoftware.kryo.io.Output;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -30,6 +31,9 @@ public class Serialization {
     public synchronized Kryo getKryo() {
         var kryo = new Kryo();
         kryoClasses.forEach(kryo::register);
+        /*System.out.println("=============");
+        kryoClasses.forEach(System.out::println);
+        System.out.println("=============");*/
         return kryo;
     }
 

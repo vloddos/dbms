@@ -13,6 +13,8 @@ public class Database {//immutable methods???
     private String name;
     private transient Map<String, Table> tables = new HashMap<>();
     private transient Map<String, BlocksPointer> blocksPointers = new HashMap<>();
+    //todo как то проверять загрузились ли все таблицы в ленивом случае при вызовах getTable для каждой таблицы
+    private transient boolean allTablesLoaded;//transient потому что актуально только на момент работы
 
     //for kryo
     private Database() {
@@ -22,9 +24,14 @@ public class Database {//immutable methods???
         this.name = name;
     }
 
+    public boolean isAllTablesLoaded() {
+        return allTablesLoaded;
+    }
+
     public void fullTablesLoad() throws Exception {
         tables = MetaDataManager.getInstance().readAllTables(name, Table.class);
         blocksPointers = BlockManager.getInstance().readAllBlocksPointers(name);
+        allTablesLoaded = true;
     }
 
     public String getName() {

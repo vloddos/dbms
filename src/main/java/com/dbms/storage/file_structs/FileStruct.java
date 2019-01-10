@@ -24,7 +24,6 @@ public class FileStruct {// TODO: 03.12.2018 геттеры возвращающ
     protected static String tableData = "table data";
 
     //file extensions
-    protected static String tmpFileExtension = ".tmp";
     protected static String databaseExtension = ".db";
     protected static String tableExtension = ".t";
     protected static String tableDataExtension = ".d";
@@ -66,10 +65,6 @@ public class FileStruct {// TODO: 03.12.2018 геттеры возвращающ
     }
 
     //file extensions getters
-    public static String getTmpFileExtension() {
-        return tmpFileExtension;
-    }
-
     public static String getDatabaseExtension() {
         return databaseExtension;
     }

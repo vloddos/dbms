@@ -22,7 +22,7 @@ public class MetaDataManager {
 
     private static MetaDataManager instance;
 
-    private ThreadLocal<Kryo> kryoThreadLocal = ThreadLocal.withInitial(Serialization.getInstance()::getKryo);
+    public ThreadLocal<Kryo> kryoThreadLocal = ThreadLocal.withInitial(Serialization.getInstance()::getKryo);
 
     // FIXME: 03.12.2018 как то поменять isFile/isDirectory???
     private MetaDataManager() {
@@ -109,12 +109,12 @@ public class MetaDataManager {
                 var in = new Input(
                         new FileInputStream(
                                 FileStruct.getTableFullPath(databaseName, tableName)
-                        ).readAllBytes()
+                        )
                 )
         ) {
-            //FIXME: !!!
-            System.out.println(in.getBuffer().length);
-            return kryoThreadLocal.get().readObject(in, tableClass);
+            var tmp = kryoThreadLocal.get().readObject(in, tableClass);
+            System.out.println(in.position());
+            return tmp;
         }
     }
 
