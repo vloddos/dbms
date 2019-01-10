@@ -10,16 +10,25 @@ import java.util.Map;
  * So if you make a database object using a constructor, it will be wrong to work with such an object.
  * Before you start working with DBMS, you need to write the following:
  * <pre>{@code
+ * //register all classes that need to be serialized using {@link com.dbms.storage.Serialization}...
+ * BlockManager.init();
  * BlockExtendedFileStruct.init();
- * Databases.getInstance().fullLoad();
+ * Databases.getInstance().fullDatabasesFullTablesLoad();
  * }</pre>
  */
 public class Databases {
 
-    private Databases() {
+    public enum Load {
+        LAZY,
+        FULL
     }
 
     private static Databases instance;
+
+    private Database currentDatabase;
+    private Map<String, Database> databases = new HashMap<>();
+
+    private Load tablesLoad = Load.LAZY;
 
     public static Databases getInstance() {
         if (instance == null)
@@ -28,28 +37,43 @@ public class Databases {
         return instance;
     }
 
-    private Database currentDatabase;
-    private Map<String, Database> databases = new HashMap<>();
+    private Databases() {
+    }
 
     /**
      * Downloads all available databases.
      */
-    /*public void fullLoad() throws Exception {
-        databases = MetaDataManager.getInstance().readAllDatabases(Table.class);
+    public void fullDatabasesFullTablesLoad() throws Exception {
+        databases = MetaDataManager.getInstance().readAllDatabases(Database.class);
+        for (var d : databases.values())
+            d.fullTablesLoad();
 
         var o = databases.keySet().stream().findFirst();
         if (o.isPresent())
             useDatabase(o.get());
-        //start checker...
-    }*/
+        //start checker...???
+        tablesLoad = Load.FULL;
+    }
 
     /**
      * Creates a database with the specified name.
      */
     public void createDatabase(String name) throws Exception {
-        MetaDataManager.getInstance().initDatabase(name);
-        databases.put(name, new Database(name));
-        useDatabase(name);
+        if (MetaDataManager.getInstance().databaseExists(name))
+            throw new Exception(String.format("The database '%s' already exists", name));
+
+        var database = new Database(name);
+        MetaDataManager.getInstance().initDatabase(name, database);
+        databases.put(name, database);
+        currentDatabase = database;//useDatabase(name);???
+    }
+
+    public void dropDatabase(String name) throws Exception {// TODO: 16.12.2018 check
+        if (currentDatabase == getDatabase(name))//if database does not exist then will be thrown an exception
+            currentDatabase = null;
+        databases.remove(name);
+
+        MetaDataManager.getInstance().deleteDatabase(name);
     }
 
     /**
@@ -60,12 +84,18 @@ public class Databases {
     }
 
     /**
-     * @return the database with the specified name.
-     * @throws Exception
+     * @return the database with the specified name
+     * @throws Exception if the database with the specified name does not exist
      */
     public Database getDatabase(String name) throws Exception {
-        /*if (!databases.containsKey(name))
-            databases.put(name, MetaDataManager.getInstance().readDatabase(name));*/
+        if (!MetaDataManager.getInstance().databaseExists(name))
+            throw new Exception(String.format("The database '%s' does not exist", name));
+
+        if (!databases.containsKey(name)) {
+            databases.put(name, MetaDataManager.getInstance().readDatabase(name, Database.class));
+            if (tablesLoad == Load.FULL)
+                databases.get(name).fullTablesLoad();
+        }
 
         return databases.get(name);
     }
@@ -99,36 +129,6 @@ public class Databases {
                 }
         );*/
     }
-
-    /*
-    на вход нужно подать предобработанный лимит,офсет,where
-    то есть, если не было указано лимита, то он должен быть равен Integer.MAX_VALUE,
-    если не было указано офсета, то он должен быть равен 0,
-    если не было указано where, то он должен быть равен null
-    */
-
-    /*public TextTable select(Vector<String> fieldNames, int limit, int offset, String tableName, String where) throws Exception {//move to table???
-        var table = currentDatabase.getTable(tableName);
-        var fieldIndexes = fieldNames.stream().map(table::getFieldIndex).collect(Collectors.toList());
-        var whereExpression = table.where(where, "r");
-
-        var js = ScriptManager.scriptEngineManager.getEngineByName("js");
-
-        var rowIterator = MetaDataManager.getInstance().getRowIterator(currentDatabase.getName(), tableName);
-        IntStream.range(0, offset).forEach(i -> rowIterator.next());
-        var rows = new Vector<Vector<?>>();
-        for (int i = 0; i < limit && rowIterator.hasNext(); ++i) {
-            var r = rowIterator.next();
-            js.put("r", r);
-            if (where == null || ((boolean) js.eval(whereExpression.getValueForEval()))) {
-                var row = new Vector<>();
-                fieldIndexes.forEach(j -> row.add(r.get(j)));
-                rows.add(row);
-            }
-        }
-        return new TextTable(new DefaultTableModel(rows, fieldNames));
-    }*/
-
     //show databases???
     //alter new thread???
 }

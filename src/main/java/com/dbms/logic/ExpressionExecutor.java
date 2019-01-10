@@ -25,10 +25,20 @@ public class ExpressionExecutor {
 
             switch (args.command.image) {
                 case "DATABASE":
+                    /*rwl.writeLock().lock();
+                    try {*/
                     Databases.getInstance().createDatabase(args.getName());
+                    /*} finally {
+                        rwl.writeLock().unlock();
+                    }*/
                     break;
                 case "USE":
+                    /*rwl.readLock().lock();
+                    try {*/
                     Databases.getInstance().useDatabase(args.getName());
+                    /*} finally {
+                        rwl.readLock().unlock();
+                    }*/
                     break;
                 case "TABLE":
                     Databases.getInstance().getCurrentDatabase().createTable(args.getName(), args.getFields());

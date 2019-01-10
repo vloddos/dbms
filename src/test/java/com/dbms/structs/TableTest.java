@@ -8,7 +8,14 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Vector;
 
-public class TableTest {
+public class TableTest extends TestBootstrap {
+
+    {
+        initAll();
+    }
+
+    public TableTest() throws Exception {
+    }
 
     @Test(expected = RuntimeException.class)
     public void testShouldThrowExceptionCauseWrongType() {
@@ -24,47 +31,39 @@ public class TableTest {
     public void testShouldReturnTableInStringFormat() {
         var map = new LinkedHashMap<String, TypeDescription>();
 
-        map.put("first_name", new TypeDescription("varchar"));
+        map.put("first_name", new TypeDescription("varchar", 25));
         map.put("age", new TypeDescription("int"));
 
-        Assert.assertEquals("create table Student(\n\tfirst_name varchar,\n\tage int\n)", new Table("School", "Student", map).toString());
+        Assert.assertEquals("create table Student(\n\tfirst_name varchar(25),\n\tage int\n)", new Table("School", "Student", map).toString());
     }
 
     @Test(expected = Exception.class)
     public void testShouldThrowExceptionCauseInsertIntoWrongField() throws Exception {
-        DataBases.getInstance().useDataBase("School");
+        Databases.getInstance().useDatabase("School");
 
         var data = new HashMap();
 
         data.put("wrong", "23");
 
-        DataBases.getInstance().getCurrentDataBase().getTable("Class").insert(data);
+        Databases.getInstance().getCurrentDatabase().getTable("Class").insert(data);
     }
 
     @Test
     public void testShouldInsertAndSelectValues() throws Exception {
-        DataBases.getInstance().useDataBase("School");
+        Databases.getInstance().useDatabase("School");
 
-        var fields = new LinkedHashMap<String, TypeDescription>();
+        var data = new HashMap<String, String>();
 
-        fields.put("first_name", new TypeDescription("varchar", 50));
-        fields.put("last_name", new TypeDescription("varchar", 50));
-        fields.put("age", new TypeDescription("int"));
-
-        var data = new HashMap();
-
-        data.put("first_name", "Mike");
-        data.put("last_name", "Mike");
+        data.put("field", "true");
         data.put("age", "17");
 
-        //DataBases.getInstance().getCurrentDataBase().getTable("student").insert(data);
+        Databases.getInstance().getCurrentDatabase().getTable("Class").insert(data);
 
-        DataBases.getInstance().select(
-                new Vector<>(Arrays.asList("age", "first_name", "last_name")),
+        Databases.getInstance().getCurrentDatabase().getTable("Class").select(
+                new Vector<>(Arrays.asList("age", "field")),
                 Integer.MAX_VALUE,
                 0,
-                "student",
                 "age=17"
-        ).printTable();
+        ).print();
     }
 }

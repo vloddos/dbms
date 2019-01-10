@@ -20,9 +20,12 @@ public class Expression {
         }
 
         var eaReplaced = Pattern.compile("(?<![:><])=").matcher(value.toLowerCase()).replaceAll(mr -> "==").replaceAll(":=", "=");
-        var identifierReplaced = Pattern.compile("[a-zA-Z_]\\w+").matcher(eaReplaced).replaceAll(
+        var identifierReplaced = Pattern.compile("['a-zA-Z_]\\w+").matcher(eaReplaced).replaceAll(
                 mr -> {
                     var identifier = mr.group();
+                    if (identifier.contains("'"))
+                        return identifier;
+
                     switch (identifier) {
                         case "and":
                             return "&&";

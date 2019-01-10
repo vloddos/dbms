@@ -2,13 +2,9 @@ package com.dbms.data_types;
 
 import java.util.Arrays;
 
-public class Char {
+public class Char {//какие символы должны заполнять оставшееся место???
 
-    private char[] value;
-
-    //for kryo
-    private Char() {
-    }
+    protected char[] chars;
 
     public static Char parseChar(String value, int length) {
         return new Char(value, length);
@@ -18,11 +14,15 @@ public class Char {
         if (value.length() > length)
             throw new RuntimeException(String.format("The length of '%s' more than %s", value, length));
 
-        this.value = Arrays.copyOf(value.toCharArray(), length);
+        chars = Arrays.copyOf(value.toCharArray(), length);
+    }
+
+    public char[] getChars() {
+        return chars;
     }
 
     @Override
     public String toString() {
-        return String.valueOf(value);
+        return new String(chars);
     }
 }

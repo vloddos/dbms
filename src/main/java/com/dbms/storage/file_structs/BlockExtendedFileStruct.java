@@ -1,6 +1,7 @@
 package com.dbms.storage.file_structs;
 
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 public class BlockExtendedFileStruct extends FileStruct {// TODO: 03.12.2018 геттеры возвращающие/принимающие файлы???
 
@@ -8,44 +9,39 @@ public class BlockExtendedFileStruct extends FileStruct {// TODO: 03.12.2018 г�
     }
 
     //database service directory names
-    private static String blocks = "blocks";//лежит в данных потому что удобнее и логичнее хранить блоки и хэдеры близко???
-    private static String blockData = "block data";
+    private static String blocksPointers = "blocks pointers";
 
     //file extensions
-    private static String blockExtension = ".h";
-    private static String blockDataExtension = ".b";
+    private static String blocksPointerExtension = ".bp";
 
     //database service directories getters
-    public static String getBlocks() {
-        return getFilePath(getTableData(), blocks);
+    public static String getBlocksPointersRelativePath() {
+        return getFilePath(getMetaDataRelativePath(), blocksPointers);
     }
 
-    public static String getBlockData() {
-        return getFilePath(getTableData(), blockData);
-    }
-
-    public static ArrayList<String> getDbDirectories() {
-        var al = FileStruct.getDbDirectories();
-        al.add(getBlocks());
-        al.add(getBlockData());
+    public static ArrayList<String> getDatabaseServiceDirectoryRelativePaths() {
+        var al = FileStruct.getDatabaseServiceDirectoryRelativePaths();
+        al.add(getBlocksPointersRelativePath());
         return al;
     }
 
-    //file extensions getters
-    public static String getBlockExtension() {
-        return blockExtension;
+    public static ArrayList<String> getDatabaseServiceDirectoryFullPaths(String databaseName) {
+        var al = getDatabaseServiceDirectoryRelativePaths();
+        var dbp = getDatabaseDirectoryPath(databaseName);
+        return al.stream().map(p -> getFilePath(dbp, p)).collect(Collectors.toCollection(ArrayList::new));
     }
 
-    public static String getBlockDataExtension() {
-        return blockDataExtension;
+    //file extensions getters
+    public static String getBlocksPointerExtension() {
+        return blocksPointerExtension;
     }
 
     //struct paths getters
-    public static String getBlockPath(String databaseName, String tableName, String blockName) {
-        return getFilePath(getDatabasePath(databaseName), getBlocks(), tableName, blockName);
+    public static String getBlocksPointersFullPath(String databaseName) {
+        return getFilePath(getDatabaseDirectoryPath(databaseName), getBlocksPointersRelativePath());
     }
 
-    public static String getBlockDataPath(String databaseName, String tableName, String blockDataName) {
-        return getFilePath(getDatabasePath(databaseName), getBlockData(), tableName, blockDataName);
+    public static String getBlocksPointerFullPath(String databaseName, String tableName) {
+        return getFilePath(getBlocksPointersFullPath(databaseName), tableName + blocksPointerExtension);
     }
 }

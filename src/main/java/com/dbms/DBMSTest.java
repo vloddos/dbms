@@ -1,81 +1,29 @@
 package com.dbms;
 
 import com.dbms.storage.Serialization;
-import com.dbms.storage.data.MetaDataManager;
+import com.dbms.storage.blocks.BlockManager;
 import com.dbms.storage.file_structs.BlockExtendedFileStruct;
 import com.dbms.structs.Database;
 import com.dbms.structs.Databases;
 import com.dbms.structs.Table;
 import com.dbms.structs.TypeDescription;
 
-import java.io.File;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 
-class A {
-
-    public int i;
-    public double j;
-    public B b;
-
-    public A() {
-    }
-
-    @Override
-    public String toString() {
-        return i + " " + j + ";" + b.i;
-    }
-}
-
-class B {
-
-    public int i;
-
-    public B() {
-    }
-}
-
-class Box<T> {
-
-    private T t;
-
-    public void set(T t) {
-        this.t = t;
-    }
-
-    public T get() {
-        return t;
-    }
-
-    @Override
-    public String toString() {
-        return t == null ? null : t.toString();
-    }
-}
-
-public class Test {
+public class DBMSTest {
 
     public static void main(String[] args) throws Exception {
-        Serialization.getInstance().registerClassForKryo(ArrayList.class);
-        Serialization.getInstance().registerClassForKryo(LinkedHashMap.class);
         Serialization.getInstance().registerClassForKryo(HashMap.class);
-        Serialization.getInstance().registerClassForKryo(File.class);
-
-        /*Serialization.getInstance().registerClassForKryo(Char.class);
-        Serialization.getInstance().registerClassForKryo(Varchar.class);*/
+        Serialization.getInstance().registerClassForKryo(LinkedHashMap.class);
 
         Serialization.getInstance().registerClassForKryo(TypeDescription.class);
         Serialization.getInstance().registerClassForKryo(Table.class);
         Serialization.getInstance().registerClassForKryo(Database.class);
 
-        MetaDataManager.getInstance().setDatabaseInitializer(
-                Database.class,
-                Database::databaseInitializer
-        );
-
+        BlockManager.init();
         BlockExtendedFileStruct.init();
-        Databases.getInstance().fullLoad();
+        Databases.getInstance().fullDatabasesFullTablesLoad();
 
         /*var map = new HashMap<String, Pair<String, Integer>>();
         map.put("f1", new Pair<>("row", 0));
@@ -102,37 +50,41 @@ public class Test {
 
 
         //MetaDataManager.getInstance().init();
-        //Databases.getInstance().fullLoad();
+        //Databases.getInstance().fullDatabasesFullTablesLoad();
 
-        /*Databases.getInstance().dropDatabase("tdb");
-        Databases.getInstance().createDatabase("tdb");*/
+        //Databases.getInstance().dropDatabase("tdb");
+        //Databases.getInstance().createDatabase("tdb");
+
         /*var map = new LinkedHashMap<String, TypeDescription>();
+        map.put("name", new TypeDescription("varchar", 10));
         map.put("age", new TypeDescription("int"));
         map.put("field", new TypeDescription("bool"));
-        Databases.getInstance().useDatabase("tdb").createTable("student", map);*/
+        Databases.getInstance().useDatabase("School").createTable("student", map);*/
 
         System.out.println(Databases.getInstance().getCurrentDatabase().getTable("student"));
 
 
-        Databases.getInstance().getCurrentDatabase().dropTable("student");
+        //Databases.getInstance().getCurrentDatabase().dropTable("student");
+        //Databases.getInstance().getCurrentDatabase().getTable("student");
 
 
         /*var map = new HashMap();
+        map.put("name", "mem");
         map.put("age", "1488");
         map.put("field", "true");
-        Databases.getCurrentDatabase().getTable("student").insert(map);*/
+        Databases.getInstance().getCurrentDatabase().getTable("student").insert(map);*/
 
-        /*var set = new HashMap();
-        set.put("field", "false");
-        Databases.getCurrentDatabase().getTable("student").update(set, "age=228");*/
+        /*var set = new HashMap<String, String>();
+        set.put("age", "1488");
+        set.put("name", "'adolf'");
+        Databases.getInstance().getCurrentDatabase().getTable("student").update(set, null);*/
 
-        /*Databases.getInstance().select(
-                new Vector<>(Arrays.asList("field")),
+        /*Databases.getInstance().getCurrentDatabase().getTable("student").select(
+                new Vector<>(Arrays.asList("name", "age", "field")),
                 Integer.MAX_VALUE,
                 0,
-                "student",
-                "age=228"
-        ).printTable();*/
+                null
+        ).print();*/
 
         //Databases.getCurrentDatabase().getTable("student").delete("field=false");
 
@@ -169,7 +121,7 @@ public class Test {
         var rac = new RandomAccessFile("test2", "rw");
         rac.seek(0);
         rac.setLength(rac.length() + tmp.toBytes().length);
-        rac.write(tmp.toBytes());
+        rac.writeBlock(tmp.toBytes());
         rac.close();
         System.out.println(Arrays.toString(tmp.toBytes()));
 

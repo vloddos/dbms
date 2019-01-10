@@ -1,8 +1,19 @@
 package com.dbms.storage.blocks;
 
-public class BlockPointers {
+import java.io.File;
 
-    public Block first;
-    public Block last;
-    public Block firstDeleted;
+public class BlocksPointer {
+
+    Block first;
+    Block last;
+    Block firstDeleted;
+
+    public void setFile(File file) {
+        if (first != null)
+            first.file = file;
+        if (last != null)
+            last.file = file;
+        if (firstDeleted != null)
+            firstDeleted.file = file;
+    }
 }

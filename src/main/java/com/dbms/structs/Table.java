@@ -2,10 +2,9 @@ package com.dbms.structs;
 
 import com.dbms.scripting.Expression;
 import com.dbms.scripting.ScriptManager;
-import com.dbms.storage.data.MetaDataManager;
 import com.dbms.storage.blocks.BlockManager;
-import com.dbms.storage.blocks.BlockPointers;
-import dnl.utils.text.table.TextTable;
+import com.dbms.storage.blocks.BlocksPointer;
+import com.dbms.storage.data.Row;
 import javafx.util.Pair;
 
 import java.util.ArrayList;
@@ -23,7 +22,9 @@ public class Table {
     private Map<String, TypeDescription> fieldDescriptions;//must be LinkedHashMap
     private Map<String, Integer> fieldIndexes = new HashMap<>();
 
-    private BlockPointers blockPointers = new BlockPointers();
+    private transient BlocksPointer blocksPointer;
+
+    private int rowLength;
 
     //for kryo
     private Table() {
@@ -33,9 +34,16 @@ public class Table {
         this.tableName = tableName;
     }
 
+    public BlocksPointer getBlocksPointer() throws Exception {
+        if (blocksPointer == null)
+            blocksPointer = Databases.getInstance().getDatabase(databaseName).getBlocksPointer(tableName);
+
+        return blocksPointer;
+    }
+
     /**
-     * @param databaseName the name of the database in which the table is located
-     * @param tableName the name of the table
+     * @param databaseName      the name of the database in which the table is located
+     * @param tableName         the name of the table
      * @param fieldDescriptions the field descriptions
      * @throws RuntimeException if the wrong data type was specified for any field
      */
@@ -61,6 +69,14 @@ public class Table {
 
         int[] i = {0};
         this.fieldDescriptions.keySet().forEach(k -> fieldIndexes.put(k, i[0]++));//linkedkeyset in linkedhashmap??? post inc???
+
+        rowLength = Row.SIZE_OF_SERVICE_DATA;
+        fieldDescriptions.values().forEach(
+                td -> {
+                    var l = td.getLength();
+                    rowLength += ((l == -1) ? Types.getSize(td.getName()) : Types.getSize(td.getName()) * l);
+                }
+        );
     }
 
     public String getTableName() {
@@ -98,14 +114,14 @@ public class Table {
      * @param fields key-value map: key - field name, value - string value for inserting, casts to the corresponding type
      * @throws RuntimeException if there is no such field in the table
      */
-    public void insert(Map<String, String> fields) throws Exception {
+    public void insert(Map<String, String> fields) throws Exception {// FIXME: 16.12.2018 обрезать внешние кавычки строк???
         fields.keySet().forEach(this::throwIfNoField);
 
-        var row = new ArrayList<>();
-        IntStream.range(0, fieldDescriptions.size()).forEach(i -> row.add(null));
+        var al = new ArrayList<>();
+        IntStream.range(0, fieldDescriptions.size()).forEach(i -> al.add(null));
 
         fieldDescriptions.keySet().forEach(
-                k -> row.set(
+                k -> al.set(
                         fieldIndexes.get(k),
                         Types.cast(
                                 fields.get(k),
@@ -114,8 +130,15 @@ public class Table {
                 )
         );
 
-        BlockManager.getInstance().appendElement(databaseName, tableName, blockPointers, row);
-        MetaDataManager.getInstance().writeTable(databaseName, tableName, this);// FIXME: 02.12.2018 write only if bp was changed???
+        var row = new Row();
+        row.row = al;
+
+        BlockManager.getInstance().appendElement(
+                databaseName,
+                tableName,
+                getBlocksPointer(),
+                row
+        );
     }
 
     /**
@@ -129,77 +152,96 @@ public class Table {
         return new Expression(where, fields);
     }
 
-    public TextTable select(Vector<String> fieldNames, int limit, int offset, String where) throws Exception {
+    /*
+    на вход нужно подать предобработанный лимит,офсет,where
+    то есть, если не было указано лимита, то он должен быть равен Integer.MAX_VALUE,
+    если не было указано офсета, то он должен быть равен 0,
+    если не было указано where, то он должен быть равен null
+    */
+    public Selection select(Vector<String> fieldNames, int limit, int offset, String where) throws Exception {
         var fieldIndexes = fieldNames.stream().map(this::getFieldIndex).collect(Collectors.toList());
         var whereExpression = where(where, "r");
 
         var js = ScriptManager.scriptEngineManager.getEngineByName("js");
 
-        return null;
-        /*var rowIterator = MetaDataManager.getInstance().getRowIterator(databaseName, tableName);
-        IntStream.range(0, offset).forEach(i -> rowIterator.next());
-        var rows = new Vector<Vector<?>>();
-        for (int i = 0; i < limit && rowIterator.hasNext(); ++i) {
-            var r = rowIterator.next();
-            js.put("r", r);
-            if (where == null || ((boolean) js.eval(whereExpression.getValueForEval()))) {
-                var row = new Vector<>();
-                fieldIndexes.forEach(j -> row.add(r.get(j)));
-                rows.add(row);
+        var bei = BlockManager.getInstance().getBlockElementIterator(getBlocksPointer(), Row.class);
+        bei.setElement(new Row(new ArrayList<>(fieldDescriptions.values())));
+        IntStream.range(0, offset).forEach(i -> bei.next());
+
+        var selection = new Selection(fieldNames, new Vector<>());
+
+        for (int i = 0; i < limit && bei.hasNext(); ++i) {
+            var row = bei.next();
+            if (!row.isDeleted()) {
+                js.put("r", row.row);
+                if (where == null || ((boolean) js.eval(whereExpression.getValueForEval()))) {
+                    var v = new Vector<>();
+                    fieldIndexes.forEach(j -> v.add(row.row.get(j)));
+                    selection.add(v);
+                }
             }
         }
-        return new TextTable(new DefaultTableModel(rows, fieldNames));*/
+
+        return selection;
     }
-    /*public void delete(String where) throws Exception {//rewrite byte arrays of not deleted data???
+
+    /*public void delete(String where) throws Exception {
         if (where == null) {
-            MetaDataManager.getInstance().initTableData(databaseName, tableName);
-            return;
+            var bi = BlockManager.getInstance().getBlockIterator(getBlocksPointer());
+
         }
 
-        var tmp = MetaDataManager.getInstance().createTempTableData(databaseName, tableName);
-
-        var whereExpression = where(where, "row");
+        var whereExpression = where(where, "r");
 
         var js = ScriptManager.scriptEngineManager.getEngineByName("js");
 
-        var rowIterator = MetaDataManager.getInstance().getRowIterator(databaseName, tableName);
-        while (rowIterator.hasNext()) {
-            var row = rowIterator.next();
-            js.put("row", row);
-            if (!((boolean) js.eval(whereExpression.getValueForEval())))
-                MetaDataManager.getInstance().appendData(databaseName, tmp, row);
+        var bei = BlockManager.getInstance().getBlockElementIterator(getBlocksPointer(), Row.class);
+        bei.setElement(new Row(new ArrayList<>(fieldDescriptions.values())));
+
+        while (bei.hasNext()) {
+            var row = bei.next();// FIXME: 28.12.2018 clone???
+            if (!row.isDeleted()) {
+                js.put("r", row.row);
+                if ((boolean) js.eval(whereExpression.getValueForEval())) {
+                    row.makeDeleted();
+                    bei.write(row);
+                    //bei.delete(databaseName, tableName, getBlocksPointer());
+                }
+            }
         }
+    }*/
 
-        MetaDataManager.getInstance().replaceTableDataToTemp(databaseName, tableName);
-    }
-
-    public void update(Map<String, String> set, String where) throws Exception {//rewrite byte arrays of not changed data???
+    public void update(Map<String, String> set, String where) throws Exception {
         set.keySet().forEach(this::throwIfNoField);
 
-        var tmp = MetaDataManager.getInstance().createTempTableData(databaseName, tableName);
-
-        var whereExpression = where(where, "row");
+        var whereExpression = where(where, "r");
         set.replaceAll((fn, e) -> new Expression(e, whereExpression.getFields()).getValueForEval());
 
         var js = ScriptManager.scriptEngineManager.getEngineByName("js");
 
-        var rowIterator = MetaDataManager.getInstance().getRowIterator(databaseName, tableName);
-        while (rowIterator.hasNext()) {
-            var row = rowIterator.next();
-            var tmpRow = ((ArrayList) row.clone());
-            js.put("row", row);
-            for (var entry : set.entrySet())
-                if (where == null || ((boolean) js.eval(whereExpression.getValueForEval())))
-                    tmpRow.set(
-                            fieldIndexes.get(entry.getKey()),
-                            js.eval(entry.getValue())
-                    );
+        var bei = BlockManager.getInstance().getBlockElementIterator(getBlocksPointer(), Row.class);
+        bei.setElement(new Row(new ArrayList<>(fieldDescriptions.values())));
 
-            MetaDataManager.getInstance().appendData(databaseName, tmp, tmpRow);
+        while (bei.hasNext()) {
+            var row = bei.next();
+            if (!row.isDeleted()) {
+                var tmpRow = row.clone();
+                js.put("r", row.row);
+                if (where == null || ((boolean) js.eval(whereExpression.getValueForEval()))) {
+                    for (var entry : set.entrySet())
+                        tmpRow.row.set(
+                                fieldIndexes.get(entry.getKey()),
+                                Types.cast(
+                                        js.eval(entry.getValue()).toString(),
+                                        fieldDescriptions.get(entry.getKey())
+                                )
+                        );
+
+                    bei.write(tmpRow);
+                }
+            }
         }
-
-        MetaDataManager.getInstance().replaceTableDataToTemp(databaseName, tableName);
-    }*/
+    }
 
     @Override
     public String toString() {

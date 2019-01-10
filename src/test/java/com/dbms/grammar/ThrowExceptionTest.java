@@ -1,6 +1,5 @@
 package com.dbms.grammar;
 
-import com.dbms.grammar.SqlParser;
 import org.junit.Test;
 
 import java.io.FileReader;

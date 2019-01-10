@@ -14,51 +14,54 @@ public class FileStruct {// TODO: 03.12.2018 геттеры возвращающ
     }
 
     //dbms service directory names
-    private static String databaseRootDirectory = "db";
+    protected static String databaseRootDirectory = "db";
 
     //database service directory names
-    private static String metaData = "meta data";
-    private static String tables = "tables";
+    protected static String metaData = "meta data";
+    protected static String tables = "tables";
 
-    private static String data = "data";
-    private static String tableData = "table data";
+    protected static String data = "data";
+    protected static String tableData = "table data";
 
     //file extensions
-    private static String tmpFileExtension = ".tmp";
+    protected static String tmpFileExtension = ".tmp";
+    protected static String databaseExtension = ".db";
+    protected static String tableExtension = ".t";
+    protected static String tableDataExtension = ".d";
 
     public static void init() throws Exception {
-        var dbrd = new File(getDatabaseRootDirectory());
+        var dbrd = new File(getDatabaseRootDirectoryPath());
         if (!dbrd.isDirectory())
             if (!dbrd.mkdir())
                 throw new Exception("Cannot create database root directory");
     }
 
     //dbms service directories getters
-    public static String getDatabaseRootDirectory() {
+    public static String getDatabaseRootDirectoryPath() {
         return databaseRootDirectory;
     }
 
     //database service directories getters
-    public static String getMetaData() {
+    public static String getMetaDataRelativePath() {
         return metaData;
     }
 
-    public static String getTables() {
-        return getFilePath(getMetaData(), tables);
+    public static String getTablesRelativePath() {
+        return getFilePath(getMetaDataRelativePath(), tables);
     }
 
-    public static String getData() {
+    public static String getDataRelativePath() {
         return data;
     }
 
-    public static String getTableData() {
-        return getFilePath(getData(), tableData);
+    public static String getTableDataRelativePath() {
+        return getFilePath(getDataRelativePath(), tableData);
     }
 
-    public static ArrayList<String> getDbDirectories() {
+    public static ArrayList<String> getDatabaseServiceDirectoryRelativePaths() {
         var al = new ArrayList<String>();
-        al.add(getTables());
-        al.add(getTableData());
+        al.add(getTablesRelativePath());
+        al.add(getTableDataRelativePath());
         return al;
     }
 
@@ -67,25 +70,48 @@ public class FileStruct {// TODO: 03.12.2018 геттеры возвращающ
         return tmpFileExtension;
     }
 
+    public static String getDatabaseExtension() {
+        return databaseExtension;
+    }
+
+    public static String getTableExtension() {
+        return tableExtension;
+    }
+
+    public static String getTableDataExtension() {
+        return tableDataExtension;
+    }
+
     //struct paths getters
+    public static String getDatabaseDirectoryPath(String name) {
+        return getFilePath(getDatabaseRootDirectoryPath(), name);
+    }
+
     public static String getDatabasePath(String name) {
-        return getFilePath(getDatabaseRootDirectory(), name);
+        return getFilePath(getDatabaseDirectoryPath(name), name + databaseExtension);
     }
 
-    public static String getTablesPath(String databaseName) {
-        return getFilePath(getDatabasePath(databaseName), getTables());
+    public static String getMetaDataFullPath(String databaseName) {
+        return getFilePath(getDatabaseDirectoryPath(databaseName), getMetaDataRelativePath());
     }
 
-    public static String getTablePath(String databaseName, String tableName) {
-        return getFilePath(getTablesPath(databaseName), tableName);
+    public static String getDataFullPath(String databaseName) {
+        return getFilePath(getDatabaseDirectoryPath(databaseName), getDataRelativePath());
     }
 
-    public static String getTableDataPath(String databaseName) {
-        return getFilePath(getDatabasePath(databaseName), getData());
+    public static String getTablesFullPath(String databaseName) {
+        return getFilePath(getDatabaseDirectoryPath(databaseName), getTablesRelativePath());
     }
 
-    // FIXME: 03.12.2018 rename???
-    public static String getTableDataPath(String databaseName, String tableName) {//1 data file per table(data without blocks)
-        return getFilePath(getTableDataPath(databaseName), tableName);
+    public static String getTableFullPath(String databaseName, String tableName) {
+        return getFilePath(getTablesFullPath(databaseName), tableName + tableExtension);
+    }
+
+    public static String getTableDatasFullPath(String databaseName) {
+        return getFilePath(getDatabaseDirectoryPath(databaseName), getTableDataRelativePath());
+    }
+
+    public static String getTableDataFullPath(String databaseName, String tableName) {//1 data file per table
+        return getFilePath(getTableDatasFullPath(databaseName), tableName + tableDataExtension);
     }
 }
