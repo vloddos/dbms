@@ -10,13 +10,6 @@ import java.util.Vector;
 
 public class TableTest extends TestBootstrap {
 
-    {
-        initAll();
-    }
-
-    public TableTest() throws Exception {
-    }
-
     @Test(expected = RuntimeException.class)
     public void testShouldThrowExceptionCauseWrongType() {
         var map = new LinkedHashMap<String, TypeDescription>();

@@ -2,8 +2,6 @@ package com.dbms.structs;
 
 import org.junit.Test;
 
-import java.util.LinkedHashMap;
-
 public class DataBasesTest extends TestBootstrap {
 
     @Test(expected = Exception.class)
@@ -14,12 +12,11 @@ public class DataBasesTest extends TestBootstrap {
     //FIXME(RoyalStorm): rename test
     @Test(expected = Exception.class)
     public void testShouldThrowExceptionDatabase() throws Exception {
-        //initAll();
         Databases.getInstance().createDatabase("School");
         Databases.getInstance().getDatabase("School");
     }
 
-    @Test(expected = Exception.class)
+    /*@Test(expected = Exception.class)
     public void testShouldThrowExceptionCauseUseWrongDatabase() throws Exception {
         var map = new LinkedHashMap<String, TypeDescription>();
 
@@ -27,5 +24,5 @@ public class DataBasesTest extends TestBootstrap {
         map.put("age", new TypeDescription("int"));
 
         Databases.getInstance().useDatabase("Test").createTable("student", map);
-    }
+    }*/
 }

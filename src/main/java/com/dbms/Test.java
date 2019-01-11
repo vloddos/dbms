@@ -15,7 +15,7 @@ class A {
 public class Test {
 
     public static void main(String[] args) throws Exception {
-        System.out.println(Arrays.toString(new File("testierherheh").listFiles(File::isFile)));
+        DBMSTest.main(new String[]{});
 
 
 
