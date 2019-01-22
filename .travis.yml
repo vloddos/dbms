@@ -17,6 +17,6 @@ notifications:
 
 after_success:
 - bash <(curl -s https://codecov.io/bash)
-- curl -o https://github.com/vloddos/dbms/blob/f/test/travis-automerge "travis-automerge"
-- chmod a+x "travis-automerge"
-- BRANCHES_TO_MERGE_REGEX='^f/' BRANCH_TO_MERGE_INTO=master GITHUB_REPO=vloddos/dbms "travis-automerge"
+- curl -o https://github.com/vloddos/dbms/blob/f/test/travis-automerge /travis-automerge
+- chmod a+x /travis-automerge
+- BRANCHES_TO_MERGE_REGEX='^f/' BRANCH_TO_MERGE_INTO=master GITHUB_REPO=vloddos/dbms /travis-automerge
