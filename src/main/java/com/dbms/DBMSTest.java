@@ -1,27 +1,15 @@
 package com.dbms;
 
-import com.dbms.storage.Serialization;
-import com.dbms.storage.blocks.BlockManager;
 import com.dbms.storage.file_structs.BlockExtendedFileStruct;
-import com.dbms.structs.Database;
 import com.dbms.structs.Databases;
-import com.dbms.structs.Table;
-import com.dbms.structs.TypeDescription;
 
+import java.util.Arrays;
 import java.util.HashMap;
-import java.util.LinkedHashMap;
+import java.util.Vector;
 
 public class DBMSTest {
 
     public static void main(String[] args) throws Exception {
-        Serialization.getInstance().registerClassForKryo(HashMap.class);
-        Serialization.getInstance().registerClassForKryo(LinkedHashMap.class);
-
-        Serialization.getInstance().registerClassForKryo(TypeDescription.class);
-        Serialization.getInstance().registerClassForKryo(Table.class);
-        Serialization.getInstance().registerClassForKryo(Database.class);
-
-        BlockManager.init();
         BlockExtendedFileStruct.init();
         Databases.getInstance().fullDatabasesFullTablesLoad();
 
@@ -59,26 +47,44 @@ public class DBMSTest {
         map.put("name", new TypeDescription("varchar", 10));
         map.put("age", new TypeDescription("int"));
         map.put("field", new TypeDescription("bool"));
-        Databases.getInstance().useDatabase("School").createTable("student", map);*/
+        Databases.getInstance().useDatabase("tdb").createTable("student", map);*/
 
-        System.out.println(Databases.getInstance().getCurrentDatabase().getTable("student"));
-        //System.out.println(Databases.getInstance().getDatabase("School").getTable("student"));
+        //System.out.println(Databases.getInstance().getCurrentDatabase().getTable("student"));
+        //System.out.println(Databases.getInstance().getDatabase("tdb").getTable("student"));
 
 
         //Databases.getInstance().getCurrentDatabase().dropTable("student");
         //Databases.getInstance().getCurrentDatabase().getTable("student");
 
 
-        /*var map = new HashMap();
-        map.put("name", "mem");
-        map.put("age", "1488");
-        map.put("field", "true");
-        Databases.getInstance().getCurrentDatabase().getTable("student").insert(map);*/
+        var map = new HashMap();
+        map.put("name", "abfge");
+        map.put("age", "8725725");
+        map.put("field", "false");
+        Databases.getInstance().getCurrentDatabase().getTable("student").insert(map);
 
         /*var set = new HashMap<String, String>();
-        set.put("age", "1488");
-        set.put("name", "'adolf'");
-        Databases.getInstance().getCurrentDatabase().getTable("student").update(set, null);*/
+        set.put("age", "age/2");
+        //set.put("name", "'---'");
+        Databases.getInstance().getCurrentDatabase().getTable("student").update(set, "field=false");*/
+
+        //Databases.getInstance().getCurrentDatabase().getTable("student").delete(null);
+        var bp = Databases.getInstance().getCurrentDatabase().getTable("student").getBlocksPointer();
+        for (var df : bp.getClass().getDeclaredFields()) {
+            df.setAccessible(true);
+            System.out.println(df.getName() + " " + df.get(bp));
+        }
+
+        Databases.getInstance()
+                .getCurrentDatabase()
+                .getTable("student")
+                .select(
+                        new Vector<>(Arrays.asList("name", "age", "field")),
+                        Integer.MAX_VALUE,
+                        0,
+                        null
+                )
+                .print();
 
         /*Databases.getInstance().getCurrentDatabase().getTable("student").select(
                 new Vector<>(Arrays.asList("name", "age", "field")),
@@ -87,7 +93,6 @@ public class DBMSTest {
                 null
         ).print();*/
 
-        //Databases.getCurrentDatabase().getTable("student").delete("field=false");
 
 
         /*var sem = new ScriptEngineManager();

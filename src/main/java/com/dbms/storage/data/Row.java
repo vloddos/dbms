@@ -1,15 +1,14 @@
 package com.dbms.storage.data;
 
+import com.dbms.storage.serialization.DataSerializable;
 import com.dbms.structs.TypeDescription;
 import com.dbms.structs.Types;
-import com.esotericsoftware.kryo.Kryo;
-import com.esotericsoftware.kryo.KryoSerializable;
-import com.esotericsoftware.kryo.io.Input;
-import com.esotericsoftware.kryo.io.Output;
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.util.ArrayList;
 
-public class Row implements KryoSerializable, Cloneable {
+public class Row implements DataSerializable, Cloneable {
 
     private static final byte DELETED = 0b1;
 
@@ -40,16 +39,18 @@ public class Row implements KryoSerializable, Cloneable {
     }
 
     @Override
-    public void write(Kryo kryo, Output output) {
-        output.writeByte(FLAGS);
-        row.forEach(e -> Types.write(e.getClass(), output, e));
+    public void write(DataOutputStream out) throws Exception {
+        out.writeByte(FLAGS);
+        for (var e : row)
+            Types.write(out, e);
     }
 
     @Override
-    public void read(Kryo kryo, Input input) {
+    public void read(DataInputStream in) throws Exception {
         row.clear();
-        FLAGS = input.readByte();
-        types.forEach(t -> row.add(Types.read(t, input)));
+        FLAGS = in.readByte();
+        for (var t : types)
+            row.add(Types.read(in, t));
     }
 
     @Override

@@ -1,14 +1,19 @@
 package com.dbms.storage.blocks;
 
-import com.dbms.storage.Serialization;
-import com.esotericsoftware.kryo.KryoSerializable;
+import com.dbms.storage.serialization.DataSerializable;
+import com.dbms.storage.serialization.Serialization;
 
 import java.util.Iterator;
 
 public class ElementIterator<E> implements Iterator<E> {
 
     private Class<E> elementClass;
-    public E element;//if E extends KryoSerializable
+
+    //возможно объект должен быть приведен к какому-то состоянию, прежде чем будет считан
+    //поэтому лучше сделать возможность устанавливать объект, чем каждый раз при считывании создавать новый
+    //(хотя можно вдобавок запилить и вариант с консумером)
+    E element;//if E extends DataSerializable
+
     private Block block;
     private long currentPosition;
     private long deltaPosition;
@@ -16,32 +21,37 @@ public class ElementIterator<E> implements Iterator<E> {
     public ElementIterator(Block block, Class<E> elementClass) {
         this.elementClass = elementClass;
         this.block = block;
-        currentPosition = block.getDataBeginPosition();
+        if (block != null)
+            currentPosition = block.getDataBeginPosition();
     }
 
     public Class<E> getElementClass() {
         return elementClass;
     }
 
-    @Override
-    public boolean hasNext() {
-        return block != null && currentPosition + deltaPosition < block.getDataEndPosition();
+    public E getElement() {
+        return element;
+    }
+
+    public void setElement(E element) throws Exception {
+        if (!(element instanceof DataSerializable))
+            throw new Exception("The element must be instance of DataSerializable");
+
+        this.element = element;
     }
 
     @Override
-    public E next() {
+    public boolean hasNext() {
+        return block != null && !block.isDeleted() && currentPosition + deltaPosition < block.getDataEndPosition();
+    }
+
+    @Override
+    public E next() {//todo поддержка не объектов DataSerializable
         try {
             if (hasNext()) {
                 currentPosition += deltaPosition;//в начале итерации по блоку прибавится 0
-
-                if (element instanceof KryoSerializable) {//fixme зависимость от Serialization(и от Block???)(и такое мб где то еще есть)
-                    deltaPosition = block.readElement(currentPosition, (KryoSerializable) element);
-                    return element;
-                } else {
-                    var p = block.readElement(currentPosition, elementClass);
-                    deltaPosition = p.getValue();
-                    return p.getKey();
-                }
+                deltaPosition = block.readElement(currentPosition, (DataSerializable) element);
+                return element;
             }
 
             block = null;
@@ -52,76 +62,20 @@ public class ElementIterator<E> implements Iterator<E> {
         return null;
     }
 
-    public void write(E element) {//перед 1 вызовом next и после 1 вызова будет перезаписывать 1 элемент
+    public void write(E element) throws Exception {//перед 1 вызовом next и после 1 вызова будет перезаписывать 1 элемент
         if (block == null)
             return;
 
         block.writeBytes(
                 currentPosition,
-                Serialization.getInstance().getKryoBytes(element)
+                Serialization.getInstance().getDataSerializableBytes(element)
         );
     }
 
-    /*public void delete(String databaseName, String tableName, BlocksPointer blocksPointer) throws Exception {
-        if (block == null)
+    public void delete(String databaseName, String tableName, BlocksPointer blocksPointer) throws Exception {
+        if (block == null || block.isDeleted())
             return;
 
         BlockManager.getInstance().deleteElement(databaseName, tableName, blocksPointer, block);
-    }*/
+    }
 }
-/*public class ElementIterator<E> implements Iterator<E> {
-
-    private Class<E> elementClass;
-    public E element;//if E extends KryoSerializable
-    private Block block;
-    private long previousPosition;
-    private long currentPosition;
-
-    public ElementIterator(Block block, Class<E> elementClass) {
-        this.elementClass = elementClass;
-        this.block = block;
-        currentPosition = block.getDataBeginPosition();
-    }
-
-    public Class<E> getElementClass() {
-        return elementClass;
-    }
-
-    @Override
-    public boolean hasNext() {
-        return !(block == null || currentPosition == block.getDataEndPosition());
-    }
-
-    @Override
-    public E next() {
-        try {
-            if (hasNext()) {
-                previousPosition = currentPosition;
-                if (element instanceof KryoSerializable) {//fixme зависимость от Serialization(и от Block???)(и такое мб где то еще есть)
-                    currentPosition += block.readElement(currentPosition, (KryoSerializable) element);
-                    return element;
-                } else {
-                    var p = block.readElement(currentPosition, elementClass);
-                    currentPosition += p.getValue();
-                    return p.getKey();
-                }
-            }
-
-            block = null;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return null;
-    }
-
-    public void write(E element) {
-        if (block == null)
-            return;
-
-        block.writeBytes(
-                previousPosition,
-                Serialization.getInstance().getKryoBytes(element)
-        );
-    }
-}*/

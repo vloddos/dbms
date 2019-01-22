@@ -1,17 +1,16 @@
 package com.dbms.storage.blocks;
 
-import com.dbms.storage.Serialization;
-import com.esotericsoftware.kryo.Kryo;
-import com.esotericsoftware.kryo.KryoSerializable;
-import com.esotericsoftware.kryo.io.Input;
-import com.esotericsoftware.kryo.io.Output;
-import javafx.util.Pair;
+import com.dbms.storage.serialization.DataSerializable;
+import com.dbms.storage.serialization.Serialization;
+import com.dbms.structs.Types;
 
 import java.io.*;
 
 // FIXME: 24.12.2018 отрефакторить хз как
 // FIXME: 24.12.2018 общий rac/Output(1 на блок или 1 на все блоки)
-public class Block implements KryoSerializable {
+public class Block implements DataSerializable, Serializable {
+
+    private static final long serialVersionUID = 7093706013946286265L;
 
     public static final int SIZE_STANDARD = 65536;
 
@@ -26,7 +25,7 @@ public class Block implements KryoSerializable {
     private int size;
 
     File file;
-    private ThreadLocal<Kryo> kryoThreadLocal = ThreadLocal.withInitial(Serialization.getInstance()::getKryo);
+    //private transient ThreadLocal<Kryo> kryoThreadLocal = ThreadLocal.withInitial(Serialization.getInstance()::getKryo);
 
     private Block() {
     }
@@ -43,14 +42,24 @@ public class Block implements KryoSerializable {
     }
 
     /**
-     * Reads an element from a given position.
+     * Reads an element that implements {@link DataSerializable} from a given position.
      *
      * @param position the position within the file from which to read the object
-     * @param eClass   class of the element
-     * @return pair of element and number of bytes read
+     * @param element  an object that must be read using {@link DataSerializable#read(DataInputStream)}
+     * @param <E>      type of the element
+     * @return number of bytes read
      * @throws Exception
      */
-    public <E> Pair<E, Long> readElement(long position, Class<E> eClass) throws Exception {
+    public <E extends DataSerializable> long readElement(long position, E element) throws Exception {
+        try (var fis = new FileInputStream(file)) {
+            fis.skip(position);
+            var dis = new DataInputStream(fis);
+            element.read(dis);
+            return fis.getChannel().position() - position;
+        }
+    }
+
+    /*public <E> Pair<E, Long> readElement(long position, Class<E> eClass) throws Exception {
         try (var fin = new FileInputStream(file)) {
             fin.skip(position);
             var in = new Input(fin);//input close is redundant
@@ -59,15 +68,6 @@ public class Block implements KryoSerializable {
         }
     }
 
-    /**
-     * Reads an element that implements {@link KryoSerializable} from a given position.
-     *
-     * @param position the position within the file from which to read the object
-     * @param element  an object that must be read using {@link KryoSerializable#read(Kryo, Input)}
-     * @param <E>      type of the element
-     * @return number of bytes read
-     * @throws Exception
-     */
     public <E extends KryoSerializable> long readElement(long position, E element) throws Exception {
         try (var fin = new FileInputStream(file)) {
             fin.skip(position);
@@ -75,7 +75,7 @@ public class Block implements KryoSerializable {
             element.read(kryoThreadLocal.get(), in);
             return in.position();
         }
-    }
+    }*/
 
     private void writeBytes(long position, byte[] bytes, int off, int len) {
         try (var rac = new RandomAccessFile(file, "rw")) {
@@ -90,13 +90,14 @@ public class Block implements KryoSerializable {
         writeBytes(position, bytes, 0, bytes.length);
     }
 
-    public void writeBlock() {
-        var out = new Output(1024, -1);
-        write(kryoThreadLocal.get(), out);
-        writeBytes(blockPosition, out.getBuffer(), 0, out.position());
+    public void writeBlock() throws Exception {
+        writeBytes(
+                blockPosition,
+                Serialization.getInstance().getDataSerializableBytes(this)
+        );
     }
 
-    public void appendBytes(byte[] bytes) {
+    public void appendBytes(byte[] bytes) throws Exception {
         writeBytes(dataEndPosition, bytes);
         writeDataEndPosition(dataEndPosition += bytes.length);
     }
@@ -105,30 +106,32 @@ public class Block implements KryoSerializable {
         return deleted;
     }
 
-    public void writeDeleted(boolean deleted) {
+    public void writeDeleted(boolean deleted) throws Exception {
         this.deleted = deleted;
-        var out = new Output(1024, -1);
-        out.writeBoolean(deleted);
-        writeBytes(blockPosition, out.getBuffer(), 0, out.position());
+        writeBytes(
+                blockPosition,
+                Serialization.getInstance().getDataSerializableBytes(deleted)
+        );
     }
 
     public int getElementCount() {
         return elementCount;
     }
 
-    public void writeElementCount(int elementCount) {
+    public void writeElementCount(int elementCount) throws Exception {
         this.elementCount = elementCount;
-        var out = new Output(1024, -1);
-        out.writeInt(elementCount);
-        writeBytes(blockPosition + 1, out.getBuffer(), 0, out.position());
+        writeBytes(
+                blockPosition + 1,
+                Serialization.getInstance().getDataSerializableBytes(elementCount)
+        );
     }
 
-    public void decElementCount() {
-        writeElementCount(--elementCount);
+    public void decElementCount() throws Exception {
+        writeElementCount(elementCount - 1);
     }
 
-    public void incElementCount() {
-        writeElementCount(++elementCount);
+    public void incElementCount() throws Exception {
+        writeElementCount(elementCount + 1);
     }
 
     public Block readLeft() throws Exception {
@@ -136,19 +139,20 @@ public class Block implements KryoSerializable {
             return null;
 
         var b = new Block();
-        try (var fin = new FileInputStream(file)) {
-            fin.skip(left);
-            b.read(kryoThreadLocal.get(), new Input(fin));//input close is redundant
+        try (var dis = new DataInputStream(new FileInputStream(file))) {
+            dis.skip(left);
+            b.read(dis);//input close is redundant
             b.file = file;
             return b;
         }
     }
 
-    public void writeLeft(long left) {
+    public void writeLeft(long left) throws Exception {
         this.left = left;
-        var out = new Output(1024, -1);
-        out.writeLong(left);
-        writeBytes(blockPosition + 5, out.getBuffer(), 0, out.position());
+        writeBytes(
+                blockPosition + 5,
+                Serialization.getInstance().getDataSerializableBytes(left)
+        );
     }
 
     public long getRight() {
@@ -160,19 +164,20 @@ public class Block implements KryoSerializable {
             return null;
 
         var b = new Block();
-        try (var fin = new FileInputStream(file)) {
-            fin.skip(right);
-            b.read(kryoThreadLocal.get(), new Input(fin));//input close is redundant
+        try (var dis = new DataInputStream(new FileInputStream(file))) {
+            dis.skip(right);
+            b.read(dis);//input close is redundant
             b.file = file;
             return b;
         }
     }
 
-    public void writeRight(long right) {
+    public void writeRight(long right) throws Exception {
         this.right = right;
-        var out = new Output(1024, -1);
-        out.writeLong(right);
-        writeBytes(blockPosition + 13, out.getBuffer(), 0, out.position());
+        writeBytes(
+                blockPosition + 13,
+                Serialization.getInstance().getDataSerializableBytes(right)
+        );
     }
 
     public long getBlockPosition() {
@@ -187,11 +192,12 @@ public class Block implements KryoSerializable {
         return dataEndPosition;
     }
 
-    public void writeDataEndPosition(long dataEndPosition) {
+    public void writeDataEndPosition(long dataEndPosition) throws Exception {
         this.dataEndPosition = dataEndPosition;
-        var out = new Output(1024, -1);
-        out.writeLong(dataEndPosition);
-        writeBytes(blockPosition + 37, out.getBuffer(), 0, out.position());
+        writeBytes(
+                blockPosition + 37,
+                Serialization.getInstance().getDataSerializableBytes(dataEndPosition)
+        );
     }
 
     public int getSize() {
@@ -202,7 +208,7 @@ public class Block implements KryoSerializable {
         return size - (int) (dataEndPosition - blockPosition);
     }
 
-    public void reuse() {
+    public void reuse() throws Exception {
         writeDeleted(false);
         writeElementCount(0);
         writeLeft(-1);
@@ -211,29 +217,29 @@ public class Block implements KryoSerializable {
     }
 
     @Override
-    public void write(Kryo kryo, Output output) {
-        output.writeBoolean(deleted);
-        output.writeInt(elementCount);
-        output.writeLong(left);
-        output.writeLong(right);
+    public void write(DataOutputStream out) throws Exception {
+        out.writeBoolean(deleted);
+        out.writeInt(elementCount);
+        out.writeLong(left);
+        out.writeLong(right);
 
-        output.writeLong(blockPosition);
-        output.writeLong(dataBeginPosition);
-        output.writeLong(dataEndPosition);
-        output.writeInt(size);
+        out.writeLong(blockPosition);
+        out.writeLong(dataBeginPosition);
+        out.writeLong(dataEndPosition);
+        out.writeInt(size);
     }
 
     @Override
-    public void read(Kryo kryo, Input input) {
-        deleted = input.readBoolean();
-        elementCount = input.readInt();
-        left = input.readLong();
-        right = input.readLong();
+    public void read(DataInputStream in) throws Exception {
+        deleted = in.readBoolean();
+        elementCount = in.readInt();
+        left = in.readLong();
+        right = in.readLong();
 
-        blockPosition = input.readLong();
-        dataBeginPosition = input.readLong();
-        dataEndPosition = input.readLong();
-        size = input.readInt();
+        blockPosition = in.readLong();
+        dataBeginPosition = in.readLong();
+        dataEndPosition = in.readLong();
+        size = in.readInt();
     }
 
     @Override
@@ -242,7 +248,7 @@ public class Block implements KryoSerializable {
             return false;
         if (this == other)
             return true;
-        if (other == null || this.getClass() != other.getClass())
+        if (other == null || !this.getClass().equals(other.getClass()))
             return false;
 
         var otherBlock = (Block) other;

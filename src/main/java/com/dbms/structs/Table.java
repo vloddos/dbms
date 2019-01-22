@@ -7,6 +7,7 @@ import com.dbms.storage.blocks.BlocksPointer;
 import com.dbms.storage.data.Row;
 import javafx.util.Pair;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -14,7 +15,9 @@ import java.util.Vector;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class Table {
+public class Table implements Serializable {
+
+    private static final long serialVersionUID = -4287762711859763242L;
 
     private String databaseName;
     private String tableName;
@@ -185,10 +188,14 @@ public class Table {
         return selection;
     }
 
-    /*public void delete(String where) throws Exception {
+    public void delete(String where) throws Exception {
         if (where == null) {
             var bi = BlockManager.getInstance().getBlockIterator(getBlocksPointer());
-
+            while (bi.hasNext()) {
+                bi.next();
+                bi.delete(databaseName, tableName, getBlocksPointer());
+            }
+            return;
         }
 
         var whereExpression = where(where, "r");
@@ -205,11 +212,11 @@ public class Table {
                 if ((boolean) js.eval(whereExpression.getValueForEval())) {
                     row.makeDeleted();
                     bei.write(row);
-                    //bei.delete(databaseName, tableName, getBlocksPointer());
+                    bei.delete(databaseName, tableName, getBlocksPointer());
                 }
             }
         }
-    }*/
+    }
 
     public void update(Map<String, String> set, String where) throws Exception {
         set.keySet().forEach(this::throwIfNoField);

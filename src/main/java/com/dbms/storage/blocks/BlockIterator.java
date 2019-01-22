@@ -5,31 +5,49 @@ import java.util.Iterator;
 public class BlockIterator implements Iterator<Block> {
 
     private Block current;
+    private Block next;//!=null if current was deleted
 
-    public BlockIterator(Block current) {
-        this.current = current;
+    public BlockIterator(Block block) {
+        next = block;//this.current = current;
     }
 
-    public <E> ElementIterator<E> getElementIterator(Class<E> eClass) {
+    public <E> ElementIterator<E> getElementIterator(Class<E> eClass) {//if next!=null?
         return new ElementIterator<>(current, eClass);
     }
 
     @Override
     public boolean hasNext() {
-        return current != null && current.getRight() != -1;
+        return next != null || current != null && current.getRight() != -1;
     }
 
     @Override
     public Block next() {
         try {
-            return current = (hasNext() ? current.readRight() : null);
+            if (hasNext())
+                if (next != null) {
+                    current = next;
+                    next = null;
+                } else
+                    current = current.readRight();
+            else
+                current = null;
+
+            return current;
         } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
     }
 
-    /*public void delete(String databaseName, String tableName, BlocksPointer blocksPointer) throws Exception {
+    public void delete(String databaseName, String tableName, BlocksPointer blocksPointer) throws Exception {
+        if (current == null || current.isDeleted())
+            return;
+
+        next = current.readRight();
         BlockManager.getInstance().deleteBlock(databaseName, tableName, blocksPointer, current);
-    }*/
+    }
+
+    public int getElementCount() {
+        return (current == null || current.isDeleted()) ? -1 : current.getElementCount();
+    }
 }

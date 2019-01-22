@@ -2,15 +2,15 @@ package com.dbms.structs;
 
 import com.dbms.data_types.Char;
 import com.dbms.data_types.Varchar;
-import com.esotericsoftware.kryo.io.Input;
-import com.esotericsoftware.kryo.io.Output;
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.nio.charset.Charset;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.function.BiConsumer;
-import java.util.function.BiFunction;
 
 public class Types {
 
@@ -18,8 +18,10 @@ public class Types {
     private static Map<String, Integer> typeSizes = new HashMap<>();
     private static Map<String, VAFunction<Object, ?>> typeCastFunction = new HashMap<>();
     private static Map<String, Object> defaultValues = new HashMap<>();
-    private static Map<String, BiConsumer<Output, Object>> typeWriteFunction = new HashMap<>();
-    private static Map<String, BiFunction<Input, Integer, ?>> typeReadFunction = new HashMap<>();
+    //private static Map<String, BiConsumer<Output, Object>> typeWriteFunction = new HashMap<>();
+    //private static Map<String, BiFunction<Input, Integer, ?>> typeReadFunction = new HashMap<>();
+    private static Map<String, BiConsumerThrowing<DataOutputStream, Object>> typeWriteFunction = new HashMap<>();
+    private static Map<String, BiFunctionThrowing<DataInputStream, Integer, ?>> typeReadFunction = new HashMap<>();
 
     //private static Map<String, BiFunction<String,Integer,?>> types = new HashMap<>();???
     //private static attributes???
@@ -80,7 +82,7 @@ public class Types {
         defaultValues.put("double", 0);
     }
 
-    static {
+    /*static {
         typeWriteFunction.put("bool", (out, b) -> out.writeBoolean((boolean) b));
 
         typeWriteFunction.put("byte", (out, b) -> out.writeByte((byte) b));
@@ -119,8 +121,47 @@ public class Types {
             for (i = 0; i < cs.length && cs[i] != 0; ++i) ;//???
             return new Varchar(new String(cs, 0, i), length);
         });
+    }*/
+
+    static {
+        typeWriteFunction.put("bool", (out, b) -> out.writeBoolean((boolean) b));
+
+        typeWriteFunction.put("byte", (out, b) -> out.writeByte((byte) b));
+        typeWriteFunction.put("short", (out, s) -> out.writeShort((short) s));
+        typeWriteFunction.put("int", (out, i) -> out.writeInt((int) i));
+        typeWriteFunction.put("long", (out, l) -> out.writeLong((long) l));
+
+        typeWriteFunction.put("float", (out, f) -> out.writeFloat((float) f));
+        typeWriteFunction.put("double", (out, d) -> out.writeDouble((double) d));
+
+        typeWriteFunction.put("char", (out, c) -> out.writeChars((c.toString())));
+        typeWriteFunction.put("varchar", (out, vc) -> out.writeChars(((Varchar) vc).toCharString()));
     }
 
+    static {
+        typeReadFunction.put("bool", (in, length) -> in.readBoolean());
+
+        typeReadFunction.put("byte", (in, length) -> in.readByte());
+        typeReadFunction.put("short", (in, length) -> in.readShort());
+        typeReadFunction.put("int", (in, length) -> in.readInt());
+        typeReadFunction.put("long", (in, length) -> in.readLong());
+
+        typeReadFunction.put("float", (in, length) -> in.readFloat());
+        typeReadFunction.put("double", (in, length) -> in.readDouble());
+
+        typeReadFunction.put("char", (in, length) -> {
+            var tmp = new byte[length * getSize("char")];
+            in.read(tmp);
+            return new Char(new String(tmp, Charset.forName("utf16")), length);
+        });
+        typeReadFunction.put("varchar", (in, length) -> {
+            var tmp = new byte[length * getSize("varchar")];
+            in.read(tmp);
+            int i;
+            for (i = 1; i < tmp.length && !(tmp[i] == 0 && tmp[i - 1] == 0); ++i) ;//???
+            return new Varchar(new String(tmp, 0, i / 2 * 2, Charset.forName("utf16")), length);
+        });
+    }
 
     public static boolean haveType(String name) {
         return typeClasses.containsKey(name);
@@ -141,13 +182,16 @@ public class Types {
         return defaultValues.get(typeName);
     }
 
-    public static void write(Class<?> c, Output out, Object object) {
-        typeWriteFunction.get(
-                typeClasses.inverse().get(c)
-        ).accept(out, object);
+    public static <E> void write(DataOutputStream out, E e) throws Exception {
+        typeWriteFunction
+                .get(typeClasses.inverse().get(e.getClass()))
+                .accept(out, e);
     }
 
-    public static Object read(TypeDescription type, Input in) {
-        return typeReadFunction.get(type.getName()).apply(in, type.getLength());
+    public static Object read(DataInputStream in, TypeDescription type) throws Exception {
+        return
+                typeReadFunction
+                        .get(type.getName())
+                        .apply(in, type.getLength());
     }
 }

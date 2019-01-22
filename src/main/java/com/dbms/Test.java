@@ -1,23 +1,12 @@
 package com.dbms;
 
-import java.io.File;
-import java.util.Arrays;
-import java.util.concurrent.locks.ReentrantReadWriteLock;
-
-class A {
-
-    ThreadLocal<Integer> i = ThreadLocal.withInitial(() -> {
-        System.out.println("tli");
-        return 228;
-    });
-}
-
 public class Test {
 
     public static void main(String[] args) throws Exception {
-        DBMSTest.main(new String[]{});
-
-
+        //DBMSTest.main(new String[]{});
+        //System.out.println(Integer.valueOf("23.4"));
+        System.out.println(Integer.getInteger("23.4"));
+        //"".
 
         /*var kryo = new Kryo();
         var out = new Output(1024, -1);

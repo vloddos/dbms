@@ -17,4 +17,8 @@ public class Varchar extends Char {
     public String toString() {
         return new String(chars, 0, length);
     }
+
+    public String toCharString() {
+        return super.toString();
+    }
 }

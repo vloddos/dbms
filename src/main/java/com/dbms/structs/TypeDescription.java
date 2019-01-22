@@ -1,6 +1,10 @@
 package com.dbms.structs;
 
-public class TypeDescription {
+import java.io.Serializable;
+
+public class TypeDescription implements Serializable {
+
+    private static final long serialVersionUID = 6270410567624650794L;
 
     private String name;
     private int length = -1;

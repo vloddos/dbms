@@ -1,6 +1,7 @@
 package com.dbms.structs;
 
 import com.dbms.storage.data.MetaDataManager;
+import com.dbms.storage.serialization.Serialization;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -10,7 +11,7 @@ import java.util.Map;
  * So if you make a database object using a constructor, it will be wrong to work with such an object.
  * Before you start working with DBMS, you need to write the following:
  * <pre>{@code
- * //register all classes that need to be serialized using {@link com.dbms.storage.Serialization}...
+ * //register all classes that need to be serialized using {@link Serialization }...
  * BlockManager.init();
  * BlockExtendedFileStruct.init();
  * Databases.getInstance().fullDatabasesFullTablesLoad();//or another load
@@ -25,7 +26,7 @@ public class Databases {
 
     private static Databases instance;
 
-    private Database currentDatabase;
+    private Database currentDatabase;//threadlocal
     private Map<String, Database> databases = new HashMap<>();
 
     private Load databasesLoad = Load.LAZY;
@@ -72,11 +73,9 @@ public class Databases {
     }
 
     public void fullDatabasesLazyTablesLoad() throws Exception {
-        databases = MetaDataManager.getInstance().readAllDatabases(Database.class);
+        databases = MetaDataManager.getInstance().readAllDatabases();
 
-        var o = databases.keySet().stream().findFirst();
-        if (o.isPresent())
-            useDatabase(o.get());
+        databases.values().stream().findFirst().ifPresent(db -> currentDatabase = db);
 
         setFullDatabasesLazyTablesLoad();
     }
@@ -100,7 +99,7 @@ public class Databases {
         var database = new Database(name);
         MetaDataManager.getInstance().initDatabase(name, database);
         databases.put(name, database);
-        currentDatabase = database;//useDatabase(name);???
+        currentDatabase = database;
     }
 
     public void dropDatabase(String name) throws Exception {// TODO: 16.12.2018 check
@@ -127,7 +126,7 @@ public class Databases {
             throw new Exception(String.format("The database '%s' does not exist", name));
 
         if (!databases.containsKey(name))
-            databases.put(name, MetaDataManager.getInstance().readDatabase(name, Database.class));
+            databases.put(name, MetaDataManager.getInstance().readDatabase(name));
 
         var db = databases.get(name);
         if (tablesLoad == Load.FULL && !db.isAllTablesLoaded())

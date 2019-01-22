@@ -24,11 +24,11 @@
             <scope>test</scope>
         </dependency>
 
-        <dependency>
+        <!--<dependency>
             <groupId>com.esotericsoftware</groupId>
             <artifactId>kryo</artifactId>
             <version>5.0.0-RC1</version>
-        </dependency>
+        </dependency>-->
 
         <dependency>
             <groupId>com.massisframework</groupId>

@@ -5,10 +5,13 @@ import com.dbms.storage.blocks.BlocksPointer;
 import com.dbms.storage.data.DataManager;
 import com.dbms.storage.data.MetaDataManager;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Database {//immutable methods???
+public class Database implements Serializable {
+
+    private static final long serialVersionUID = 3224626768319866348L;
 
     private String name;
     private transient Map<String, Table> tables = new HashMap<>();
@@ -29,7 +32,7 @@ public class Database {//immutable methods???
     }
 
     public void fullTablesLoad() throws Exception {
-        tables = MetaDataManager.getInstance().readAllTables(name, Table.class);
+        tables = MetaDataManager.getInstance().readAllTables(name);
         blocksPointers = BlockManager.getInstance().readAllBlocksPointers(name);
         allTablesLoaded = true;
     }
@@ -75,7 +78,7 @@ public class Database {//immutable methods???
             throw new Exception(String.format("The table '%s' does not exist in the database '%s'", tableName, name));
 
         if (!tables.containsKey(tableName)) {
-            tables.put(tableName, MetaDataManager.getInstance().readTable(name, tableName, Table.class));
+            tables.put(tableName, MetaDataManager.getInstance().readTable(name, tableName));
             blocksPointers.put(tableName, BlockManager.getInstance().readBlocksPointer(name, tableName));
         }
 

@@ -15,6 +15,7 @@ public class FileStruct {// TODO: 03.12.2018 геттеры возвращающ
 
     //dbms service directory names
     protected static String databaseRootDirectory = "db";
+    protected static String tmpFilesDirectory = "tmp";
 
     //database service directory names
     protected static String metaData = "meta data";
@@ -27,6 +28,7 @@ public class FileStruct {// TODO: 03.12.2018 геттеры возвращающ
     protected static String databaseExtension = ".db";
     protected static String tableExtension = ".t";
     protected static String tableDataExtension = ".d";
+    protected static String tmpFileExtension = ".tmp";
 
     public static void init() throws Exception {
         var dbrd = new File(getDatabaseRootDirectoryPath());
@@ -38,6 +40,10 @@ public class FileStruct {// TODO: 03.12.2018 геттеры возвращающ
     //dbms service directories getters
     public static String getDatabaseRootDirectoryPath() {
         return databaseRootDirectory;
+    }
+
+    public static String getTmpFilesDirectory() {
+        return tmpFilesDirectory;
     }
 
     //database service directories getters
@@ -75,6 +81,10 @@ public class FileStruct {// TODO: 03.12.2018 геттеры возвращающ
 
     public static String getTableDataExtension() {
         return tableDataExtension;
+    }
+
+    public static String getTmpFileExtension() {
+        return tmpFileExtension;
     }
 
     //struct paths getters

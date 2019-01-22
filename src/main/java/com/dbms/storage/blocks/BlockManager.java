@@ -1,11 +1,8 @@
 package com.dbms.storage.blocks;
 
-import com.dbms.storage.Serialization;
 import com.dbms.storage.file_structs.BlockExtendedFileStruct;
 import com.dbms.storage.file_structs.FileStruct;
-import com.esotericsoftware.kryo.Kryo;
-import com.esotericsoftware.kryo.io.Input;
-import com.esotericsoftware.kryo.io.Output;
+import com.dbms.storage.serialization.Serialization;
 import org.apache.commons.io.FilenameUtils;
 
 import java.io.*;
@@ -13,19 +10,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 // FIXME: 24.12.2018 общий rac/Output(1 на блок или 1 на все блоки)
+// FIXME: 22.01.2019 вызывать writeBlocksPointer по минимуму?
 public class BlockManager {
 
     private BlockManager() {
     }
 
     private static BlockManager instance;
-
-    private ThreadLocal<Kryo> kryoThreadLocal = ThreadLocal.withInitial(Serialization.getInstance()::getKryo);
-
-    public static void init() {// FIXME: 26.12.2018 убрать в гетинстанс потому что по идее работа с блоками только здесь???
-        Serialization.getInstance().registerClassForKryo(Block.class);
-        Serialization.getInstance().registerClassForKryo(BlocksPointer.class);
-    }
 
     public static BlockManager getInstance() {
         if (instance == null)
@@ -36,15 +27,13 @@ public class BlockManager {
 
     public BlocksPointer readBlocksPointer(String databaseName, String tableName) throws Exception {
         try (
-                var in = new Input(
+                var in = new ObjectInputStream(
                         new FileInputStream(
                                 BlockExtendedFileStruct.getBlocksPointerFullPath(databaseName, tableName)
                         )
                 )
         ) {
-            var bp = kryoThreadLocal.get().readObject(in, BlocksPointer.class);
-            bp.setFile(new File(FileStruct.getTableDataFullPath(databaseName, tableName)));
-            return bp;
+            return (BlocksPointer) in.readObject();
         }
     }
 
@@ -61,13 +50,13 @@ public class BlockManager {
 
     public void writeBlocksPointer(String databaseName, String tableName, BlocksPointer blocksPointer) throws Exception {
         try (
-                var out = new Output(
+                var out = new ObjectOutputStream(
                         new FileOutputStream(
                                 BlockExtendedFileStruct.getBlocksPointerFullPath(databaseName, tableName)
                         )
                 )
         ) {
-            kryoThreadLocal.get().writeObject(out, blocksPointer);
+            out.writeObject(blocksPointer);
         }
     }
 
@@ -82,7 +71,7 @@ public class BlockManager {
             );
     }
 
-    public Block createBlock(String databaseName, String tableName) {
+    public Block createBlock(String databaseName, String tableName) throws Exception {
         var f = new File(BlockExtendedFileStruct.getTableDataFullPath(databaseName, tableName));
 
         var b = new Block(f, f.length());
@@ -90,8 +79,6 @@ public class BlockManager {
         try (var rac = new RandomAccessFile(f, "rw")) {
             rac.setLength(f.length() + b.getSize());
             b.writeBlock();
-        } catch (IOException e) {
-            e.printStackTrace();
         }
 
         return b;
@@ -123,7 +110,7 @@ public class BlockManager {
             writeBlocksPointer(databaseName, tableName, blocksPointer);
         }
 
-        var bytes = Serialization.getInstance().getKryoBytes(e);
+        var bytes = Serialization.getInstance().getDataSerializableBytes(e);
 
         if (bytes.length > blocksPointer.last.getRemainingSize()) {
             Block l = getBlock(databaseName, tableName, blocksPointer);
@@ -198,9 +185,21 @@ public class BlockManager {
         writeBlocksPointer(databaseName, tableName, blocksPointer);
     }
 
+    //этот метод лишь помечает, что количество элементов в блоке уменьшилось, но не удаляет сам элемент
+    //элементы могут быть либо удалены путем сдвига байтов, либо помечены как удаленные
+    //поэтому само удаление элементов нужно производить как минимум не в этом методе
+    // FIXME: 22.01.2019 rename?
     public void deleteElement(String databaseName, String tableName, BlocksPointer blocksPointer, Block block) throws Exception {
-        block.decElementCount();//block==first block==last???
-        if (block.getElementCount() == 0)
+        block.decElementCount();
+        /*if (block.getElementCount() == 0)
             deleteBlock(databaseName, tableName, blocksPointer, block);
+        else*/
+        if (block.equals(blocksPointer.first)) {
+            blocksPointer.first = block;
+            writeBlocksPointer(databaseName, tableName, blocksPointer);
+        } else if (block.equals(blocksPointer.last)) {
+            blocksPointer.last = block;
+            writeBlocksPointer(databaseName, tableName, blocksPointer);
+        }
     }
 }
