@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="11211ecf-683e-4af0-9764-3dbaeae9a3f7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/target/classes/com/dbms/structs/DataBase.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dbms/structs/DataBase.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/dbms/structs/DataBases.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dbms/structs/DataBases.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.travis.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.travis.yml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -76,9 +76,10 @@
           <entry key="jj" value="1" />
           <entry key="pom" value="1" />
           <entry key="t" value="5" />
+          <entry key="travis-automerge" value="1" />
           <entry key="txt" value="3" />
           <entry key="xml" value="6" />
-          <entry key="yml" value="1" />
+          <entry key="yml" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
@@ -86,30 +87,38 @@
           <entry key="CLASS" value="3" />
           <entry key="JAVA" value="243" />
           <entry key="JavaCC" value="1" />
-          <entry key="PLAIN_TEXT" value="16" />
+          <entry key="PLAIN_TEXT" value="17" />
           <entry key="XML" value="7" />
-          <entry key="YAML" value="1" />
+          <entry key="YAML" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="java" value="8310" />
-          <entry key="txt" value="120" />
+          <entry key="travis-automerge" value="37" />
+          <entry key="txt" value="152" />
           <entry key="xml" value="26" />
+          <entry key="yml" value="110" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JAVA" value="8310" />
-          <entry key="PLAIN_TEXT" value="120" />
+          <entry key="PLAIN_TEXT" value="189" />
           <entry key="XML" value="26" />
+          <entry key="YAML" value="110" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.vcs.git.usages">
+        <counts>
+          <entry key="git.branch.create.new" value="1" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/DBMSTest.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-257">
@@ -117,6 +126,24 @@
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.travis.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="357">
+              <caret line="21" column="68" selection-start-line="21" selection-start-column="68" selection-end-line="21" selection-end-column="68" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/travis-automerge">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="6" column="37" lean-forward="true" selection-start-line="6" selection-start-column="37" selection-end-line="6" selection-end-column="37" />
             </state>
           </provider>
         </entry>
@@ -150,6 +177,7 @@
       <find>to</find>
       <find>get()</find>
       <find>ObjectInputStream(</find>
+      <find>databases</find>
     </findStrings>
     <replaceStrings>
       <replace>FileStruct</replace>
@@ -158,11 +186,15 @@
   <component name="Git.Settings">
     <option name="UPDATE_TYPE" value="MERGE" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="rebuilt-project" />
+      </map>
+    </option>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/dbms/threading/ThreadRunner.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/dbms/structs/TypeDescriptionTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/dbms/structs/TypesTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/dbms/global/Global.java" />
@@ -181,7 +213,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/dbms/storage/file_structs/BlockExtendedFileStruct.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/dbms/storage/data/DataManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/dbms/logic/ExpressionExecutor.java" />
-        <option value="$PROJECT_DIR$/.travis.yml" />
         <option value="$PROJECT_DIR$/src/test/java/com/dbms/grammar/ThrowExceptionTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/dbms/structs/TableTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/dbms/structs/DataBaseTest.java" />
@@ -213,6 +244,8 @@
         <option value="$PROJECT_DIR$/src/main/java/com/dbms/storage/blocks/BlockManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/dbms/DBMSTest.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/travis-automerge" />
+        <option value="$PROJECT_DIR$/.travis.yml" />
       </list>
     </option>
   </component>
@@ -241,8 +274,8 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="677" />
-    <option name="y" value="-13" />
+    <option name="x" value="190" />
+    <option name="y" value="-28" />
     <option name="width" value="960" />
     <option name="height" value="1035" />
   </component>
@@ -260,86 +293,6 @@
               <item name="dbms" type="b2602c69:ProjectViewProjectNode" />
               <item name="dbms" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="dbms" type="b2602c69:ProjectViewProjectNode" />
-              <item name="dbms" type="462c0819:PsiDirectoryNode" />
-              <item name=".idea" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="dbms" type="b2602c69:ProjectViewProjectNode" />
-              <item name="dbms" type="462c0819:PsiDirectoryNode" />
-              <item name="db" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="dbms" type="b2602c69:ProjectViewProjectNode" />
-              <item name="dbms" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="dbms" type="b2602c69:ProjectViewProjectNode" />
-              <item name="dbms" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="dbms" type="b2602c69:ProjectViewProjectNode" />
-              <item name="dbms" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="dbms" type="b2602c69:ProjectViewProjectNode" />
-              <item name="dbms" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="dbms" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="dbms" type="b2602c69:ProjectViewProjectNode" />
-              <item name="dbms" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="dbms" type="462c0819:PsiDirectoryNode" />
-              <item name="structs" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="dbms" type="b2602c69:ProjectViewProjectNode" />
-              <item name="dbms" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="dbms" type="b2602c69:ProjectViewProjectNode" />
-              <item name="dbms" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
-              <item name="classes" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="dbms" type="b2602c69:ProjectViewProjectNode" />
-              <item name="dbms" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
-              <item name="classes" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="dbms" type="b2602c69:ProjectViewProjectNode" />
-              <item name="dbms" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
-              <item name="classes" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="dbms" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="dbms" type="b2602c69:ProjectViewProjectNode" />
-              <item name="dbms" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
-              <item name="classes" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="dbms" type="462c0819:PsiDirectoryNode" />
-              <item name="structs" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -351,7 +304,7 @@
     <property name="SearchEverywhereHistoryKey" value="getCol&#9;PSI&#9;JAVA://com.dbms.grammar.ArgsGuard#getColumn&#10;a.&#9;FILE&#9;file://C:/Users/User/IdeaProjects/dbms/a.txt" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548174654135" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548181558035" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -575,7 +528,7 @@
       <workItem from="1548056102564" duration="6500000" />
       <workItem from="1548133549795" duration="13510000" />
       <workItem from="1548154594082" duration="8073000" />
-      <workItem from="1548169346958" duration="5228000" />
+      <workItem from="1548169346958" duration="11230000" />
     </task>
     <task id="LOCAL-00001" summary="fix lazy/full load">
       <created>1547128762070</created>
@@ -612,7 +565,84 @@
       <option name="project" value="LOCAL" />
       <updated>1548173540901</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="removed target">
+      <created>1548174780292</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1548174780292</updated>
+    </task>
+    <task id="LOCAL-00007" summary="added auto-merge">
+      <created>1548177617829</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1548177617829</updated>
+    </task>
+    <task id="LOCAL-00008" summary="added auto-merge">
+      <created>1548177867779</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1548177867779</updated>
+    </task>
+    <task id="LOCAL-00009" summary="added auto-merge">
+      <created>1548178146915</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1548178146915</updated>
+    </task>
+    <task id="LOCAL-00010" summary="added auto-merge">
+      <created>1548178506666</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1548178506666</updated>
+    </task>
+    <task id="LOCAL-00011" summary="added auto-merge">
+      <created>1548179107649</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1548179107649</updated>
+    </task>
+    <task id="LOCAL-00012" summary="added auto-merge">
+      <created>1548179837819</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1548179837819</updated>
+    </task>
+    <task id="LOCAL-00013" summary="added auto-merge">
+      <created>1548180082932</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1548180082932</updated>
+    </task>
+    <task id="LOCAL-00014" summary="added auto-merge">
+      <created>1548180433385</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1548180433385</updated>
+    </task>
+    <task id="LOCAL-00015" summary="added auto-merge">
+      <created>1548180832973</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1548180832973</updated>
+    </task>
+    <task id="LOCAL-00016" summary="added auto-merge">
+      <created>1548181115315</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1548181115315</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -648,7 +678,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="441727000" />
+    <option name="totallyTimeSpent" value="447729000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -663,7 +693,7 @@
     <frame x="-7" y="-7" width="1550" height="840" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24161074" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16308725" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -679,8 +709,8 @@
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3281471" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.36916548" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="9" visible="true" weight="0.16690241" />
-      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" weight="0.32956153" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" sideWeight="0.49932885" visible="true" weight="0.2659123" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50067115" side_tool="true" weight="0.16690241" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.3903819" />
       <window_info anchor="bottom" id="Docker" order="12" show_stripe_button="false" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -740,7 +770,9 @@
     <MESSAGE value="fix test starting, but tests still don't work" />
     <MESSAGE value="added blocks without kryo" />
     <MESSAGE value="trying to fix jacoco" />
-    <option name="LAST_COMMIT_MESSAGE" value="trying to fix jacoco" />
+    <MESSAGE value="removed target" />
+    <MESSAGE value="added auto-merge" />
+    <option name="LAST_COMMIT_MESSAGE" value="added auto-merge" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -755,13 +787,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/dbms/structs/TestBootstrap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" selection-start-line="13" selection-end-line="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/storage/data/DataManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
@@ -1164,9 +1189,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.travis.yml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/DBMSTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-257">
@@ -1174,6 +1196,20 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/travis-automerge">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="37" lean-forward="true" selection-start-line="6" selection-start-column="37" selection-end-line="6" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.travis.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="68" selection-start-line="21" selection-start-column="68" selection-end-line="21" selection-end-column="68" />
         </state>
       </provider>
     </entry>

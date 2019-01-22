@@ -2,14 +2,21 @@
 language: java
 
 jdk:
-  - openjdk10
+- openjdk10
+
+env:
+  global:
+  - secure: "rV8nTWeMMYfgVrufx47YGF6P8QDcRr2lBJkM2Xo5vWVYnzOU2b0sGw9j8+qkBNF/vw0c1yicZObrv0yDQ8bSOzhoRnS2IHmA9zehTaSJBSNynPsZ4FBva/+1Ng064O4O0jV4vYfz7qGnKoFihvuSYpLlpqJjHiox+S6yf7+6UpzBopzQIgsEg0B3adUlpxVrxwpA/qmTh2qGBjunkOkLY6PMO2dab4qJl4uJ21StdDKiaAu+oKqmEsoTwSW1U/4Q9+AgPbrlOQlnrbRv/GZCd3IwJqCNEvdX+KPNStPmNXJrdCeZTRuuk0Q2YJ2oLRUY3c0m2RPgJ3uf/rP0q60rjW+XXdC12ZbCGGFZwpXIBZs0Ej2L+lOKr2tcUGoKq72yqOvNixoXX8VQ13y1CTfqsldoEXQjTguQHQxXiSgvlSXrdhjQBDkz0O8E5SGiplG78BL2J1wSevNEvTKl/kpDEaD7GEFPQPvVdkI3TWPjsAuqs/51K/0rOIMXbcQZ7pwmwPsWx+ySgyRq5OmVqjsfTFhMgVE2/dxmddlvIvaexR9xMfi32RggDIpLlL05KnRTwGYSPhsPMeJGRPCbLvylix5tGBzc0hlYFWZqeTLoNM201yvlivVm3v+fjSZfCGsQ1zY/eUVnyu8t1Bye6hkhrVm2+qrKIb9HLKZLW5E7A88="
 
 notifications:
   email:
     recipients:
-      - silver19987@gmail.com
-      - yura12777@gmail.com
-      - b__vica@mail.ru
+    - silver19987@gmail.com
+    - yura12777@gmail.com
+    - b__vica@mail.ru
 
 after_success:
-  - bash <(curl -s https://codecov.io/bash)
+- bash <(curl -s https://codecov.io/bash)
+- curl https://raw.githubusercontent.com/vloddos/dbms/f/test/travis-automerge -o /tmp/travis-automerge
+- chmod a+x /tmp/travis-automerge
+- BRANCHES_TO_MERGE_REGEX='^f/' BRANCH_TO_MERGE_INTO=rebuilt-project GITHUB_REPO=vloddos/dbms /tmp/travis-automerge
