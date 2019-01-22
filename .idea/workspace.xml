@@ -98,7 +98,7 @@
           <entry key="travis-automerge" value="33" />
           <entry key="txt" value="152" />
           <entry key="xml" value="26" />
-          <entry key="yml" value="66" />
+          <entry key="yml" value="95" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
@@ -106,7 +106,7 @@
           <entry key="JAVA" value="8310" />
           <entry key="PLAIN_TEXT" value="185" />
           <entry key="XML" value="26" />
-          <entry key="YAML" value="66" />
+          <entry key="YAML" value="95" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages">
@@ -134,7 +134,7 @@
         <entry file="file://$PROJECT_DIR$/.travis.yml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="357">
-              <caret line="21" column="102" lean-forward="true" selection-start-line="21" selection-start-column="102" selection-end-line="21" selection-end-column="102" />
+              <caret line="21" column="106" selection-start-line="21" selection-start-column="106" selection-end-line="21" selection-end-column="106" />
             </state>
           </provider>
         </entry>
@@ -304,7 +304,7 @@
     <property name="SearchEverywhereHistoryKey" value="getCol&#9;PSI&#9;JAVA://com.dbms.grammar.ArgsGuard#getColumn&#10;a.&#9;FILE&#9;file://C:/Users/User/IdeaProjects/dbms/a.txt" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548179853630" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548180411690" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -528,7 +528,7 @@
       <workItem from="1548056102564" duration="6500000" />
       <workItem from="1548133549795" duration="13510000" />
       <workItem from="1548154594082" duration="8073000" />
-      <workItem from="1548169346958" duration="9757000" />
+      <workItem from="1548169346958" duration="10089000" />
     </task>
     <task id="LOCAL-00001" summary="fix lazy/full load">
       <created>1547128762070</created>
@@ -614,7 +614,14 @@
       <option name="project" value="LOCAL" />
       <updated>1548179837819</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="added auto-merge">
+      <created>1548180082932</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1548180082932</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -650,7 +657,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="446256000" />
+    <option name="totallyTimeSpent" value="446588000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1181,7 +1188,7 @@
     <entry file="file://$PROJECT_DIR$/.travis.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
-          <caret line="21" column="102" lean-forward="true" selection-start-line="21" selection-start-column="102" selection-end-line="21" selection-end-column="102" />
+          <caret line="21" column="106" selection-start-line="21" selection-start-column="106" selection-end-line="21" selection-end-column="106" />
         </state>
       </provider>
     </entry>
