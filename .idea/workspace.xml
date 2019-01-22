@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="11211ecf-683e-4af0-9764-3dbaeae9a3f7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.travis.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.travis.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/travis-automerge" beforeDir="false" afterPath="$PROJECT_DIR$/travis-automerge" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -95,7 +95,7 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="java" value="8310" />
-          <entry key="travis-automerge" value="1" />
+          <entry key="travis-automerge" value="33" />
           <entry key="txt" value="152" />
           <entry key="xml" value="26" />
           <entry key="yml" value="33" />
@@ -104,7 +104,7 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JAVA" value="8310" />
-          <entry key="PLAIN_TEXT" value="153" />
+          <entry key="PLAIN_TEXT" value="185" />
           <entry key="XML" value="26" />
           <entry key="YAML" value="33" />
         </counts>
@@ -130,20 +130,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.travis.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="319">
-              <caret line="21" column="90" selection-start-line="21" selection-start-column="90" selection-end-line="21" selection-end-column="90" />
+            <state relative-caret-position="285">
+              <caret line="19" selection-start-line="19" selection-end-line="19" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/travis-automerge">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
+            <state relative-caret-position="136">
+              <caret line="8" column="13" lean-forward="true" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -244,8 +244,8 @@
         <option value="$PROJECT_DIR$/src/main/java/com/dbms/storage/blocks/BlockManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/dbms/DBMSTest.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/travis-automerge" />
         <option value="$PROJECT_DIR$/.travis.yml" />
+        <option value="$PROJECT_DIR$/travis-automerge" />
       </list>
     </option>
   </component>
@@ -304,7 +304,7 @@
     <property name="SearchEverywhereHistoryKey" value="getCol&#9;PSI&#9;JAVA://com.dbms.grammar.ArgsGuard#getColumn&#10;a.&#9;FILE&#9;file://C:/Users/User/IdeaProjects/dbms/a.txt" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548178444162" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548179100916" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -528,7 +528,7 @@
       <workItem from="1548056102564" duration="6500000" />
       <workItem from="1548133549795" duration="13510000" />
       <workItem from="1548154594082" duration="8073000" />
-      <workItem from="1548169346958" duration="8129000" />
+      <workItem from="1548169346958" duration="8783000" />
     </task>
     <task id="LOCAL-00001" summary="fix lazy/full load">
       <created>1547128762070</created>
@@ -593,7 +593,14 @@
       <option name="project" value="LOCAL" />
       <updated>1548178146915</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="added auto-merge">
+      <created>1548178506666</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1548178506666</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -629,7 +636,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="444628000" />
+    <option name="totallyTimeSpent" value="445282000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -660,7 +667,7 @@
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3281471" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.36916548" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="9" sideWeight="0.49932885" visible="true" weight="0.3649222" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" sideWeight="0.49932885" visible="true" weight="0.2135785" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50067115" side_tool="true" weight="0.16690241" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.3903819" />
       <window_info anchor="bottom" id="Docker" order="12" show_stripe_button="false" />
@@ -1140,13 +1147,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/travis-automerge">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/DBMSTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-257">
@@ -1159,8 +1159,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.travis.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="21" column="90" selection-start-line="21" selection-start-column="90" selection-end-line="21" selection-end-column="90" />
+        <state relative-caret-position="285">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/travis-automerge">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="13" lean-forward="true" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
         </state>
       </provider>
     </entry>
