@@ -28,15 +28,7 @@ public class Table implements Serializable {
 
     private int rowLength;
 
-    //for kryo
-    private Table() {
-    }
-
-    public Table(String tableName) {
-        this.tableName = tableName;
-    }
-
-    public BlocksPointer getBlocksPointer() throws Exception {
+    private BlocksPointer getBlocksPointer() throws Exception {
         if (blocksPointer == null)
             blocksPointer = Databases.getInstance().getDatabase(databaseName).getBlocksPointer(tableName);
 

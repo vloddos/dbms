@@ -19,10 +19,6 @@ public class Database implements Serializable {
     //todo как то проверять загрузились ли все таблицы в ленивом случае при вызовах getTable для каждой таблицы
     private transient boolean allTablesLoaded;//transient потому что актуально только на момент работы
 
-    //for kryo
-    private Database() {
-    }
-
     public Database(String name) {
         this.name = name;
     }

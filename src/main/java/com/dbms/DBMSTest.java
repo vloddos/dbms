@@ -69,11 +69,6 @@ public class DBMSTest {
         Databases.getInstance().getCurrentDatabase().getTable("student").update(set, "field=false");*/
 
         //Databases.getInstance().getCurrentDatabase().getTable("student").delete(null);
-        var bp = Databases.getInstance().getCurrentDatabase().getTable("student").getBlocksPointer();
-        for (var df : bp.getClass().getDeclaredFields()) {
-            df.setAccessible(true);
-            System.out.println(df.getName() + " " + df.get(bp));
-        }
 
         Databases.getInstance()
                 .getCurrentDatabase()

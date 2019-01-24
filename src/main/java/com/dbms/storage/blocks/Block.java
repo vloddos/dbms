@@ -7,6 +7,7 @@ import java.io.*;
 
 // FIXME: 24.12.2018 отрефакторить хз как
 // FIXME: 24.12.2018 общий rac/Output(1 на блок или 1 на все блоки)
+// TODO: 24.01.2019 многопоточность на уровне блоков
 public class Block implements DataSerializable, Serializable {
 
     private static final long serialVersionUID = 7093706013946286265L;
