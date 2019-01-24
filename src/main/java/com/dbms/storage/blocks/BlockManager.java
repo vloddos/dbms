@@ -9,7 +9,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 // FIXME: 24.12.2018 общий rac/Output(1 на блок или 1 на все блоки)
-// FIXME: 22.01.2019 вызывать writeBlocksPointer по минимуму?
 public class BlockManager {
 
     private BlockManager() {
