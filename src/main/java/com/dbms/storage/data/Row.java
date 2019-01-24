@@ -1,7 +1,7 @@
 package com.dbms.storage.data;
 
 import com.dbms.storage.serialization.DataSerializable;
-import com.dbms.structs.TypeDescription;
+import com.dbms.structs.Type;
 import com.dbms.structs.Types;
 
 import java.io.DataInputStream;
@@ -16,7 +16,7 @@ public class Row implements DataSerializable, Cloneable {
 
     private byte FLAGS = 0;
     public ArrayList<Object> row = new ArrayList<>();
-    private ArrayList<TypeDescription> types;
+    private ArrayList<Type> types;
 
     private Row(byte FLAGS, ArrayList<Object> row) {
         this.FLAGS = FLAGS;
@@ -26,7 +26,7 @@ public class Row implements DataSerializable, Cloneable {
     public Row() {
     }
 
-    public Row(ArrayList<TypeDescription> types) {
+    public Row(ArrayList<Type> types) {
         this.types = types;
     }
 

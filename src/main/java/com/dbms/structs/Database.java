@@ -44,7 +44,7 @@ public class Database implements Serializable {
     /**
      * Creates a table with the specified name and fields.
      */
-    public void createTable(String tableName, Map<String, TypeDescription> fields) throws Exception {
+    public void createTable(String tableName, Map<String, Type> fields) throws Exception {
         if (MetaDataManager.getInstance().tableExists(name, tableName))
             throw new Exception(String.format("The table '%s' already exists in the database '%s'", tableName, name));
 
@@ -60,7 +60,8 @@ public class Database implements Serializable {
     }
 
     public void dropTable(String tableName) throws Exception {// TODO: 16.12.2018 check
-        getTable(tableName);//если таблицы не существует, бросится исключение
+        if (!MetaDataManager.getInstance().tableExists(name, tableName))
+            throw new Exception(String.format("The table '%s' does not exist in the database '%s'", tableName, name));
         tables.remove(tableName);
         blocksPointers.remove(tableName);
 

@@ -22,7 +22,7 @@ public class Table implements Serializable {
     private String databaseName;
     private String tableName;
 
-    private Map<String, TypeDescription> fieldDescriptions;//must be LinkedHashMap
+    private Map<String, Type> fieldDescriptions;//must be LinkedHashMap
     private Map<String, Integer> fieldIndexes = new HashMap<>();
 
     private transient BlocksPointer blocksPointer;
@@ -50,7 +50,7 @@ public class Table implements Serializable {
      * @param fieldDescriptions the field descriptions
      * @throws RuntimeException if the wrong data type was specified for any field
      */
-    public Table(String databaseName, String tableName, Map<String, TypeDescription> fieldDescriptions) throws RuntimeException {
+    public Table(String databaseName, String tableName, Map<String, Type> fieldDescriptions) throws RuntimeException {
         fieldDescriptions.forEach(
                 (k, v) -> {
                     var typeName = v.getName();
@@ -75,9 +75,9 @@ public class Table implements Serializable {
 
         rowLength = Row.SIZE_OF_SERVICE_DATA;
         fieldDescriptions.values().forEach(
-                td -> {
-                    var l = td.getLength();
-                    rowLength += ((l == -1) ? Types.getSize(td.getName()) : Types.getSize(td.getName()) * l);
+                t -> {
+                    var l = t.getLength();
+                    rowLength += Types.getSize(t.getName()) * (l == -1 ? 1 : l);
                 }
         );
     }

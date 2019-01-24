@@ -103,7 +103,10 @@ public class Databases {
     }
 
     public void dropDatabase(String name) throws Exception {// TODO: 16.12.2018 check
-        if (currentDatabase == getDatabase(name))//if database does not exist then will be thrown an exception
+        if (!MetaDataManager.getInstance().databaseExists(name))
+            throw new Exception(String.format("The database '%s' does not exist", name));
+
+        if (currentDatabase == databases.get(name))
             currentDatabase = null;
         databases.remove(name);
 
@@ -151,19 +154,6 @@ public class Databases {
      * It must be called before you exit from the DBMS.
      */
     public void exit() {
-        System.exit(0);
-        //shutdown executors...
-        //не перезаписывать часто на диск
-        /*databases.forEach(//если не удалось записать 1 бд то должна быть попытка записать остальные
-                (k, v) -> {
-                    try {
-                        writeDataBase(v);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                }
-        );*/
+        //System.exit(0);
     }
-    //show databases???
-    //alter new thread???
 }

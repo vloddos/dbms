@@ -18,10 +18,10 @@ public class DataBasesTest extends TestBootstrap {
 
     /*@Test(expected = Exception.class)
     public void testShouldThrowExceptionCauseUseWrongDatabase() throws Exception {
-        var map = new LinkedHashMap<String, TypeDescription>();
+        var map = new LinkedHashMap<String, Type>();
 
-        map.put("first_name", new TypeDescription("varchar"));
-        map.put("age", new TypeDescription("int"));
+        map.put("first_name", new Type("varchar"));
+        map.put("age", new Type("int"));
 
         Databases.getInstance().useDatabase("Test").createTable("student", map);
     }*/

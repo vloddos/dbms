@@ -30,4 +30,3 @@ printf 'Pushing to %s\n' "$GITHUB_REPO" >&2
 push_uri="https://$GITHUB_SECRET_TOKEN@github.com/$GITHUB_REPO"
 
 git push "$push_uri" "$BRANCH_TO_MERGE_INTO" -q
-#git push "$push_uri" :"$TRAVIS_BRANCH" -q

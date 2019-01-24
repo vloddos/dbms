@@ -3,6 +3,7 @@ package com.dbms;
 import com.dbms.storage.file_structs.BlockExtendedFileStruct;
 import com.dbms.structs.Databases;
 
+import java.sql.Blob;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Vector;
@@ -43,10 +44,10 @@ public class DBMSTest {
         //Databases.getInstance().dropDatabase("tdb");
         //Databases.getInstance().createDatabase("tdb");
 
-        /*var map = new LinkedHashMap<String, TypeDescription>();
-        map.put("name", new TypeDescription("varchar", 10));
-        map.put("age", new TypeDescription("int"));
-        map.put("field", new TypeDescription("bool"));
+        /*var map = new LinkedHashMap<String, Type>();
+        map.put("name", new Type("varchar", 10));
+        map.put("age", new Type("int"));
+        map.put("field", new Type("bool"));
         Databases.getInstance().useDatabase("tdb").createTable("student", map);*/
 
         //System.out.println(Databases.getInstance().getCurrentDatabase().getTable("student"));

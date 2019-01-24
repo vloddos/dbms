@@ -1,6 +1,5 @@
 package com.dbms.structs;
 
-import com.dbms.data_types.Varchar;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -13,12 +12,12 @@ public class TypesTest {
 
     @Test
     public void testShouldReturnNullCauseArgumentEqualsNull() {
-        Assert.assertNull(Types.cast(null, new TypeDescription("bool")));
+        Assert.assertNull(Types.cast(null, new Type("bool")));
     }
 
     //FIXME(RoyalStorm): rename test
     @Test
     public void testShouldReturnIDK() {
-        Assert.assertEquals("bool", Types.cast("bool", new TypeDescription("varchar", 50)).toString());
+        Assert.assertEquals("bool", Types.cast("bool", new Type("varchar", 50)).toString());
     }
 }

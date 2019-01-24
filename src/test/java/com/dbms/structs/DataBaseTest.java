@@ -25,10 +25,10 @@ public class DataBaseTest extends TestBootstrap {
 
     @Test(expected = Exception.class)
     public void testShouldThrowExceptionCauseTableAlreadyExists() throws Exception {
-        var map = new LinkedHashMap<String, TypeDescription>();
+        var map = new LinkedHashMap<String, Type>();
 
-        map.put("age", new TypeDescription("int"));
-        map.put("field", new TypeDescription("bool"));
+        map.put("age", new Type("int"));
+        map.put("field", new Type("bool"));
 
         testDB.createTable("Class", map);
         testDB.createTable("Class", map);

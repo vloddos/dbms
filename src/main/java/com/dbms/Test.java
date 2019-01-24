@@ -20,9 +20,9 @@ public class Test {
         var s = new Row(
                 new ArrayList<>(
                         Arrays.asList(
-                                new TypeDescription("varchar", 4),
-                                new TypeDescription("int"),
-                                new TypeDescription("bool")
+                                new Type("varchar", 4),
+                                new Type("int"),
+                                new Type("bool")
                         )
                 )
         );
