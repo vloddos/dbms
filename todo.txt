@@ -1,0 +1,16 @@
+переписать парсер на javacc последней версии
+подрубить б-дерево
+многопоточность:
+
+change db: db.wl alter/drop
+change table: db.rl.t.wl alter/drop
+change table data: db.rl.t.rl(.bp.rl.ru?).b.wl insert/delete/update (without COW)
+update_copy_on_wright?
+read table: db.rl.t.rl show
+read table data: db.rl.t.rl(.bp.rl.ru?).b.rl select
+
+при delete помечать блоки на удаление и как только появится возможность делать db.rl.t.wl и удалять помеченные блоки
+
+???
+create db db.rl?
+create table db.rl(.t.rl?)

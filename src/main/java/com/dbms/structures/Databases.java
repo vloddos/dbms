@@ -17,6 +17,7 @@ import java.util.Map;
  * Databases.getInstance().fullDatabasesFullTablesLoad();//or another load
  * }</pre>
  */
+// TODO: 25.01.2019 доработать lazy/full loads для многопоточности
 public class Databases {
 
     public enum Load {
@@ -26,11 +27,11 @@ public class Databases {
 
     private static Databases instance;
 
-    private Database currentDatabase;//threadlocal
+    private ThreadLocal<Database> currentDatabase = new ThreadLocal<>();
     private Map<String, Database> databases = new HashMap<>();
 
-    private Load databasesLoad = Load.LAZY;
-    private Load tablesLoad = Load.LAZY;
+    private ThreadLocal<Load> databasesLoad = ThreadLocal.withInitial(() -> Load.LAZY);
+    private ThreadLocal<Load> tablesLoad = ThreadLocal.withInitial(() -> Load.LAZY);
 
     public static Databases getInstance() {
         if (instance == null)
@@ -44,23 +45,23 @@ public class Databases {
 
     //load type setters если нужно переключить режим и не хочется повторно перезагружать бд и таблицы
     public void setLazyDatabasesLazyTablesLoad() throws Exception {
-        databasesLoad = Load.LAZY;
-        tablesLoad = Load.LAZY;
+        databasesLoad.set(Load.LAZY);
+        tablesLoad.set(Load.LAZY);
     }
 
     public void setLazyDatabasesFullTablesLoad() throws Exception {
-        databasesLoad = Load.LAZY;
-        tablesLoad = Load.FULL;
+        databasesLoad.set(Load.LAZY);
+        tablesLoad.set(Load.FULL);
     }
 
     public void setFullDatabasesLazyTablesLoad() throws Exception {
-        databasesLoad = Load.FULL;
-        tablesLoad = Load.LAZY;
+        databasesLoad.set(Load.FULL);
+        tablesLoad.set(Load.LAZY);
     }
 
     public void setFullDatabasesFullTablesLoad() throws Exception {
-        databasesLoad = Load.FULL;
-        tablesLoad = Load.FULL;
+        databasesLoad.set(Load.FULL);
+        tablesLoad.set(Load.FULL);
     }
 
     //loads
@@ -75,7 +76,7 @@ public class Databases {
     public void fullDatabasesLazyTablesLoad() throws Exception {
         databases = MetaDataManager.getInstance().readAllDatabases();
 
-        databases.values().stream().findFirst().ifPresent(db -> currentDatabase = db);
+        databases.values().stream().findFirst().ifPresent(currentDatabase::set);
 
         setFullDatabasesLazyTablesLoad();
     }
@@ -99,15 +100,15 @@ public class Databases {
         var database = new Database(name);
         MetaDataManager.getInstance().initDatabase(name, database);
         databases.put(name, database);
-        currentDatabase = database;
+        currentDatabase.set(database);
     }
 
     public void dropDatabase(String name) throws Exception {// TODO: 16.12.2018 check
         if (!MetaDataManager.getInstance().databaseExists(name))
             throw new Exception(String.format("The database '%s' does not exist", name));
 
-        if (currentDatabase == databases.get(name))
-            currentDatabase = null;
+        if (currentDatabase.get() == databases.get(name))
+            currentDatabase.set(null);
         databases.remove(name);
 
         MetaDataManager.getInstance().deleteDatabase(name);
@@ -117,7 +118,8 @@ public class Databases {
      * Makes the database with the specified name current.
      */
     public Database useDatabase(String name) throws Exception {
-        return currentDatabase = getDatabase(name);
+        currentDatabase.set(getDatabase(name));
+        return currentDatabase.get();
     }
 
     /**
@@ -132,7 +134,7 @@ public class Databases {
             databases.put(name, MetaDataManager.getInstance().readDatabase(name));
 
         var db = databases.get(name);
-        if (tablesLoad == Load.FULL && !db.isAllTablesLoaded())
+        if (tablesLoad.get() == Load.FULL && !db.isAllTablesLoaded())
             db.fullTablesLoad();
 
         return db;
@@ -143,10 +145,12 @@ public class Databases {
      * @throws Exception if currentDatabase==null
      */
     public Database getCurrentDatabase() throws Exception {
-        if (currentDatabase == null)
+        var cdb = currentDatabase.get();
+
+        if (cdb == null)
             throw new Exception("No database selected");
 
-        return currentDatabase;
+        return cdb;
     }
 
     /**

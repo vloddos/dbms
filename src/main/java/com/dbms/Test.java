@@ -1,10 +1,9 @@
 package com.dbms;
 
-import com.dbms.scripting.ScriptManager;
-
 public class Test {
 
     public static void main(String[] args) throws Exception {
+
         /*var js = ScriptManager.scriptEngineManager.getEngineByName("js");
         System.out.println(js.eval("880055535-233"));*/
 

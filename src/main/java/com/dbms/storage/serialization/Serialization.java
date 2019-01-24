@@ -12,8 +12,10 @@ public class Serialization {
     //private Kryo kryo = new Kryo();
     //private Set<Class<?>> kryoClasses = new HashSet<>();
 
-    private ByteArrayOutputStream baos = new ByteArrayOutputStream();
-    private DataOutputStream dos = new DataOutputStream(baos);
+    private ThreadLocal<ByteArrayOutputStream> baosThreadLocal = ThreadLocal.withInitial(ByteArrayOutputStream::new);
+    private ThreadLocal<DataOutputStream> dosThreadLocal = ThreadLocal.withInitial(
+            () -> new DataOutputStream(baosThreadLocal.get())
+    );
 
     private Serialization() {
     }
@@ -45,7 +47,10 @@ public class Serialization {
         return out.toBytes();
     }*/
 
-    public synchronized <E> byte[] getDataSerializableBytes(E e) throws Exception {
+    public <E> byte[] getDataSerializableBytes(E e) throws Exception {
+        var baos = baosThreadLocal.get();
+        var dos = dosThreadLocal.get();
+
         baos.reset();
 
         if (e instanceof DataSerializable)
