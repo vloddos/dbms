@@ -11,6 +11,7 @@ import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.BiFunction;
+import java.util.function.Function;
 
 public class Types {
 
@@ -54,10 +55,17 @@ public class Types {
     static {
         typeCastFunction.put("bool", (s, l) -> Boolean.parseBoolean(s));
 
-        typeCastFunction.put("byte", (s, l) -> Byte.parseByte(s));
-        typeCastFunction.put("short", (s, l) -> Short.parseShort(s));
-        typeCastFunction.put("int", (s, l) -> Integer.parseInt(s));
-        typeCastFunction.put("long", (s, l) -> Long.parseLong(s));
+        Function<String, String> intSubstring = (s) -> {
+            var l = s.indexOf(".");
+            if (l == -1)
+                l = s.length();
+            return s.substring(0, l);
+        };
+
+        typeCastFunction.put("byte", (s, l) -> Byte.parseByte(intSubstring.apply(s)));
+        typeCastFunction.put("short", (s, l) -> Short.parseShort(intSubstring.apply(s)));
+        typeCastFunction.put("int", (s, l) -> Integer.parseInt(intSubstring.apply(s)));
+        typeCastFunction.put("long", (s, l) -> Long.parseLong(intSubstring.apply(s)));
 
         typeCastFunction.put("float", (s, l) -> Float.parseFloat(s));
         typeCastFunction.put("double", (s, l) -> Double.parseDouble(s));

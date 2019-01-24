@@ -1,12 +1,12 @@
 package com.dbms;
 
+import com.dbms.scripting.ScriptManager;
+
 public class Test {
 
     public static void main(String[] args) throws Exception {
-        //DBMSTest.main(new String[]{});
-        //System.out.println(Integer.valueOf("23.4"));
-        System.out.println(Integer.getInteger("23.4"));
-        //"".
+        /*var js = ScriptManager.scriptEngineManager.getEngineByName("js");
+        System.out.println(js.eval("880055535-233"));*/
 
         /*var kryo = new Kryo();
         var out = new Output(1024, -1);

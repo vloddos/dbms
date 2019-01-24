@@ -2,16 +2,21 @@ package com.dbms;
 
 import com.dbms.storage.file_structs.BlockExtendedFileStruct;
 import com.dbms.structures.Databases;
+import com.dbms.structures.Type;
 
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Vector;
 
 public class DBMSTest {
 
     public static void main(String[] args) throws Exception {
         BlockExtendedFileStruct.init();
+        /*if (true)
+            return;*/
         Databases.getInstance().fullDatabasesFullTablesLoad();
+
 
         /*var map = new HashMap<String, Pair<String, Integer>>();
         map.put("f1", new Pair<>("row", 0));
@@ -57,21 +62,20 @@ public class DBMSTest {
         //Databases.getInstance().getCurrentDatabase().getTable("student");
 
 
-        var map = new HashMap();
-        map.put("name", "abfge");
-        map.put("age", "8725725");
-        map.put("field", "false");
-        Databases.getInstance().getCurrentDatabase().getTable("student").insert(map);
+        /*var map = new HashMap();
+        map.put("name", "abc");
+        map.put("age", "123");
+        map.put("field", "true");
+        Databases.getInstance().useDatabase("tdb").getTable("student").insert(map);*/
 
         /*var set = new HashMap<String, String>();
-        set.put("age", "age/2");
-        //set.put("name", "'---'");
-        Databases.getInstance().getCurrentDatabase().getTable("student").update(set, "field=false");*/
+        set.put("age", "age<<3");
+        Databases.getInstance().useDatabase("tdb").getTable("student").update(set, "name='ъеъ'");*/
 
-        //Databases.getInstance().getCurrentDatabase().getTable("student").delete(null);
+        //Databases.getInstance().useDatabase("tdb").getTable("student").delete(null);
 
         Databases.getInstance()
-                .getCurrentDatabase()
+                .useDatabase("tdb")
                 .getTable("student")
                 .select(
                         new Vector<>(Arrays.asList("name", "age", "field")),
