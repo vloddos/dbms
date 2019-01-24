@@ -2,7 +2,6 @@ package com.dbms.storage.blocks;
 
 import com.dbms.storage.serialization.DataSerializable;
 import com.dbms.storage.serialization.Serialization;
-import com.dbms.structs.Types;
 
 import java.io.*;
 
@@ -25,7 +24,6 @@ public class Block implements DataSerializable, Serializable {
     private int size;
 
     File file;
-    //private transient ThreadLocal<Kryo> kryoThreadLocal = ThreadLocal.withInitial(Serialization.getInstance()::getKryo);
 
     private Block() {
     }
@@ -58,24 +56,6 @@ public class Block implements DataSerializable, Serializable {
             return fis.getChannel().position() - position;
         }
     }
-
-    /*public <E> Pair<E, Long> readElement(long position, Class<E> eClass) throws Exception {
-        try (var fin = new FileInputStream(file)) {
-            fin.skip(position);
-            var in = new Input(fin);//input close is redundant
-            var e = kryoThreadLocal.get().readObject(in, eClass);
-            return new Pair<>(e, (long) in.position());
-        }
-    }
-
-    public <E extends KryoSerializable> long readElement(long position, E element) throws Exception {
-        try (var fin = new FileInputStream(file)) {
-            fin.skip(position);
-            var in = new Input(fin);//input close is redundant
-            element.read(kryoThreadLocal.get(), in);
-            return in.position();
-        }
-    }*/
 
     private void writeBytes(long position, byte[] bytes, int off, int len) {
         try (var rac = new RandomAccessFile(file, "rw")) {
@@ -141,7 +121,7 @@ public class Block implements DataSerializable, Serializable {
         var b = new Block();
         try (var dis = new DataInputStream(new FileInputStream(file))) {
             dis.skip(left);
-            b.read(dis);//input close is redundant
+            b.read(dis);
             b.file = file;
             return b;
         }
@@ -166,7 +146,7 @@ public class Block implements DataSerializable, Serializable {
         var b = new Block();
         try (var dis = new DataInputStream(new FileInputStream(file))) {
             dis.skip(right);
-            b.read(dis);//input close is redundant
+            b.read(dis);
             b.file = file;
             return b;
         }
@@ -248,7 +228,7 @@ public class Block implements DataSerializable, Serializable {
             return false;
         if (this == other)
             return true;
-        if (other == null || !this.getClass().equals(other.getClass()))
+        if (!this.getClass().equals(other.getClass()))
             return false;
 
         var otherBlock = (Block) other;

@@ -46,7 +46,7 @@ public class ElementIterator<E> implements Iterator<E> {
     }
 
     @Override
-    public E next() {//todo поддержка не объектов DataSerializable
+    public E next() {
         try {
             if (hasNext()) {
                 currentPosition += deltaPosition;//в начале итерации по блоку прибавится 0
@@ -72,6 +72,7 @@ public class ElementIterator<E> implements Iterator<E> {
         );
     }
 
+    // TODO: 24.01.2019 как то оптимизировать или вообще поменять удаление?
     public void delete(String databaseName, String tableName, BlocksPointer blocksPointer) throws Exception {
         if (block == null || block.isDeleted())
             return;

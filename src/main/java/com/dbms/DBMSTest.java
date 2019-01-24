@@ -1,9 +1,8 @@
 package com.dbms;
 
 import com.dbms.storage.file_structs.BlockExtendedFileStruct;
-import com.dbms.structs.Databases;
+import com.dbms.structures.Databases;
 
-import java.sql.Blob;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Vector;

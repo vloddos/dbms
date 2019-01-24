@@ -1,10 +1,9 @@
 package com.dbms.storage.serialization;
 
-import com.dbms.structs.Types;
+import com.dbms.structures.Types;
 
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
-import java.util.Random;
 
 public class Serialization {
 
@@ -13,7 +12,6 @@ public class Serialization {
     //private Kryo kryo = new Kryo();
     //private Set<Class<?>> kryoClasses = new HashSet<>();
 
-    private Random random = new Random();
     private ByteArrayOutputStream baos = new ByteArrayOutputStream();
     private DataOutputStream dos = new DataOutputStream(baos);
 

@@ -5,13 +5,13 @@ import java.util.Iterator;
 public class BlockIterator implements Iterator<Block> {
 
     private Block current;
-    private Block next;//!=null if current was deleted
+    private Block next;
 
     public BlockIterator(Block block) {
-        next = block;//this.current = current;
+        next = block;
     }
 
-    public <E> ElementIterator<E> getElementIterator(Class<E> eClass) {//if next!=null?
+    public <E> ElementIterator<E> getElementIterator(Class<E> eClass) {
         return new ElementIterator<>(current, eClass);
     }
 

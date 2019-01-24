@@ -2,12 +2,11 @@ package com.dbms.logic;
 
 import com.dbms.grammar.ArgsGuard;
 import com.dbms.grammar.SqlParser;
-import com.dbms.structs.Databases;
+import com.dbms.structures.Databases;
 
 import java.io.File;
 import java.io.FileReader;
 import java.util.Scanner;
-import java.util.Vector;
 
 public class ExpressionExecutor {
 

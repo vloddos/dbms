@@ -1,7 +1,8 @@
-package com.dbms.structs;
+package com.dbms.structures;
 
 import java.io.Serializable;
 
+// TODO: 24.01.2019 инкапсулировать все типы в этот класс или в другой чтобы не дублировать код или как то поменять Types
 public class Type implements Serializable {
 
     private static final long serialVersionUID = 6270410567624650794L;

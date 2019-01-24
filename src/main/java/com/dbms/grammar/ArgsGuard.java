@@ -1,6 +1,6 @@
 package com.dbms.grammar;
 
-import com.dbms.structs.Type;
+import com.dbms.structures.Type;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;

@@ -1,4 +1,4 @@
-package com.dbms.structs;
+package com.dbms.structures;
 
 public interface BiFunctionThrowing<T, U, R> {
 

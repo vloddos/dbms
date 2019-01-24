@@ -1,8 +1,8 @@
 package com.dbms;
 
 import com.dbms.data_types.Varchar;
-import com.dbms.structs.Type;
-import com.dbms.structs.Types;
+import com.dbms.structures.Type;
+import com.dbms.structures.Types;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;

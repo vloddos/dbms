@@ -1,4 +1,4 @@
-package com.dbms.structs;
+package com.dbms.structures;
 
 import org.junit.Test;
 
