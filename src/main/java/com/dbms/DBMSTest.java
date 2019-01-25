@@ -69,8 +69,8 @@ public class DBMSTest {
         Databases.getInstance().useDatabase("tdb").getTable("student").insert(map);*/
 
         /*var set = new HashMap<String, String>();
-        set.put("age", "age<<3");
-        Databases.getInstance().useDatabase("tdb").getTable("student").update(set, "name='ъеъ'");*/
+        set.put("field", "");
+        Databases.getInstance().useDatabase("tdb").getTable("student").update(set, "name='qwe'");*/
 
         //Databases.getInstance().useDatabase("tdb").getTable("student").delete(null);
 

@@ -14,3 +14,5 @@ read table data: db.rl.t.rl(.bp.rl.ru?).b.rl select
 ???
 create db db.rl?
 create table db.rl(.t.rl?)
+
+lock priority: db,t,bp,b

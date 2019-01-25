@@ -24,7 +24,7 @@ public class Block implements DataSerializable, Serializable {
     private long dataEndPosition;//чтобы знать с какого места можно аппендить данные
     private int size;
 
-    File file;
+    private File file;
 
     private Block() {
     }
@@ -57,6 +57,7 @@ public class Block implements DataSerializable, Serializable {
             return fis.getChannel().position() - position;
         }
     }
+    // TODO: 25.01.2019 чтение примитивов или как то так
 
     private void writeBytes(long position, byte[] bytes, int off, int len) {
         try (var rac = new RandomAccessFile(file, "rw")) {

@@ -152,6 +152,7 @@ public class Table implements Serializable {
     если не было указано офсета, то он должен быть равен 0,
     если не было указано where, то он должен быть равен null
     */
+    // TODO: 25.01.2019 select from many tables+join
     public Selection select(Vector<String> fieldNames, int limit, int offset, String where) throws Exception {
         var fieldIndexes = fieldNames.stream().map(this::getFieldIndex).collect(Collectors.toList());
         var whereExpression = where(where, "r");
@@ -209,6 +210,7 @@ public class Table implements Serializable {
         }
     }
 
+    // TODO: 25.01.2019 COW
     public void update(Map<String, String> set, String where) throws Exception {
         set.keySet().forEach(this::throwIfNoField);
 
