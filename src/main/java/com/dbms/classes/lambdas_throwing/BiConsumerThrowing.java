@@ -1,4 +1,4 @@
-package com.dbms.structures;
+package com.dbms.classes.lambdas_throwing;
 
 public interface BiConsumerThrowing<T, U> {
 

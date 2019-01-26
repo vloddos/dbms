@@ -1,4 +1,4 @@
-package com.dbms.structures;
+package com.dbms.classes.other;
 
 import java.util.Arrays;
 
@@ -50,11 +50,15 @@ public class SingleBitBuffer {
         return buffer;
     }
 
-    public int read() {// TODO: 26.01.2019 check
+    public int read() {
         if (bitPosition >= bitLength)
             throw new IllegalStateException("Buffer underflow");
 
         return (buffer[byteIndex()] >> (bitPosition++ % 8)) & 1;
+    }
+
+    public boolean readBoolean() {
+        return read() == 1;
     }
 
     public void write(int bit) {
@@ -64,5 +68,9 @@ public class SingleBitBuffer {
         bit &= 1;//?
         buffer[byteIndex()] |= bit << (bitPosition % 8);
         ++bitPosition;
+    }
+
+    public void writeBoolean(boolean bit) {
+        write(bit ? 1 : 0);
     }
 }

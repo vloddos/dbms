@@ -1,5 +1,7 @@
 package com.dbms.structures;
 
+import com.dbms.classes.lambdas_throwing.BiConsumerThrowing;
+import com.dbms.classes.lambdas_throwing.BiFunctionThrowing;
 import com.dbms.data_types.Char;
 import com.dbms.data_types.Varchar;
 import com.google.common.collect.BiMap;
