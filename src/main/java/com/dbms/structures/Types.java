@@ -13,7 +13,6 @@ import java.util.Map;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
-// TODO: 25.01.2019 сделать возможным чтение/запись null путем увеличения размера каждого типа на 1 байт(возможно придется это делать на уровне Type)
 public class Types {
 
     private static BiMap<String, Class<?>> typeClasses = HashBiMap.create();
@@ -145,6 +144,10 @@ public class Types {
     public static Object getDefaultValue(String typeName) {
         return defaultValues.get(typeName);
     }
+
+    /*public static Object getDefaultValue(Type type){
+
+    }*/
 
     public static <E> void write(DataOutputStream out, E e) throws Exception {
         typeWriteFunction

@@ -1,7 +1,8 @@
 переписать парсер на javacc последней версии
 подрубить б-дерево
-многопоточность:
+многопоточность+сервер?
 
+многопоточность:
 change db: db.wl alter/drop
 change table: db.rl.t.wl alter/drop
 change table data: db.rl.t.rl(.bp.rl.ru?).b.wl insert/delete/update (without COW)

@@ -6,6 +6,7 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.util.ArrayList;
 
+// TODO: 26.01.2019 добавить битовые флаги чтобы помечать null
 public class Row implements DataSerializable, Cloneable {
 
     private static final byte DELETED = 0b1;
@@ -39,6 +40,9 @@ public class Row implements DataSerializable, Cloneable {
     @Override
     public void write(DataOutputStream out) throws Exception {
         out.writeByte(FLAGS);
+        /*var sbb = new SingleBitBuffer(row.size());
+        row.stream().map(e -> e == null ? 1 : 0).forEach(sbb::write);
+        out.write(sbb.getBuffer());*/
         for (var e : row)
             Types.write(out, e);
     }

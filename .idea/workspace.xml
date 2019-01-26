@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="11211ecf-683e-4af0-9764-3dbaeae9a3f7" name="Default Changelist" comment="">
+    <list default="true" id="11211ecf-683e-4af0-9764-3dbaeae9a3f7" name="Default Changelist" comment="minor changes">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dbms/structures/SingleBitBuffer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/tdb/data/table data/student.d" beforeDir="false" afterPath="$PROJECT_DIR$/db/tdb/data/table data/student.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbms/DBMSTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbms/DBMSTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/dbms/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbms/Test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbms/storage/blocks/Block.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbms/storage/blocks/Block.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbms/structures/Table.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbms/structures/Table.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbms/structures/Type.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbms/structures/Type.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbms/structures/Row.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbms/structures/Row.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/dbms/structures/Types.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbms/structures/Types.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/todo.txt" beforeDir="false" afterPath="$PROJECT_DIR$/todo.txt" afterDir="false" />
     </list>
@@ -61,7 +59,7 @@
     <session id="1105101832">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="13" />
+          <entry key="project.closed" value="14" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.10" value="1" />
@@ -71,61 +69,63 @@
           <entry key="project.open.time.51" value="1" />
           <entry key="project.open.time.54" value="1" />
           <entry key="project.open.time.57" value="1" />
+          <entry key="project.open.time.64" value="1" />
           <entry key="project.open.time.7" value="1" />
           <entry key="project.open.time.76" value="1" />
           <entry key="project.open.time.8" value="2" />
-          <entry key="project.opened" value="14" />
+          <entry key="project.opened" value="15" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
+          <entry key="ByteOutput" value="1" />
           <entry key="Database" value="1" />
           <entry key="Databases" value="3" />
-          <entry key="class" value="3" />
+          <entry key="class" value="6" />
           <entry key="dbms" value="1" />
           <entry key="huy" value="5" />
           <entry key="huy1" value="3" />
-          <entry key="java" value="391" />
+          <entry key="java" value="457" />
           <entry key="jj" value="4" />
-          <entry key="pom" value="1" />
-          <entry key="sh" value="3" />
+          <entry key="pom" value="3" />
+          <entry key="sh" value="4" />
           <entry key="storage" value="1" />
           <entry key="structs" value="1" />
           <entry key="t" value="5" />
           <entry key="travis-automerge" value="3" />
-          <entry key="txt" value="9" />
-          <entry key="xml" value="8" />
-          <entry key="yml" value="6" />
+          <entry key="txt" value="10" />
+          <entry key="xml" value="12" />
+          <entry key="yml" value="7" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Bash" value="3" />
-          <entry key="CLASS" value="3" />
-          <entry key="JAVA" value="391" />
+          <entry key="Bash" value="4" />
+          <entry key="CLASS" value="6" />
+          <entry key="JAVA" value="457" />
           <entry key="JavaCC" value="4" />
-          <entry key="PLAIN_TEXT" value="25" />
-          <entry key="UML" value="7" />
-          <entry key="XML" value="9" />
-          <entry key="YAML" value="6" />
+          <entry key="PLAIN_TEXT" value="26" />
+          <entry key="UML" value="8" />
+          <entry key="XML" value="15" />
+          <entry key="YAML" value="7" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="11344" />
+          <entry key="java" value="14195" />
           <entry key="sh" value="2" />
           <entry key="travis-automerge" value="45" />
-          <entry key="txt" value="1191" />
-          <entry key="xml" value="26" />
+          <entry key="txt" value="1233" />
+          <entry key="xml" value="179" />
           <entry key="yml" value="122" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Bash" value="2" />
-          <entry key="JAVA" value="11344" />
-          <entry key="PLAIN_TEXT" value="1236" />
-          <entry key="XML" value="26" />
+          <entry key="JAVA" value="14195" />
+          <entry key="PLAIN_TEXT" value="1278" />
+          <entry key="XML" value="179" />
           <entry key="YAML" value="122" />
         </counts>
       </usages-collector>
@@ -137,44 +137,47 @@
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="true">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/structures/Types.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" column="20" lean-forward="true" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
+            <state relative-caret-position="612">
+              <caret line="36" column="50" lean-forward="true" selection-start-line="36" selection-start-column="50" selection-end-line="36" selection-end-column="50" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#5333#5334#0" expanded="true" />
+                <element signature="e#5383#5384#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/structures/Row.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/structures/SingleBitBuffer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="42" selection-start-line="42" selection-end-line="42" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#635#636#0" expanded="true" />
-                <element signature="e#669#670#0" expanded="true" />
-                <element signature="e#703#704#0" expanded="true" />
-                <element signature="e#754#755#0" expanded="true" />
-                <element signature="e#787#788#0" expanded="true" />
-                <element signature="e#819#820#0" expanded="true" />
-                <element signature="e#1233#1234#0" expanded="true" />
-                <element signature="e#1303#1304#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="935">
+              <caret line="67" selection-start-line="67" selection-end-line="67" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/scripting/Expression.java">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="7" column="3" selection-start-line="7" selection-start-column="3" selection-end-line="7" selection-end-column="3" />
+            <state relative-caret-position="425">
+              <caret line="55" column="21" lean-forward="true" selection-start-line="55" selection-start-column="21" selection-end-line="55" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/storage/serialization/Serialization.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="595">
+              <caret line="56" column="35" selection-start-line="56" selection-start-column="35" selection-end-line="56" selection-end-column="35" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -182,51 +185,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/structures/Table.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="231">
+            <state relative-caret-position="1921">
               <caret line="129" selection-start-line="129" selection-end-line="129" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/storage/blocks/BlockManager.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="112" selection-start-line="112" selection-end-line="112" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/storage/blocks/BlockIterator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="393">
-              <caret line="41" column="16" selection-start-line="41" selection-start-column="16" selection-end-line="41" selection-end-column="16" />
-              <folding>
-                <element signature="e#209#210#0" expanded="true" />
-                <element signature="e#237#238#0" expanded="true" />
-                <element signature="e#310#311#0" expanded="true" />
-                <element signature="e#371#372#0" expanded="true" />
-                <element signature="e#417#418#0" expanded="true" />
-                <element signature="e#499#500#0" expanded="true" />
-                <element signature="e#1303#1304#0" expanded="true" />
-                <element signature="e#1399#1400#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/DBMSTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="206">
-              <caret line="68" column="85" selection-start-line="68" selection-start-column="85" selection-end-line="68" selection-end-column="85" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -237,25 +197,36 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/Test.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="183">
-              <caret line="68" column="26" selection-start-line="68" selection-start-column="26" selection-end-line="68" selection-end-column="26" />
+            <state relative-caret-position="353">
+              <caret line="72" selection-start-line="72" selection-end-line="72" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1314#1315#0" expanded="true" />
-                <element signature="e#1364#1365#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/storage/blocks/Block.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/structures/Row.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="867">
-              <caret line="59" column="56" lean-forward="true" selection-start-line="59" selection-start-column="56" selection-end-line="59" selection-end-column="56" />
+            <state relative-caret-position="-102">
+              <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#720#721#0" expanded="true" />
+                <element signature="e#754#755#0" expanded="true" />
+                <element signature="e#1518#1519#0" expanded="true" />
+                <element signature="e#1588#1589#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/todo.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="10" column="51" selection-start-line="10" selection-start-column="51" selection-end-line="10" selection-end-column="51" />
             </state>
           </provider>
         </entry>
@@ -267,8 +238,8 @@
       <list>
         <option value="FxmlFile" />
         <option value="Singleton" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -293,6 +264,9 @@
       <find>(String) args[0]</find>
       <find>(s)</find>
       <find>s.substring(0, s.indexOf(&quot;.&quot;)))</find>
+      <find>add(</find>
+      <find>flu</find>
+      <find>reset</find>
     </findStrings>
     <replaceStrings>
       <replace>FileStruct</replace>
@@ -313,12 +287,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/dbms/storage/blocks_old/BlockManager.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/dbms/storage/blocks_old/Block.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/dbms/data_types/Char.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/dbms/storage/blocks/BlockPointers.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/dbms/structs/Selection.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/dbms/storage/file_structs/BlockExtendedFileStruct.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/dbms/storage/data/DataManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/dbms/logic/ExpressionExecutor.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/dbms/grammar/ThrowExceptionTest.java" />
@@ -349,21 +317,27 @@
         <option value="$PROJECT_DIR$/src/main/java/com/dbms/structs/Type.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/dbms/scripting/Expression.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/dbms/storage/blocks/ElementIterator.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/travis-automerge.sh" />
         <option value="$PROJECT_DIR$/src/main/java/com/dbms/structures/Database.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/dbms/storage/blocks/BlocksPointer.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/dbms/storage/serialization/Serialization.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/dbms/structures/Databases.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/dbms/storage/blocks/BlockManager.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/dbms/structures/Row.java" />
-        <option value="$PROJECT_DIR$/todo.txt" />
         <option value="$PROJECT_DIR$/src/main/java/com/dbms/structures/Type.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/dbms/storage/blocks/Block.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/dbms/structures/Table.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/dbms/Test.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/dbms/DBMSTest.java" />
+        <option value="$PROJECT_DIR$/todo.txt" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/dbms/structures/BitOutputStream.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/dbms/structures/SingleBitOutputStream.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/dbms/structures/BitInputStream.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/dbms/structures/SingleBitInputStream.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/dbms/Test.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/dbms/structures/BitBuffer.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/dbms/structures/Types.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/dbms/structures/Row.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/dbms/structures/SingleBitBuffer.java" />
       </list>
     </option>
   </component>
@@ -387,8 +361,8 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="716" />
-    <option name="y" value="-14" />
+    <option name="x" value="542" />
+    <option name="y" value="-33" />
     <option name="width" value="960" />
     <option name="height" value="1035" />
   </component>
@@ -397,6 +371,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -437,88 +414,19 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="dbms" type="462c0819:PsiDirectoryNode" />
-              <item name="data_types" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="dbms" type="b2602c69:ProjectViewProjectNode" />
-              <item name="dbms" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="dbms" type="462c0819:PsiDirectoryNode" />
-              <item name="logic" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="dbms" type="b2602c69:ProjectViewProjectNode" />
-              <item name="dbms" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="dbms" type="462c0819:PsiDirectoryNode" />
-              <item name="scripting" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="dbms" type="b2602c69:ProjectViewProjectNode" />
-              <item name="dbms" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="dbms" type="462c0819:PsiDirectoryNode" />
-              <item name="storage" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="dbms" type="b2602c69:ProjectViewProjectNode" />
-              <item name="dbms" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="dbms" type="462c0819:PsiDirectoryNode" />
-              <item name="storage" type="462c0819:PsiDirectoryNode" />
-              <item name="blocks" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="dbms" type="b2602c69:ProjectViewProjectNode" />
-              <item name="dbms" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="dbms" type="462c0819:PsiDirectoryNode" />
-              <item name="storage" type="462c0819:PsiDirectoryNode" />
-              <item name="file_structs" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="dbms" type="b2602c69:ProjectViewProjectNode" />
-              <item name="dbms" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="dbms" type="462c0819:PsiDirectoryNode" />
-              <item name="storage" type="462c0819:PsiDirectoryNode" />
-              <item name="serialization" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="dbms" type="b2602c69:ProjectViewProjectNode" />
-              <item name="dbms" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="dbms" type="462c0819:PsiDirectoryNode" />
               <item name="structures" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SearchEverywhereHistoryKey" value="getCol&#9;PSI&#9;JAVA://com.dbms.grammar.ArgsGuard#getColumn&#10;a.&#9;FILE&#9;file://C:/Users/User/IdeaProjects/dbms/a.txt" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548420216221" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548487890533" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -531,6 +439,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.dbms.structures" />
       <recent name="com.dbms.structs" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -553,13 +462,13 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.DBMSTest">
+  <component name="RunManager" selected="Application.Test">
     <configuration name="DBMSTest" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.dbms.DBMSTest" />
       <module name="dbms" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.dbms.*" />
+          <option name="PATTERN" value="com.dbms.structures.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -572,7 +481,7 @@
       <module name="dbms" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.dbms.*" />
+          <option name="PATTERN" value="com.dbms.structures.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -585,7 +494,7 @@
       <module name="dbms" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.dbms.*" />
+          <option name="PATTERN" value="com.dbms.structures.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -750,7 +659,8 @@
       <workItem from="1548326769575" duration="1704000" />
       <workItem from="1548328509132" duration="8702000" />
       <workItem from="1548347142673" duration="8691000" />
-      <workItem from="1548405623560" duration="9574000" />
+      <workItem from="1548405623560" duration="25744000" />
+      <workItem from="1548482697114" duration="5408000" />
     </task>
     <task id="LOCAL-00001" summary="fix lazy/full load">
       <created>1547128762070</created>
@@ -941,7 +851,14 @@
       <option name="project" value="LOCAL" />
       <updated>1548356667776</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="minor changes">
+      <created>1548420403293</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1548420403293</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -977,7 +894,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="479198000" />
+    <option name="totallyTimeSpent" value="500776000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -992,7 +909,7 @@
     <frame x="-7" y="-7" width="1550" height="840" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20872483" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2147651" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -1001,7 +918,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.47100425" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3550212" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49932885" weight="0.3069307" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39863014" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -1009,7 +926,7 @@
       <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49932885" weight="0.36916548" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.4986577" weight="0.33521923" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50067115" side_tool="true" weight="0.36916548" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50067115" side_tool="true" weight="0.2135785" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.3903819" />
       <window_info anchor="bottom" id="Docker" order="12" show_stripe_button="false" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -1025,7 +942,7 @@
       <window_info anchor="right" id="Maven" order="10" />
     </layout>
     <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19530201" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2147651" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -1034,15 +951,15 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.47100425" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.34087694" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49932885" weight="0.3069307" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39863014" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.3281471" />
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.36916548" />
+      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49932885" weight="0.31966054" />
+      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49932885" weight="0.36916548" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49932885" weight="0.33663365" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50067115" side_tool="true" weight="0.16690241" />
+      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.4986577" weight="0.33521923" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50067115" side_tool="true" weight="0.2135785" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.3903819" />
       <window_info anchor="bottom" id="Docker" order="12" show_stripe_button="false" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -1052,7 +969,7 @@
       <window_info anchor="right" id="Capture Analysis" order="4" />
       <window_info anchor="right" id="Database" order="5" weight="0.32997987" />
       <window_info anchor="right" id="Theme Preview" order="6" />
-      <window_info anchor="right" id="Maven Projects" order="7" weight="0.32997987" />
+      <window_info anchor="right" id="Maven Projects" order="7" weight="0.3295302" />
       <window_info anchor="right" id="Palette&#9;" order="8" />
       <window_info anchor="right" id="Coverage" order="9" side_tool="true" visible="true" weight="0.27498323" />
       <window_info anchor="right" id="Maven" order="10" />
@@ -1075,10 +992,10 @@
     <MESSAGE value="removed unnecessary table/database loading when drop executes&#10;the class 'TypeDescription' was renamed to 'Type'&#10;removed the interface 'VAFunction'&#10;minor travis changes" />
     <MESSAGE value="the package 'structs' was renamed to 'structures'&#10;the class 'Row' was moved to the package 'structures'&#10;minor changes" />
     <MESSAGE value="trying to minimize calling writeBlocksPointer&#10;minor changes" />
-    <MESSAGE value="minor changes" />
     <MESSAGE value="fixed integer parsing" />
     <MESSAGE value="some changes for multithreading" />
-    <option name="LAST_COMMIT_MESSAGE" value="some changes for multithreading" />
+    <MESSAGE value="minor changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="minor changes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1093,401 +1010,10 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/grammar/SqlParserTokenManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/grammar/Token.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="512">
-          <caret line="124" column="42" lean-forward="true" selection-start-line="124" selection-start-column="42" selection-end-line="124" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/grammar/TokenMgrError.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/grammar/SqlParserConstants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/grammar/ParseException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/grammar/ArgsGuard.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="22" column="63" lean-forward="true" selection-start-line="22" selection-start-column="63" selection-end-line="22" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/java.sql/java/sql/Blob.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3659">
-          <caret line="58" column="17" selection-start-line="58" selection-start-column="17" selection-end-line="58" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/structs/VAFunction.java" />
-    <entry file="uml://JAVA/com.dbms">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>JAVA</ID>
-          <OriginalElement>com.dbms</OriginalElement>
-          <nodes>
-            <node x="" y="">com.dbms.KryoTest</node>
-            <node x="" y="">com.dbms.threading</node>
-            <node x="" y="">com.dbms.logic</node>
-            <node x="" y="">com.dbms.data_types</node>
-            <node x="" y="">com.dbms.scripting</node>
-            <node x="" y="">com.dbms.Test</node>
-            <node x="" y="">com.dbms.structs</node>
-            <node x="" y="">com.dbms.DBMSTest</node>
-            <node x="" y="">com.dbms.grammar</node>
-            <node x="" y="">com.dbms.storage</node>
-          </nodes>
-          <notes />
-          <edges />
-          <settings layout="Hierarchic Group" zoom="1.0" x="156.0" y="163.0" />
-          <SelectedNodes />
-          <Categories />
-          <SCOPE>All</SCOPE>
-          <VISIBILITY>private</VISIBILITY>
-        </state>
-      </provider>
-    </entry>
-    <entry file="uml://JAVA/com.dbms.storage">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>JAVA</ID>
-          <OriginalElement>com.dbms.storage</OriginalElement>
-          <nodes>
-            <node x="" y="">com.dbms.storage.serialization</node>
-            <node x="" y="">com.dbms.storage.file_structs</node>
-            <node x="" y="">com.dbms.storage.blocks</node>
-            <node x="" y="">com.dbms.storage.data</node>
-          </nodes>
-          <notes />
-          <edges />
-          <settings layout="Hierarchic Group" zoom="1.0" x="141.0" y="91.0" />
-          <SelectedNodes />
-          <Categories />
-          <SCOPE>All</SCOPE>
-          <VISIBILITY>private</VISIBILITY>
-        </state>
-      </provider>
-    </entry>
-    <entry file="uml://JAVA/com.dbms.structs">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>JAVA</ID>
-          <OriginalElement>com.dbms.structs</OriginalElement>
-          <nodes>
-            <node x="" y="">com.dbms.structs.Database</node>
-            <node x="" y="">com.dbms.structs.BiConsumerThrowing</node>
-            <node x="" y="">com.dbms.structs.Databases</node>
-            <node x="" y="">com.dbms.structs.DataBaseTest</node>
-            <node x="" y="">com.dbms.structs.DataBasesTest</node>
-            <node x="" y="">com.dbms.structs.TableTest</node>
-            <node x="" y="">com.dbms.structs.Types</node>
-            <node x="" y="">com.dbms.structs.Table</node>
-            <node x="" y="">com.dbms.structs.TypesTest</node>
-            <node x="" y="">com.dbms.structs.TypeTest</node>
-            <node x="" y="">com.dbms.structs.Row</node>
-            <node x="" y="">com.dbms.structs.Type</node>
-            <node x="" y="">com.dbms.structs.TestBootstrap</node>
-            <node x="" y="">com.dbms.structs.BiFunctionThrowing</node>
-            <node x="" y="">com.dbms.structs.Selection</node>
-          </nodes>
-          <notes />
-          <edges />
-          <settings layout="Hierarchic Group" zoom="1.0" x="196.0" y="202.0" />
-          <SelectedNodes />
-          <Categories />
-          <SCOPE>All</SCOPE>
-          <VISIBILITY>private</VISIBILITY>
-        </state>
-      </provider>
-    </entry>
-    <entry file="uml://JAVA/com.dbms.structs.Database">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>JAVA</ID>
-          <OriginalElement>com.dbms.structs.Database</OriginalElement>
-          <nodes>
-            <node x="" y="">com.dbms.structs.Database</node>
-            <node x="" y="">java.io.Serializable</node>
-          </nodes>
-          <notes />
-          <edges />
-          <settings layout="Hierarchic Group" zoom="1.0" x="55.0" y="54.0" />
-          <SelectedNodes />
-          <Categories />
-          <SCOPE>All</SCOPE>
-          <VISIBILITY>private</VISIBILITY>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/java.base/java/lang/Object.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="156" column="19" selection-start-line="156" selection-start-column="19" selection-end-line="156" selection-end-column="19" />
-          <folding>
-            <element signature="e#5877#5878#0" expanded="true" />
-            <element signature="e#5913#5914#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="uml://JAVA/com.dbms.structs.Databases">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>JAVA</ID>
-          <OriginalElement>com.dbms.structs.Databases</OriginalElement>
-          <nodes>
-            <node x="" y="">com.dbms.structs.Databases.Load</node>
-            <node x="" y="">com.dbms.structs.Databases</node>
-          </nodes>
-          <notes />
-          <edges />
-          <settings layout="Hierarchic Group" zoom="1.0" x="52.0" y="15.0" />
-          <SelectedNodes />
-          <Categories>
-            <Category>Fields</Category>
-            <Category>Constructors</Category>
-            <Category>Methods</Category>
-            <Category>Properties</Category>
-            <Category>Inner Classes</Category>
-          </Categories>
-          <SCOPE>All</SCOPE>
-          <VISIBILITY>private</VISIBILITY>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="969">
-          <caret line="57" column="40" lean-forward="true" selection-start-line="57" selection-start-column="40" selection-end-line="57" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/logic/ExpressionExecutor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/threading/ExecutorManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/travis-automerge.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="14" lean-forward="true" selection-start-column="14" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.travis.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="36" lean-forward="true" selection-start-line="13" selection-start-column="36" selection-end-line="13" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/scripting/ScriptManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/grammar/SimpleCharStream.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-6893">
-          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/grammar/SQLGrammar.jj">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="403">
-          <caret line="641" column="1" lean-forward="true" selection-start-line="641" selection-start-column="1" selection-end-line="641" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/java.base/java/util/Collection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4409">
-          <caret line="219" column="17" selection-start-line="219" selection-start-column="17" selection-end-line="219" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/javafx.graphics/javafx/scene/shape/Shape.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-13">
-          <caret line="203" column="10" selection-start-line="203" selection-start-column="10" selection-end-line="203" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/javafx.graphics/javafx/scene/shape/Circle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4686">
-          <caret line="60" column="31" lean-forward="true" selection-start-line="60" selection-start-column="31" selection-end-line="60" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/java.base/java/lang/ClassCastException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="40" column="6" selection-start-line="40" selection-start-column="6" selection-end-line="40" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/storage/blocks/BlocksPointer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="23" lean-forward="true" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/storage/blocks/BlockElementIterator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="259">
-          <caret line="47" column="26" selection-start-line="47" selection-start-column="26" selection-end-line="47" selection-end-column="26" />
-          <folding>
-            <element signature="e#1063#1064#0" expanded="true" />
-            <element signature="e#1127#1128#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/storage/serialization/Serialization.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="735">
-          <caret line="51" column="39" lean-forward="true" selection-start-line="51" selection-start-column="39" selection-end-line="51" selection-end-column="39" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/storage/serialization/DataSerializable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/structures/BiFunctionThrowing.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/structures/BiConsumerThrowing.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/structures/Selection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="429">
-          <caret line="30" column="31" lean-forward="true" selection-start-line="30" selection-start-column="31" selection-end-line="30" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#568#569#0" expanded="true" />
-            <element signature="e#600#601#0" expanded="true" />
-            <element signature="e#647#648#0" expanded="true" />
-            <element signature="e#691#692#0" expanded="true" />
-            <element signature="e#718#719#0" expanded="true" />
-            <element signature="e#756#757#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/data_types/Char.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="14" selection-start-line="14" selection-end-line="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/data_types/Varchar.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/storage/blocks/ElementIterator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="438">
-          <caret line="74" column="7" selection-start-line="74" selection-start-column="7" selection-end-line="74" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#930#931#0" expanded="true" />
-            <element signature="e#965#966#0" expanded="true" />
-            <element signature="e#994#995#0" expanded="true" />
-            <element signature="e#1024#1025#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/storage/data/DataManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="6" column="3" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/storage/data/MetaDataManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-748">
-          <caret line="69" column="72" selection-start-line="69" selection-start-column="72" selection-end-line="69" selection-end-column="72" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/structures/Database.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="18" column="6" selection-start-line="18" selection-start-column="6" selection-end-line="18" selection-end-column="6" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#833#834#0" expanded="true" />
-            <element signature="e#865#866#0" expanded="true" />
-            <element signature="e#907#908#0" expanded="true" />
-            <element signature="e#945#946#0" expanded="true" />
-            <element signature="e#1216#1217#0" expanded="true" />
-            <element signature="e#1243#1244#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1495,9 +1021,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="19" column="3" selection-start-line="19" selection-start-column="3" selection-end-line="19" selection-end-column="3" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1505,33 +1028,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="3" selection-start-line="4" selection-start-column="3" selection-end-line="4" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/todo.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="16" lean-forward="true" selection-start-line="2" selection-start-column="16" selection-end-line="2" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/storage/blocks/Block.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="867">
-          <caret line="59" column="56" lean-forward="true" selection-start-line="59" selection-start-column="56" selection-end-line="59" selection-end-column="56" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/structures/Table.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="129" selection-start-line="129" selection-end-line="129" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1552,24 +1048,46 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/storage/blocks/BlockManager.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/data_types/Char.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="112" selection-start-line="112" selection-end-line="112" />
+        <state relative-caret-position="204">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/data_types/Varchar.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/DBMSTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1445">
+          <caret line="85" column="25" lean-forward="true" selection-start-line="85" selection-start-column="25" selection-end-line="85" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/Test.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/storage/blocks/Block.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="68" column="26" selection-start-line="68" selection-start-column="26" selection-end-line="68" selection-end-column="26" />
+        <state relative-caret-position="546">
+          <caret line="236" column="89" selection-start-line="236" selection-start-column="89" selection-end-line="236" selection-end-column="89" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1314#1315#0" expanded="true" />
-            <element signature="e#1364#1365#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/storage/blocks/BlockManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="159" column="45" selection-start-line="159" selection-start-column="45" selection-end-line="159" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1581,41 +1099,332 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/structures/Row.java">
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/java.base/java/nio/ByteBuffer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="42" selection-start-line="42" selection-end-line="42" />
+        <state relative-caret-position="-381">
+          <caret line="599" column="25" selection-start-line="599" selection-start-column="25" selection-end-line="599" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$MAVEN_REPOSITORY$/commons-io/commons-io/2.6/commons-io-2.6.pom">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/jdk.compiler/com/sun/source/tree/BlockTree.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="47" column="17" selection-start-line="47" selection-start-column="17" selection-end-line="47" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/jdk.scripting.nashorn/jdk/nashorn/api/tree/BlockTree.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="41" column="17" selection-start-line="41" selection-start-column="17" selection-end-line="41" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/github/jinahya/bit-io/1.3.7/bit-io-1.3.7.jar!/com/github/jinahya/bit/io/DefaultBitOutput.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://JAVA/com.github.jinahya.bit.io.ByteOutput">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>com.github.jinahya.bit.io.ByteOutput</OriginalElement>
+          <nodes>
+            <node x="" y="">com.github.jinahya.bit.io.ByteOutput</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="1.0" x="54.0" y="15.0" />
+          <SelectedNodes />
+          <Categories />
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/github/jinahya/bit-io/1.3.7/bit-io-1.3.7.jar!/com/github/jinahya/bit/io/ByteOutput.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="9" column="21" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/java.base/java/util/BitSet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="146">
+          <caret line="296" column="18" selection-start-line="296" selection-start-column="18" selection-end-line="296" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/roaringbitmap/RoaringBitmap/0.7.36/RoaringBitmap-0.7.36.jar!/org/roaringbitmap/RoaringBitmap.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="230" column="16" selection-start-line="230" selection-start-column="16" selection-end-line="230" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/java.base/java/io/DataOutput.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="49" column="16" lean-forward="true" selection-start-line="49" selection-start-column="16" selection-end-line="49" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/java.base/java/io/DataOutputStream.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="37" column="6" selection-start-line="37" selection-start-column="6" selection-end-line="37" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/storage/serialization/DataSerializable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="7" column="26" selection-start-line="7" selection-start-column="26" selection-end-line="7" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/roaringbitmap/RoaringBitmap/0.7.36/RoaringBitmap-0.7.36-sources.jar!/org/roaringbitmap/RoaringArray.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="570" column="14" selection-start-line="570" selection-start-column="14" selection-end-line="570" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/roaringbitmap/RoaringBitmap/0.7.36/RoaringBitmap-0.7.36-sources.jar!/org/roaringbitmap/RoaringBitmap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="1039" column="10" selection-start-line="1039" selection-start-column="10" selection-end-line="1039" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/travis-automerge.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="14" lean-forward="true" selection-start-column="14" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.travis.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="36" lean-forward="true" selection-start-line="13" selection-start-column="36" selection-end-line="13" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/github/jinahya/bit-io/1.3.7/bit-io-1.3.7-sources.jar!/com/github/jinahya/bit/io/ByteOutput.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="25" column="17" selection-start-line="25" selection-start-column="17" selection-end-line="25" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/github/jinahya/bit-io/1.3.7/bit-io-1.3.7-sources.jar!/com/github/jinahya/bit/io/DefaultBitOutput.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="163">
+          <caret line="79" column="31" selection-start-line="79" selection-start-column="31" selection-end-line="79" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/github/jinahya/bit-io/1.3.7/bit-io-1.3.7-sources.jar!/com/github/jinahya/bit/io/BitIoConstraints.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="26" column="15" selection-start-line="26" selection-start-column="15" selection-end-line="26" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$MAVEN_REPOSITORY$/com/google/guava/guava/27.0.1-jre/guava-27.0.1-jre.pom">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-153" />
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/google/guava/guava/21.0/guava-21.0-sources.jar!/com/google/common/collect/Table.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="57" column="19" lean-forward="true" selection-start-line="57" selection-start-column="19" selection-end-line="57" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/google/guava/guava/21.0/guava-21.0-sources.jar!/com/google/common/collect/TreeBasedTable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1887" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/structures/Table.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1921">
+          <caret line="129" selection-start-line="129" selection-end-line="129" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#635#636#0" expanded="true" />
-            <element signature="e#669#670#0" expanded="true" />
-            <element signature="e#703#704#0" expanded="true" />
-            <element signature="e#754#755#0" expanded="true" />
-            <element signature="e#787#788#0" expanded="true" />
-            <element signature="e#819#820#0" expanded="true" />
-            <element signature="e#1233#1234#0" expanded="true" />
-            <element signature="e#1303#1304#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/DBMSTest.java">
+    <entry file="file://$PROJECT_DIR$/todo.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="68" column="85" selection-start-line="68" selection-start-column="85" selection-end-line="68" selection-end-column="85" />
+        <state relative-caret-position="170">
+          <caret line="10" column="51" selection-start-line="10" selection-start-column="51" selection-end-line="10" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/storage/serialization/Serialization.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="595">
+          <caret line="56" column="35" selection-start-line="56" selection-start-column="35" selection-end-line="56" selection-end-column="35" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="55" column="21" lean-forward="true" selection-start-line="55" selection-start-column="21" selection-end-line="55" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/github/jinahya/bit-io/1.3.7/bit-io-1.3.7-sources.jar!/com/github/jinahya/bit/io/AbstractBitOutput.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="219">
+          <caret line="111" column="16" selection-start-line="111" selection-start-column="16" selection-end-line="111" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/github/jinahya/bit-io/1.3.7/bit-io-1.3.7-sources.jar!/com/github/jinahya/bit/io/BitOutput.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="24" column="17" selection-start-line="24" selection-start-column="17" selection-end-line="24" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/github/jinahya/bit-io/1.3.7/bit-io-1.3.7-sources.jar!/com/github/jinahya/bit/io/StreamByteInput.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/java.base/java/io/ByteArrayOutputStream.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2499">
+          <caret line="171" column="12" selection-start-line="171" selection-start-column="7" selection-end-line="171" selection-end-column="12" />
+          <folding>
+            <element signature="e#1194#1195#0" expanded="true" />
+            <element signature="e#1218#1219#0" expanded="true" />
+            <element signature="e#5253#5254#0" expanded="true" />
+            <element signature="e#5278#5279#0" expanded="true" />
+            <element signature="e#5988#5989#0" expanded="true" />
+            <element signature="e#6016#6017#0" expanded="true" />
+            <element signature="e#6750#6751#0" expanded="true" />
+            <element signature="e#6798#6799#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/java.base/java/util/Arrays.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="3491" column="23" selection-start-line="3491" selection-start-column="23" selection-end-line="3491" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/java.base/java/io/IOException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="227">
+          <caret line="38" column="6" selection-start-line="38" selection-start-column="6" selection-end-line="38" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/java.base/java/io/OutputStream.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1211">
+          <caret line="47" column="22" selection-start-line="47" selection-start-column="22" selection-end-line="47" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/java.base/java/io/BufferedInputStream.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4159">
+          <caret line="165" column="21" lean-forward="true" selection-start-line="165" selection-start-column="21" selection-end-line="165" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/java.base/java/io/InputStream.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1155">
+          <caret line="522" column="32" lean-forward="true" selection-start-line="522" selection-start-column="32" selection-end-line="522" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/structures/SingleBitInputStream.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/structures/SingleBitOutputStream.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="17" column="37" lean-forward="true" selection-start-line="17" selection-start-column="37" selection-end-line="17" selection-end-column="37" />
+          <folding>
+            <element signature="e#216#217#0" expanded="true" />
+            <element signature="e#249#250#0" expanded="true" />
+            <element signature="e#269#270#0" expanded="true" />
+            <element signature="e#313#314#0" expanded="true" />
+            <element signature="e#553#554#0" expanded="true" />
+            <element signature="e#579#580#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/Test.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="353">
+          <caret line="72" selection-start-line="72" selection-end-line="72" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/structures/Row.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-102">
+          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#720#721#0" expanded="true" />
+            <element signature="e#754#755#0" expanded="true" />
+            <element signature="e#1518#1519#0" expanded="true" />
+            <element signature="e#1588#1589#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/structures/Types.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="20" lean-forward="true" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
+        <state relative-caret-position="612">
+          <caret line="36" column="50" lean-forward="true" selection-start-line="36" selection-start-column="50" selection-end-line="36" selection-end-column="50" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#5333#5334#0" expanded="true" />
+            <element signature="e#5383#5384#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/structures/SingleBitBuffer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="935">
+          <caret line="67" selection-start-line="67" selection-end-line="67" />
         </state>
       </provider>
     </entry>

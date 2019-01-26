@@ -1,7 +1,10 @@
 package com.dbms;
 
-import java.io.DataOutputStream;
-import java.util.Arrays;
+import com.github.jinahya.bit.io.BitOutput;
+import com.github.jinahya.bit.io.DefaultBitOutput;
+import com.github.jinahya.bit.io.StreamByteInput;
+
+import java.io.*;
 import java.util.Collection;
 import java.util.List;
 
@@ -60,13 +63,15 @@ public class Test {
     }
 
     public static void main(String[] args) throws Exception {
-        var canvas = new Canvas();
+        /*var canvas = new Canvas();
         var c = new Circle(23, 4, 45);
         var r = new Rectangle(5, 4, 23, 77);
         canvas.draw(c);
         canvas.draw(r);
         var l = Arrays.asList(c, c);
-        canvas.drawAll(l);
+        canvas.drawAll(l);*/
+
+
         /*Collection<?> c = new ArrayList<String>();
         ((ArrayList<String>) c).add("avb");
         ((ArrayList<Boolean>) c).add(true);
@@ -77,3 +82,4 @@ public class Test {
         System.out.println(((ArrayList<String>) c).get(1));//ClassCastException*/
     }
 }
+
