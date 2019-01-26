@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="11211ecf-683e-4af0-9764-3dbaeae9a3f7" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbms/structures/BiConsumerThrowing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbms/classes/lambdas_throwing/BiConsumerThrowing.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbms/structures/BiFunctionThrowing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbms/classes/lambdas_throwing/BiFunctionThrowing.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbms/structures/SingleBitBuffer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbms/classes/other/SingleBitBuffer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbms/structures/Types.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbms/structures/Types.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -81,10 +78,11 @@
           <entry key="Databases" value="3" />
           <entry key="class" value="8" />
           <entry key="dbms" value="1" />
+          <entry key="gitignore" value="1" />
           <entry key="huy" value="5" />
           <entry key="huy1" value="3" />
-          <entry key="java" value="463" />
-          <entry key="jj" value="4" />
+          <entry key="java" value="466" />
+          <entry key="jj" value="5" />
           <entry key="pom" value="3" />
           <entry key="sh" value="4" />
           <entry key="storage" value="1" />
@@ -100,9 +98,9 @@
         <counts>
           <entry key="Bash" value="4" />
           <entry key="CLASS" value="8" />
-          <entry key="JAVA" value="463" />
-          <entry key="JavaCC" value="4" />
-          <entry key="PLAIN_TEXT" value="26" />
+          <entry key="JAVA" value="466" />
+          <entry key="JavaCC" value="5" />
+          <entry key="PLAIN_TEXT" value="27" />
           <entry key="UML" value="8" />
           <entry key="XML" value="15" />
           <entry key="YAML" value="7" />
@@ -110,10 +108,11 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="14318" />
+          <entry key="gitignore" value="7" />
+          <entry key="java" value="14329" />
           <entry key="sh" value="2" />
           <entry key="travis-automerge" value="45" />
-          <entry key="txt" value="1264" />
+          <entry key="txt" value="1281" />
           <entry key="xml" value="179" />
           <entry key="yml" value="122" />
         </counts>
@@ -121,8 +120,8 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Bash" value="2" />
-          <entry key="JAVA" value="14318" />
-          <entry key="PLAIN_TEXT" value="1309" />
+          <entry key="JAVA" value="14329" />
+          <entry key="PLAIN_TEXT" value="1333" />
           <entry key="XML" value="179" />
           <entry key="YAML" value="122" />
         </counts>
@@ -136,7 +135,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/Test.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="353">
@@ -149,9 +148,34 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/classes/other/SingleBitBuffer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="408">
+              <caret line="24" column="37" lean-forward="true" selection-start-line="24" selection-start-column="37" selection-end-line="24" selection-end-column="37" />
+              <folding>
+                <element signature="e#203#204#0" expanded="true" />
+                <element signature="e#248#249#0" expanded="true" />
+                <element signature="e#294#295#0" expanded="true" />
+                <element signature="e#338#339#0" expanded="true" />
+                <element signature="e#534#535#0" expanded="true" />
+                <element signature="e#578#579#0" expanded="true" />
+                <element signature="e#836#837#0" expanded="true" />
+                <element signature="e#867#868#0" expanded="true" />
+                <element signature="e#894#895#0" expanded="true" />
+                <element signature="e#939#940#0" expanded="true" />
+                <element signature="e#1386#1387#0" expanded="true" />
+                <element signature="e#1420#1421#0" expanded="true" />
+                <element signature="e#1709#1710#0" expanded="true" />
+                <element signature="e#1743#1744#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/structures/Row.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
+            <state relative-caret-position="17">
               <caret line="12" selection-start-line="12" selection-end-line="12" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -161,10 +185,28 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/structures/Selection.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="8" column="24" lean-forward="true" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/todo.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="51" selection-start-line="10" selection-start-column="51" selection-end-line="10" selection-end-column="51" />
+            <state relative-caret-position="34">
+              <caret line="2" column="23" lean-forward="true" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="7" selection-start-column="7" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -205,6 +247,7 @@
       <find>add(</find>
       <find>flu</find>
       <find>reset</find>
+      <find>getf</find>
     </findStrings>
     <replaceStrings>
       <replace>FileStruct</replace>
@@ -225,8 +268,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/dbms/storage/data/DataManager.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/dbms/logic/ExpressionExecutor.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/dbms/grammar/ThrowExceptionTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/dbms/structs/TableTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/dbms/structs/DataBaseTest.java" />
@@ -276,6 +317,8 @@
         <option value="$PROJECT_DIR$/src/main/java/com/dbms/structures/Types.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/dbms/structures/Row.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/dbms/structures/SingleBitBuffer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/dbms/threading/LockManager.java" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -358,8 +401,7 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="dbms" type="462c0819:PsiDirectoryNode" />
-              <item name="classes" type="462c0819:PsiDirectoryNode" />
-              <item name="lambdas_throwing" type="462c0819:PsiDirectoryNode" />
+              <item name="data_types" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="dbms" type="b2602c69:ProjectViewProjectNode" />
@@ -368,8 +410,16 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="dbms" type="462c0819:PsiDirectoryNode" />
-              <item name="classes" type="462c0819:PsiDirectoryNode" />
-              <item name="other" type="462c0819:PsiDirectoryNode" />
+              <item name="grammar" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dbms" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dbms" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="dbms" type="462c0819:PsiDirectoryNode" />
+              <item name="storage" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="dbms" type="b2602c69:ProjectViewProjectNode" />
@@ -379,6 +429,15 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="dbms" type="462c0819:PsiDirectoryNode" />
               <item name="structures" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dbms" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dbms" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="dbms" type="462c0819:PsiDirectoryNode" />
+              <item name="threading" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -393,7 +452,7 @@
     <property name="SearchEverywhereHistoryKey" value="getCol&#9;PSI&#9;JAVA://com.dbms.grammar.ArgsGuard#getColumn&#10;a.&#9;FILE&#9;file://C:/Users/User/IdeaProjects/dbms/a.txt" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548488148463" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548495368970" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -406,6 +465,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.dbms.classes" />
       <recent name="com.dbms.structures" />
       <recent name="com.dbms.structs" />
     </key>
@@ -628,7 +688,7 @@
       <workItem from="1548347142673" duration="8691000" />
       <workItem from="1548405623560" duration="25744000" />
       <workItem from="1548482697114" duration="5495000" />
-      <workItem from="1548493716662" duration="699000" />
+      <workItem from="1548493716662" duration="1639000" />
     </task>
     <task id="LOCAL-00001" summary="fix lazy/full load">
       <created>1547128762070</created>
@@ -833,7 +893,14 @@
       <option name="project" value="LOCAL" />
       <updated>1548488221826</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="minor refactoring">
+      <created>1548494453177</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1548494453177</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -869,7 +936,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="501562000" />
+    <option name="totallyTimeSpent" value="502502000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -882,6 +949,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="840" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21744967" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -970,7 +1038,8 @@
     <MESSAGE value="some changes for multithreading" />
     <MESSAGE value="minor changes" />
     <MESSAGE value="added class 'SingleBitBuffer'" />
-    <option name="LAST_COMMIT_MESSAGE" value="added class 'SingleBitBuffer'" />
+    <MESSAGE value="minor refactoring" />
+    <option name="LAST_COMMIT_MESSAGE" value="minor refactoring" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -985,30 +1054,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/storage/blocks/BlockManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="159" column="45" selection-start-line="159" selection-start-column="45" selection-end-line="159" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/scripting/Expression.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="7" column="3" selection-start-line="7" selection-start-column="3" selection-end-line="7" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/java.base/java/nio/ByteBuffer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-381">
-          <caret line="599" column="25" selection-start-line="599" selection-start-column="25" selection-end-line="599" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$MAVEN_REPOSITORY$/commons-io/commons-io/2.6/commons-io-2.6.pom">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/jdk.compiler/com/sun/source/tree/BlockTree.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
@@ -1260,23 +1305,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/structures/Row.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/todo.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="51" selection-start-line="10" selection-start-column="51" selection-end-line="10" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/java.base/java/lang/annotation/Target.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="427">
@@ -1309,31 +1337,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="12" column="6" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/classes/other/SingleBitBuffer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1020">
-          <caret line="60" column="27" lean-forward="true" selection-start-line="60" selection-start-column="27" selection-end-line="60" selection-end-column="27" />
-          <folding>
-            <element signature="e#200#201#0" expanded="true" />
-            <element signature="e#245#246#0" expanded="true" />
-            <element signature="e#291#292#0" expanded="true" />
-            <element signature="e#335#336#0" expanded="true" />
-            <element signature="e#531#532#0" expanded="true" />
-            <element signature="e#575#576#0" expanded="true" />
-            <element signature="e#833#834#0" expanded="true" />
-            <element signature="e#864#865#0" expanded="true" />
-            <element signature="e#891#892#0" expanded="true" />
-            <element signature="e#936#937#0" expanded="true" />
-            <element signature="e#1118#1119#0" expanded="true" />
-            <element signature="e#1147#1148#0" expanded="true" />
-            <element signature="e#1408#1409#0" expanded="true" />
-            <element signature="e#1442#1443#0" expanded="true" />
-            <element signature="e#1731#1732#0" expanded="true" />
-            <element signature="e#1756#1757#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1371,6 +1374,74 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/grammar/SQLGrammar.jj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="27" lean-forward="true" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/classes/other/SingleBitBuffer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" column="37" lean-forward="true" selection-start-line="24" selection-start-column="37" selection-end-line="24" selection-end-column="37" />
+          <folding>
+            <element signature="e#203#204#0" expanded="true" />
+            <element signature="e#248#249#0" expanded="true" />
+            <element signature="e#294#295#0" expanded="true" />
+            <element signature="e#338#339#0" expanded="true" />
+            <element signature="e#534#535#0" expanded="true" />
+            <element signature="e#578#579#0" expanded="true" />
+            <element signature="e#836#837#0" expanded="true" />
+            <element signature="e#867#868#0" expanded="true" />
+            <element signature="e#894#895#0" expanded="true" />
+            <element signature="e#939#940#0" expanded="true" />
+            <element signature="e#1386#1387#0" expanded="true" />
+            <element signature="e#1420#1421#0" expanded="true" />
+            <element signature="e#1709#1710#0" expanded="true" />
+            <element signature="e#1743#1744#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/structures/Row.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/threading/LockManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="10" selection-start-line="2" selection-start-column="10" selection-end-line="2" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbms/structures/Selection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="8" column="24" lean-forward="true" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/todo.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="23" lean-forward="true" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="7" selection-start-column="7" selection-end-column="7" />
         </state>
       </provider>
     </entry>
