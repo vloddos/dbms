@@ -27,7 +27,7 @@ public class SingleBitBuffer {
 
     public void setBuffer(byte[] buffer, int bitLength) {
         if (buffer.length < byteIndex(bitLength))
-            throw new IllegalStateException("");
+            throw new IllegalArgumentException("");
 
         this.buffer = buffer;
         this.bitLength = bitLength;

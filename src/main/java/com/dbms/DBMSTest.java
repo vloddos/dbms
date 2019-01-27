@@ -72,7 +72,7 @@ public class DBMSTest {
         set.put("field", "");
         Databases.getInstance().useDatabase("tdb").getTable("student").update(set, "name='qwe'");*/
 
-        //Databases.getInstance().useDatabase("tdb").getTable("student").delete(null);
+        Databases.getInstance().useDatabase("tdb").getTable("student").delete("field=false");
 
         Databases.getInstance()
                 .useDatabase("tdb")
