@@ -1,13 +1,13 @@
-package com.dbms.structs;
+package com.dbms.structures;
 
 import org.junit.Assert;
 import org.junit.Test;
 
-public class TypeDescriptionTest {
+public class TypeTest {
 
-    private TypeDescription INT = new TypeDescription("int");
-    private TypeDescription VARCHAR = new TypeDescription("varchar", 50);
-    private TypeDescription DOUBLE = new TypeDescription("double", "20");
+    private Type INT = new Type("int");
+    private Type VARCHAR = new Type("varchar", 50);
+    private Type DOUBLE = new Type("double", "20");
 
     @Test
     public void testShouldSetLengthAndGetLength() {

@@ -600,7 +600,7 @@ ArrayList<String> getInsertableValues():
 Map<String, TypeDescription> getFields():
 {
     Token name, TypeName;
-    TypeDescription typeDescription;
+    TypeDescription type;
 
     Map<String, TypeDescription> fields = new LinkedHashMap<String, TypeDescription>();
 }
@@ -612,10 +612,10 @@ Map<String, TypeDescription> getFields():
     //[<COMMA> getFields()]//???????????????
     (
         <COMMA> TypeName = <STRING_LITERAL>
-        typeDescription = getTypeDescription()
+        type = getTypeDescription()
 
         {
-          fields.put(TypeName.image, typeDescription);
+          fields.put(TypeName.image, type);
           //System.out.println("[Recursion] new struct populated < " + TypeName.image + ">");
         }
     )*
@@ -626,17 +626,17 @@ TypeDescription getTypeDescription():
 {
     Token type, length = null;
 
-    TypeDescription typeDescription;
+    TypeDescription type;
 }
 {
     type = <STRING_LITERAL>
     [<OPEN_BRACKET>length = <STRING_LITERAL><CLOSE_BRACKET>]
     {
-        typeDescription = new TypeDescription(type.image);
+        type = new TypeDescription(type.image);
 
         if (length != null)
-            typeDescription.setLength(length.image);
+            type.setLength(length.image);
 
-        return typeDescription;
+        return type;
     }
 }

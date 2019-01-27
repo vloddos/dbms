@@ -1,6 +1,6 @@
 package com.dbms.grammar;
 
-import com.dbms.structs.TypeDescription;
+import com.dbms.structures.Type;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -17,7 +17,7 @@ import java.util.Map;
  */
 public final class ArgsGuard {
     public Token command;
-    Map<String, TypeDescription> fields = new LinkedHashMap<String, TypeDescription>();
+    Map<String, Type> fields = new LinkedHashMap<String, Type>();
 
     //For "INSERT" conditions
     private ArrayList<String> insertableColumns = new ArrayList<String>();
@@ -50,11 +50,11 @@ public final class ArgsGuard {
         return map;
     }
 
-    public Map<String, TypeDescription> getFields() {
+    public Map<String, Type> getFields() {
         return fields;
     }
 
-    public void setFields(Map<String, TypeDescription> f) {
+    public void setFields(Map<String, Type> f) {
         fields = f;
     }
 

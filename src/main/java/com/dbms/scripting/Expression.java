@@ -5,6 +5,7 @@ import javafx.util.Pair;
 import java.util.Map;
 import java.util.regex.Pattern;
 
+// TODO: 24.01.2019 сделать выражения на уровне парсера а не заговнокодить через евал
 public class Expression {
 
     private String value;

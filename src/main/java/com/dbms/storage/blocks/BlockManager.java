@@ -1,7 +1,6 @@
 package com.dbms.storage.blocks;
 
 import com.dbms.storage.file_structs.BlockExtendedFileStruct;
-import com.dbms.storage.file_structs.FileStruct;
 import com.dbms.storage.serialization.Serialization;
 import org.apache.commons.io.FilenameUtils;
 
@@ -10,7 +9,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 // FIXME: 24.12.2018 общий rac/Output(1 на блок или 1 на все блоки)
-// FIXME: 22.01.2019 вызывать writeBlocksPointer по минимуму?
 public class BlockManager {
 
     private BlockManager() {
@@ -25,6 +23,7 @@ public class BlockManager {
         return instance;
     }
 
+    /** FIXME: 24.01.2019 читать {@link Block#blockPosition} вместо самих блоков?*/
     public BlocksPointer readBlocksPointer(String databaseName, String tableName) throws Exception {
         try (
                 var in = new ObjectInputStream(
@@ -48,6 +47,7 @@ public class BlockManager {
         return blocksPointers;
     }
 
+    /** FIXME: 24.01.2019 писать {@link Block#blockPosition} вместо самих блоков?*/
     public void writeBlocksPointer(String databaseName, String tableName, BlocksPointer blocksPointer) throws Exception {
         try (
                 var out = new ObjectOutputStream(
@@ -95,7 +95,7 @@ public class BlockManager {
             blocksPointer.firstDeleted = blocksPointer.firstDeleted.readRight();
             if (blocksPointer.firstDeleted != null)
                 blocksPointer.firstDeleted.writeLeft(-1);
-            writeBlocksPointer(databaseName, tableName, blocksPointer);
+            //writeBlocksPointer(databaseName, tableName, blocksPointer);
 
             l.reuse();
         }
@@ -107,7 +107,7 @@ public class BlockManager {
     public <E> void appendElement(String databaseName, String tableName, BlocksPointer blocksPointer, E e) throws Exception {
         if (blocksPointer.last == null) {
             blocksPointer.first = blocksPointer.last = getBlock(databaseName, tableName, blocksPointer);
-            writeBlocksPointer(databaseName, tableName, blocksPointer);
+            //writeBlocksPointer(databaseName, tableName, blocksPointer);
         }
 
         var bytes = Serialization.getInstance().getDataSerializableBytes(e);
@@ -118,7 +118,7 @@ public class BlockManager {
             blocksPointer.last.writeRight(l.getBlockPosition());
             l.writeLeft(blocksPointer.last.getBlockPosition());
             blocksPointer.last = l;
-            writeBlocksPointer(databaseName, tableName, blocksPointer);
+            //writeBlocksPointer(databaseName, tableName, blocksPointer);
         }
 
         blocksPointer.last.appendBytes(bytes);
@@ -191,9 +191,6 @@ public class BlockManager {
     // FIXME: 22.01.2019 rename?
     public void deleteElement(String databaseName, String tableName, BlocksPointer blocksPointer, Block block) throws Exception {
         block.decElementCount();
-        /*if (block.getElementCount() == 0)
-            deleteBlock(databaseName, tableName, blocksPointer, block);
-        else*/
         if (block.equals(blocksPointer.first)) {
             blocksPointer.first = block;
             writeBlocksPointer(databaseName, tableName, blocksPointer);

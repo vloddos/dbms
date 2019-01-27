@@ -1,17 +1,22 @@
 package com.dbms;
 
 import com.dbms.storage.file_structs.BlockExtendedFileStruct;
-import com.dbms.structs.Databases;
+import com.dbms.structures.Databases;
+import com.dbms.structures.Type;
 
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Vector;
 
 public class DBMSTest {
 
     public static void main(String[] args) throws Exception {
         BlockExtendedFileStruct.init();
+        /*if (true)
+            return;*/
         Databases.getInstance().fullDatabasesFullTablesLoad();
+
 
         /*var map = new HashMap<String, Pair<String, Integer>>();
         map.put("f1", new Pair<>("row", 0));
@@ -43,10 +48,10 @@ public class DBMSTest {
         //Databases.getInstance().dropDatabase("tdb");
         //Databases.getInstance().createDatabase("tdb");
 
-        /*var map = new LinkedHashMap<String, TypeDescription>();
-        map.put("name", new TypeDescription("varchar", 10));
-        map.put("age", new TypeDescription("int"));
-        map.put("field", new TypeDescription("bool"));
+        /*var map = new LinkedHashMap<String, Type>();
+        map.put("name", new Type("varchar", 10));
+        map.put("age", new Type("int"));
+        map.put("field", new Type("bool"));
         Databases.getInstance().useDatabase("tdb").createTable("student", map);*/
 
         //System.out.println(Databases.getInstance().getCurrentDatabase().getTable("student"));
@@ -57,26 +62,20 @@ public class DBMSTest {
         //Databases.getInstance().getCurrentDatabase().getTable("student");
 
 
-        var map = new HashMap();
-        map.put("name", "abfge");
-        map.put("age", "8725725");
-        map.put("field", "false");
-        Databases.getInstance().getCurrentDatabase().getTable("student").insert(map);
+        /*var map = new HashMap();
+        map.put("name", "abc");
+        map.put("age", "123");
+        map.put("field", "true");
+        Databases.getInstance().useDatabase("tdb").getTable("student").insert(map);*/
 
         /*var set = new HashMap<String, String>();
-        set.put("age", "age/2");
-        //set.put("name", "'---'");
-        Databases.getInstance().getCurrentDatabase().getTable("student").update(set, "field=false");*/
+        set.put("field", "");
+        Databases.getInstance().useDatabase("tdb").getTable("student").update(set, "name='qwe'");*/
 
-        //Databases.getInstance().getCurrentDatabase().getTable("student").delete(null);
-        var bp = Databases.getInstance().getCurrentDatabase().getTable("student").getBlocksPointer();
-        for (var df : bp.getClass().getDeclaredFields()) {
-            df.setAccessible(true);
-            System.out.println(df.getName() + " " + df.get(bp));
-        }
+        Databases.getInstance().useDatabase("tdb").getTable("student").delete("field=false");
 
         Databases.getInstance()
-                .getCurrentDatabase()
+                .useDatabase("tdb")
                 .getTable("student")
                 .select(
                         new Vector<>(Arrays.asList("name", "age", "field")),

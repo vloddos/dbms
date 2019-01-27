@@ -1,8 +1,8 @@
 package com.dbms;
 
 import com.dbms.data_types.Varchar;
-import com.dbms.structs.TypeDescription;
-import com.dbms.structs.Types;
+import com.dbms.structures.Type;
+import com.dbms.structures.Types;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -15,7 +15,7 @@ public class KryoTest {
 
     public static void main(String[] args) throws Exception {
         var baos = new ByteArrayOutputStream();
-        var t = new TypeDescription("varchar", 10);
+        var t = new Type("varchar", 10);
         var vc = new Varchar("mem", 10);
         System.out.println(vc);
         Types.write(new DataOutputStream(baos), vc);

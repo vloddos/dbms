@@ -1,10 +1,9 @@
 package com.dbms.storage.serialization;
 
-import com.dbms.structs.Types;
+import com.dbms.structures.Types;
 
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
-import java.util.Random;
 
 public class Serialization {
 
@@ -13,9 +12,10 @@ public class Serialization {
     //private Kryo kryo = new Kryo();
     //private Set<Class<?>> kryoClasses = new HashSet<>();
 
-    private Random random = new Random();
-    private ByteArrayOutputStream baos = new ByteArrayOutputStream();
-    private DataOutputStream dos = new DataOutputStream(baos);
+    private ThreadLocal<ByteArrayOutputStream> baosThreadLocal = ThreadLocal.withInitial(ByteArrayOutputStream::new);
+    private ThreadLocal<DataOutputStream> dosThreadLocal = ThreadLocal.withInitial(
+            () -> new DataOutputStream(baosThreadLocal.get())
+    );
 
     private Serialization() {
     }
@@ -47,7 +47,10 @@ public class Serialization {
         return out.toBytes();
     }*/
 
-    public synchronized <E> byte[] getDataSerializableBytes(E e) throws Exception {
+    public <E> byte[] getDataSerializableBytes(E e) throws Exception {
+        var baos = baosThreadLocal.get();
+        var dos = dosThreadLocal.get();
+
         baos.reset();
 
         if (e instanceof DataSerializable)

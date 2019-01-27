@@ -1,4 +1,4 @@
-package com.dbms.structs;
+package com.dbms.structures;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -12,20 +12,20 @@ public class TableTest extends TestBootstrap {
 
     @Test(expected = RuntimeException.class)
     public void testShouldThrowExceptionCauseWrongType() {
-        var map = new LinkedHashMap<String, TypeDescription>();
+        var map = new LinkedHashMap<String, Type>();
 
-        map.put("age", new TypeDescription("int"));
-        map.put("field", new TypeDescription("wrong"));
+        map.put("age", new Type("int"));
+        map.put("field", new Type("wrong"));
 
         new Table("School", "Student", map);
     }
 
     @Test
     public void testShouldReturnTableInStringFormat() {
-        var map = new LinkedHashMap<String, TypeDescription>();
+        var map = new LinkedHashMap<String, Type>();
 
-        map.put("first_name", new TypeDescription("varchar", 25));
-        map.put("age", new TypeDescription("int"));
+        map.put("first_name", new Type("varchar", 25));
+        map.put("age", new Type("int"));
 
         Assert.assertEquals("create table Student(\n\tfirst_name varchar(25),\n\tage int\n)", new Table("School", "Student", map).toString());
     }
